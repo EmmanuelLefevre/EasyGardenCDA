@@ -10,33 +10,68 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GardenRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:Garden']],
+    denormalizationContext: ['groups' => ['write:Garden']],
+    )]
 class Garden
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:Garden',
+              'read:User',
+              'read:Lawnmower',
+              'read:Lightning',
+              'read:Pool',
+              'read:Portal',
+              'read:Watering'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45, nullable: true)]
+    #[Groups(['read:Garden',
+              'read:User',
+              'read:Lawnmower',
+              'read:Lightning',
+              'read:Pool',
+              'read:Portal',
+              'read:Watering',
+              'write:Garden'])]
     private $name;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'garden')]
+    #[Groups(['read:Garden',
+              'read:User',
+              'read:Lawnmower',
+              'read:Lightning',
+              'read:Pool',
+              'read:Portal',
+              'read:Watering'])]
     private $user;
 
-    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Lawnmower::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Lawnmower::class, orphanRemoval: true)]   
+    #[Groups(['read:Garden',
+              'read:User'])]
     private $lawnmower;
 
-    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Lightning::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Lightning::class, orphanRemoval: true)]   
+    #[Groups(['read:Garden',
+              'read:User'])]
     private $lightning;
 
-    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Pool::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Pool::class, orphanRemoval: true)]   
+    #[Groups(['read:Garden',
+              'read:User'])]
     private $pool;
 
-    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Portal::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Portal::class, orphanRemoval: true)]   
+    #[Groups(['read:Garden',
+              'read:User'])]
     private $portal;
 
-    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Watering::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Watering::class, orphanRemoval: true)]   
+    #[Groups(['read:Garden',
+              'read:User'])]
     private $watering;
 
     public function __construct()

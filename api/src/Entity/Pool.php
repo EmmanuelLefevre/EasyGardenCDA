@@ -8,21 +8,36 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PoolRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:Pool']],
+    denormalizationContext: ['groups' => ['write:Pool']],
+    )]
 class Pool
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Pool'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Pool',
+              'write:Pool'])]
     private $name;
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Pool',
+              'write:Pool'])]
     private $status;
 
     #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'pool')]
+    #[Groups(['read:Pool'])]
     private $garden;
 
     public function getId(): ?int

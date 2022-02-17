@@ -8,21 +8,36 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LightningRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:Lightning']],
+    denormalizationContext: ['groups' => ['write:Lightning']],
+    )]
 class Lightning
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Lightning'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Lightning',
+              'write:Lightning'])]
     private $name;
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Lightning',
+              'write:Lightning'])]
     private $status;
 
     #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'lightning')]
+    #[Groups(['read:Lightning'])]
     private $garden;
 
     public function getId(): ?int

@@ -8,24 +8,43 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PortalRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:Portal']],
+    denormalizationContext: ['groups' => ['write:Portal']],
+    )]
 class Portal
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Portal'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Portal',
+              'write:Portal'])]
     private $name;
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Portal',
+              'write:Portal'])]
     private $presenceSensor;
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Portal',
+              'write:Portal'])]
     private $status;
 
     #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'portal')]
+    #[Groups(['read:Portal'])]
     private $garden;
 
     public function getId(): ?int

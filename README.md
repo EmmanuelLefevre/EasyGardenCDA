@@ -42,6 +42,26 @@ APP_ENV=prod
 
 - Créer les relations entre entity
 
+# API_PLATFORM NORMALIZATION/DENORMALIZATION CONTEXT
+- Créer les #Groups et exposer les propriétés
+- /EasyGardenV1.0/api/config/packages/api_platform.yaml
+Configuration =>
+
+api_platform:
+    title: 'EasyGarden API'
+    description: 'API to deal with Vue.js'
+    version: '1.0'
+    show_webby: false
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    patch_formats:
+        json: ['application/merge-patch+json']
+    swagger:
+        versions: [3]
+    eager_loading:
+        force_eager: false
+        fetch_partial: true
+
 # MIGRATION
 `php bin/console doctrine:database:create`
 \

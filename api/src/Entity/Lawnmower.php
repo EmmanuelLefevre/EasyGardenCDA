@@ -8,24 +8,43 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LawnmowerRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:Lawnmower']],
+    denormalizationContext: ['groups' => ['write:Lawnmower']],
+    )]
 class Lawnmower
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Lawnmower'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Lawnmower',
+              'write:Lawnmower'])]
     private $name;
 
     #[ORM\Column(type: 'string', length: 12)]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Lawnmower',
+              'write:Lawnmower'])]
     private $batterySensor;
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Lawnmower',
+              'write:Lawnmower'])]
     private $status;
 
     #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'lawnmower')]
+    #[Groups(['read:Lawnmower'])]
     private $garden;
 
     public function getId(): ?int

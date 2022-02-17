@@ -4,30 +4,54 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\WateringRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WateringRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:Watering']],
+    denormalizationContext: ['groups' => ['write:Watering']],
+    )]
 class Watering
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Watering'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Watering',
+              'write:Watering'])]
     private $name;
 
     #[ORM\Column(type: 'string', length: 12)]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Watering',
+              'write:Watering'])]
     private $flowSensor;
 
     #[ORM\Column(type: 'string', length: 12)]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Watering',
+              'write:Watering'])]
     private $pressureSensor;
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['read:User',
+              'read:Garden',
+              'read:Watering',
+              'write:Watering'])]
     private $status;
 
     #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'watering')]
+    #[Groups(['read:Watering'])]
     private $garden;
 
     public function getId(): ?int
