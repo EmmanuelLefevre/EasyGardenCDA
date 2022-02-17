@@ -1,52 +1,70 @@
 # DEMARRAGE
 - /EasyGardenV1.0
+\
 `symfony new api`
 
 - Supprimer le .git dans /EasyGardenV1.0/api
 
 - /EasyGardenV1.0
+\
 `git init`
 
 - /EasyGardenV1.0/api
+\
 `composer update`
 
 - /EasyGardenV1.0/api
+\
 `composer req api`
 
 - /EasyGardenV1.0/api
+\
 `composer require symfony/orm-pack`
 
 - /EasyGardenV1.0/api
+\
 `composer require symfony/maker-bundle --dev`
 
 - /EasyGardenV1.0/.env.local
+\
 Commenter DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
+\
 DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
+\
 APP_ENV=dev
 
 - /EasyGardenV1.0/api/.env
+\
 Commenter DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
+\
 DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
+\
 APP_ENV=prod
 
 # LANCER SERVEUR
 - Lancer serveur en local
+\
 `symfony local:server:start --allow-http`
 
 # ENTITY
 - Créer entity User
+\
 `php bin/console make:user`
 
 - Créer autres entity
+\
 `php bin/console make:entity`
 
 - Créer les relations entre entity
 
 # API_PLATFORM NORMALIZATION/DENORMALIZATION CONTEXT
 - Créer les #Groups et exposer les propriétés
+\
 - /EasyGardenV1.0/api/config/packages/api_platform.yaml
+\
 Configuration =>
-
+\
+```yaml
 api_platform:
     title: 'EasyGarden API'
     description: 'API to deal with Vue.js'
@@ -61,6 +79,7 @@ api_platform:
     eager_loading:
         force_eager: false
         fetch_partial: true
+```
 
 # MIGRATION
 `php bin/console doctrine:database:create`
@@ -69,4 +88,57 @@ api_platform:
 \
 `php bin/console doctrine:migrations:migrate`
 
-# 
+# CONFIGURATION DOSSIER /config
+- /EasyGardenV1.0/api/config/packages/prod/doctrine.yaml
+\
+```yaml
+when@prod:
+    doctrine:
+        orm:
+            auto_generate_proxy_classes: false
+            query_cache_driver:
+                type: pool
+                pool: doctrine.system_cache_pool
+            result_cache_driver:
+                type: pool
+                pool: doctrine.result_cache_pool
+
+    framework:
+        cache:
+            pools:
+                doctrine.result_cache_pool:
+                    adapter: cache.app
+                doctrine.system_cache_pool:
+                    adapter: cache.system
+```
+\
+- /EasyGardenV1.0/api/config/packages/test/doctrine.yaml
+\
+```yaml
+when@test:
+    doctrine:
+        dbal:
+            # "TEST_TOKEN" is typically set by ParaTest
+            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+```
+\
+- Supprimer les blocs du dessus dans =>
+\
+/EasyGardenV1.0/api/config/packages/doctrine.yaml
+\
+- /EasyGardenV1.0/api/config/packages/security.yaml
+\
+Configurer les routes =>
+\
+```yaml
+access_control:
+        - { path: ^/users, roles: PUBLIC_ACCESS }
+        - { path: ^/gardens, roles: PUBLIC_ACCESS }
+        - { path: ^/lawnmowers, roles: PUBLIC_ACCESS }
+        - { path: ^/lightnings, roles: PUBLIC_ACCESS }
+        - { path: ^/pools, roles: PUBLIC_ACCESS }
+        - { path: ^/portals, roles: PUBLIC_ACCESS }
+        - { path: ^/waterings, roles: PUBLIC_ACCESS }
+```
+
+# AUTHENTIFICATION

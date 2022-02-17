@@ -1,10 +1,12 @@
 security:
+    # https://symfony.com/doc/current/security/experimental_authenticators.html
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
+            cost: 12
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
@@ -27,11 +29,23 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
+            # configure the maximum login attempts in a custom period of time
+            login_throttling:
+                max_attempts: 3
+                interval: '15 minutes'
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/users, roles: PUBLIC_ACCESS }
+        - { path: ^/gardens, roles: PUBLIC_ACCESS }
+        - { path: ^/lawnmowers, roles: PUBLIC_ACCESS }
+        - { path: ^/lightnings, roles: PUBLIC_ACCESS }
+        - { path: ^/pools, roles: PUBLIC_ACCESS }
+        - { path: ^/portals, roles: PUBLIC_ACCESS }
+        - { path: ^/waterings, roles: PUBLIC_ACCESS }
 
 when@test:
     security:
