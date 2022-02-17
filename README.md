@@ -29,9 +29,9 @@
 \
 **Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
-DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
+**Décommenter**DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
-APP_ENV=dev
+**Noter**APP_ENV=dev
 
 1. */EasyGardenV1.0/api/.env*
 \
@@ -39,7 +39,7 @@ APP_ENV=dev
 \
 DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
-APP_ENV=prod
+**Noter**APP_ENV=prod
 
 # LANCER SERVEUR
 1. Lancer serveur en local
@@ -133,5 +133,8 @@ access_control:
         - { path: ^/portals, roles: PUBLIC_ACCESS }
         - { path: ^/waterings, roles: PUBLIC_ACCESS }
 ```
+
+# FIXTURES
+
 
 # AUTHENTIFICATION
