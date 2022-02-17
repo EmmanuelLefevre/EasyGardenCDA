@@ -44,6 +44,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Garden::class, orphanRemoval: true)]
+    private $garden;
+
+    public function __construct()
+    {
+        $this->garden = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +178,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Garden>
+     */
+    public function getGarden(): Collection
+    {
+        return $this->garden;
+    }
+
+    public function addGarden(Garden $garden): self
+    {
+        if (!$this->garden->contains($garden)) {
+            $this->garden[] = $garden;
+            $garden->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGarden(Garden $garden): self
+    {
+        if ($this->garden->removeElement($garden)) {
+            // set the owning side to null (unless already changed)
+            if ($garden->getUser() === $this) {
+                $garden->setUser(null);
+            }
+        }
 
         return $this;
     }

@@ -22,6 +22,9 @@ class Lightning
     #[ORM\Column(type: 'boolean')]
     private $status;
 
+    #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'lightning')]
+    private $garden;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,6 +50,18 @@ class Lightning
     public function setStatus(bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getGarden(): ?Garden
+    {
+        return $this->garden;
+    }
+
+    public function setGarden(?Garden $garden): self
+    {
+        $this->garden = $garden;
 
         return $this;
     }

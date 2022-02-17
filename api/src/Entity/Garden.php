@@ -21,6 +21,33 @@ class Garden
     #[ORM\Column(type: 'string', length: 45, nullable: true)]
     private $name;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'garden')]
+    private $user;
+
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Lawnmower::class, orphanRemoval: true)]
+    private $lawnmower;
+
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Lightning::class, orphanRemoval: true)]
+    private $lightning;
+
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Pool::class, orphanRemoval: true)]
+    private $pool;
+
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Portal::class, orphanRemoval: true)]
+    private $portal;
+
+    #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Watering::class, orphanRemoval: true)]
+    private $watering;
+
+    public function __construct()
+    {
+        $this->lawnmower = new ArrayCollection();
+        $this->lightning = new ArrayCollection();
+        $this->pool = new ArrayCollection();
+        $this->portal = new ArrayCollection();
+        $this->watering = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +61,168 @@ class Garden
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Lawnmower>
+     */
+    public function getLawnmower(): Collection
+    {
+        return $this->lawnmower;
+    }
+
+    public function addLawnmower(Lawnmower $lawnmower): self
+    {
+        if (!$this->lawnmower->contains($lawnmower)) {
+            $this->lawnmower[] = $lawnmower;
+            $lawnmower->setGarden($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLawnmower(Lawnmower $lawnmower): self
+    {
+        if ($this->lawnmower->removeElement($lawnmower)) {
+            // set the owning side to null (unless already changed)
+            if ($lawnmower->getGarden() === $this) {
+                $lawnmower->setGarden(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Lightning>
+     */
+    public function getLightning(): Collection
+    {
+        return $this->lightning;
+    }
+
+    public function addLightning(Lightning $lightning): self
+    {
+        if (!$this->lightning->contains($lightning)) {
+            $this->lightning[] = $lightning;
+            $lightning->setGarden($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLightning(Lightning $lightning): self
+    {
+        if ($this->lightning->removeElement($lightning)) {
+            // set the owning side to null (unless already changed)
+            if ($lightning->getGarden() === $this) {
+                $lightning->setGarden(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Pool>
+     */
+    public function getPool(): Collection
+    {
+        return $this->pool;
+    }
+
+    public function addPool(Pool $pool): self
+    {
+        if (!$this->pool->contains($pool)) {
+            $this->pool[] = $pool;
+            $pool->setGarden($this);
+        }
+
+        return $this;
+    }
+
+    public function removePool(Pool $pool): self
+    {
+        if ($this->pool->removeElement($pool)) {
+            // set the owning side to null (unless already changed)
+            if ($pool->getGarden() === $this) {
+                $pool->setGarden(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Portal>
+     */
+    public function getPortal(): Collection
+    {
+        return $this->portal;
+    }
+
+    public function addPortal(Portal $portal): self
+    {
+        if (!$this->portal->contains($portal)) {
+            $this->portal[] = $portal;
+            $portal->setGarden($this);
+        }
+
+        return $this;
+    }
+
+    public function removePortal(Portal $portal): self
+    {
+        if ($this->portal->removeElement($portal)) {
+            // set the owning side to null (unless already changed)
+            if ($portal->getGarden() === $this) {
+                $portal->setGarden(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Watering>
+     */
+    public function getWatering(): Collection
+    {
+        return $this->watering;
+    }
+
+    public function addWatering(Watering $watering): self
+    {
+        if (!$this->watering->contains($watering)) {
+            $this->watering[] = $watering;
+            $watering->setGarden($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWatering(Watering $watering): self
+    {
+        if ($this->watering->removeElement($watering)) {
+            // set the owning side to null (unless already changed)
+            if ($watering->getGarden() === $this) {
+                $watering->setGarden(null);
+            }
+        }
 
         return $this;
     }
