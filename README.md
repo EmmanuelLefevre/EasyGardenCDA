@@ -1,31 +1,31 @@
 # DÉMARRAGE
-1. /EasyGardenV1.0
+1. */EasyGardenV1.0*
 \
 `symfony new api`
 
 1. Supprimer le .git dans /EasyGardenV1.0/api
 
-1. /EasyGardenV1.0
+1. */EasyGardenV1.0*
 \
 `git init`
 
-1. /EasyGardenV1.0/api
+1. */EasyGardenV1.0/api*
 \
 `composer update`
 
-1. /EasyGardenV1.0/api
+1. */EasyGardenV1.0/api*
 \
 `composer req api`
 
-1. /EasyGardenV1.0/api
+1. */EasyGardenV1.0/api*
 \
 `composer require symfony/orm-pack`
 
-1. /EasyGardenV1.0/api
+1. */EasyGardenV1.0/api*
 \
 `composer require symfony/maker-bundle --dev`
 
-1. /EasyGardenV1.0/.env.local
+1. */EasyGardenV1.0/.env.local*
 \
 **Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
@@ -33,7 +33,7 @@ DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-
 \
 APP_ENV=dev
 
-1. /EasyGardenV1.0/api/.env
+1. */EasyGardenV1.0/api/.env*
 \
 **Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
@@ -47,20 +47,20 @@ APP_ENV=prod
 `symfony local:server:start --allow-http`
 
 # ENTITY
-- Créer entity User
+1. Créer entity User
 \
 `php bin/console make:user`
 
-- Créer autres entity
+1. Créer autres entity
 \
 `php bin/console make:entity`
 
-- Créer les relations entre entity
+1. Créer les relations entre entity
 
 # API_PLATFORM NORMALIZATION/DENORMALIZATION CONTEXT
-- Créer les #Groups et exposer les propriétés
+1. Créer les #Groups et exposer les propriétés
 
-- /EasyGardenV1.0/api/config/packages/api_platform.yaml
+1. */EasyGardenV1.0/api/config/packages/api_platform.yaml*
 \
 Configuration =>
 ```yaml
@@ -88,7 +88,7 @@ api_platform:
 `php bin/console doctrine:migrations:migrate`
 
 # CONFIGURATION DOSSIER /config
-- /EasyGardenV1.0/api/config/packages/prod/doctrine.yaml
+1. */EasyGardenV1.0/api/config/packages/prod/doctrine.yaml*
 ```yaml
 when@prod:
     doctrine:
@@ -109,7 +109,7 @@ when@prod:
                 doctrine.system_cache_pool:
                     adapter: cache.system
 ```
-- /EasyGardenV1.0/api/config/packages/test/doctrine.yaml
+1. */EasyGardenV1.0/api/config/packages/test/doctrine.yaml*
 ```yaml
 when@test:
     doctrine:
@@ -117,10 +117,10 @@ when@test:
             # "TEST_TOKEN" is typically set by ParaTest
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
 ```
-- Supprimer les blocs .yaml du dessus dans =>
+1. Supprimer les blocs .yaml du dessus dans =>
 \
-/EasyGardenV1.0/api/config/packages/doctrine.yaml
-- /EasyGardenV1.0/api/config/packages/security.yaml
+*/EasyGardenV1.0/api/config/packages/doctrine.yaml*
+1. */EasyGardenV1.0/api/config/packages/security.yaml*
 \
 Configurer les routes =>
 ```yaml
