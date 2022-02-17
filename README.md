@@ -1,48 +1,48 @@
-# DEMARRAGE
-- /EasyGardenV1.0
+# DÉMARRAGE
+1. /EasyGardenV1.0
 \
 `symfony new api`
 
-- Supprimer le .git dans /EasyGardenV1.0/api
+1. Supprimer le .git dans /EasyGardenV1.0/api
 
-- /EasyGardenV1.0
+1. /EasyGardenV1.0
 \
 `git init`
 
-- /EasyGardenV1.0/api
+1. /EasyGardenV1.0/api
 \
 `composer update`
 
-- /EasyGardenV1.0/api
+1. /EasyGardenV1.0/api
 \
 `composer req api`
 
-- /EasyGardenV1.0/api
+1. /EasyGardenV1.0/api
 \
 `composer require symfony/orm-pack`
 
-- /EasyGardenV1.0/api
+1. /EasyGardenV1.0/api
 \
 `composer require symfony/maker-bundle --dev`
 
-- /EasyGardenV1.0/.env.local
+1. /EasyGardenV1.0/.env.local
 \
-Commenter DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
+**Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
 DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
 APP_ENV=dev
 
-- /EasyGardenV1.0/api/.env
+1. /EasyGardenV1.0/api/.env
 \
-Commenter DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
+**Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
 DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
 APP_ENV=prod
 
 # LANCER SERVEUR
-- Lancer serveur en local
+1. Lancer serveur en local
 \
 `symfony local:server:start --allow-http`
 
@@ -117,7 +117,7 @@ when@test:
             # "TEST_TOKEN" is typically set by ParaTest
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
 ```
-- Supprimer les blocs du dessus dans =>
+- Supprimer les blocs .yaml du dessus dans =>
 \
 /EasyGardenV1.0/api/config/packages/doctrine.yaml
 - /EasyGardenV1.0/api/config/packages/security.yaml
