@@ -59,11 +59,10 @@ APP_ENV=prod
 
 # API_PLATFORM NORMALIZATION/DENORMALIZATION CONTEXT
 - Créer les #Groups et exposer les propriétés
-\
+
 - /EasyGardenV1.0/api/config/packages/api_platform.yaml
 \
 Configuration =>
-\
 ```yaml
 api_platform:
     title: 'EasyGarden API'
@@ -90,7 +89,6 @@ api_platform:
 
 # CONFIGURATION DOSSIER /config
 - /EasyGardenV1.0/api/config/packages/prod/doctrine.yaml
-\
 ```yaml
 when@prod:
     doctrine:
@@ -111,9 +109,7 @@ when@prod:
                 doctrine.system_cache_pool:
                     adapter: cache.system
 ```
-\
 - /EasyGardenV1.0/api/config/packages/test/doctrine.yaml
-\
 ```yaml
 when@test:
     doctrine:
@@ -121,15 +117,12 @@ when@test:
             # "TEST_TOKEN" is typically set by ParaTest
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
 ```
-\
 - Supprimer les blocs du dessus dans =>
 \
 /EasyGardenV1.0/api/config/packages/doctrine.yaml
-\
 - /EasyGardenV1.0/api/config/packages/security.yaml
 \
 Configurer les routes =>
-\
 ```yaml
 access_control:
         - { path: ^/users, roles: PUBLIC_ACCESS }
