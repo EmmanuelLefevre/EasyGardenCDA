@@ -9,23 +9,33 @@ symfony new api
 
 1. */EasyGardenV1.0*
 \
-`git init`
+```
+git init
+```
 
 1. */EasyGardenV1.0/api*
 \
-`composer update`
+```
+composer update
+```
 
 1. */EasyGardenV1.0/api*
 \
-`composer req api`
+```
+composer req api
+```
 
 1. */EasyGardenV1.0/api*
 \
-`composer require symfony/orm-pack`
+```
+composer require symfony/orm-pack
+```
 
 1. */EasyGardenV1.0/api*
 \
-`composer require symfony/maker-bundle --dev`
+```
+composer require symfony/maker-bundle --dev
+```
 
 1. */EasyGardenV1.0/.env.local*
 \
@@ -46,16 +56,22 @@ DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-
 # LANCER SERVEUR
 1. Lancer serveur en local
 \
-`symfony local:server:start --allow-http`
+```
+symfony local:server:start --allow-http
+```
 
 # ENTITY
 1. Créer entity User
 \
-`php bin/console make:user`
+```
+php bin/console make:user
+```
 
 1. Créer autres entity
 \
-`php bin/console make:entity`
+```
+php bin/console make:entity
+```
 
 1. Créer les relations entre entity
 
@@ -83,11 +99,17 @@ api_platform:
 ```
 
 # MIGRATION
-`php bin/console doctrine:database:create`
+```
+php bin/console doctrine:database:create
+```
 \
-`php bin/console make:migration`
+```
+php bin/console make:migration
+```
 \
-`php bin/console doctrine:migrations:migrate`
+```
+php bin/console doctrine:migrations:migrate
+```
 
 # CONFIGURATION DOSSIER /config
 1. */EasyGardenV1.0/api/config/packages/prod/doctrine.yaml*
