@@ -1,6 +1,5 @@
 # DÉMARRAGE
 1. */EasyGardenV1.0*
-\
 ```
 symfony new api
 ```
@@ -8,31 +7,26 @@ symfony new api
 2. Supprimer le .git dans /EasyGardenV1.0/api
 
 3. */EasyGardenV1.0*
-\
 ```
 git init
 ```
 
 4. */EasyGardenV1.0/api*
-\
 ```
 composer update
 ```
 
 5. */EasyGardenV1.0/api*
-\
 ```
 composer req api
 ```
 
 6. */EasyGardenV1.0/api*
-\
 ```
 composer require symfony/orm-pack
 ```
 
 7. */EasyGardenV1.0/api*
-\
 ```
 composer require symfony/maker-bundle --dev
 ```
@@ -55,20 +49,17 @@ DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-
 
 # LANCER SERVEUR
 1. Lancer serveur en local
-\
 ```
 symfony local:server:start --allow-http
 ```
 
 # ENTITY
 1. Créer entity User
-\
 ```
 php bin/console make:user
 ```
 
 2. Créer autres entity
-\
 ```
 php bin/console make:entity
 ```
