@@ -1,43 +1,43 @@
 # DÉMARRAGE
 1. */EasyGardenV1.0*
 \
-```cmd
+```
 symfony new api
 ```
 
-1. Supprimer le .git dans /EasyGardenV1.0/api
+2. Supprimer le .git dans /EasyGardenV1.0/api
 
-1. */EasyGardenV1.0*
+3. */EasyGardenV1.0*
 \
 ```
 git init
 ```
 
-1. */EasyGardenV1.0/api*
+4. */EasyGardenV1.0/api*
 \
 ```
 composer update
 ```
 
-1. */EasyGardenV1.0/api*
+5. */EasyGardenV1.0/api*
 \
 ```
 composer req api
 ```
 
-1. */EasyGardenV1.0/api*
+6. */EasyGardenV1.0/api*
 \
 ```
 composer require symfony/orm-pack
 ```
 
-1. */EasyGardenV1.0/api*
+7. */EasyGardenV1.0/api*
 \
 ```
 composer require symfony/maker-bundle --dev
 ```
 
-1. */EasyGardenV1.0/.env.local*
+8. */EasyGardenV1.0/.env.local*
 \
 **Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
@@ -45,7 +45,7 @@ composer require symfony/maker-bundle --dev
 \
 **Noter**APP_ENV=dev
 
-1. */EasyGardenV1.0/api/.env*
+9. */EasyGardenV1.0/api/.env*
 \
 **Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
@@ -67,18 +67,18 @@ symfony local:server:start --allow-http
 php bin/console make:user
 ```
 
-1. Créer autres entity
+2. Créer autres entity
 \
 ```
 php bin/console make:entity
 ```
 
-1. Créer les relations entre entity
+3. Créer les relations entre entity
 
 # API_PLATFORM NORMALIZATION/DENORMALIZATION CONTEXT
 1. Créer les #Groups et exposer les propriétés
 
-1. */EasyGardenV1.0/api/config/packages/api_platform.yaml*
+2. */EasyGardenV1.0/api/config/packages/api_platform.yaml*
 \
 Configuration =>
 ```yaml
@@ -133,7 +133,7 @@ when@prod:
                 doctrine.system_cache_pool:
                     adapter: cache.system
 ```
-1. */EasyGardenV1.0/api/config/packages/test/doctrine.yaml*
+2. */EasyGardenV1.0/api/config/packages/test/doctrine.yaml*
 ```yaml
 when@test:
     doctrine:
@@ -141,10 +141,10 @@ when@test:
             # "TEST_TOKEN" is typically set by ParaTest
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
 ```
-1. Supprimer les blocs .yaml du dessus dans =>
+3. Supprimer les blocs .yaml du dessus dans =>
 \
 */EasyGardenV1.0/api/config/packages/doctrine.yaml*
-1. */EasyGardenV1.0/api/config/packages/security.yaml*
+4. */EasyGardenV1.0/api/config/packages/security.yaml*
 \
 Configurer les routes =>
 ```yaml
