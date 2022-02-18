@@ -3,10 +3,9 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AppFixtures extends Fixture implements DependentFixtureInterface
+class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
@@ -16,16 +15,4 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-    public function getDependencies() 
-    {
-        return [
-            UserFixture::class,
-            GardenFixture::class,
-            LawnmowerFixture::class,
-            LightningFixture::class,
-            PoolFixture::class,
-            PortalFixture::class,
-            WateringFixture::class
-        ];
-    }
 }

@@ -3,10 +3,11 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class GardenFixture extends Fixture
+class GardenFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -40,4 +41,16 @@ class GardenFixture extends Fixture
         $manager->flush();
     }
 
+    public function getDependencies() 
+    {
+        return [
+            UserFixture::class,
+            GardenFixture::class,
+            LawnmowerFixture::class,
+            LightningFixture::class,
+            PoolFixture::class,
+            PortalFixture::class,
+            WateringFixture::class
+        ];
+    }
 }
