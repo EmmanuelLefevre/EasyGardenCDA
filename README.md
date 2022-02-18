@@ -150,6 +150,13 @@ access_control:
 ```
 
 # FIXTURES
-
+1. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+```
+composer require orm-fixtures --dev
+```
+2. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+```
+composer require symfony/rate-limiter
+```
 
 # AUTHENTIFICATION
