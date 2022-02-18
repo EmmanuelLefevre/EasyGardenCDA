@@ -1,7 +1,9 @@
 # DÉMARRAGE
 1. */EasyGardenV1.0*
 \
+```cmd
 `symfony new api`
+```
 
 1. Supprimer le .git dans /EasyGardenV1.0/api
 
