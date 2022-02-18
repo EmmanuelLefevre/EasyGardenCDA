@@ -1,49 +1,49 @@
 # DÉMARRAGE
-1. */EasyGardenV1.0*
+1. &nbsp;&nbsp;*/EasyGardenV1.0*
 ```
 symfony new api
 ```
 
 2. Supprimer le .git dans /EasyGardenV1.0/api
 
-3. */EasyGardenV1.0*
+3. &nbsp;&nbsp;*/EasyGardenV1.0*
 ```
 git init
 ```
 
-4. */EasyGardenV1.0/api*
+4. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
 composer update
 ```
 
-5. */EasyGardenV1.0/api*
+5. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
 composer req api
 ```
 
-6. */EasyGardenV1.0/api*
+6. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
 composer require symfony/orm-pack
 ```
 
-7. */EasyGardenV1.0/api*
+7. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
 composer require symfony/maker-bundle --dev
 ```
 
-8. */EasyGardenV1.0/.env.local*
+8. &nbsp;&nbsp;*/EasyGardenV1.0/.env.local*
 \
-**Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
+**Commenter** &nbsp;&nbsp; DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
-**Décommenter**DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
+**Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
-**Noter**APP_ENV=dev
+**Noter** &nbsp;&nbsp; APP_ENV=dev
 
 9. */EasyGardenV1.0/api/.env*
 \
-**Commenter** DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
+**Commenter** &nbsp;&nbsp; DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
-DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
+**Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
 **Noter**APP_ENV=prod
 
@@ -69,7 +69,7 @@ php bin/console make:entity
 # API_PLATFORM NORMALIZATION/DENORMALIZATION CONTEXT
 1. Créer les #Groups et exposer les propriétés
 
-2. */EasyGardenV1.0/api/config/packages/api_platform.yaml*
+2. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/api_platform.yaml*
 \
 Configuration =>
 ```yaml
@@ -103,7 +103,7 @@ php bin/console doctrine:migrations:migrate
 ```
 
 # CONFIGURATION DOSSIER /config
-1. */EasyGardenV1.0/api/config/packages/prod/doctrine.yaml*
+1. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/prod/doctrine.yaml*
 ```yaml
 when@prod:
     doctrine:
@@ -124,7 +124,7 @@ when@prod:
                 doctrine.system_cache_pool:
                     adapter: cache.system
 ```
-2. */EasyGardenV1.0/api/config/packages/test/doctrine.yaml*
+2. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/test/doctrine.yaml*
 ```yaml
 when@test:
     doctrine:
@@ -135,7 +135,7 @@ when@test:
 3. Supprimer les blocs .yaml du dessus dans =>
 \
 */EasyGardenV1.0/api/config/packages/doctrine.yaml*
-4. */EasyGardenV1.0/api/config/packages/security.yaml*
+4. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/security.yaml*
 \
 Configurer les routes =>
 ```yaml
