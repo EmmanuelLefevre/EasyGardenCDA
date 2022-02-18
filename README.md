@@ -66,7 +66,7 @@ php bin/console make:entity
 
 3. Créer les relations entre entity
 
-# API_PLATFORM NORMALIZATION/DENORMALIZATION CONTEXT
+# NORMALIZATION/DENORMALIZATION CONTEXT
 1. Créer les #Groups et exposer les propriétés
 
 2. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/api_platform.yaml*
