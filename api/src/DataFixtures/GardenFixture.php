@@ -24,18 +24,19 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
                 ];
 
         $faker = Factory::create('fr_FR');
-        for ($nbrGardens=0; $nbrGardens < 22; $nbrGardens++) {
+        for ($nbrGardens=0; $nbrGardens < 35; $nbrGardens++) {
 
-            $user = $this->getReference('user_' . $faker->numberBetween(2, 17));
+            // Get reference for user
+            $user = $this->getReference('user_'.$faker->numberBetween(2, 14));
 
             $garden = new \App\Entity\Garden();
-            $garden->setName(array_rand($data, 1));
+            $garden->setName(array_rand(array_flip($data), 1));
             $garden->setUser($user);
 
             $manager->persist($garden);
 
-            // Save gardens in a reference
-            $this->addReference('garden_'. $nbrGardens , $garden);
+            // Add reference for garden
+            $this->addReference('garden_'.$nbrGardens , $garden);
         }
 
         $manager->flush();
@@ -44,13 +45,7 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
     public function getDependencies() 
     {
         return [
-            UserFixture::class,
-            GardenFixture::class,
-            LawnmowerFixture::class,
-            LightningFixture::class,
-            PoolFixture::class,
-            PortalFixture::class,
-            WateringFixture::class
+            UserFixture::class
         ];
     }
 }

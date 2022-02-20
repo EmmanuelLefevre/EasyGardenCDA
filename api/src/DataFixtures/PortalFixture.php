@@ -3,17 +3,19 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class PortalFixture extends Fixture
+class PortalFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
         for ($nbrPortals=0; $nbrPortals < 13 ; $nbrPortals++) {
 
-            $garden = $this->getReference('garden_' . $faker->numberBetween(0, 17));
+            // Get reference for garden
+            $garden = $this->getReference('garden_'.$faker->numberBetween(2, 14));
 
             $pool = new \App\Entity\Portal();
             $pool->setName('Portail');
@@ -26,5 +28,12 @@ class PortalFixture extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies() 
+    {
+        return [
+            GardenFixture::class
+        ];
     }
 }

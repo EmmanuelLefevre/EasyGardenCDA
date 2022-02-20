@@ -3,10 +3,11 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class LightningFixture extends Fixture
+class LightningFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -19,12 +20,13 @@ class LightningFixture extends Fixture
                 ];
 
         $faker = Factory::create('fr_FR');
-        for ($nbrLightnings=0; $nbrLightnings < 35; $nbrLightnings++) {
+        for ($nbrLightnings=0; $nbrLightnings < 100; $nbrLightnings++) {
 
-            $garden = $this->getReference('garden_' . $faker->numberBetween(0, 17));
+            // Get reference for garden
+            $garden = $this->getReference('garden_'.$faker->numberBetween(0, 17));
 
             $lightning = new \App\Entity\Lightning();
-            $lightning->setName(array_rand($data, 1));
+            $lightning->setName(array_rand(array_flip($data), 1));
             $lightning->setStatus(mt_rand(0, 1));
             $lightning->setGarden($garden);
 
@@ -33,5 +35,12 @@ class LightningFixture extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies() 
+    {
+        return [
+            GardenFixture::class
+        ];
     }
 }
