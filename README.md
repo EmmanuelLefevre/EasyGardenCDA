@@ -158,5 +158,45 @@ composer require orm-fixtures --dev
 ```
 composer require symfony/rate-limiter
 ```
+3. Load fixture =>
+\
+```
+php bin/console doctrine:fixtures:load
+```
+# AUTHENTIFICATION (JWT)
+1. Créer dossier jwt
+\
+*/EasyGardenV1.0/api/config*
+2. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+```
+composer require lexik/jwt-authentication-bundle
+```
+3. Générer la clé privé et publique
+```
+openssl genrsa -out config/jwt/private.pem 4096
+```
+```
+openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
+```
+4. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/packages/lexik_jwt_authentication.yaml*
+```yaml
+lexik_jwt_authentication:
+    secret_key: '%env(resolve:JWT_SECRET_KEY)%'
+    public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
+    pass_phrase: '%env(JWT_PASSPHRASE)%'
+    token_ttl: "%env(JWT_TTL)%"
+```
+5. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/routes.yaml*
+```yaml
+authentication_token:
+    path: /authentication_token
+    methods: ['POST']
+```
+6. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/packages/security.yaml*
+```yaml
 
-# AUTHENTIFICATION
+```
+7. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/packages/api_platform.yaml*
+```yaml
+
+```
