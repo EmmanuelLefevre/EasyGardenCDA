@@ -112,6 +112,11 @@ class Garden
         return $this;
     }
 
+    public function __toString() 
+    {
+        return $this->user;
+    }
+
     /**
      * @return Collection<int, Lawnmower>
      */
