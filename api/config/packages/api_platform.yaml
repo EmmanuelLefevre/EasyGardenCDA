@@ -14,3 +14,11 @@ api_platform:
     eager_loading:
         force_eager: false
         fetch_partial: true
+    # api_platform:
+    #     swagger:
+    #         api_keys:
+    #             apiKey:
+    #             name: Authorization
+    #             type: header
+    # annotationGenerators:
+    #     - ApiPlatform\SchemaGenerator\AnnotationGenerator\SerializerGroupsAnnotationGenerator
