@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Lawnmower']],
     denormalizationContext: ['groups' => ['write:Lawnmower']],
+    collectionOperations: ['get' => ['normalization_context' => ['groups']],
+    'post' => ['denormalization_context' => ['groups']]]
     )]
 class Lawnmower
 {

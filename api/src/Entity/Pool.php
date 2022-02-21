@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Pool']],
     denormalizationContext: ['groups' => ['write:Pool']],
+    collectionOperations: ['get' => ['normalization_context' => ['groups']],
+    'post' => ['denormalization_context' => ['groups']]]
     )]
 class Pool
 {

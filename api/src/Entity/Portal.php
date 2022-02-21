@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\WateringRepository;
+use App\Repository\PortalRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Portal']],
     denormalizationContext: ['groups' => ['write:Portal']],
+    collectionOperations: ['get' => ['normalization_context' => ['groups']],
+    'post' => ['denormalization_context' => ['groups']]]
     )]
 class Portal
 {

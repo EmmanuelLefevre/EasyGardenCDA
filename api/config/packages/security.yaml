@@ -16,6 +16,9 @@ security:
                 class: App\Entity\User
                 property: email
     firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         login:
             pattern: ^/authentication_token
             stateless: true
@@ -26,45 +29,28 @@ security:
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-        # api:
-        #     pattern:   ^/api
-        #     stateless: true
-        #     jwt: ~
-        # dev:
-        #     pattern: ^/(_(profiler|wdt)|css|images|js)/
-        #     security: false
-        # main:
-        #     stateless: true
-        #     provider: app_user_provider
-        #     json_login:
-        #         check_path: /authentication_token
-        #         username_path: email
-        #         password_path: password
-        #         success_handler: lexik_jwt_authentication.handler.authentication_success
-        #         failure_handler: lexik_jwt_authentication.handler.authentication_failure
-            # custom_authenticators:
-            #     authenticators:
-            #         - lexik_jwt_authentication.jwt_token_authenticator
-
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+        main:
+            lazy: true
+            provider: app_user_provider
+        api:
+            pattern:   ^/api
+            stateless: true
+            jwt: ~  
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
-        - { path: ^/users, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/gardens, roles: PUBLIC_ACCESS }
-        - { path: ^/lawnmowers, roles: PUBLIC_ACCESS }
-        - { path: ^/lightnings, roles: PUBLIC_ACCESS }
-        - { path: ^/pools, roles: PUBLIC_ACCESS }
-        - { path: ^/portals, roles: PUBLIC_ACCESS }
-        - { path: ^/waterings, roles: PUBLIC_ACCESS }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/gardens, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/lawnmowers, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/lightnings, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/pools, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/portals, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/waterings, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:

@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Garden']],
     denormalizationContext: ['groups' => ['write:Garden']],
+    collectionOperations: ['get' => ['normalization_context' => ['groups']],
+    'post' => ['denormalization_context' => ['groups']]]
     )]
 class Garden
 {

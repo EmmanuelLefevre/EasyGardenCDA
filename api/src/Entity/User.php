@@ -15,7 +15,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ApiResource(
     normalizationContext: ['groups' => ['read:User']],
     denormalizationContext: ['groups' => ['write:User']],
-    collectionOperations: ['normalization_context' => ['groups' => 'get']]
+    collectionOperations: ['get' => ['normalization_context' => ['groups']],
+    'post' => ['denormalization_context' => ['groups']]]
     )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {

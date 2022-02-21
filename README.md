@@ -185,6 +185,7 @@ lexik_jwt_authentication:
     public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
     pass_phrase: '%env(JWT_PASSPHRASE)%'
     token_ttl: "%env(JWT_TTL)%"
+    user_identity_field: email
 ```
 5. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/routes.yaml*
 ```yaml
@@ -194,9 +195,31 @@ authentication_token:
 ```
 6. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/packages/security.yaml*
 ```yaml
-
+firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        login:
+            pattern: ^/authentication_token
+            stateless: true
+            provider: app_user_provider
+            json_login:
+                check_path: /authentication_token
+                username_path: email
+                password_path: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        main:
+            lazy: true
+            provider: app_user_provider
+        api:
+            pattern:   ^/api
+            stateless: true
+            jwt: ~  
 ```
-7. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/packages/api_platform.yaml*
+7. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/routes.yaml*
 ```yaml
-
+api_login_check:
+    path: /api/login_check
 ```
+# PROVIDERS
