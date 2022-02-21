@@ -22,6 +22,7 @@ class UserFixture extends Fixture
     
     public function load(ObjectManager $manager): void
     {
+        $data = ['gmail.com','outlook.fr','yahoo.fr','protonmail.com','orange.fr','live.fr','laposte.net','icloud.com','sfr.fr','free.fr','mailo.com'];
         // User ADMIN
         $admin = new User();
         $admin->setUserName('ADMIN');
@@ -61,10 +62,10 @@ class UserFixture extends Fixture
         $faker = Factory::create('fr_FR');
         for ($nbrUsers=0; $nbrUsers < 15; $nbrUsers++) {
             $user = new User();
-            $user->setUserName($faker->userName);
+            $user->setUserName($username=$faker->userName);
             $user->setPassword($this->hasher->hashPassword($user, $faker->password));
             $user->setRoles(['ROLE_USER']);
-            $user->setEmail($faker->email);
+            $user->setEmail($username.'@'.array_rand(array_flip($data), 1));
             $user->setPhoneNumber($faker->mobileNumber);
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setIsVerified(mt_rand(0, 1));
