@@ -2,10 +2,11 @@
 
 namespace App\DataFixtures;
 
+use Faker\Factory;
+use App\DataFixtures\UserFixture;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
 
 class GardenFixture extends Fixture implements DependentFixtureInterface
 {
@@ -15,17 +16,9 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        $data = ['Paris','Nantes','Bordeaux','Marseille','Nice','Toulouse','Le Havre','Monaco','Pau','Bayonne','Dax',
-        'Biarritz','Metz','Nancy','Chartres','Lyon','Agen','Angoulême','Angers','La Rochelle','Périgueux',
-        'Arcachon','La Teste de Buch','Le Pyla','Le Cap Ferret','Audenges','Mios','Facture-Biganos','Mérignac',
-        'Bègles','Pessac','Lille','Niors','Eysines','Floirac','Boulognes-Billancourt','Brétigny sur Orge','Massy',
-        'Palaiseau','Sanguinet','Cavignac','Beaune','Limoges','Montpellier','Vannes','Rennes','Tarbes','Tours',
-        'Poitiers','Blois','Orléans','Auxerre','Dijon','Rouen','Rémalard','Bretoncelles','Strasbourg','Versailles',
-        'Le Teich','Blaye','Lormont','Cenon','Cestas','Blanquefort','Talence','Tresses','Bruges','Vichy',
-        'Clermont-Ferrand','Mont de Marsan','Saintes','Besançon','Brest','Saint-Malo','Laval','Vannes','Lorient',
-        'Caen','Quimper','Amiens','Calais','Dunkerque','Troyes','Annecy','Grenoble','Nîmes','Toulon','Perpignan',
-        'Suresnes','Narbonne','Frejus','Cannes','Carcassonne','Montélimar','Valence','Montauban','Albi','Lourdes'
-        ];
+        $path = "C:/xampp/htdocs/EasyGardenV1/api/src/DataFixtures/VillesFrance.json";
+        $Json = file_get_contents($path);
+        $villes = json_decode($Json, true);
 
         // Create Gardens for Manu
         // GARDEN Saint-Savin
@@ -56,9 +49,9 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
         // Create Other Gardens
         $faker = Factory::create('fr_FR');
         for ($nbrGardens=0; $nbrGardens < 35; $nbrGardens++) {
-            $user = $this->getReference('user_'.$faker->numberBetween(2, 14));
+            $user = $this->getReference('user_'.$faker->numberBetween(2, 20));
             $garden = new \App\Entity\Garden();
-            $garden->setName(array_rand(array_flip($data), 1));
+            $garden->setName($villes[array_rand($villes, 1)]['Nom_commune']);
             $garden->setUser($user);
             $manager->persist($garden);
             $this->addReference('garden_'.$nbrGardens , $garden);

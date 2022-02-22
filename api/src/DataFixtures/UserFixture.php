@@ -25,10 +25,12 @@ class UserFixture extends Fixture
         $data = ['gmail.com','outlook.fr','yahoo.fr','protonmail.com','orange.fr','live.fr','laposte.net','icloud.com','sfr.fr','free.fr','mailo.com'];
         // User ADMIN
         $admin = new User();
-        $admin->setUserName('ADMIN');
+        $admin->setFirstName('prenomADMIN');
+        $admin->setLastName('nomADMIN');
+        $admin->setPseudo('pseudoADMIN');
         $admin->setPassword($this->hasher->hashPassword($admin,'ADMIN'));
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setEmail('ADMIN@gmail.com');
+        $admin->setEmail('ADMIN@outlook.fr');
         $admin->setPhoneNumber('06 12 25 48 71');
         $admin->setCreatedAt(new \DateTimeImmutable());
         $admin->setIsVerified(true);
@@ -36,7 +38,9 @@ class UserFixture extends Fixture
        
         // User Manu
         $user1 = new User();
-        $user1->setUserName('manu');
+        $user1->setFirstName('Emmanuel');
+        $user1->setLastName('Lefevre');
+        $user1->setPseudo('darka');
         $user1->setPassword($this->hasher->hashPassword($user1,'xx'));
         $user1->setRoles(['ROLE_USER']);
         $user1->setEmail('manu@protonmail.com');
@@ -48,7 +52,9 @@ class UserFixture extends Fixture
 
         // User Sofiane
         $user2 = new User();
-        $user2->setUserName('sofiane');
+        $user2->setFirstName('Sofiane');
+        $user2->setLastName('Khalfi');
+        $user2->setPseudo('soso');
         $user2->setPassword($this->hasher->hashPassword($user2,'gg'));
         $user2->setRoles(['ROLE_USER']);
         $user2->setEmail('sofiane@gmail.com');
@@ -60,12 +66,14 @@ class UserFixture extends Fixture
 
         // Create Other Users
         $faker = Factory::create('fr_FR');
-        for ($nbrUsers=0; $nbrUsers < 15; $nbrUsers++) {
+        for ($nbrUsers=0; $nbrUsers < 50; $nbrUsers++) {
             $user = new User();
-            $user->setUserName($username=$faker->userName);
+            $user->setFirstName($fN=$faker->firstname);
+            $user->setLastName($lN=$faker->lastname);
+            $user->setPseudo($fN.mt_rand(0, 100));
             $user->setPassword($this->hasher->hashPassword($user, $faker->password));
             $user->setRoles(['ROLE_USER']);
-            $user->setEmail($username.'@'.array_rand(array_flip($data), 1));
+            $user->setEmail($fN.".".$lN.'@'.array_rand(array_flip($data), 1));
             $user->setPhoneNumber($faker->mobileNumber);
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setIsVerified(mt_rand(0, 1));
