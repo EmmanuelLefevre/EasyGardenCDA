@@ -2,20 +2,26 @@
 
 namespace App\DataFixtures;
 
+use Faker\Factory;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Config\FileLocator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
 
 class LawnmowerFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
+        $configDirectories = [__DIR__.''];
+
+        $fileLocator = new FileLocator($configDirectories);
+        $fileLocator->locate('FunctionsFixture.php', null, false);
+        
         // Create Lawnmowers for Manu
         //LAWNMOWER Saint-Savin
         $gardenUser1 = $this->getReference(gardenFixture::GARDEN1_REFERENCE);
         $lawnmower1 = new \App\Entity\Lawnmower();
-        $lawnmower1->setName('Robert');
+        $lawnmower1->setName('Tondeuse de Manu (Saint-Savin)');
         $lawnmower1->setBatterySensor(random_int(0, 100)."%");
         $lawnmower1->setStatus(mt_rand(0, 1));
         $lawnmower1->setGarden($gardenUser1);
@@ -24,7 +30,7 @@ class LawnmowerFixture extends Fixture implements DependentFixtureInterface
         // LAWNMOWER Cazaux
         $gardenUser2 = $this->getReference(gardenFixture::GARDEN2_REFERENCE);
         $lawnmower2 = new \App\Entity\Lawnmower();
-        $lawnmower2->setName('Toro');
+        $lawnmower2->setName('Tondeuse de Manu (Cazaux)');
         $lawnmower2->setBatterySensor(random_int(0, 100)."%");
         $lawnmower2->setStatus(mt_rand(0, 1));
         $lawnmower2->setGarden($gardenUser2);
@@ -34,7 +40,7 @@ class LawnmowerFixture extends Fixture implements DependentFixtureInterface
         // LAWNMOWER Fargues St Hilaire
         $gardenUser3 = $this->getReference(gardenFixture::GARDEN3_REFERENCE);
         $lawnmower3 = new \App\Entity\Lawnmower();
-        $lawnmower3->setName('Massey Fergusson');
+        $lawnmower3->setName('Tondeuse de Sofiane');
         $lawnmower3->setBatterySensor(random_int(0, 100)."%");
         $lawnmower3->setStatus(mt_rand(0, 1));
         $lawnmower3->setGarden($gardenUser3);
@@ -42,10 +48,10 @@ class LawnmowerFixture extends Fixture implements DependentFixtureInterface
 
         // Create Other Lawnmowers
         $faker = Factory::create('fr_FR');
-        for ($nbrLawnmowers=0; $nbrLawnmowers < 10; $nbrLawnmowers++) {
-            $garden = $this->getReference('garden_'.$faker->numberBetween(2, 20));
+        for ($nbrLawnmowers=0; $nbrLawnmowers < 15; $nbrLawnmowers++) {
+            $garden = $this->getReference('garden_'.$faker->numberBetween(3, 39));
             $lawnmower = new \App\Entity\Lawnmower();
-            $lawnmower->setName('Tondeuse');
+            $lawnmower->setName('Tondeuse de '.stringWithoutParenthesis($garden->getName()));
             $lawnmower->setBatterySensor(random_int(0, 100)."%");
             $lawnmower->setStatus(mt_rand(0, 1));
             $lawnmower->setGarden($garden);

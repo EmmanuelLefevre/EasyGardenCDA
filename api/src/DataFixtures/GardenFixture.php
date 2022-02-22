@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\DataFixtures\UserFixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Config\FileLocator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
@@ -16,15 +17,19 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        $path = "C:/xampp/htdocs/EasyGardenV1/api/src/DataFixtures/VillesFrance.json";
-        $Json = file_get_contents($path);
-        $villes = json_decode($Json, true);
+        $configDirectories = [__DIR__.''];
+
+        $fileLocator = new FileLocator($configDirectories);
+        $path = $fileLocator->locate('VillesFrance.json', null, true);
+
+        $json = file_get_contents($path);
+        $cities = json_decode($json, true);
 
         // Create Gardens for Manu
         // GARDEN Saint-Savin
         $user1 = $this->getReference(userFixture::USER1_REFERENCE);
         $gardenUser1 = new \App\Entity\Garden();
-        $gardenUser1->setName('Saint-Savin');
+        $gardenUser1->setName('Saint-Savin (Manu)');
         $gardenUser1->setUser($user1);
         $manager->persist($gardenUser1);
         $this->addReference(self::GARDEN1_REFERENCE , $gardenUser1);
@@ -32,7 +37,7 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
         // GARDEN Cazaux
         $user1 = $this->getReference(userFixture::USER1_REFERENCE);
         $gardenUser2 = new \App\Entity\Garden();
-        $gardenUser2->setName('Cazaux');
+        $gardenUser2->setName('Cazaux (Manu)');
         $gardenUser2->setUser($user1);
         $manager->persist($gardenUser2);
         $this->addReference(self::GARDEN2_REFERENCE , $gardenUser2);
@@ -41,17 +46,17 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
         // GARDEN fargues St Hilaire
         $user2 = $this->getReference(userFixture::USER2_REFERENCE);
         $gardenUser3 = new \App\Entity\Garden();
-        $gardenUser3->setName('Fargues St Hilaire');
+        $gardenUser3->setName('Fargues St Hilaire (Sofiane)');
         $gardenUser3->setUser($user2);
         $manager->persist($gardenUser3);
         $this->addReference(self::GARDEN3_REFERENCE , $gardenUser3);
 
         // Create Other Gardens
         $faker = Factory::create('fr_FR');
-        for ($nbrGardens=0; $nbrGardens < 35; $nbrGardens++) {
-            $user = $this->getReference('user_'.$faker->numberBetween(2, 20));
+        for ($nbrGardens=0; $nbrGardens < 40; $nbrGardens++) {
+            $user = $this->getReference('user_'.$faker->numberBetween(3, 69));
             $garden = new \App\Entity\Garden();
-            $garden->setName($villes[array_rand($villes, 1)]['Nom_commune']);
+            $garden->setName(ucwords(strtolower($cities[array_rand($cities, 1)]['Nom_commune'])).' ('.$user->getPseudo().')');
             $garden->setUser($user);
             $manager->persist($garden);
             $this->addReference('garden_'.$nbrGardens , $garden);

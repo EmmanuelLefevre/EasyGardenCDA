@@ -66,7 +66,7 @@ class UserFixture extends Fixture
 
         // Create Other Users
         $faker = Factory::create('fr_FR');
-        for ($nbrUsers=0; $nbrUsers < 50; $nbrUsers++) {
+        for ($nbrUsers=0; $nbrUsers < 70; $nbrUsers++) {
             $user = new User();
             $user->setFirstName($fN=$faker->firstname);
             $user->setLastName($lN=$faker->lastname);
