@@ -7,3 +7,6 @@ npm init vue@latest
 ```
 npm install
 ```
+```
+npm run dev
+```
