@@ -43,7 +43,7 @@ class PortalFixture extends Fixture implements DependentFixtureInterface
         // Create Other Portals
         $faker = Factory::create('fr_FR');
         for ($nbrPortals=0; $nbrPortals < 13 ; $nbrPortals++) {
-            $garden = $this->getReference('garden_'.$faker->numberBetween(2, 14));
+            $garden = $this->getReference('garden_'.$faker->numberBetween(2, 25));
             $portal = new \App\Entity\Portal();
             $portal->setName('Portail');
             $portal->setPresenceSensor(mt_rand(0, 1));

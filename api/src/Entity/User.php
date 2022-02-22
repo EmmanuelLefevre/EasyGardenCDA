@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource(
@@ -18,6 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
     collectionOperations: ['get' => ['normalization_context' => ['groups']],
     'post' => ['denormalization_context' => ['groups']]]
     )]
+#[UniqueEntity('email', message: "Un utilisateur avec cet email existe déjà")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -42,6 +44,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
               'write:User'])]
     private $roles = [];
 
+    #[ORM\Column(type: 'string', length: 45)]
+    #[Groups(['read:User',
+              'write:User'])]
+    private $firstName;
+
+    #[ORM\Column(type: 'string', length: 45)]
+    #[Groups(['read:User',
+              'write:User'])]
+    private $lastName;
+
     #[ORM\Column(type: 'string')]
     #[Groups(['read:User',
               'write:User'])]
@@ -56,7 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
               'read:Portal',
               'read:Watering',
               'write:User'])]
-    private $userName;
+    private $pseudo;
 
     #[ORM\Column(type: 'string', length: 20)]
     #[Groups(['read:User',
@@ -156,14 +168,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getUserName(): ?string
+    public function getPseudo(): ?string
     {
-        return $this->userName;
+        return $this->pseudo;
     }
 
-    public function setUserName(string $userName): self
+    public function setPseudo(string $pseudo): self
     {
-        $this->userName = $userName;
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
 
         return $this;
     }

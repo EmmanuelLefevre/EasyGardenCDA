@@ -9,6 +9,3 @@ kernel:
 authentication_token:
     path: /authentication_token
     methods: ['GET','POST']
-
-api_login_check:
-    path: /api/login_check
