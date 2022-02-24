@@ -45,10 +45,14 @@ composer require sensio/framework-extra-bundle
 **Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
 **Noter**APP_ENV=prod
+
 # LANCER SERVEUR
 1. Lancer serveur en local
 ```
 symfony local:server:start --allow-http
+```
+```
+php -S 127.0.0.1:8000 -t ./public
 ```
 # ENTITY
 1. Créer entity User
@@ -60,6 +64,7 @@ php bin/console make:user
 php bin/console make:entity
 ```
 3. Créer les relations entre entity
+
 # NORMALIZATION/DENORMALIZATION CONTEXT
 1. Créer les #Groups et exposer les propriétés
 2. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/api_platform.yaml*
@@ -81,6 +86,7 @@ api_platform:
         force_eager: false
         fetch_partial: true
 ```
+
 # MIGRATION
 ```
 php bin/console doctrine:database:create
@@ -92,9 +98,10 @@ php bin/console make:migration
 ```
 \
 ```
-php bin/console doctrine:migrations:migrate
+php bin/console doctrine:migrations:migrate --no-interaction
 ```
 # CONFIGURATION DOSSIER /config
+
 1. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/prod/doctrine.yaml*
 ```yaml
 when@prod:
@@ -127,6 +134,7 @@ when@test:
 3. Supprimer les blocs .yaml du dessus dans =>
 \
 */EasyGardenV1.0/api/config/packages/doctrine.yaml*
+
 # FIXTURES
 1. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
@@ -134,13 +142,18 @@ composer require orm-fixtures --dev
 ```
 2. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
+composer require fakerphp/faker
+```
+3. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+```
 composer require symfony/rate-limiter
 ```
-3. Load fixture =>
+4. Load fixture =>
 \
 ```
-php bin/console doctrine:fixtures:load
+php bin/console doctrine:fixtures:load --no-interaction
 ```
+
 # AUTHENTIFICATION (JWT)
 1. Créer dossier jwt
 \
@@ -201,4 +214,5 @@ access_control:
         - { path: ^/api/portals, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/waterings, roles: IS_AUTHENTICATED_FULLY }
 ```
+
 # PROVIDERS
