@@ -68,13 +68,13 @@ class UserFixture extends Fixture
         $faker = Factory::create('fr_FR');
         for ($nbrUsers=0; $nbrUsers < 70; $nbrUsers++) {
             $user = new User();
-            $user->setFirstName($fN=$faker->firstname);
-            $user->setLastName($lN=$faker->lastname);
+            $user->setFirstName($fN=$faker->firstname());
+            $user->setLastName($lN=$faker->lastname());
             $user->setPseudo($fN.mt_rand(0, 100));
-            $user->setPassword($this->hasher->hashPassword($user, $faker->password));
+            $user->setPassword($this->hasher->hashPassword($user, $faker->password()));
             $user->setRoles(['ROLE_USER']);
             $user->setEmail($fN.".".$lN.'@'.array_rand(array_flip($data), 1));
-            $user->setPhoneNumber($faker->mobileNumber);
+            $user->setPhoneNumber($faker->mobileNumber());
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setIsVerified(mt_rand(0, 1));
             $manager->persist($user);

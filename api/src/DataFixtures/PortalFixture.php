@@ -51,10 +51,6 @@ class PortalFixture extends Fixture implements DependentFixtureInterface
         for ($nbrPortals=0; $nbrPortals < 15 ; $nbrPortals++) {
             $garden = $this->getReference('garden_'.$faker->numberBetween(3, 39));
             $portal = new \App\Entity\Portal();
-
-            // preg_match( '!\(([^\)]+)\)!', $text, $match )
-            // setName(ucwords(strtolower($cities[array_rand($cities, 1)]['Nom_commune']))
-
             $portal->setName('Portail de '.stringWithoutParenthesis($garden->getName()));
             $portal->setPresenceSensor(mt_rand(0, 1));
             $portal->setStatus(mt_rand(0, 1));
