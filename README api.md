@@ -3,39 +3,34 @@
 ```
 symfony new api
 ```
-
 2. Supprimer le .git dans /EasyGardenV1.0/api
-
 3. &nbsp;&nbsp;*/EasyGardenV1.0*
 ```
 git init
 ```
-
 4. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+```
+composer install
+```
 ```
 composer update
 ```
-
 5. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
 composer req api
 ```
-
 6. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
 composer require symfony/orm-pack
 ```
-
 7. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
 composer require symfony/maker-bundle --dev
 ```
-
 8. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
 composer require sensio/framework-extra-bundle
 ```
-
 9. &nbsp;&nbsp;*/EasyGardenV1.0/.env.local*
 \
 **Commenter** &nbsp;&nbsp; DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
@@ -43,7 +38,6 @@ composer require sensio/framework-extra-bundle
 **Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
 **Noter** &nbsp;&nbsp; APP_ENV=dev
-
 10. */EasyGardenV1.0/api/.env*
 \
 **Commenter** &nbsp;&nbsp; DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
@@ -51,29 +45,23 @@ composer require sensio/framework-extra-bundle
 **Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
 \
 **Noter**APP_ENV=prod
-
 # LANCER SERVEUR
 1. Lancer serveur en local
 ```
 symfony local:server:start --allow-http
 ```
-
 # ENTITY
 1. Créer entity User
 ```
 php bin/console make:user
 ```
-
 2. Créer autres entity
 ```
 php bin/console make:entity
 ```
-
 3. Créer les relations entre entity
-
 # NORMALIZATION/DENORMALIZATION CONTEXT
 1. Créer les #Groups et exposer les propriétés
-
 2. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/api_platform.yaml*
 \
 Configuration =>
@@ -93,7 +81,6 @@ api_platform:
         force_eager: false
         fetch_partial: true
 ```
-
 # MIGRATION
 ```
 php bin/console doctrine:database:create
@@ -107,7 +94,6 @@ php bin/console make:migration
 ```
 php bin/console doctrine:migrations:migrate
 ```
-
 # CONFIGURATION DOSSIER /config
 1. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/prod/doctrine.yaml*
 ```yaml
@@ -141,7 +127,6 @@ when@test:
 3. Supprimer les blocs .yaml du dessus dans =>
 \
 */EasyGardenV1.0/api/config/packages/doctrine.yaml*
-
 # FIXTURES
 1. &nbsp;&nbsp;*/EasyGardenV1.0/api*
 ```
@@ -216,5 +201,4 @@ access_control:
         - { path: ^/api/portals, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/waterings, roles: IS_AUTHENTICATED_FULLY }
 ```
-
 # PROVIDERS
