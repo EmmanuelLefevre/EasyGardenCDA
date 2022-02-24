@@ -54,6 +54,7 @@ symfony local:server:start --allow-http
 ```
 php -S 127.0.0.1:8000 -t ./public
 ```
+
 # ENTITY
 1. Créer entity User
 ```
@@ -100,8 +101,8 @@ php bin/console make:migration
 ```
 php bin/console doctrine:migrations:migrate --no-interaction
 ```
-# CONFIGURATION DOSSIER /config
 
+# CONFIGURATION DOSSIER /config
 1. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/prod/doctrine.yaml*
 ```yaml
 when@prod:
