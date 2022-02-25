@@ -2,11 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\User;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Faker\Factory;
+use App\Entity\User;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Config\FileLocator;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixture extends Fixture
 {
@@ -22,7 +23,12 @@ class UserFixture extends Fixture
     
     public function load(ObjectManager $manager): void
     {
-        $data = ['gmail.com','outlook.fr','yahoo.fr','protonmail.com','orange.fr','live.fr','laposte.net','icloud.com','sfr.fr','free.fr','mailo.com'];
+        $configDirectories = [__DIR__.''];
+        $fileLocator = new FileLocator($configDirectories);
+        $fileLocator->locate('FunctionsFixture.php', null, false);
+
+        $faker = Factory::create('fr_FR');
+
         // User ADMIN
         $admin = new User();
         $admin->setFirstName('prenomADMIN');
@@ -65,7 +71,6 @@ class UserFixture extends Fixture
         $this->addReference(self::USER2_REFERENCE , $user2);
 
         // Create Other Users
-        $faker = Factory::create('fr_FR');
         for ($nbrUsers=0; $nbrUsers < 70; $nbrUsers++) {
             $user = new User();
             $user->setFirstName($fN=$faker->firstname());
@@ -73,7 +78,7 @@ class UserFixture extends Fixture
             $user->setPseudo($fN.mt_rand(0, 100));
             $user->setPassword($this->hasher->hashPassword($user, $faker->password()));
             $user->setRoles(['ROLE_USER']);
-            $user->setEmail($fN.".".$lN.'@'.array_rand(array_flip($data), 1));
+            $user->setEmail($fN.".".$lN.'@'.emailData());
             $user->setPhoneNumber($faker->mobileNumber());
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setIsVerified(mt_rand(0, 1));

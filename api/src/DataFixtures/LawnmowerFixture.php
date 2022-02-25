@@ -13,9 +13,10 @@ class LawnmowerFixture extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $configDirectories = [__DIR__.''];
-
         $fileLocator = new FileLocator($configDirectories);
         $fileLocator->locate('FunctionsFixture.php', null, false);
+
+        $faker = Factory::create('fr_FR');
         
         // Create Lawnmowers for Manu
         //LAWNMOWER Saint-Savin
@@ -47,7 +48,6 @@ class LawnmowerFixture extends Fixture implements DependentFixtureInterface
         $manager->persist($lawnmower3);
 
         // Create Other Lawnmowers
-        $faker = Factory::create('fr_FR');
         for ($nbrLawnmowers=0; $nbrLawnmowers < 15; $nbrLawnmowers++) {
             $garden = $this->getReference('garden_'.$faker->unique()->numberBetween(3, 39));
             $lawnmower = new \App\Entity\Lawnmower();

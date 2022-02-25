@@ -13,9 +13,10 @@ class PortalFixture extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {   
         $configDirectories = [__DIR__.''];
-
         $fileLocator = new FileLocator($configDirectories);
         $fileLocator->locate('FunctionsFixture.php', null, false);
+
+        $faker = Factory::create('fr_FR');
 
         // Create Portals for Manu
         //PORTAL Saint-Savin
@@ -47,7 +48,6 @@ class PortalFixture extends Fixture implements DependentFixtureInterface
         $manager->persist($portal3);
 
         // Create Other Portals
-        $faker = Factory::create('fr_FR');
         for ($nbrPortals=0; $nbrPortals < 15 ; $nbrPortals++) {
             $garden = $this->getReference('garden_'.$faker->unique()->numberBetween(3, 39));
             $portal = new \App\Entity\Portal();

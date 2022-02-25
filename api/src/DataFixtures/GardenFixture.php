@@ -18,12 +18,13 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $configDirectories = [__DIR__.''];
-
         $fileLocator = new FileLocator($configDirectories);
         $path = $fileLocator->locate('VillesFrance.json', null, true);
 
         $json = file_get_contents($path);
         $cities = json_decode($json, true);
+
+        $faker = Factory::create('fr_FR');
 
         // Create Gardens for Manu
         // GARDEN Saint-Savin
@@ -52,7 +53,6 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
         $this->addReference(self::GARDEN3_REFERENCE , $gardenUser3);
 
         // Create Other Gardens
-        $faker = Factory::create('fr_FR');
         for ($nbrGardens=0; $nbrGardens < 40; $nbrGardens++) {
             $user = $this->getReference('user_'.$faker->numberBetween(3, 69));
             $garden = new \App\Entity\Garden();
