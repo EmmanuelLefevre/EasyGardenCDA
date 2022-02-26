@@ -49,7 +49,7 @@ final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProv
                 return $this->userRepository->findAll();
             }
             elseif ($user && $role==='ROLE_USER') {
-                return $this->userRepository->find($user);
+                return $user;
             }
         }
     }
