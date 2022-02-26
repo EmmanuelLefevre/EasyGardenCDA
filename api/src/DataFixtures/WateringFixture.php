@@ -23,7 +23,7 @@ class WateringFixture extends Fixture implements DependentFixtureInterface
         for ($nbrWaterings=0; $nbrWaterings < 10; $nbrWaterings++) {
             $gardenUser1 = $this->getReference(gardenFixture::GARDEN1_REFERENCE);
             $watering = new \App\Entity\Watering();
-            $watering->setName(wateringsData().' (Cazaux/Manu)');
+            $watering->setName(wateringsData().' (Saint-Savin/Manu)');
             $watering->setFlowSensor(random_int(1500, 5000)."L/H");
             $watering->setPressureSensor(random_float(1.2, 6.5));
             $watering->setStatus(mt_rand(0, 1));
@@ -35,7 +35,7 @@ class WateringFixture extends Fixture implements DependentFixtureInterface
         for ($nbrWaterings=0; $nbrWaterings < 6; $nbrWaterings++) {
             $gardenUser2 = $this->getReference(gardenFixture::GARDEN2_REFERENCE);
             $watering = new \App\Entity\Watering();
-            $watering->setName(wateringsData().' (Saint-Savin/Manu)');
+            $watering->setName(wateringsData().' (Cazaux/Manu)');
             $watering->setFlowSensor(random_int(1500, 5000)."L/H");
             $watering->setPressureSensor(random_float(1.2, 6.5));
             $watering->setStatus(mt_rand(0, 1));

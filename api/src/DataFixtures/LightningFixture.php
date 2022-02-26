@@ -23,7 +23,7 @@ class LightningFixture extends Fixture implements DependentFixtureInterface
         for ($nbrLightnings=0; $nbrLightnings < 8; $nbrLightnings++) {
             $gardenUser1 = $this->getReference(gardenFixture::GARDEN1_REFERENCE);
             $lightning = new \App\Entity\Lightning();
-            $lightning->setName(lightningsData().' (Cazaux/Manu)');
+            $lightning->setName(lightningsData().' (Saint-Savin/Manu)');
             $lightning->setStatus(mt_rand(0, 1));
             $lightning->setGarden($gardenUser1);
             $manager->persist($lightning);
@@ -33,7 +33,7 @@ class LightningFixture extends Fixture implements DependentFixtureInterface
         $gardenUser2 = $this->getReference(gardenFixture::GARDEN2_REFERENCE);
         for ($nbrLightnings=0; $nbrLightnings < 6; $nbrLightnings++) {
             $lightning = new \App\Entity\Lightning();
-            $lightning->setName(lightningsData().' (Saint-Savin/Manu)');
+            $lightning->setName(lightningsData().' (Cazaux/Manu)');
             $lightning->setStatus(mt_rand(0, 1));
             $lightning->setGarden($gardenUser2);
             $manager->persist($lightning);
