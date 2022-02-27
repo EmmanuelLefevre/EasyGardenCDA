@@ -2,18 +2,25 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\WateringRepository;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\WateringRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: WateringRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Watering']],
     denormalizationContext: ['groups' => ['write:Watering']],
-    collectionOperations: ['get' => ['normalization_context' => ['groups']],
-    'post' => ['denormalization_context' => ['groups']]]
-    )]
+    collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Watering']]],
+    'post' => ['denormalization_context' => ['groups']]])]
+#[ApiFilter(BooleanFilter::class, properties: ['status'])]
+#[ApiFilter(OrderFilter::class, properties: ['name'])]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
+
 class Watering
 {
     #[ORM\Id]

@@ -10,7 +10,15 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
-    # Enable MAX_DEPTH = true
-    eager_loading:
-        force_eager: false
-        fetch_partial: true
+    # eager_loading:
+    #     force_eager: false
+    #     fetch_partial: true
+    defaults:
+        pagination_enabled: false
+        pagination_client_enabled: false
+        pagination_client_items_per_page: false
+    collection:
+        pagination:
+            enabled_parameter_name: pagination
+            items_per_page_parameter_name: count
+            page_parameter_name: page

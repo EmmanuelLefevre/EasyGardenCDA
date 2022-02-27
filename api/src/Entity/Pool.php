@@ -2,18 +2,25 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\PoolRepository;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PoolRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PoolRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Pool']],
     denormalizationContext: ['groups' => ['write:Pool']],
-    collectionOperations: ['get' => ['normalization_context' => ['groups']],
-    'post' => ['denormalization_context' => ['groups']]]
-    )]
+    collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Pool']]],
+    'post' => ['denormalization_context' => ['groups']]])]
+#[ApiFilter(BooleanFilter::class, properties: ['status'])]
+#[ApiFilter(OrderFilter::class, properties: ['name'])]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
+
 class Pool
 {
     #[ORM\Id]

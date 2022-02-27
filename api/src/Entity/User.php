@@ -4,23 +4,40 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Serializer\Annotation\SerializedName;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\SerializedName;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => ['read:User']],
     denormalizationContext: ['groups' => ['write:User']],
-    collectionOperations: ['get' => ['normalization_context' => ['groups']],
-    'post' => ['denormalization_context' => ['groups']]]
-    )]
+    collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:User']]],
+    'post' => ['denormalization_context' => ['groups']]],
+    attributes: ['pagination_client_enabled' => true,
+                 'pagination_client_items_per_page' => 20],
+    order: ['pseudo' => 'ASC'])]
+#[ApiFilter(BooleanFilter::class, properties: ['isVerified'])]
+#[ApiFilter(DateFilter::class, properties: ['createdAt' => DateFilter::EXCLUDE_NULL,
+                                            'updatedAt' => DateFilter::EXCLUDE_NULL])]
+#[ApiFilter(OrderFilter::class, properties: ['pseudo','email','firtName','lastName','phoneNumber'])]
+#[ApiFilter(SearchFilter::class, properties: ['pseudo' => 'partial',
+                                              'email' => 'partial',
+                                              'firstname' => 'partial',
+                                              'lastname' => 'partial',
+                                              'phoneNumber' => 'exact'])]
+
 #[UniqueEntity('email', message: "Un utilisateur avec cet email existe déjà")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -42,8 +59,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     #[ORM\Column(type: 'json')]
-    #[Groups(['read:User',
-              'write:User'])]
     private $roles = [];
 
     #[ORM\Column(type: 'string', length: 45)]
@@ -63,8 +78,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $plainPassword;
 
     #[ORM\Column(type: 'string')]
-    #[Groups(['read:User',
-              'write:User'])]
     private $password;
 
     #[ORM\Column(type: 'string', length: 45)]

@@ -2,20 +2,28 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping as ORM;
 use App\Repository\GardenRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GardenRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Garden']],
     denormalizationContext: ['groups' => ['write:Garden']],
-    collectionOperations: ['get' => ['normalization_context' => ['groups']],
-    'post' => ['denormalization_context' => ['groups']]]
-    )]
+    collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Garden']]],
+    'post' => ['denormalization_context' => ['groups']]],
+    attributes: ['pagination_client_enabled' => true,
+                 'pagination_client_items_per_page' => 5],
+    order: ['name' => 'ASC'])]
+#[ApiFilter(OrderFilter::class, properties: ['name'])]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
+
 class Garden
 {
     #[ORM\Id]
