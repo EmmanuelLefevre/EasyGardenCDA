@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     normalizationContext: ['groups' => ['read:User']],
     denormalizationContext: ['groups' => ['write:User']],
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:User']]],
-    'post' => ['denormalization_context' => ['groups']]],
+                           'post' => ['denormalization_context' => ['groups']]],
     attributes: ['pagination_client_enabled' => true,
                  'pagination_client_items_per_page' => 20],
     order: ['pseudo' => 'ASC'])]

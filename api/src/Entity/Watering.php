@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     normalizationContext: ['groups' => ['read:Watering']],
     denormalizationContext: ['groups' => ['write:Watering']],
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Watering']]],
-    'post' => ['denormalization_context' => ['groups']]])]
+                           'post' => ['denormalization_context' => ['groups']]])]
 #[ApiFilter(BooleanFilter::class, properties: ['status'])]
 #[ApiFilter(OrderFilter::class, properties: ['name'])]
 #[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]

@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     normalizationContext: ['groups' => ['read:Garden']],
     denormalizationContext: ['groups' => ['write:Garden']],
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Garden']]],
-    'post' => ['denormalization_context' => ['groups']]],
+                           'post' => ['denormalization_context' => ['groups']]],
     attributes: ['pagination_client_enabled' => true,
                  'pagination_client_items_per_page' => 5],
     order: ['name' => 'ASC'])]

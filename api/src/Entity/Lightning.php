@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     normalizationContext: ['groups' => ['read:Lightning']],
     denormalizationContext: ['groups' => ['write:Lightning']],
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Lightning']]],
-    'post' => ['denormalization_context' => ['groups']]])]
+                           'post' => ['denormalization_context' => ['groups']]])]
 #[ApiFilter(BooleanFilter::class, properties: ['status'])]
 #[ApiFilter(OrderFilter::class, properties: ['name'])]
 #[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
