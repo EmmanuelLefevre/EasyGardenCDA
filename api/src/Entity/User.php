@@ -88,12 +88,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 45)]
     #[Groups(['read:User',
-              'read:Garden',
-              'read:Lawnmower',
-              'read:Lightning',
-              'read:Pool',
-              'read:Portal',
-              'read:Watering',
               'write:User'])]
     private $pseudo;
 
