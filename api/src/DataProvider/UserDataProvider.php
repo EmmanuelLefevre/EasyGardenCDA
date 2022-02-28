@@ -7,15 +7,13 @@ use App\Repository\UserRepository;
 use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
 use ApiPlatform\Core\DataProvider\DenormalizedIdentifiersAwareItemDataProviderInterface;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
-use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProviderInterface, ContextAwareCollectionDataProviderInterface, RestrictedDataProviderInterface
 {
     private $userRepository;
     private $tokenStorage;
-
+    
     public function __construct(UserRepository $userRepository, TokenStorageInterface $tokenStorage)
     {
         $this->userRepository = $userRepository;
@@ -26,7 +24,7 @@ final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProv
     {
         return User::class === $resourceClass;
     }
-
+    
     public function getCollection(string $resourceClass, string $operationName = null, array $context = []): iterable
     {
         $token = $this->tokenStorage->getToken();
@@ -49,7 +47,7 @@ final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProv
                 return $this->userRepository->findAll();
             }
             elseif ($user && $role==='ROLE_USER') {
-                return $user;
+                return $this->userRepository->findById($user);
             }
         }
     }
