@@ -38,21 +38,21 @@ class Watering
               'write:Watering'])]
     private $name;
 
-    #[ORM\Column(type: 'string', length: 12)]
+    #[ORM\Column(type: 'string', length: 12, nullable:true)]
     #[Groups(['read:User',
               'read:Garden',
               'read:Watering',
               'write:Watering'])]
     private $flowSensor;
 
-    #[ORM\Column(type: 'string', length: 12)]
+    #[ORM\Column(type: 'string', length: 12, nullable:true)]
     #[Groups(['read:User',
               'read:Garden',
               'read:Watering',
               'write:Watering'])]
     private $pressureSensor;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable:true)]
     #[Groups(['read:User',
               'read:Garden',
               'read:Watering',

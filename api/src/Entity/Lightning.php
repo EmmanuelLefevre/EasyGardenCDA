@@ -38,7 +38,7 @@ class Lightning
               'write:Lightning'])]
     private $name;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable:true)]
     #[Groups(['read:User',
               'read:Garden',
               'read:Lightning',

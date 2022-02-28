@@ -95,7 +95,7 @@ php bin/console doctrine:database:drop --force
 ```
 \
 ```
-php bin/console make:migration
+php bin/console make:migration --no-interaction
 ```
 \
 ```
