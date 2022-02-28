@@ -11,6 +11,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: GardenRepository::class)]
 #[ApiResource(
@@ -39,6 +40,17 @@ class Garden
     private $id;
 
     #[ORM\Column(type: 'string', length: 45, nullable: true)]
+    #[Assert\NotBlank]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]+)?/',
+        match: false,
+        message: 'Your name cannot contain a number',
+    )]
+    #[Assert\Regex(
+        pattern: '/\w{3,20}$/',
+        match: false,
+        message: 'Your name should be between 3 and 20 characters',
+    )]
     #[Groups(['read:Garden',
               'read:User',
               'read:Lawnmower',

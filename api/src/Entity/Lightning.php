@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: LightningRepository::class)]
 #[ApiResource(
@@ -32,6 +33,17 @@ class Lightning
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
+    #[Assert\NotBlank]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]+)?/',
+        match: false,
+        message: 'Your name cannot contain a number',
+    )]
+    #[Assert\Regex(
+        pattern: '/\w{3,20}$/',
+        match: false,
+        message: 'Your name should be between 3 and 20 characters',
+    )]
     #[Groups(['read:User',
               'read:Garden',
               'read:Lightning',
