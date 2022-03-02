@@ -217,6 +217,7 @@ access_control:
 ```
 
 # USER DATA PROVIDERS
+*/EasyGardenV1.0/api/src/DataProvider/UserDataProvider.php*
 ```php
 namespace App\DataProvider;
 
@@ -280,6 +281,7 @@ final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProv
 }
 ```
 # USER DATA PERSISTER
+*/EasyGardenV1.0/api/src/DataPersister/UserDataPersister.php*
 ```php
 namespace App\DataPersister;
 
