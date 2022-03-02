@@ -73,12 +73,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Regex(
         pattern: '/\^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]\+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]\+)?/',
         match: false,
-        message: 'Your name cannot contain a number',
+        message: 'Your firstname cannot contain a number',
     )]
     #[Assert\Regex(
         pattern: '/\w{3,20}\$/',
         match: false,
-        message: 'Your name should be between 3 and 20 characters',
+        message: 'Your firstname should be between 3 and 20 characters',
     )]
     #[Groups(['read:User',
               'write:User'])]
@@ -89,12 +89,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Regex(
         pattern: '/\^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]\+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]\+)?/',
         match: false,
-        message: 'Your name cannot contain a number',
+        message: 'Your lastname cannot contain a number',
     )]
     #[Assert\Regex(
         pattern: '/\w{3,20}\$/',
         match: false,
-        message: 'Your name should be between 3 and 20 characters',
+        message: 'Your lastname should be between 3 and 20 characters',
     )]
     #[Groups(['read:User',
               'write:User'])]
@@ -114,7 +114,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: 'Your password must be more than 8 characters',
     )]
     #[Assert\Regex(
-        pattern: '/\^(?=.\*\d)(?=.\*[a-z])(?=.\*[A-Z])(?=.\*[!@#$%^&*]).{8,}\$/',
+        pattern: '/\^(?=.\*\d)(?=.\*[a-z])(?=.\*[A-Z])(?=.\*[:;~µ!?§@#$%^&*]).{8,}\$/',
         match: false,
         message: 'Your password must be at least one uppercase letter, one lowercase letter, one number and one special character',
     )]
@@ -122,14 +122,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Regex(
-        pattern: '/\^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]\+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]\+)?/',
+        pattern: '/\^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ0-9][a-zàâäãçéèêëíìîïñôöõ]\+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ0-9][a-zàâäãçéèêëíìîïñôöõ]\+)?/',
         match: false,
-        message: 'Your name cannot contain a number',
+        message: 'Your pseudo cannot contain some special character',
     )]
     #[Assert\Regex(
         pattern: '/\w{3,20}\$/',
         match: false,
-        message: 'Your name should be between 3 and 20 characters',
+        message: 'Your pseudo should be between 3 and 20 characters',
     )]
     #[Groups(['read:User',
               'write:User'])]

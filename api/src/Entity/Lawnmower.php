@@ -37,12 +37,12 @@ class Lawnmower
     #[Assert\Regex(
         pattern: '/\^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ0-9][a-zàâäãçéèêëíìîïñôöõ]\+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ0-9][a-zàâäãçéèêëíìîïñôöõ]\+)?/',
         match: false,
-        message: 'Your name cannot contain some special character',
+        message: 'The lawnmower name cannot contain some special character',
     )]
     #[Assert\Regex(
         pattern: '/\w{3,20}\$/',
         match: false,
-        message: 'Your name should be between 3 and 20 characters',
+        message: 'The lawnmower name should be between 3 and 20 characters',
     )]
     #[Groups(['read:User',
               'read:Garden',
