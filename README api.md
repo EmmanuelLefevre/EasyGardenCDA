@@ -216,4 +216,113 @@ access_control:
         - { path: ^/api/waterings, roles: IS_AUTHENTICATED_FULLY }
 ```
 
-# PROVIDERS
+# USER DATA PROVIDERS
+```php
+namespace App\DataProvider;
+
+use App\Entity\User;
+use App\Repository\UserRepository;
+use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
+use ApiPlatform\Core\DataProvider\DenormalizedIdentifiersAwareItemDataProviderInterface;
+use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+
+final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProviderInterface, ContextAwareCollectionDataProviderInterface, RestrictedDataProviderInterface
+{
+    private $userRepository;
+    private $tokenStorage;
+    
+    public function __construct(UserRepository $userRepository, TokenStorageInterface $tokenStorage)
+    {
+        $this->userRepository = $userRepository;
+        $this->tokenStorage = $tokenStorage;
+    }
+
+    public function supports(string $resourceClass, string $operationName = null, array $context = []): bool
+    {
+        return User::class === $resourceClass;
+    }
+    
+    public function getCollection(string $resourceClass, string $operationName = null, array $context = []): iterable
+    {
+        $token = $this->tokenStorage->getToken();
+        if (!$token) {
+            if (array_key_exists('filters',$context)) {
+                if (array_key_exists('email',$context['filters'])) {
+                    if ($this->userRepository->findOneBy(['email'=>$context['filters']['email']])) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+            return null;
+        }
+        $user = $token->getUser();
+        $roles = $user->getRoles();
+            if ($user && in_array("ROLE_ADMIN", $roles)) {
+                return $this->userRepository->findAll();
+            }
+            elseif ($user && in_array("ROLE_USER", $roles)) {
+                return [$user];
+            }
+    }
+
+    public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?User
+    {
+        $token = $this->tokenStorage->getToken();
+        if (!$token) {
+            return null;
+        }
+        $user = $token->getUser();
+        return $user;
+    }
+}
+```
+# USER DATA PERSISTER
+```php
+namespace App\DataPersister;
+
+use App\Entity\User;
+use ApiPlatform\Core\DataPersister\DataPersisterInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Doctrine\ORM\EntityManagerInterface;
+
+class UserDataPersister implements DataPersisterInterface 
+{
+    private $entityManager;
+    private $userPasswordEncoder;
+
+    public function __construct (EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordEncoder)
+    {
+        $this->entityManager = $entityManager;
+        $this->userPasswordEncoder = $userPasswordEncoder;
+    }
+
+    public function supports($data, array $context = []): bool
+    {
+        return $data instanceof User;
+    }
+
+    /**
+     * @param User $data
+     */
+    public function persist($data, array $context = [])
+    {
+        if ($data->getPlainPassword()) {
+            $data->setPassword(
+                $this->userPasswordEncoder->hashPassword($data, $data->getPlainPassword())
+            );
+            $data->eraseCredentials();
+        }   
+        $this->entityManager->persist($data);      
+        $this->entityManager->flush();
+    }
+
+    public function remove($data, array $context = [])
+    {
+        $this->entityManager->remove($data);      
+        $this->entityManager->flush();
+    }
+}
+```
