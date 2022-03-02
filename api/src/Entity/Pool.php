@@ -35,12 +35,12 @@ class Pool
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\NotBlank]
     #[Assert\Regex(
-        pattern: '/^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ][a-zàâäãçéèêëíìîïñôöõ]+)?/',
+        pattern: '/\^[a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ0-9][a-zàâäãçéèêëíìîïñôöõ]\+([-\'\s][a-zA-ZàâäãçéèêëíìîïñôöõÀÂÄÃÇÉÈÊËÌÍÎÏÑÔÖÕ0-9][a-zàâäãçéèêëíìîïñôöõ]\+)?/',
         match: false,
-        message: 'Your name cannot contain a number',
+        message: 'Your name cannot contain some special character',
     )]
     #[Assert\Regex(
-        pattern: '/\w{3,20}$/',
+        pattern: '/\w{3,20}\$/',
         match: false,
         message: 'Your name should be between 3 and 20 characters',
     )]
