@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import LoaderComp from '@/components/LoaderComp.vue'
+import RegisterComp from '@/components/RegisterComp.vue'
 </script>
 
 <template>
   <main>
-    <LoaderComp />
+    <RegisterComp />
   </main>
 </template>

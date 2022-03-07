@@ -34,4 +34,15 @@ npm install vue-router@4
 ```
 npm install vuex@next --save
 ```
-# 
+4. Installer Vuex-class
+\
+&nbsp;&nbsp;*/EasyGardenV1.0/pwa*
+```
+npm install --save vuex-class-component
+```
+5. Installer Vue-decorator
+\
+&nbsp;&nbsp;*/EasyGardenV1.0/pwa*
+```
+npm install vue-decorator
+```
