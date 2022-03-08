@@ -46,3 +46,25 @@ npm install --save vuex-class-component
 ```
 npm install vue-decorator
 ```
+6. Installer Babel
+\
+&nbsp;&nbsp;*/EasyGardenV1.0/pwa*
+```
+npm i @vue/cli-plugin-babel
+```
+7. Installer SASS
+\
+&nbsp;&nbsp;*/EasyGardenV1.0/pwa*
+```
+npm install -D sass-loader sass
+```
+8. Installer Font-Awesome
+\
+&nbsp;&nbsp;*/EasyGardenV1.0/pwa*
+```
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/vue-fontawesome@prerelease
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+```

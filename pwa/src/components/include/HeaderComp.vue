@@ -1,8 +1,7 @@
 <template>
     <header>
-        <img alt="EasyGarden logo" class="logo" src="@/assets/easygarden.png" width="125" height="125" />
+        <RouterLink to="/"><img alt="EasyGarden logo" class="logo" src="@/assets/easygarden.png" width="75" height="75" /></RouterLink>
         <div class="wrapper">
-        <HelloWorld msg="You did it!" />
             <nav>
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/about">About</RouterLink>
@@ -10,6 +9,42 @@
         </div>
     </header>
 </template>
+
 <script lang="ts">
-export default class HeaderComp{}
+export default new class HeaderComp{}
 </script>
+
+<style>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
+.logo {
+  display: inline;
+}
+a {
+  text-decoration: none;
+  color: #a6a6a6;
+  transition: 0.4s;
+}
+nav {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+nav a.router-link-exact-active {
+  color: var(--color-text);
+}
+nav a.router-link-exact-active:hover {
+  background-color: transparent;
+}
+nav a {
+  display: inline-block;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
+}
+nav a:first-of-type {
+  border: 0;
+}
+</style>
