@@ -154,7 +154,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
               'write:User'])]
     private $updatedAt;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', options:['default' => '0'])]
     #[Groups(['read:User',
               'write:User'])]
     private $isVerified;

@@ -20,6 +20,7 @@ server: ## Launch local server
 
 
 ff: ## Load new fixtures
+	cd api
 	php bin/console doctrine:database:drop --force
 	php bin/console doctrine:database:create
 	php bin/console make:migration
