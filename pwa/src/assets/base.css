@@ -65,6 +65,7 @@ body {
   font-family: 'RobotoCondensed400', sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
