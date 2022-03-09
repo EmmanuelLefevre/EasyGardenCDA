@@ -11,7 +11,7 @@
                 <router-link to="https://www.linkedin.com/in/emmanuel-l-06350b167/" target="new"><font-awesome-icon :icon="['fab', 'linkedin']"/></router-link>
                 </li>
                 <li>
-                <router-link to="https://github.com/EmmanuelLefevre" target="new"><font-awesome-icon :icon="['fas', 'envelope']"/></router-link>
+                <router-link to="" target="new"><font-awesome-icon :icon="['fas', 'envelope']"/></router-link>
                 </li>
             </ul>
         </div>
@@ -42,19 +42,19 @@ footer {
   div {
     margin-bottom: 0.7rem;
     ul {
-        padding: 0 1rem;
-        li {
-            display: inline;
-            margin-right: 0.5rem;
-            margin-left: 0.5rem;
-            font-size:25px;
-            svg {
-            color: var(--vt-c-main-green);
-            &:hover {
-                color: var(--vt-c-grey);
-            }
-            }
+      padding: 0 1rem;
+      li {
+        display: inline;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        font-size:25px;
+        svg {
+          color: var(--vt-c-main-green);
+          &:hover {
+            color: var(--vt-c-grey);
+          }
         }
+      }
     }
   }
 }

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import LoaderComp from '@/components/LoaderComp.vue'
+import HomePage from '@/components/HomePage.vue'
 </script>
 
 <template>
   <main>
-    <LoaderComp />
+    <HomePage />
   </main>
 </template>

@@ -1,13 +1,17 @@
 <template>
-    <header>
-        <RouterLink to="/"><img alt="EasyGarden logo" class="logo" src="@/assets/easygarden.png" width="75" height="75" /></RouterLink>
-        <div class="wrapper">
-            <nav>
-                <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/about">About</RouterLink>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <RouterLink to="/"><img alt="EasyGarden logo" class="logo" src="@/assets/easygarden.png" width="75" height="75" /></RouterLink>
+    <div class="wrapper">
+      <nav>
+        <RouterLink to="/lightning">Eclairage</RouterLink>
+        <RouterLink to="/watering">Arrosage</RouterLink>
+        <RouterLink to="/pool">Bassin</RouterLink>
+        <RouterLink to="/lawnmower">Tondeuse</RouterLink>
+        <RouterLink to="/portal">Portail</RouterLink>
+        <RouterLink to="/login">Connexion</RouterLink>
+      </nav>
+    </div>
+  </header>
 </template>
 
 <script lang="ts">
