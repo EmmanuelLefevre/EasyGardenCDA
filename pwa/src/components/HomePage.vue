@@ -1,27 +1,23 @@
-<script lang="ts">
-export default {
-  data () {
-
-  }
-}
-</script>
-
 <template>
   <div id="home-page">
     <div class="connexion">
       <div class="icon">
-        <RouterLink to="/login"><font-awesome-icon :icon="['fas', 'user-circle']"/></RouterLink>  
+        <RouterLink to="/login"><font-awesome-icon :icon="['fas', 'user-circle']"/></RouterLink>
       </div>
     </div>
     <div class="logo">
       EASY GARDEN
     </div>
     <div class="resume">
-      L'application qui vous facilite la gestion de vos équipements de parcs et jardins.<br>
+      Easy Garden l'application qui vous facilite la gestion de vos équipements de parcs et jardins.
+      Une application all-in-one pour gérer tout les équipements tels que vos systèmes d'arrosage
+      intégrés, vos jeux de lumières, l'ouverture de votre portail et bien plus encore!<br>
       <RouterLink to="/register"><button>Inscription</button></RouterLink>
     </div>
   </div>
 </template>
+
+
 
 <style lang="scss">
 #home-page {
@@ -31,16 +27,16 @@ export default {
   height: 100vh;
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr 1fr; 
-  grid-template-rows: 0.1fr 0.3fr 0.6fr; 
+  grid-template-rows: 0.2fr 0.3fr 0.6fr; 
   grid-gap: 2rem 1rem;
   .connexion {
     grid-area: 1/4/2/5;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     place-items: center;
     grid-gap: 3rem 1rem;
     .icon {
-      grid-area: 1/3;
+      grid-area: 1/2;
       svg {
         color: var(--vt-c-main-green);
         border: 2px solid var(--vt-c-border-button);
@@ -80,5 +76,4 @@ export default {
     }
   }
 }
-
 </style>
