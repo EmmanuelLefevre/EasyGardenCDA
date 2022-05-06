@@ -1,0 +1,33 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--bg-color);
+  margin-top: 7.5rem;
+  padding-top: 1rem;
+  bottom : 0px;
+  text-align: center;
+  color: var(--ang-color-grey);
+  .owner {
+    color: var(--ang-color-green);
+    font-size: 16px;
+  }
+  div {
+    margin-bottom: 0.7rem;
+    ul {
+      padding: 0 1rem;
+      li {
+        display: inline;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        font-size:25px;
+        fa-icon {
+          color: var(--ang-color-green);
+          &:hover {
+          color: var(--ang-color-grey);
+          }
+        }
+      }
+    }
+  }
+}

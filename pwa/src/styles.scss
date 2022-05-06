@@ -1,0 +1,73 @@
+/* color palette */
+:root {
+  --ang-color-green: #95cb11;
+  --ang-color-white: #ffffff;
+  --ang-color-grey: #666666;
+  --ang-color-background: #f2f2f2;
+  
+  --ang-color-text-button: #c1c1c1;
+  --ang-color-border-button: #C4F253;
+
+  --ang-color-divider-light: rgba(0, 0, 0, 0.29);
+  --ang-color-text-dark: #000000;
+  --ang-color-text-white: #ffffff;
+  --ang-color-text-light: rgba(60, 60, 60, 0.66);
+}
+/* semantic color variables */
+:root {
+  --bg-color: var(--ang-color-background);
+  
+  --color-border: var(--ang-color-border-button);
+  --color-border-hover: var(--ang-color-green);
+  
+  --color-heading: var(--ang-color-text-light);
+  --color-text: var(--ang-color-text-dark);
+  
+  --section-gap: 160px;
+}
+
+@font-face {
+  font-family: "Merienda";
+  src: url("assets/fonts/Southern/Southern.ttf") format("ttf");
+}
+  
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+  
+body {
+  height:100%;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: 'RobotoCondensed400', sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  .container-custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    .border-custom {
+      border: 2px solid var(--ang-color-green);
+      border-radius: 4px;
+      box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+    }
+  }
+}
+
+  

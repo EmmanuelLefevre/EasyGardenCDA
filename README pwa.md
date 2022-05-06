@@ -1,21 +1,46 @@
 # DÉMARRAGE
-1. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+1. &nbsp;&nbsp;*/EasyGardenCDA*
 \
-Installer VueJs 3 =>
+Installer Angular =>
 ```
-npm init vue@latest
+ng new pwa
 ```
 2. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
 \
-Installer NodeJs =>
-```
-npm install
-```
 Lancer serveur local =>
 ```
-npm run dev
+ng serve -o
+```
+```
+ng serve -o --port 4200
 ```
 # ENVIRONNEMENT
+1. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+\
+Installer FontAwesome
+```
+npm install @fortawesome/fontawesome-svg-core
+```
+```
+npm install @fortawesome/free-solid-svg-icons
+```
+```
+npm install @fortawesome/free-brands-svg-icons
+```
+```
+npm install @fortawesome/angular-fontawesome@0.10.x
+```
+# COMMANDES
+1. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+\
+Créer component
+```
+ng g c --skipTests=true componentName
+```
+
+
+
+<!-- # ENVIRONNEMENT
 1. Installer Vue CLI
 \
 Powershell Windows en admin
@@ -67,4 +92,4 @@ npm i --save @fortawesome/vue-fontawesome@prerelease
 npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/free-regular-svg-icons
 npm i --save @fortawesome/free-brands-svg-icons
-```
+``` -->
