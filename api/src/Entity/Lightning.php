@@ -56,6 +56,7 @@ class Lightning
               'write:Lightning'])]
     private $status;
 
+    #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'lightning')]
     #[Groups(['read:Lightning'])]
     private $garden;

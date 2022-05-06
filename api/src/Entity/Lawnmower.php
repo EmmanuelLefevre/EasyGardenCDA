@@ -64,6 +64,7 @@ class Lawnmower
               'write:Lawnmower'])]
     private $status;
 
+    #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'lawnmower')]
     #[Groups(['read:Lawnmower'])]
     private $garden;

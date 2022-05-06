@@ -42,12 +42,12 @@ final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProv
         }
         $user = $token->getUser();
         $roles = $user->getRoles();
-            if ($user && in_array("ROLE_ADMIN", $roles)) {
-                return $this->userRepository->findAll();
-            }
-            elseif ($user && in_array("ROLE_USER", $roles)) {
-                return [$user];
-            }
+        if ($user && in_array("ROLE_ADMIN", $roles)) {
+            return $this->userRepository->findAll();
+        }
+        elseif ($user && in_array("ROLE_USER", $roles)) {
+            return [$user];
+        }
     }
 
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?User

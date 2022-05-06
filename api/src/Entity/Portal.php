@@ -64,6 +64,7 @@ class Portal
               'write:Portal'])]
     private $status;
 
+    #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(targetEntity: Garden::class, inversedBy: 'portal')]
     #[Groups(['read:Portal'])]
     private $garden;

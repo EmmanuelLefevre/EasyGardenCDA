@@ -61,6 +61,7 @@ class Garden
               'write:Garden'])]
     private $name;
 
+    #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'garden')]
     #[Groups(['read:Garden',
               'read:User',

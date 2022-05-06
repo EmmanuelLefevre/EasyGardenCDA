@@ -1,48 +1,48 @@
 # DÉMARRAGE
-1. &nbsp;&nbsp;*/EasyGardenV1.0*
+1. &nbsp;&nbsp;*/EasyGardenCDA*
 ```
 symfony new api
 ```
-2. Supprimer le .git dans /EasyGardenV1.0/api
-3. &nbsp;&nbsp;*/EasyGardenV1.0*
+2. Supprimer le .git dans /EasyGardenCDA/api
+3. &nbsp;&nbsp;*/EasyGardenCDA*
 ```
 git init
 ```
-4. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+4. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer install
 ```
 ```
 composer update
 ```
-5. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+5. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer req api
 ```
-6. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+6. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer require symfony/orm-pack
 ```
-7. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+7. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer require symfony/maker-bundle --dev
 ```
-8. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+8. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer require sensio/framework-extra-bundle
 ```
-9. &nbsp;&nbsp;*/EasyGardenV1.0/.env.local*
+9. &nbsp;&nbsp;*/EasyGardenCDA/.env.local*
 \
 **Commenter** &nbsp;&nbsp; DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
-**Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
+**Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenCDA?serverVersion=mariadb-10.5.8"
 \
 **Noter** &nbsp;&nbsp; APP_ENV=dev
-10. */EasyGardenV1.0/api/.env*
+10. */EasyGardenCDA/api/.env*
 \
 **Commenter** &nbsp;&nbsp; DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
-**Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenV1.0?serverVersion=mariadb-10.5.8"
+**Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenCDA?serverVersion=mariadb-10.5.8"
 \
 **Noter**APP_ENV=prod
 
@@ -68,7 +68,7 @@ php bin/console make:entity
 
 # NORMALIZATION/DENORMALIZATION CONTEXT
 1. Créer les #Groups et exposer les propriétés
-2. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/api_platform.yaml*
+2. &nbsp;&nbsp; */EasyGardenCDA/api/config/packages/api_platform.yaml*
 \
 Configuration =>
 ```yaml
@@ -101,7 +101,7 @@ php bin/console doctrine:migrations:migrate --no-interaction
 ```
 
 # CONFIGURATION DOSSIER /config
-1. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/prod/doctrine.yaml*
+1. &nbsp;&nbsp; */EasyGardenCDA/api/config/packages/prod/doctrine.yaml*
 ```yaml
 when@prod:
     doctrine:
@@ -122,7 +122,7 @@ when@prod:
                 doctrine.system_cache_pool:
                     adapter: cache.system
 ```
-2. &nbsp;&nbsp; */EasyGardenV1.0/api/config/packages/test/doctrine.yaml*
+2. &nbsp;&nbsp; */EasyGardenCDA/api/config/packages/test/doctrine.yaml*
 ```yaml
 when@test:
     doctrine:
@@ -132,18 +132,18 @@ when@test:
 ```
 3. Supprimer les blocs .yaml du dessus dans =>
 \
-*/EasyGardenV1.0/api/config/packages/doctrine.yaml*
+*/EasyGardenCDA/api/config/packages/doctrine.yaml*
 
 # FIXTURES
-1. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+1. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer require orm-fixtures --dev
 ```
-2. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+2. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer require fakerphp/faker
 ```
-3. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+3. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer require symfony/rate-limiter
 ```
@@ -155,8 +155,8 @@ php bin/console doctrine:fixtures:load --no-interaction
 # AUTHENTIFICATION (JWT)
 1. Créer dossier jwt
 \
-*/EasyGardenV1.0/api/config*
-2. &nbsp;&nbsp;*/EasyGardenV1.0/api*
+*/EasyGardenCDA/api/config*
+2. &nbsp;&nbsp;*/EasyGardenCDA/api*
 ```
 composer require lexik/jwt-authentication-bundle
 ```
@@ -167,7 +167,7 @@ openssl genrsa -out config/jwt/private.pem 4096
 ```
 openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 ```
-4. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/packages/lexik_jwt_authentication.yaml*
+4. &nbsp;&nbsp;*/EasyGardenCDA/api/config/packages/lexik_jwt_authentication.yaml*
 ```yaml
 lexik_jwt_authentication:
     secret_key: '%env(resolve:JWT_SECRET_KEY)%'
@@ -176,13 +176,13 @@ lexik_jwt_authentication:
     token_ttl: "%env(JWT_TTL)%"
     user_identity_field: email
 ```
-5. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/routes.yaml*
+5. &nbsp;&nbsp;*/EasyGardenCDA/api/config/routes.yaml*
 ```yaml
 authentication_token:
     path: /authentication_token
     methods: ['GET','POST']
 ```
-6. &nbsp;&nbsp;*/EasyGardenV1.0/api/config/packages/security.yaml*
+6. &nbsp;&nbsp;*/EasyGardenCDA/api/config/packages/security.yaml*
 ```yaml
 firewalls:
         login:
@@ -200,21 +200,24 @@ firewalls:
             jwt: ~ 
 
 access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/users, roles: PUBLIC_ACCESS,
+            methods: [POST] }
+        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY,
+            methods: [GET, PUT, DELETE] }
         - { path: ^/api/gardens, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/lawnmowers, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/lightnings, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/pools, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/portals, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/waterings, roles: IS_AUTHENTICATED_FULLY }
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
 ```
 
 # USER DATA PROVIDERS
-*/EasyGardenV1.0/api/src/DataProvider/UserDataProvider.php*
+*/EasyGardenCDA/api/src/DataProvider/UserDataProvider.php*
 ```php
 namespace App\DataProvider;
 
@@ -278,7 +281,7 @@ final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProv
 }
 ```
 # USER DATA PERSISTER
-*/EasyGardenV1.0/api/src/DataPersister/UserDataPersister.php*
+*/EasyGardenCDA/api/src/DataPersister/UserDataPersister.php*
 ```php
 namespace App\DataPersister;
 

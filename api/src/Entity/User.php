@@ -55,6 +55,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\NotBlank]
+    #[Assert\Regex(
+        pattern: '/\^([a-zA-Z0-9\.]\+@\+[a-zA-Z]\+(\.)\+[a-zA-Z]{2,4})\$/',
+        match: false,
+        message: "The email '{{ value }}' is not a valid email."
+    )]
     #[Groups(['read:User',
               'read:Garden',
               'read:Lawnmower',
