@@ -9,4 +9,23 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 export class AppComponent {
   title = 'Easy Garden';
   faUserCircle = faUserCircle;
+
+  // Login Component
+  public loginComponent = false;
+  loadLoginComponent(){
+    this.loginComponent = !this.loginComponent;
+  }
+  loginComponentClosed(_onClosed: any) {
+    this.loginComponent = false;
+  }
+
+  // Register Component
+  public registerComponent = false;
+  loadRegisterComponent(){
+    this.registerComponent = !this.registerComponent;
+  }
+  registerComponentClosed(_onClosed: any) {
+    this.registerComponent = false;
+  }
+  
 }

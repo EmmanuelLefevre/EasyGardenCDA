@@ -1,0 +1,24 @@
+<div class="wrapper animate__animated animate__fadeInDown" id="logo">
+    <div class="align-content-center">
+      <img width=150 height=150 src="assets/img/easygarden.png">
+    </div>
+    <div class="wrapper">
+      <h2 class="h2-titre-appli tt-shadow">{{title}}</h2>
+      <div id="formContent">
+        <div class="div-btn-close">
+          <button (click)="closeRegister()" class="btn-close btn-shadow">
+            <fa-icon [icon]="faCircleXmark"></fa-icon>
+          </button>
+        </div>
+        <form ng-submit="submit()">
+          <input type="email" id="email" placeholder="Email" required>
+          <input type="password" id="password" placeholder="Password" required>
+          <input type="text" id="lastName" placeholder="Nom" required>
+          <input type="text" id="firstName" placeholder="Prénom" required>
+          <input type="text" id="pseudo" placeholder="Pseudonyme" required>
+          <input type="tel" id="phoneNumber" placeholder="Téléphone" required>
+          <button class="btn-shadow">S'inscrire</button>
+        </form>
+      </div>
+    </div>
+  </div>

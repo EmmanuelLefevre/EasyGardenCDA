@@ -3,6 +3,7 @@
   --ang-color-green: #95cb11;
   --ang-color-white: #ffffff;
   --ang-color-grey: #666666;
+  --ang-color-alert: #ff0f0f;
   --ang-color-background: #f2f2f2;
   
   --ang-color-text-button: #c1c1c1;
@@ -30,6 +31,8 @@
   font-family: "Merienda";
   src: url("assets/fonts/Southern/Southern.ttf") format("ttf");
 }
+
+@import '~animate.css/animate.min';
   
 *,
 *::before,
@@ -56,16 +59,25 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-right: 15px;
-    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     .border-custom {
       border: 2px solid var(--ang-color-green);
       border-radius: 4px;
       box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+    }
+  }
+  .btn-shadow{
+    box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+  }
+  /*-------Shadows------*/
+  .tt-shadow {
+    text-shadow: 0px 5px 20px #8c8c8c;
+    letter-spacing: -0.05em;
+    user-select: none;
+    transition: all 0.25s ease-out;
+    &:hover {
+      text-shadow: 0px 5px 20px #95cb11;
     }
   }
 }

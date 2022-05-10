@@ -1,0 +1,137 @@
+/*------Ecran Connexion------*/
+button {
+    color: var(--ang-color-white);
+    background-color: var(--ang-color-green);
+    margin: 30px 0px 10px 0px;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 4px;
+    &:hover {
+      color: var(--ang-color-text-button);
+      background-color: var(--ang-color-white);
+      border-color: var(--ang-color-green);
+      cursor: pointer;
+    }
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+#formContent {
+-webkit-border-radius: 10px 10px 10px 10px;
+border-radius: 10px 10px 10px 10px;
+border: 2px solid #95cb11;
+background: #fff;
+padding: 20px;
+width: 90%;
+max-width: 450px;
+position: relative;
+-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+text-align: center;
+  .div-btn-close {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: -3rem;
+    button {
+      color: var(--ang-color-white);
+      border: 2px solid var(--color-border);
+      margin: 0px;
+      padding: 0px;
+      font-size: 3rem;
+      border-radius: 50%;
+      &:hover {
+        color: var(--ang-color-white);
+        background: var(--ang-color-alert);
+        border: 2px solid var(--ang-color-alert);
+      }
+      fa-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+.formFooter {
+  background-color: #f6f6f6;
+  border-top: 2px solid#95cb11;
+  padding: 25px;
+  text-align: center;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+.h2-titre-appli {
+  color:#95cb11;
+  margin-bottom: 25px;
+}
+#logo {
+  height: 87vh;
+  padding: 2vh 0vh;
+}
+input {
+  margin: 20px 0px 20px 0px;
+  padding: 15px;
+}
+   
+/*------Form Typo------*/
+  
+input[type=button], input[type=submit], input[type=reset]  {
+    background-color: #95cb11;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=email]:hover, input[type=tel]:hover  {
+  background-color: #95cb11;
+}
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active, input[type=email]:active, input[type=tel]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+input[type=text], input[type=password], input[type=email], input[type=tel]{
+  background-color: #f6f6f6;
+  color: #0d0d0d;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 85%;
+  border: 2px solid #95cb11;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=tel]:focus {
+  background-color: #fff;
+  border-bottom: 5px solid #95cb11;
+}
+input[type=text]:placeholder, input[type=password]:placeholder, input[type=email]:placeholder, input[type=tel]:placeholder {
+  color: #cccccc;
+}

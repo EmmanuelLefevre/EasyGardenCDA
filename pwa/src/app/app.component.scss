@@ -1,8 +1,8 @@
-#home-page {
+#homePage {
   background: linear-gradient(rgba(0, 0, 0, 0.45),rgba(0, 0, 0, 0.45)), url('../assets/img/KuangSi.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 87vh;
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr 1fr; 
   grid-template-rows: 0.2fr 0.3fr 0.6fr; 
@@ -18,8 +18,9 @@
       button {
         color: var(--ang-color-green);
         border: 2px solid var(--color-border);
-        border-radius: 2.5rem;
+        border-radius: 50%;
         font-size: 3rem;
+        cursor: pointer;
         &:hover {
           color: var(--ang-color-white);
           background: var(--ang-color-green);
@@ -53,7 +54,7 @@
     color: var(--ang-color-white);
     text-align: center;
     button {
-      color: var(--vt-c-white);
+      color: var(--ang-color-white);
       background-color: var(--ang-color-green);
       border: 2px solid var(--color-border);
       border-radius: 4px;
@@ -63,6 +64,7 @@
         color: var(--ang-color-text-button);
         background-color: var(--ang-color-white);
         border-color: var(--ang-color-green);
+        cursor: pointer;
       }
     }
   }
