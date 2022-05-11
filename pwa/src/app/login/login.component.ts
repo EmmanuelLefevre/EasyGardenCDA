@@ -7,6 +7,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   success = '';
   
-  closeLogin() {
+  closeLoginForm() {
     this.onClose.emit(true);
   }
 

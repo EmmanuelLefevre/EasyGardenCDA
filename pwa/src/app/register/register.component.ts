@@ -1,13 +1,14 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { PasswordValidatorCheck } from '../providers/PasswordValidatorCheck';
+import { RegisterFormValidationService } from '../services/register-form-validation.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
@@ -22,23 +23,23 @@ export class RegisterComponent implements OnInit {
   @Output()
   onClose: EventEmitter<boolean> = new EventEmitter();
 
-  registerForm = new FormGroup( {
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-    lastName: new FormControl(''),
-    firstName: new FormControl(''),
-    pseudo: new FormControl(''),
-    phoneNumber: new FormControl('')
-  })
+  registerForm = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl(''),
+      confirmPassword: new FormControl(''),
+      lastName: new FormControl(''),
+      firstName: new FormControl(''),
+      pseudo: new FormControl(''),
+      phoneNumber: new FormControl('')
+  });
   submitted = false;
   success = '';
 
-  closeRegister() {
+  closeRegisterForm() {
     this.onClose.emit(true);
   }
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private customValidator: RegisterFormValidationService ) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -49,7 +50,7 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(40),
-          // Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[:;.~µ!?§@#$%^&*])[A-Za-z\d:;.~µ!?§@#$%^&*].{8,40}')
+          this.customValidator.strongPassword()
         ]
       ],
       confirmPassword: ['', [Validators.required]],
@@ -86,7 +87,7 @@ export class RegisterComponent implements OnInit {
       ],
     },
     {
-      validators: [PasswordValidatorCheck.mustMatch("password", "confirmPassword")],
+      validators: [this.customValidator.passwordMatch("password", "confirmPassword")],
     });
   }
 
