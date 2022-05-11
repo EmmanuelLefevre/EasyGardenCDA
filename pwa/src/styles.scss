@@ -4,10 +4,15 @@
   --ang-color-white: #ffffff;
   --ang-color-grey: #666666;
   --ang-color-alert: #ff0f0f;
+  --ang-color-focus: #2fa6ff;
   --ang-color-background: #f2f2f2;
   
   --ang-color-text-button: #c1c1c1;
   --ang-color-border-button: #C4F253;
+
+  --ang-color-title-form-shadow: #858585;
+
+  --ang-color-input-hover: #e1ff95;
 
   --ang-color-divider-light: rgba(0, 0, 0, 0.29);
   --ang-color-text-dark: #000000;
@@ -61,25 +66,172 @@ body {
     align-items: center;
     margin-right: auto;
     margin-left: auto;
-    .border-custom {
-      border: 2px solid var(--ang-color-green);
-      border-radius: 4px;
-      box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+  }
+  /*------Title------*/
+  .form-title {
+    font-family: "Charlotte Southern";
+    font-size: 3.5rem;
+    color: var(--ang-color-green);
+    margin-bottom: 1.5rem;
+  }
+  .form-title-content {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ang-color-green);
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--ang-color-green);
+    top: -2.2rem;
+    .p-form-title-content {
+      padding-bottom: 2rem;
     }
   }
-  .btn-shadow{
-    box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+  /*------Button------*/
+  button {
+    color: var(--ang-color-white);
+    background-color: var(--ang-color-green);
+    margin: 20px 0px 20px 0px;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 4px;
+    &:hover {
+      color: var(--ang-color-text-button);
+      background-color: var(--ang-color-white);
+      border-color: var(--ang-color-green);
+      cursor: pointer;
+    }
   }
-  /*-------Shadows------*/
-  .tt-shadow {
-    text-shadow: 0px 5px 20px #8c8c8c;
+  .div-form-button {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .div-button-close {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: -3rem;
+    right: 1.5rem;
+    .button-circle {
+      font-size: 3rem;
+      color: var(--ang-color-white);
+      border: 2px solid var(--ang-color-green);
+      border-radius: 50%;
+      margin: 0px;
+      padding: 0px;
+      &:hover {
+        color: var(--ang-color-white);
+        background: var(--ang-color-alert);
+        border: 2px solid var(--ang-color-alert);
+      }
+      fa-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  /*------Border------*/
+  .form-border {
+    border: 2px solid var(--ang-color-green);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+  }
+  /*------Shadows------*/
+  .button-shadow{
+    box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+  }
+  .input-inset-shadow{
+    box-shadow: inset 0 0px 20px 7px rgba(149,203,17,0.55);
+    -webkit-box-shadow: inset 0 0px 20px 7px rgba(149,203,17,0.55);
+  }
+  .title-form-shadow {
+    text-shadow: 0px 5px 20px var(--ang-color-title-form-shadow);
     letter-spacing: -0.05em;
     user-select: none;
     transition: all 0.25s ease-out;
     &:hover {
-      text-shadow: 0px 5px 20px #95cb11;
+      text-shadow: 0px 5px 20px var(--ang-color-green);
     }
   }
+  .form-shadow {
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  }
+  /*------Form------*/
+  .form-content {
+    background: var(--ang-color-white);
+    padding: 20px 0px;
+    width: 75%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+  }
+  /*------Wrapper------*/
+  .div-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+  }
+  /*------Input------*/
+  input {
+    margin: 20px 0px 20px 0px;
+    padding: 15px;
+    .invalid-feedback {
+      color: var(--ang-color-alert);
+    }
+  }
+  .div-input-icon {
+    position: relative;
+    fa-icon {
+      color: var(--ang-color-green);
+      font-size: 1.5rem;
+      position: absolute;
+      top: 28px; 
+      right: 50px; 
+      cursor: pointer;
+    }
+  }
+  input[type=email], 
+  input[type=password], 
+  input[type=text], 
+  input[type=tel] {
+    background-color: var(--ang-color-white);
+    color: var(--ang-color-text-dark);
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 80%;
+    border: 2px solid var(--ang-color-green);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+  input[type=email]:hover, 
+  input[type=password]:hover, 
+  input[type=text]:hover, 
+  input[type=tel]:hover {
+    background-color: var(--ang-color-input-hover);
+  }
+  input[type=email]:focus, 
+  input[type=password]:focus, 
+  input[type=text]:focus, 
+  input[type=tel]:focus {
+    background-color: var(--ang-color-white);
+    border-bottom: 2px solid var(--ang-color-focus);
+    outline: none;
+  }
+  input:placeholder {
+    color: var(--ang-color-text-ligh);
+  }
+
 }
 
   

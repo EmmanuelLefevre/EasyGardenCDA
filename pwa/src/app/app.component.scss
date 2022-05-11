@@ -1,5 +1,5 @@
 #homePage {
-  background: linear-gradient(rgba(0, 0, 0, 0.45),rgba(0, 0, 0, 0.45)), url('../assets/img/KuangSi.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.40),rgba(0, 0, 0, 0.40)), url('../assets/img/KuangSi.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 87vh;
@@ -15,15 +15,17 @@
     grid-gap: 3rem 1rem;
     .icon {
       grid-area: 1/2;
-      button {
-        color: var(--ang-color-green);
+      margin-top: 2vh;
+      .button-circle {
+        font-size: 3rem;
+        color: var(--ang-color-white);
         border: 2px solid var(--color-border);
         border-radius: 50%;
-        font-size: 3rem;
-        cursor: pointer;
+        margin: 0px;
+        padding: 0px;
         &:hover {
-          color: var(--ang-color-white);
-          background: var(--ang-color-green);
+          color: var(--ang-color-green);
+          background: var(--ang-color-white);
         }
         fa-icon {
           display: flex;
@@ -54,18 +56,7 @@
     color: var(--ang-color-white);
     text-align: center;
     button {
-      color: var(--ang-color-white);
-      background-color: var(--ang-color-green);
-      border: 2px solid var(--color-border);
-      border-radius: 4px;
-      margin-top: 5rem;
-      padding: 0.5rem 1rem;
-      &:hover {
-        color: var(--ang-color-text-button);
-        background-color: var(--ang-color-white);
-        border-color: var(--ang-color-green);
-        cursor: pointer;
-      }
+      margin-top: 10vh;
     }
   }
 }

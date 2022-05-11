@@ -1,19 +1,45 @@
-<div class="wrapper animate__animated animate__fadeInDown" id="logo">
-  <div class="align-content-center">
+<div class="div-wrapper animate__animated animate__fadeInDown" id="logo">
+  <div>
     <img width=150 height=150 src="assets/img/easygarden.png">
   </div>
-  <div class="wrapper">
-    <h2 class="h2-titre-appli tt-shadow">{{title}}</h2>
-    <div id="formContent">
-      <div class="div-btn-close">
-        <button (click)="closeLogin()" class="btn-close btn-shadow">
+  <h2 class="form-title title-form-shadow">{{title}}</h2>
+  <div class="div-wrapper">
+    <div class="form-content form-border form-shadow">
+      <div class="div-button-close">
+        <button (click)="closeLogin()" class="button-circle button-shadow">
           <fa-icon [icon]="faCircleXmark"></fa-icon>
         </button>
       </div>
-      <form ng-submit="submit()">
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button class="btn-shadow">Connexion</button>
+      <div class="form-title-content">
+        <p class="p-form-title-content">LOGIN</p>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input formControlName="email" 
+          name="email" 
+          type="email"
+          placeholder="Email"
+          class="input-inset-shadow"
+          [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Veuillez saisir un email!</div>
+            <div *ngIf="f['email'].errors['email']">Le format de l'email est invalide.</div>
+          </div>
+        <div class="div-input-icon">
+          <input formControlName="password"
+            name="password" 
+            [type]=" visible ? 'text' : 'password' "
+            placeholder="Password"
+            class="input-inset-shadow"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+          <fa-icon [icon]="visible ? faEyeSlash : faEye" aria-hidden="true" (click)="toggle()"></fa-icon>
+          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors['required']">Veuillez saisir un mot de passe!</div>
+          </div>
+        </div>
+        <div class="div-form-button">
+          <button type="submit" class="button-shadow">Connexion</button>
+          <button type="button" (click)="onReset()" class="button-shadow">Annuler</button>
+        </div>
       </form>
     </div>
   </div>
