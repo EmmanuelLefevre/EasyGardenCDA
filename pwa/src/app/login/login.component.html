@@ -22,7 +22,7 @@
           [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
           <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
             <div *ngIf="f['email'].errors['required']">Veuillez saisir un email!</div>
-            <div *ngIf="f['email'].errors['email']">Le format de l'email est invalide.</div>
+            <div *ngIf="f['email'].errors['email']">Format d'email invalide!</div>
           </div>
         <div class="div-input-icon">
           <input formControlName="password"
