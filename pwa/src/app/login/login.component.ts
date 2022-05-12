@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegisterFormValidationService } from '../services/register-form-validation.service';
 
 @Component({
   selector: 'app-login',
@@ -33,11 +34,18 @@ export class LoginComponent implements OnInit {
     this.onClose.emit(true);
   }
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private customValidator: RegisterFormValidationService ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          this.customValidator.validEmail()
+        ]
+      ],
       password: ['', [Validators.required]]
     })
   }

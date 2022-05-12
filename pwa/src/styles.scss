@@ -67,6 +67,11 @@ body {
     margin-right: auto;
     margin-left: auto;
   }
+  /*------Text------*/
+  .text-alert {
+    color: var(--ang-color-alert);
+    padding: 0px 1.5rem;
+  }
   /*------Title------*/
   .form-title {
     font-family: "Charlotte Southern";
