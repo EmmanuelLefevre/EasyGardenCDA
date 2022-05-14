@@ -35,7 +35,12 @@ npm install @fortawesome/angular-fontawesome@0.10.x
 \
 Créer component
 ```
-ng g c --skipTests=true componentName
+ng g c componentName --skipTests=true
+```
+\
+Créer un service dans un dossier services
+```
+ng g s services\registerFormValidation --skipTests=true
 ```
 
 

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.onClose.emit(true);
   }
 
-  constructor(private formBuilder: FormBuilder, private customValidator: RegisterFormValidationService ) { }
+  constructor(private formBuilder: FormBuilder, private customValidator: RegisterFormValidationService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
