@@ -3,6 +3,8 @@ import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-ic
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterFormValidationService } from '../services/register-form-validation.service';
 
+import { LoginModel } from '../models/loginModel';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -59,8 +61,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       console.log('Error: Form invalid');
     }
+    const typedLoginForm: LoginModel = this.loginForm.value;
+    this.success = JSON.stringify(typedLoginForm);
     console.log(JSON.stringify(this.loginForm.value, null, 2));
-    this.success = JSON.stringify(this.loginForm.value);
   }
 
   onReset(): void {
