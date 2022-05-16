@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl(''),
-    password: new FormControl('')
+    plainPassword: new FormControl('')
   });
   submitted = false;
   success = '';
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.onClose.emit(true);
   }
 
-  user: LoginModel = { email: '', password: '', token: '' };
+  user: LoginModel = { email: '', plainPassword: '', token: '' };
 
   constructor(private formBuilder: FormBuilder,
               private customValidator: FormValidationService,
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           this.customValidator.validEmail()
         ]
       ],
-      password: ['', [Validators.required]]
+      plainPassword: ['', [Validators.required]]
     })
   }
 

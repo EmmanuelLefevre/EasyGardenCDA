@@ -28,7 +28,7 @@ export class AuthService {
   logIn(user: LoginModel): Observable<LoginModel> {
     const profile = {
       email: user.email,
-      password: user.password
+      plainPassword: user.plainPassword
     };
 
     return this.httpClient.post<TokenResult>(environment.apis.login.url, profile).pipe(

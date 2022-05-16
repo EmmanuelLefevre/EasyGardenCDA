@@ -28,15 +28,15 @@
             </div>
           </div>
         <div class="div-input-icon">
-          <input formControlName="password"
-            name="password" 
+          <input formControlName="plainPassword"
+            name="plainPassword" 
             [type]=" visible ? 'text' : 'password' "
             placeholder="Password"
             class="input-inset-shadow"
-            [ngClass]="{ 'invalid-feedback': submitted && f['password'].errors }">
+            [ngClass]="{ 'invalid-feedback': submitted && f['plainPassword'].errors }">
           <fa-icon [icon]="visible ? faEyeSlash : faEye" aria-hidden="true" (click)="toggle()"></fa-icon>
-          <div *ngIf="submitted && f['password'].errors">
-            <div class="text-alert" *ngIf="f['password'].errors['required']">Veuillez saisir un mot de passe!</div>
+          <div *ngIf="submitted && f['plainPassword'].errors">
+            <div class="text-alert" *ngIf="f['plainPassword'].errors['required']">Veuillez saisir un mot de passe!</div>
           </div>
         </div>
         <div class="div-form-button">

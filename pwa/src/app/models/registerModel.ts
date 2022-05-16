@@ -1,7 +1,7 @@
 export interface RegisterModel {
     email: string;
-    password: string;
-    confirmPassword: string;
+    plainPassword: string;
+    confirmPlainPassword: string;
     lastName: string;
     firstName: string;
     pseudo: string;
