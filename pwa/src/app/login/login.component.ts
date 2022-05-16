@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RegisterFormValidationService } from '../services/register-form-validation.service';
+import { FormValidationService } from '../services/form-validation.service';
 
 import { LoginModel } from '../models/loginModel';
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.onClose.emit(true);
   }
 
-  constructor(private formBuilder: FormBuilder, private customValidator: RegisterFormValidationService) { }
+  constructor(private formBuilder: FormBuilder, private customValidator: FormValidationService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({

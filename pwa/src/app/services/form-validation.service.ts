@@ -5,7 +5,7 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
   providedIn: 'root'
 })
 
-export class RegisterFormValidationService {
+export class FormValidationService {
 
   passwordMatch(password: string, confirmPassword: string):ValidatorFn {
     return (formGroup: AbstractControl):{ [key: string]: any } | null => {
