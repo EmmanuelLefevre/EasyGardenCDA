@@ -1,9 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormValidationService } from '../services/form-validation.service';
+import { Router } from '@angular/router';
 
-import { RegisterModel } from '../models/registerModel';
+import { RegisterModel } from '../../models/registerModel';
+
+import { FormValidationService } from '../../services/service/form-validation.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -41,9 +44,18 @@ export class RegisterComponent implements OnInit {
     this.onClose.emit(true);
   }
 
-  constructor(private formBuilder: FormBuilder, private customValidator: FormValidationService) { }
+  user: RegisterModel = { email: '',
+                          password: '',
+                          confirmPassword: '',
+                          lastName: '',
+                          firstName: '',
+                          pseudo:'',
+                          phoneNumber: '' };
 
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder,
+              private customValidator: FormValidationService,
+              private router: Router,
+              private authService: AuthService) {
     this.registerForm = this.formBuilder.group({
       email: [
         '',
@@ -103,6 +115,8 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {}
+
   get f(): { [key: string]: AbstractControl } {
     return this.registerForm.controls;
   }
@@ -112,12 +126,12 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       console.log('Error: Form invalid');
     }
-    const typedRegisterForm: RegisterModel = this.registerForm.value;
-    delete this.registerForm.value.confirmPassword;
-    this.success = JSON.stringify(typedRegisterForm);
-    console.log(typedRegisterForm);
-    // this.success = JSON.stringify(this.registerForm.value);
-    // console.log(JSON.stringify(this.registerForm.value, null, 7));
+    // const typedRegisterForm: RegisterModel = this.registerForm.value;
+    // delete this.registerForm.value.confirmPassword;
+    // this.success = JSON.stringify(typedRegisterForm);
+    // console.log(typedRegisterForm);
+    // this.success = this.registerForm.value;
+    // console.log(this.registerForm.value);
   }
 
   onReset(): void {

@@ -5,5 +5,5 @@ export interface RegisterModel {
     lastName: string;
     firstName: string;
     pseudo: string;
-    phoneNumber: string
+    phoneNumber: string;
 }
