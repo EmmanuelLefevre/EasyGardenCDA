@@ -34,9 +34,9 @@ class UserFixture extends Fixture
         $admin->setFirstName('prenomADMIN');
         $admin->setLastName('nomADMIN');
         $admin->setPseudo('pseudoADMIN');
-        $admin->setPassword($this->hasher->hashPassword($admin,'ADMIN'));
+        $admin->setPassword($this->hasher->hashPassword($admin,'Admin!33'));
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setEmail('ADMIN@outlook.fr');
+        $admin->setEmail('Admin@outlook.fr');
         $admin->setPhoneNumber('06 12 25 48 71');
         $admin->setCreatedAt(new \DateTimeImmutable());
         $admin->setIsVerified(true);
@@ -47,7 +47,7 @@ class UserFixture extends Fixture
         $user1->setFirstName('Emmanuel');
         $user1->setLastName('Lefevre');
         $user1->setPseudo('darka');
-        $user1->setPassword($this->hasher->hashPassword($user1,'xx'));
+        $user1->setPassword($this->hasher->hashPassword($user1,'Darka!33kzo'));
         $user1->setRoles(['ROLE_USER']);
         $user1->setEmail('manu@protonmail.com');
         $user1->setPhoneNumber('07 85 98 25 07');
@@ -61,7 +61,7 @@ class UserFixture extends Fixture
         $user2->setFirstName('Sofiane');
         $user2->setLastName('Khalfi');
         $user2->setPseudo('soso');
-        $user2->setPassword($this->hasher->hashPassword($user2,'gg'));
+        $user2->setPassword($this->hasher->hashPassword($user2,'Sofiane!33bdx'));
         $user2->setRoles(['ROLE_USER']);
         $user2->setEmail('sofiane@gmail.com');
         $user2->setPhoneNumber('06 54 85 78 14');
