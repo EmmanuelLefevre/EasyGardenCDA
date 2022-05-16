@@ -19,8 +19,8 @@
           type="email"
           placeholder="Email"
           class="input-inset-shadow"
-          [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
-          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          [ngClass]="{ 'invalid-feedback': submitted && f['email'].errors }">
+          <div *ngIf="submitted && f['email'].errors">
             <div class="text-alert" *ngIf="f['email'].errors['required']">Veuillez saisir un email!</div>
             <div class="text-alert" *ngIf="f['email'].errors['email']">Format d'email invalide!</div>
             <div class="text-alert" *ngIf="f['email'].errors['validEmail']">
@@ -33,9 +33,9 @@
             [type]=" visible ? 'text' : 'password' "
             placeholder="Password"
             class="input-inset-shadow"
-            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+            [ngClass]="{ 'invalid-feedback': submitted && f['password'].errors }">
           <fa-icon [icon]="visible ? faEyeSlash : faEye" aria-hidden="true" (click)="toggle()"></fa-icon>
-          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="submitted && f['password'].errors">
             <div class="text-alert" *ngIf="f['password'].errors['required']">Veuillez saisir un mot de passe!</div>
           </div>
         </div>
