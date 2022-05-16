@@ -40,8 +40,6 @@ export class LoginComponent implements OnInit {
     this.onClose.emit(true);
   }
 
-  user: LoginModel = { email: '', password: '', token: '' };
-
   constructor(private formBuilder: FormBuilder,
               private customValidator: FormValidationService,
               private router: Router,
@@ -70,7 +68,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       console.log('Error: Form invalid');
     }
-    this.authService.logIn(this.user).subscribe(item =>
+    const typedLoginForm: LoginModel = this.loginForm.value;
+    this.success = JSON.stringify(typedLoginForm);
+    this.authService.logIn(typedLoginForm).subscribe(() =>
       this.router.navigate(['/'])
     );
   }

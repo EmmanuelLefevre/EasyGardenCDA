@@ -5,6 +5,7 @@ import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 import { LoginModel } from '../../models/loginModel';
+import { RegisterModel } from '../../models/registerModel';
 import { LocalStorageService } from './local-storage.service';
 
 export declare type TokenResult = {
@@ -32,6 +33,34 @@ export class AuthService {
     };
 
     return this.httpClient.post<TokenResult>(environment.apis.login.url, profile).pipe(
+      map(item => {
+        user.token = item.access_token;
+        console.log(item.access_token);
+        return user;
+      }),
+      tap(item => {
+        this.user = item;
+        this.localStorage.set('jwt_token', this.user.token);
+      })
+    );
+  }
+
+  registerIn(user: RegisterModel) {
+    const profile = {
+      email: user.email,
+      password: user.password,
+      plainPassword: user.password,
+      lastName: user.lastName,
+      firstName: user.firstName,
+      pseudo: user.pseudo,
+      phoneNumber: user.phoneNumber,
+      // createdAt: "2022-05-17 01:31:36",
+      // isVerified: true,
+      // roles:["ROLE_USER"]
+    };
+    console.log(profile);
+
+    return this.httpClient.post<TokenResult>(environment.apis.register.url, profile).pipe(
       map(item => {
         user.token = item.access_token;
         console.log(item.access_token);

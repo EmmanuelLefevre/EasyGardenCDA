@@ -44,14 +44,6 @@ export class RegisterComponent implements OnInit {
     this.onClose.emit(true);
   }
 
-  user: RegisterModel = { email: '',
-                          password: '',
-                          confirmPassword: '',
-                          lastName: '',
-                          firstName: '',
-                          pseudo:'',
-                          phoneNumber: '' };
-
   constructor(private formBuilder: FormBuilder,
               private customValidator: FormValidationService,
               private router: Router,
@@ -126,12 +118,12 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       console.log('Error: Form invalid');
     }
-    // const typedRegisterForm: RegisterModel = this.registerForm.value;
-    // delete this.registerForm.value.confirmPassword;
-    // this.success = JSON.stringify(typedRegisterForm);
-    // console.log(typedRegisterForm);
-    // this.success = this.registerForm.value;
-    // console.log(this.registerForm.value);
+    const typedRegisterForm: RegisterModel = this.registerForm.value;
+    delete this.registerForm.value.confirmPassword;
+    this.success = JSON.stringify(typedRegisterForm);
+    this.authService.registerIn(typedRegisterForm).subscribe(() =>
+      this.router.navigate(['/'])
+    );
   }
 
   onReset(): void {

@@ -6,4 +6,5 @@ export interface RegisterModel {
     firstName: string;
     pseudo: string;
     phoneNumber: string;
+    token: string;
 }
