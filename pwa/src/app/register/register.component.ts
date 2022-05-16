@@ -113,6 +113,7 @@ export class RegisterComponent implements OnInit {
       console.log('Error: Form invalid');
     }
     const typedRegisterForm: RegisterModel = this.registerForm.value;
+    delete this.registerForm.value.confirmPassword;
     this.success = JSON.stringify(typedRegisterForm);
     console.log(typedRegisterForm);
     // this.success = JSON.stringify(this.registerForm.value);
