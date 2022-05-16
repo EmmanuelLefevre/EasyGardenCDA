@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
       email: new FormControl(''),
-      plainPassword: new FormControl(''),
-      confirmPlainPassword: new FormControl(''),
+      password: new FormControl(''),
+      confirmPassword: new FormControl(''),
       lastName: new FormControl(''),
       firstName: new FormControl(''),
       pseudo: new FormControl(''),
@@ -45,8 +45,8 @@ export class RegisterComponent implements OnInit {
   }
 
   user: RegisterModel = { email: '',
-                          plainPassword: '',
-                          confirmPlainPassword: '',
+                          password: '',
+                          confirmPassword: '',
                           lastName: '',
                           firstName: '',
                           pseudo:'',
@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
           this.customValidator.validEmail()
         ]
       ],
-      plainPassword: [
+      password: [
         '',
         [
           Validators.required,
@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
           this.customValidator.strongPassword()
         ]
       ],
-      confirmPlainPassword: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
       lastName: [
         '',
         [
@@ -111,7 +111,7 @@ export class RegisterComponent implements OnInit {
       ],
     },
     {
-      validators: [this.customValidator.passwordMatch("plainPassword", "confirmPlainPassword")],
+      validators: [this.customValidator.passwordMatch("password", "confirmPassword")],
     });
   }
 

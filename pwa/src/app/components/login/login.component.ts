@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl(''),
-    plainPassword: new FormControl('')
+    password: new FormControl('')
   });
   submitted = false;
   success = '';
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.onClose.emit(true);
   }
 
-  user: LoginModel = { email: '', plainPassword: '', token: '' };
+  user: LoginModel = { email: '', password: '', token: '' };
 
   constructor(private formBuilder: FormBuilder,
               private customValidator: FormValidationService,
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           this.customValidator.validEmail()
         ]
       ],
-      plainPassword: ['', [Validators.required]]
+      password: ['', [Validators.required]]
     })
   }
 
@@ -65,27 +65,15 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  onSubmit(): void {
+  onSubmit() {
     this.submitted = true;
     if (this.loginForm.invalid) {
       console.log('Error: Form invalid');
     }
-    // const typedLoginForm: LoginModel = this.loginForm.value;
-    // delete this.loginForm.value.confirmPassword;
-    // this.success = JSON.stringify(typedLoginForm);
-    // console.log(typedLoginForm);
-    this.success = this.loginForm.value;
-    console.log(this.loginForm.value);
+    this.authService.logIn(this.user).subscribe(item =>
+      this.router.navigate(['/'])
+    );
   }
-  // onSubmit() {
-  //   this.submitted = true;
-  //   if (this.loginForm.invalid) {
-  //     console.log('Error: Form invalid');
-  //   }
-  //   this.authService.logIn(this.user).subscribe(item =>
-  //     this.router.navigate(['/'])
-  //   );
-  // }
 
   onReset(): void {
     this.submitted = false;

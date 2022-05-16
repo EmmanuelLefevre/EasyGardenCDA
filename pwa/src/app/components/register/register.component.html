@@ -28,37 +28,37 @@
             </div>
           </div>
         <div class="div-input-icon">
-          <input formControlName="plainPassword"
-            name="plainPassword" 
+          <input formControlName="password"
+            name="password" 
             [type]=" visible ? 'text' : 'password' "
             placeholder="Password"
             class="input-inset-shadow"
-            [ngClass]="{ 'invalid-feedback': submitted && f['plainPassword'].errors }">
+            [ngClass]="{ 'invalid-feedback': submitted && f['password'].errors }">
           <fa-icon [icon]="visible ? faEyeSlash : faEye" aria-hidden="true" (click)="toggle()"></fa-icon>
-          <div *ngIf="submitted && f['plainPassword'].errors">
-            <div class="text-alert" *ngIf="f['plainPassword'].errors['required']">Veuillez saisir un mot de passe!</div>
-            <div class="text-alert" *ngIf="f['plainPassword'].errors['minlength']">
+          <div *ngIf="submitted && f['password'].errors">
+            <div class="text-alert" *ngIf="f['password'].errors['required']">Veuillez saisir un mot de passe!</div>
+            <div class="text-alert" *ngIf="f['password'].errors['minlength']">
               Le mot de passe doit contenir 8 caractères minimum.
             </div>
-            <div class="text-alert" *ngIf="f['plainPassword'].errors['maxlength']">
+            <div class="text-alert" *ngIf="f['password'].errors['maxlength']">
               Le mot de passe ne peut excéder 40 caractères.
             </div>
-            <div class="text-alert" *ngIf="f['plainPassword'].errors['strongPassword']">
+            <div class="text-alert" *ngIf="f['password'].errors['strongPassword']">
               Le mot de passe doit contenir une majuscule, une minuscule, un nombre et un caractère spécial.
             </div>
           </div>
         </div>
         <div class="div-input-icon">
-          <input formControlName="confirmPlainPassword"
+          <input formControlName="confirmPassword"
             name="password" 
             [type]=" visible ? 'text' : 'password' "
             placeholder="Confirm Password"
             class="input-inset-shadow"
-            [ngClass]="{ 'invalid-feedback': submitted && f['confirmPlainPassword'].errors }">
+            [ngClass]="{ 'invalid-feedback': submitted && f['confirmPassword'].errors }">
           <fa-icon [icon]="visible ? faEyeSlash : faEye" aria-hidden="true" (click)="toggle()"></fa-icon>
-          <div *ngIf="submitted && f['confirmPlainPassword'].errors">
-            <div class="text-alert" *ngIf="f['confirmPlainPassword'].errors['required']">Veuillez confirmer le mot de passe!</div>
-            <div class="text-alert" *ngIf="f['confirmPlainPassword'].errors['passwordMismatch']">
+          <div *ngIf="submitted && f['confirmPassword'].errors">
+            <div class="text-alert" *ngIf="f['confirmPassword'].errors['required']">Veuillez confirmer le mot de passe!</div>
+            <div class="text-alert" *ngIf="f['confirmPassword'].errors['passwordMismatch']">
               Le mot de passe n'est pas identique!
             </div>
           </div>

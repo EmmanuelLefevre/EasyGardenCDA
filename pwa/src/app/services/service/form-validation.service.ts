@@ -7,10 +7,10 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export class FormValidationService {
 
-  passwordMatch(plainPassword: string, confirmPlainPassword: string):ValidatorFn {
+  passwordMatch(password: string, confirmPassword: string):ValidatorFn {
     return (formGroup: AbstractControl):{ [key: string]: any } | null => {
-      const passwordControl = formGroup.get(plainPassword);
-      const confirmPasswordControl = formGroup.get(confirmPlainPassword);
+      const passwordControl = formGroup.get(password);
+      const confirmPasswordControl = formGroup.get(confirmPassword);
       
       if (!passwordControl || !confirmPasswordControl) {
         return null;
