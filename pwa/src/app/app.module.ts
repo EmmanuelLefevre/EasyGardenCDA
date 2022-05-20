@@ -8,7 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ErrorComponent } from './services/utils/components/error/error.component';
+import { ErrorComponent } from './_services/utils/components/error/error.component';
 
 @NgModule({
   declarations: [

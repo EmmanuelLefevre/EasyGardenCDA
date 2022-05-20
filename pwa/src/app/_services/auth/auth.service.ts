@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { CredentialsModel } from '../../models/credentialsModel';
-import { TokenModel } from '../../models/tokenModel';
+import { CredentialsModel } from '../../_models/credentialsModel';
+import { TokenModel } from '../../_models/tokenModel';
 
 
 @Injectable({

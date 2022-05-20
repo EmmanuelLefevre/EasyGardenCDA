@@ -2,8 +2,8 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import { AuthService } from '../../../services/auth/auth.service';
-import { FormValidationService } from '../../../services/service/form-validation.service';
+import { AuthService } from '../../../_services/auth/auth.service';
+import { FormValidationService } from '../../../_services/service/form-validation.service';
 
 @Component({
   selector: 'app-register',

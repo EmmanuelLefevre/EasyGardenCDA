@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
-import { TokenService } from '../../services/auth/token.service';
-import { ApiErrorService } from '../../services/service/api-error.service';
+import { TokenService } from '../../_services/auth/token.service';
+import { ApiErrorService } from '../../_services/service/api-error.service';
 
 @Injectable({
   providedIn: 'root'

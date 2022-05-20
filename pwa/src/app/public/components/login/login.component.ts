@@ -2,10 +2,10 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import { AuthService } from '../../../services/auth/auth.service';
-import { FormValidationService } from '../../../services/service/form-validation.service';
-import { TokenService } from '../../../services/auth/token.service';
-import { CredentialsModel } from '../../../models/credentialsModel';
+import { AuthService } from '../../../_services/auth/auth.service';
+import { FormValidationService } from '../../../_services/service/form-validation.service';
+import { TokenService } from '../../../_services/auth/token.service';
+import { CredentialsModel } from '../../../_models/credentialsModel';
 
 @Component({
   selector: 'app-login',
