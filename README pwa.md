@@ -30,6 +30,50 @@ npm install @fortawesome/free-brands-svg-icons
 ```
 npm install @fortawesome/angular-fontawesome@0.10.x
 ```
+2. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+\
+Installer JWT Decode
+```
+npm i jwt-decode
+```
+3. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+\
+Installer animate.css
+```
+npm i animate.css
+```
+4. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+\
+Installer Compodoc
+```
+npm install -g @compodoc/compodoc
+```
+- Créer un fichier tsconfig.doc.json à la racine
+\
+- Copier/Coller dans ce fichier
+```
+{
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/test.ts", "src/**/*.spec.ts", "src/app/file-to-exclude.ts"]
+}
+```
+- Se rendre dans le fichier package.json et ajouter à "scripts"
+```
+"compodoc": "npx compodoc -p tsconfig.doc.json"
+```
+- Générer doc
+```
+npm run compodoc
+```
+- Lancer doc en mode serveur
+```
+npm run compodoc:serve
+```
+Url: localhost:8080
+- Lancer doc en mode serveur watch
+```
+npm run compodoc:serve:watch
+```
 # COMMANDES
 1. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
 \
@@ -41,6 +85,16 @@ ng g c componentName --skipTests=true
 Créer un service dans un dossier services
 ```
 ng g s services\registerFormValidation --skipTests=true
+```
+\
+Créer module
+```
+ng g m moduleName --skipTests=true
+```
+\
+Créer routing
+```
+ng g m moduleName --skipTests=true
 ```
 
 

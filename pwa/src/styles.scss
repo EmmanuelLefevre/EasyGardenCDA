@@ -1,4 +1,4 @@
-/* color palette */
+/*------Color-Palette------*/
 :root {
   --ang-color-green: #95cb11;
   --ang-color-white: #ffffff;
@@ -19,7 +19,7 @@
   --ang-color-text-white: #ffffff;
   --ang-color-text-light: rgba(60, 60, 60, 0.66);
 }
-/* semantic color variables */
+/*------Semantic-Color-Variables------*/
 :root {
   --bg-color: var(--ang-color-background);
   
@@ -30,15 +30,44 @@
   --color-text: var(--ang-color-text-dark);
   
   --section-gap: 160px;
+
+  --ang-font-body-text: 'roboto', sans-serif;
+  --ang-body-font-weight-thin: 100;
+  --ang-body-font-weight-light: 300;
+  --ang-body-font-weight-regular: 400;
+  --ang-body-font-weight-medium: 500;
+  --ang-body-font-weight-bold: 700;
+
+  --ang-font-button-text: 'roboto condensed', sans-serif;
+  --ang-button-font-weight-light: 300;
+  --ang-button-font-weight-regular: 400;
+  --ang-button-font-weight-bold: 700;
+
+  --ang-font-serif-text: 'roboto serif', serif;
+  --ang-serif-font-weight-thin: 100;
+  --ang-serif-font-weight-extra-light: 200;
+  --ang-serif-font-weight-light: 300;
+  --ang-serif-font-weight-regular: 400;
 }
 
+/*------Fonts------*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400&display=swap');
+
 @font-face {
-  font-family: "Merienda";
+  font-family: "Charlotte Southern";
   src: url("assets/fonts/Southern/Southern.ttf") format("ttf");
 }
 
+/*------Animations------*/
 @import '~animate.css/animate.min';
-  
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*------Reset------*/
 *,
 *::before,
 *::after {
@@ -46,15 +75,17 @@
   margin: 0;
   padding: 0;
 }
-  
+
+/*------Body------*/
 body {
   height:100%;
   color: var(--color-text);
+  font-family: var(--ang-font-body-text);
+  font-weight: var(--ang-body-font-weight-light);
+  font-size: 15px;
+  line-height: 1.6;
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: 'RobotoCondensed400', sans-serif;
-  font-size: 15px;
   text-rendering: optimizeLegibility;
   overflow-x: hidden; 
   -webkit-font-smoothing: antialiased;
@@ -93,6 +124,8 @@ body {
   }
   /*------Button------*/
   button {
+    font-family: var(--ang-font-button-text);
+    font-weight: var(--ang-button-font-weight-regular);
     color: var(--ang-color-white);
     background-color: var(--ang-color-green);
     margin: 20px 0px 20px 0px;
@@ -145,6 +178,10 @@ body {
   .button-shadow{
     box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+    &:hover {
+      box-shadow: 0 8px 20px -3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 8px 20px -3px rgba(0,0,0,0.5);
+    }
   }
   .input-inset-shadow{
     box-shadow: inset 0 0px 20px 7px rgba(149,203,17,0.55);
@@ -242,5 +279,5 @@ body {
   }
 
 }
-
   
+    
