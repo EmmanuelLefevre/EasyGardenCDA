@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut(): void{
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 
 }

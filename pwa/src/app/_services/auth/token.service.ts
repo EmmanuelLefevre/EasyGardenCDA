@@ -13,7 +13,7 @@ export class TokenService {
   constructor(private router: Router) { }
 
   saveToken(token: string): void{
-    localStorage.setItem('access_token', token)    
+    localStorage.setItem('token', token)    
     this.router.navigate(['easygarden'])
   }
 
