@@ -33,7 +33,7 @@ export class AuthService {
       isVerified: true,
       roles:["ROLE_USER"]
     };
-    return this.httpClient.post(environment.apis.register.url, profile)
+    return this.httpClient.post(environment.apis.user.url, profile)
   }
   
 }
