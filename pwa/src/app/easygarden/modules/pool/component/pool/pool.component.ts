@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PoolService } from '../../pool.service';
+
 @Component({
   selector: 'app-pool',
   templateUrl: './pool.component.html',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class PoolComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pool: PoolService) { }
 
   ngOnInit(): void {
   }

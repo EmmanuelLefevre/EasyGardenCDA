@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { WateringService } from '../../watering.service';
+
 @Component({
   selector: 'app-watering',
   templateUrl: './watering.component.html',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class WateringComponent implements OnInit {
 
-  constructor() { }
+  constructor(private watering: WateringService) { }
 
   ngOnInit(): void {
   }

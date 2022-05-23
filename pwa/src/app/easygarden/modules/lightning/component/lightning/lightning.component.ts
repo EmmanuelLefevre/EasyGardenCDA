@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { LightningService } from '../../lightning.service';
+
 @Component({
   selector: 'app-lightning',
   templateUrl: './lightning.component.html',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class LightningComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lightning: LightningService) { }
 
   ngOnInit(): void {
   }
