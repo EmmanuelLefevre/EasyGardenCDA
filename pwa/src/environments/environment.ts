@@ -8,8 +8,26 @@ export const environment = {
     login: {
       url: 'http://localhost:8000/api/login_check'
     },
-    register: {
+    user: {
       url: 'http://localhost:8000/api/users'
+    },
+    garden: {
+      url: 'http://localhost:8000/api/gardens'
+    },
+    lawnmower: {
+      url: 'http://localhost:8000/api/lawnmowers'
+    },
+    lightning: {
+      url: 'http://localhost:8000/api/lightnings'
+    },
+    pool: {
+      url: 'http://localhost:8000/api/pools'
+    },
+    portal: {
+      url: 'http://localhost:8000/api/portals'
+    },
+    watering: {
+      url: 'http://localhost:8000/api/waterings'
     }
   }
 };
