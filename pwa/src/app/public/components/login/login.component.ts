@@ -74,10 +74,10 @@ export class LoginComponent implements OnInit {
     }
     const typedLoginForm: CredentialsModel = this.loginForm.value;
     this.success = JSON.stringify(typedLoginForm);
-    console.log(typedLoginForm)
+    // console.log(typedLoginForm)
     this.authService.logIn(typedLoginForm).subscribe(
       data => {
-        console.log(data.token)
+        // console.log(data.token)
         this.tokenService.saveToken(data.token)
       },
       err => console.log(err)

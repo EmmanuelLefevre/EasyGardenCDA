@@ -1,9 +1,11 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../../_services/auth/auth.service';
 import { FormValidationService } from '../../../_services/service/form-validation.service';
+import { UserModel } from '../../../_models/userModel';
 
 @Component({
   selector: 'app-register',
@@ -47,7 +49,8 @@ export class RegisterComponent implements OnInit {
   
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router : Router) {
     this.registerForm = this.formBuilder.group({
       email: [
         '',
@@ -116,15 +119,16 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    // console.log(this.registerForm);
     if (this.registerForm.invalid) {
-      console.log('Error: Form invalid');
+      return;
     }
-    // const typedRegisterForm: RegisterModel = this.registerForm.value;
-    // delete this.registerForm.value.confirmPassword;
-    // this.success = JSON.stringify(typedRegisterForm);
-    // this.authService.registerIn(typedRegisterForm).subscribe(() =>
-    //   this.router.navigate(['/'])
-    // );
+    const typedRegisterForm: UserModel = this.registerForm.value;
+    delete this.registerForm.value.confirmPassword;
+    this.success = JSON.stringify(typedRegisterForm);
+    this.authService.registerIn(typedRegisterForm).subscribe(() =>
+      this.router.navigate(['/'])
+    );
   }
 
   onReset(): void {

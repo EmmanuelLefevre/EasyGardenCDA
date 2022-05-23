@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { JWTInterceptorProvider } from './_services/utils/jwt.interceptor';
+
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorComponent } from './_services/utils/components/error/error.component';
@@ -22,7 +24,7 @@ import { ErrorComponent } from './_services/utils/components/error/error.compone
     HttpClientModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [JWTInterceptorProvider],
   bootstrap: [AppComponent]
 })
 
