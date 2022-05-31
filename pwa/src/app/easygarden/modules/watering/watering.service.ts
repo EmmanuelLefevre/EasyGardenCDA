@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { DataWateringModel } from './wateringModel';
+import { DataWateringModel, WateringModel } from './wateringModel';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +24,11 @@ export class WateringService {
   }
 
   // Delete Watering
-  deleteWatering(id: number): Observable<DataWateringModel[]> {
+  deleteWatering(watering: WateringModel | number): Observable<any> {
+    const id = typeof watering === 'number' ? watering : watering.id;
     return this.httpClient.delete<DataWateringModel[]>(environment.apis.watering.url+'/'+id)
   }
-  
+
   // unsubscribe() {
   //   throw new Error('WateringService Destroy');
   // }

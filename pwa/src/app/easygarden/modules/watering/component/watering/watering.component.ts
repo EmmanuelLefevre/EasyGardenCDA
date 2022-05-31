@@ -26,7 +26,7 @@ export class WateringComponent implements OnInit, OnDestroy {
   }
   
   // Display Waterings
-  fetchWaterings() {
+  fetchWaterings(): void {
     this.wateringService.getAll()
       .subscribe(
         (res:any) => {
@@ -38,7 +38,7 @@ export class WateringComponent implements OnInit, OnDestroy {
   }
 
   // Update Status
-  updateStatus(id: number, status: boolean) {
+  updateStatus(id: number, status: boolean): void {
     if (status === true) {
       status = !status;
       // console.log(id, status)
@@ -65,14 +65,9 @@ export class WateringComponent implements OnInit, OnDestroy {
   }
 
   // Delete Watering
-  deleteWatering(id: number) {
-    this.wateringService.deleteWatering(id)
-      .subscribe(
-        (res:any) => {
-          this.waterings = res
-          this.fetchWaterings();
-        }
-      )
+  deleteWatering(watering: WateringModel): void {
+    this.waterings = this.waterings.filter(h => h !== watering);
+    this.wateringService.deleteWatering(watering).subscribe()
   }
 
   ngOnDestroy() {
