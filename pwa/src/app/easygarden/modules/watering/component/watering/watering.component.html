@@ -21,19 +21,17 @@
       <tbody>
         <tr *ngFor="let watering of waterings">
           <td class="power">
-            <div class="">
+            <div class="status">
               status:{{ watering.status }} / id:{{ watering.id }}
             </div>
             <button type="submit" 
                     *ngIf="watering.status === true"
-                    (click)="updateStatus(watering.id, watering.status)"
-                    routerLink="/easygarden/watering/{{watering.id}}">
+                    (click)="updateStatus(watering.id, watering.status)">
               <fa-icon [icon]="faPowerOff"></fa-icon>
             </button>
             <button type="submit" class="btn-off" 
                     *ngIf="watering.status === false"
-                    (click)="updateStatus(watering.id, watering.status)"
-                    routerLink="/easygarden/watering/{{watering.id}}">
+                    (click)="updateStatus(watering.id, watering.status)">
               <fa-icon [icon]="faPowerOff"></fa-icon>
             </button>
           </td>
@@ -41,10 +39,12 @@
           <td>{{ watering.flowSensor }}</td>
           <td>{{ watering.pressureSensor }}</td>
           <td>
-            <button type="button">
+            <button type="button"
+                    routerLink="/easygarden/watering/{{watering.id}}">
               <fa-icon [icon]="faPen"></fa-icon>
             </button>
-            <button type="submit" class="trash">
+            <button type="submit" class="trash"
+            (click)="deleteWatering(watering.id)">
               <fa-icon [icon]="faTrash"></fa-icon>
             </button>
           </td>

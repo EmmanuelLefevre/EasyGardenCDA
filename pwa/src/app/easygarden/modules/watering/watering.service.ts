@@ -23,6 +23,11 @@ export class WateringService {
     return this.httpClient.put<DataWateringModel[]>(environment.apis.watering.url+'/'+id, {status})
   }
 
+  // Delete Watering
+  deleteWatering(id: number): Observable<DataWateringModel[]> {
+    return this.httpClient.delete<DataWateringModel[]>(environment.apis.watering.url+'/'+id)
+  }
+  
   // unsubscribe() {
   //   throw new Error('WateringService Destroy');
   // }
