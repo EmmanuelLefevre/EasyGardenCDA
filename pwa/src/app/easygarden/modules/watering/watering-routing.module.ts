@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { WateringComponent } from './component/watering/watering.component';
 
 const routes: Routes = [
-  { path: '', component: WateringComponent }
+  { path: '', component: WateringComponent },
+  { path: ':id', component: WateringComponent }
 ];
 
 @NgModule({

@@ -28,7 +28,10 @@
           <li class="border-bottom" [routerLinkActive]="['active-link']">
             <a [routerLink]="['profil']">Profil</a>
           </li>
-          <button (click)="logOut()" class="button-shadow">Déconnexion</button>
+          <button type="button" 
+                  (click)="logOut()" 
+                  class="button-shadow">Déconnexion
+          </button>
         </ul>
       </div>
     </div>

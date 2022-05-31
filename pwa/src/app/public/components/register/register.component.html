@@ -6,7 +6,9 @@
   <div class="div-wrapper">
     <div class="form-content form-border form-shadow">
       <div class="div-button-close">
-        <button (click)="closeRegisterForm()" class="button-circle button-shadow">
+        <button type="button" 
+                (click)="closeRegisterForm()" 
+                class="button-circle button-shadow">
           <fa-icon [icon]="faCircleXmark"></fa-icon>
         </button>
       </div>
@@ -130,8 +132,13 @@
         </div>
         </div>
         <div class="div-form-button">
-          <button type="submit" class="button-shadow">S'inscrire</button>
-          <button type="button" (click)="onReset()" class="button-shadow">Annuler</button>
+          <button type="submit" 
+                  class="button-shadow">S'inscrire
+          </button>
+          <button type="button" 
+                  (click)="onReset()" 
+                  class="button-shadow">Annuler
+          </button>
         </div>
       </form>
     </div>

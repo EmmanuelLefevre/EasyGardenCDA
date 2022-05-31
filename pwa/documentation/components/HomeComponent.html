@@ -331,7 +331,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>loginComponentClosed(_onClosed: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>loginComponentClosed(_onClosed: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
@@ -362,7 +362,7 @@
                                 <tr>
                                     <td>_onClosed</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
                                     </td>
 
                                     <td>
@@ -437,7 +437,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>registerComponentClosed(_onClosed: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>registerComponentClosed(_onClosed: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
@@ -468,7 +468,7 @@
                                 <tr>
                                     <td>_onClosed</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
                                     </td>
 
                                     <td>
@@ -640,7 +640,7 @@ export class HomeComponent implements OnInit {
   loadLoginComponent(){
     this.loginComponent &#x3D; !this.loginComponent;
   }
-  loginComponentClosed(_onClosed: any) {
+  loginComponentClosed(_onClosed: boolean) {
     this.loginComponent &#x3D; false;
     this.router.navigate([&#x27;home&#x27;]);
   }
@@ -650,7 +650,7 @@ export class HomeComponent implements OnInit {
   loadRegisterComponent(){
     this.registerComponent &#x3D; !this.registerComponent;
   }
-  registerComponentClosed(_onClosed: any) {
+  registerComponentClosed(_onClosed: boolean) {
     this.registerComponent &#x3D; false;
     this.router.navigate([&#x27;home&#x27;]);
   }
@@ -689,8 +689,7 @@ export class HomeComponent implements OnInit {
       &lt;button (click)&#x3D;&quot;loadRegisterComponent()&quot; [routerLink]&#x3D;&quot;[&#x27;register&#x27;]&quot;&gt;Inscription&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/ng-template&gt;
-</code></pre>
+&lt;/ng-template&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">

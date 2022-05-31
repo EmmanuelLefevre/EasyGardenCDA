@@ -1,0 +1,159 @@
+div {
+  .logo-panel {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 3vh;
+  }
+  hr {
+    width: 50%;
+    max-width: 460px;
+    border: 0;
+    height: 2px;
+    margin: 1.5vh 0px;
+    background: #95c11b;
+    background: -webkit-linear-gradient(left, #eef9d2, #cdec79, #b4e236, #95c11b 50%, #b4e236, #cdec79, #eef9d2);
+    background-image: -moz-linear-gradient(left, #eef9d2, #cdec79, #b4e236, #95c11b 50%, #b4e236, #cdec79, #eef9d2);
+    background-image: -ms-linear-gradient(left, #eef9d2, #cdec79, #b4e236, #95c11b 50%, #b4e236, #cdec79, #eef9d2);
+    background-image: -o-linear-gradient(left, #eef9d2, #cdec79, #b4e236, #95c11b 50%, #b4e236, #cdec79, #eef9d2);
+  }
+  h1 {
+    font-family: var(--ang-font-body-text);
+    font-weight: var(--ang-body-font-weight-medium);
+    font-size: 40px;
+    color: #808080;
+    -webkit-text-stroke: 1.5px;
+    -webkit-text-stroke-color: var(--ang-color-green);
+    text-shadow: 0 0 0.5em var(--ang-color-title-tab-rgba);
+  }
+  .table {
+    margin: 6vh 0 3vh 0;
+    padding: 3px;
+    table {
+      border-collapse: collapse;
+      thead {
+        th {
+          font-family: var(--ang-font-serif-text);
+          font-weight: var(--ang-serif-font-weight-regular);
+          font-size: 1.1rem;
+          color: var(--ang-color-white);
+          background-color: var(--ang-color-green);
+          border: 2px solid var(--ang-color-white);
+          height: 6vh;
+        }
+      }
+      tbody {
+        font-family: var(--ang-font-body-text);
+        font-weight: var(--ang-body-font-weight-thin);
+        font-size: 14px;
+        &:hover {
+          background-color: var(--ang-color-table-hover);
+        }
+        tr:nth-child(odd) {
+          background-color: #e0e2e5;
+        }
+        tr:nth-child(even){
+          color: #666666;
+          background-color: #f7f7f7;
+        }
+        td {
+          border: 2px solid var(--ang-color-white);
+          height: 5vh;
+          button {
+            background-color: var(--ang-color-border-button);
+            border: 2px solid var(--ang-color-green);
+            margin: 0 0.8rem;
+            padding: 0.3rem 0.7rem;
+            &:hover {
+              background-color: var(--ang-color-white);
+            }
+            fa-icon {
+              font-size: 1.2rem;
+              color: var(--ang-color-grey);
+            }
+          }
+          button:hover fa-icon {
+            color: var(--ang-color-green)
+          }
+          button.trash {
+            &:hover {
+              border-color: var(--ang-color-alert);
+            }
+          }
+          button.trash:hover fa-icon {
+            color: var(--ang-color-alert)
+          }
+        }
+      }
+      th, td {
+        width: 10rem;
+        max-width: 15rem;
+        text-align: center;
+      }
+    }
+    table.t-hover tr:hover {
+      background-color: var(--ang-color-table-hover);
+    }
+    table>thead>tr>th.power,
+    table>tbody>tr>td.power {
+      width: 7rem;
+      div.status {
+        display: none;
+      }
+      button {
+        border-radius: 50%;
+        &:hover {
+          background-color: var(--ang-color-alert);
+          border-color: var(--ang-color-alert2);
+          -webkit-animation: pulse-red 2s infinite;
+          animation: pulse-red 2s infinite;
+        }
+        fa-icon {
+          color: var(--ang-color-grey);
+        }
+      }
+      button.btn-off {
+        background-color: var(--ang-color-alert);
+        border-color: var(--ang-color-alert2);
+        &:hover {
+          background-color: var(--ang-color-border-button);
+          border-color: var(--ang-color-green);
+          -webkit-animation: pulse-green 2s infinite;
+          animation: pulse-green 2s infinite;
+        }
+      }
+    }
+  }
+  div.submit {
+    button {
+      font-size: 1.1rem;
+      width: 7rem;
+      margin: 4rem 0 4rem 0;
+    }
+  }
+}
+
+
+// .btn-statut-off {
+//   width: 20px;
+//   height: 20px;
+//   background-color:red;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+// .btn-statut-on {
+//   width: 20px;
+//   height: 20px;
+//   background-color: green;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+// .cellule-alert {
+//   background-color:#ffad33;
+//   color: red;
+// }
+// .text-statut-color-off {
+//   color: red;
+// }
+// .text-statut-color-on {
+//   color: green;
+// }

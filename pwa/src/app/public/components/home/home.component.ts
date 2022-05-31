@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   loadLoginComponent(){
     this.loginComponent = !this.loginComponent;
   }
-  loginComponentClosed(_onClosed: any) {
+  loginComponentClosed(_onClosed: boolean) {
     this.loginComponent = false;
     this.router.navigate(['home']);
   }
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   loadRegisterComponent(){
     this.registerComponent = !this.registerComponent;
   }
-  registerComponentClosed(_onClosed: any) {
+  registerComponentClosed(_onClosed: boolean) {
     this.registerComponent = false;
     this.router.navigate(['home']);
   }

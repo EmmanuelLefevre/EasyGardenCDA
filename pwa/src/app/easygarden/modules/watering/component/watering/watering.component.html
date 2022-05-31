@@ -1,1 +1,59 @@
-<p>watering works!</p>
+<div class="div-wrapper animate__animated animate__jackInTheBox">
+  <div>
+    <img class="logo-panel" src="assets/img/easygarden.png" alt="logo">
+  </div>
+  <hr>
+  <h1 class="titre-tableau">Panneau Arrosage</h1>
+  <hr>
+  <div class="table form-border form-shadow">
+    <table class="t-hover">
+
+      <thead>             
+        <tr>
+          <th class="power">On/Off</th>
+          <th>Nom</th>
+          <th>Débit (m3/s)</th>
+          <th>Pression (bars)</th>
+          <th>Action</th>                   
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let watering of waterings">
+          <td class="power">
+            <div class="">
+              status:{{ watering.status }} / id:{{ watering.id }}
+            </div>
+            <button type="submit" 
+                    *ngIf="watering.status === true"
+                    (click)="updateStatus(watering.id, watering.status)"
+                    routerLink="/easygarden/watering/{{watering.id}}">
+              <fa-icon [icon]="faPowerOff"></fa-icon>
+            </button>
+            <button type="submit" class="btn-off" 
+                    *ngIf="watering.status === false"
+                    (click)="updateStatus(watering.id, watering.status)"
+                    routerLink="/easygarden/watering/{{watering.id}}">
+              <fa-icon [icon]="faPowerOff"></fa-icon>
+            </button>
+          </td>
+          <td>{{ watering.name }}</td>
+          <td>{{ watering.flowSensor }}</td>
+          <td>{{ watering.pressureSensor }}</td>
+          <td>
+            <button type="button">
+              <fa-icon [icon]="faPen"></fa-icon>
+            </button>
+            <button type="submit" class="trash">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="submit">
+    <button type="button" id="submit" class="button-shadow">Ajouter</button>
+  </div>
+</div>

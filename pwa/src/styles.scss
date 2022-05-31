@@ -1,48 +1,66 @@
 /*------Color-Palette------*/
 :root {
+  /*------Main Colors------*/
   --ang-color-green: #95cb11;
+  --ang-color-green-rgba: rgba(149,203,17,0.55);
   --ang-color-white: #ffffff;
   --ang-color-grey: #666666;
   --ang-color-alert: #ff0f0f;
+  --ang-color-alert2: #eb8100;
   --ang-color-focus: #2fa6ff;
   --ang-color-background: #f2f2f2;
   
-  --ang-color-text-button: #c1c1c1;
-  --ang-color-border-button: #C4F253;
+  /*------Background------*/
+  --bg-color: var(--ang-color-background);
 
-  --ang-color-title-form-shadow: #858585;
-
-  --ang-color-input-hover: #e1ff95;
-
-  --ang-color-divider-light: rgba(0, 0, 0, 0.29);
+  /*------Text------*/
   --ang-color-text-dark: #000000;
   --ang-color-text-white: #ffffff;
   --ang-color-text-light: rgba(60, 60, 60, 0.66);
-}
-/*------Semantic-Color-Variables------*/
-:root {
-  --bg-color: var(--ang-color-background);
-  
-  --color-border: var(--ang-color-border-button);
-  --color-border-hover: var(--ang-color-green);
-  
   --color-heading: var(--ang-color-text-light);
   --color-text: var(--ang-color-text-dark);
-  
-  --section-gap: 160px;
 
-  --ang-font-body-text: 'roboto', sans-serif;
+  /*------Buttons------*/
+  --ang-color-text-button: #c1c1c1;
+  --ang-color-border-button: #C4F253;
+
+  /*------Title------*/
+  --ang-color-title-tab-rgba: rgba(0,0,0,0.5);
+
+  /*------Hovers------*/
+  --ang-color-input-hover: #e1ff95;
+  --ang-color-table-hover: #e0f7a1;
+  --color-border-hover: var(--ang-color-green);
+
+  /*------Shadows------*/
+  --ang-color-title-form-shadow: #858585;
+  --ang-color-button-shadow-rgba: rgba(0,0,0,0.5);
+  --ang-color-form-shadow-rgba: rgba(0,0,0,0.3);
+  
+  /*------Borders------*/
+  --color-border: var(--ang-color-border-button);
+
+  /*------Dividers/HR------*/
+  --ang-color-divider-light: rgba(0, 0, 0, 0.29);
+}
+
+/*------Semantic Fonts------*/
+:root {
+  /*------Roboto------*/
+  --ang-font-body-text: 'roboto';
   --ang-body-font-weight-thin: 100;
   --ang-body-font-weight-light: 300;
   --ang-body-font-weight-regular: 400;
   --ang-body-font-weight-medium: 500;
   --ang-body-font-weight-bold: 700;
 
+  /*------Roboto Condensed------*/
   --ang-font-button-text: 'roboto condensed', sans-serif;
   --ang-button-font-weight-light: 300;
   --ang-button-font-weight-regular: 400;
   --ang-button-font-weight-bold: 700;
 
+  /*------Roboto Serif------*/
   --ang-font-serif-text: 'roboto serif', serif;
   --ang-serif-font-weight-thin: 100;
   --ang-serif-font-weight-extra-light: 200;
@@ -50,21 +68,13 @@
   --ang-serif-font-weight-regular: 400;
 }
 
-/*------Fonts------*/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Serif:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400&display=swap');
 
 @font-face {
   font-family: "Charlotte Southern";
   src: url("assets/fonts/Southern/Southern.ttf") format("ttf");
-}
-
-/*------Animations------*/
-@import '~animate.css/animate.min';
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /*------Reset------*/
@@ -104,6 +114,10 @@ body {
     padding: 0px 1.5rem;
   }
   /*------Title------*/
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
   .form-title {
     font-family: "Charlotte Southern";
     font-size: 3.5rem;
@@ -176,16 +190,16 @@ body {
   }
   /*------Shadows------*/
   .button-shadow{
-    box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
-    -webkit-box-shadow: 0 8px 10px -6px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 10px -6px var(--ang-color-button-shadow-rgba);
+    -webkit-box-shadow: 0 8px 10px -6px var(--ang-color-button-shadow-rgba);
     &:hover {
-      box-shadow: 0 8px 20px -3px rgba(0,0,0,0.5);
-    -webkit-box-shadow: 0 8px 20px -3px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 20px -3px var(--ang-color-button-shadow-rgba);
+    -webkit-box-shadow: 0 8px 20px -3px var(--ang-color-button-shadow-rgba);
     }
   }
   .input-inset-shadow{
-    box-shadow: inset 0 0px 20px 7px rgba(149,203,17,0.55);
-    -webkit-box-shadow: inset 0 0px 20px 7px rgba(149,203,17,0.55);
+    box-shadow: inset 0 0px 20px 7px var(--ang-color-green-rgba);
+    -webkit-box-shadow: inset 0 0px 20px 7px var(--ang-color-green-rgba);
   }
   .title-form-shadow {
     text-shadow: 0px 5px 20px var(--ang-color-title-form-shadow);
@@ -197,8 +211,8 @@ body {
     }
   }
   .form-shadow {
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 30px 60px 0 var(--ang-color-form-shadow-rgba);
+    box-shadow: 0 30px 60px 0 var(--ang-color-form-shadow-rgba);
   }
   /*------Form------*/
   .form-content {
@@ -272,8 +286,8 @@ body {
   }
   /*------Invalid-Input------*/
   .invalid-feedback {
-    box-shadow: inset 0 0px 10px 2px rgb(255,15,15);
-    -webkit-box-shadow: inset 0 0px 10px 2px rgb(255,15,15);
+    box-shadow: inset 0 0px 10px 2px var(--ang-color-alert);
+    -webkit-box-shadow: inset 0 0px 10px 2px var(--ang-color-alert);
     border: 2px solid var(--ang-color-alert) !important;
     background-color: var(--ang-color-white) !important;
   }

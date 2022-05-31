@@ -28,17 +28,20 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content component">
+               <div class="content interceptor">
                    <div class="content-data">
 
 
 
 
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
-  >
-  LawnmowerComponent</li>
+  <li>Interceptors</li>
+  <li >JwtInterceptor</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -48,80 +51,21 @@
         <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
-        </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
-        </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/app/easygarden/modules/lawnmower/component/lawnmower.component.ts</code>
-</p>
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/_services/utils/jwt.interceptor.ts</code>
+        </p>
 
 
 
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-    </p>
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover metadata">
-        <tbody>
-
-
-
-
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-lawnmower</code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./lawnmower.component.scss</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./lawnmower.component.html</code></td>
-            </tr>
-
-
-
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section>
+            <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -135,7 +79,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
+                                <a href="#intercept" >intercept</a>
                             </li>
                         </ul>
                     </td>
@@ -149,18 +93,18 @@
     </table>
 </section>
 
-    <section>
+            <section>
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(lawnmower: <a href="../injectables/LawnmowerService.html" target="_self">LawnmowerService</a>)</code>
+<code>constructor(tokenService: <a href="../injectables/TokenService.html" target="_self">TokenService</a>, apiErrorService: <a href="../injectables/ApiErrorService.html" target="_self">ApiErrorService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/easygarden/modules/lawnmower/component/lawnmower.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/_services/utils/jwt.interceptor.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -178,10 +122,22 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>lawnmower</td>
+                                                        <td>tokenService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/LawnmowerService.html" target="_self" >LawnmowerService</a></code>
+                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apiErrorService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiErrorService.html" target="_self" >ApiErrorService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -198,11 +154,7 @@
         </table>
 </section>
 
-
-
-
-
-    <section>
+            <section>
     
     <h3 id="methods">
         Methods
@@ -211,24 +163,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="ngOnInit"></a>
+                    <a name="intercept"></a>
                     <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>intercept</b></span>
+                        <a href="#intercept"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>ngOnInit()</code>
+<code>intercept(request: HttpRequest<>, next: <a href="https://angular.io/api/common/http/HttpHandler" target="_blank">HttpHandler</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/easygarden/modules/lawnmower/component/lawnmower.component.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/app/_services/utils/jwt.interceptor.ts:16</a></div>
                 </td>
             </tr>
 
@@ -237,8 +189,52 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>request</td>
+                                    <td>
+                                            <code>HttpRequest&lt;&gt;</code>
+                                    </td>
 
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>next</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/common/http/HttpHandler" target="_blank" >HttpHandler</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;HttpEvent&lt;&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -246,79 +242,63 @@
     </table>
 </section>
 
-</div>
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from &#x27;@angular/common/http&#x27;;
+import { catchError, Observable, throwError } from &#x27;rxjs&#x27;;
 
-import { LawnmowerService } from &#x27;../lawnmower.service&#x27;;
+import { TokenService } from &#x27;../../_services/auth/token.service&#x27;;
+import { ApiErrorService } from &#x27;../../_services/service/api-error.service&#x27;;
 
-@Component({
-  selector: &#x27;app-lawnmower&#x27;,
-  templateUrl: &#x27;./lawnmower.component.html&#x27;,
-  styleUrls: [&#x27;./lawnmower.component.scss&#x27;]
+@Injectable({
+  providedIn: &#x27;root&#x27;
 })
 
-export class LawnmowerComponent implements OnInit {
+export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private lawnmower: LawnmowerService) { }
+  constructor(private tokenService: TokenService, private apiErrorService: ApiErrorService) { }
 
-  ngOnInit(): void {
+  intercept(request: HttpRequest&lt;unknown&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;unknown&gt;&gt; {
+    
+    // console.log(request)
+    const token &#x3D; this.tokenService.getToken()
+
+    // SI token à insérer dans le header
+    if(token !&#x3D;&#x3D; null){
+      let clone &#x3D; request.clone({
+        headers: request.headers.set(&#x27;Authorization&#x27;, &#x27;bearer &#x27;+token)
+      })
+      // console.log(clone)
+      return next.handle(clone).pipe(
+        catchError(error &#x3D;&gt; {
+          // console.log(error)
+
+          if(error.status &#x3D;&#x3D;&#x3D; 401){
+            this.tokenService.clearTokenExpired()
+          }
+
+          this.apiErrorService.sendError(error.error.message)
+          return throwError(() &#x3D;&gt; new error(&#x27;Session Expired&#x27;))
+        })
+      )
+    }
+    
+    return next.handle(request);
   }
 
 }
+
+export const JWTInterceptorProvider &#x3D; {
+  provide: HTTP_INTERCEPTORS,
+  useClass: JwtInterceptor,
+  multi: true
+}
 </code></pre>
     </div>
-
-    <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;p&gt;lawnmower works!&lt;/p&gt;
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="c-styleData">
-                <p class="comment">
-                    <code>./lawnmower.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss"></code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="c-tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
-        </div>
-    </div>
-
-    
 </div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><p>lawnmower works!</p></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ErrorComponent', 'selector': 'app-error'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LawnmowerComponent', 'selector': 'app-lawnmower'},{'name': 'LayoutComponent', 'selector': 'app-layout'},{'name': 'LightningComponent', 'selector': 'app-lightning'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PoolComponent', 'selector': 'app-pool'},{'name': 'PortalComponent', 'selector': 'app-portal'},{'name': 'ProfilComponent', 'selector': 'app-profil'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WateringComponent', 'selector': 'app-watering'}];
-    var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'LawnmowerComponent'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
-
-
 
 
 
@@ -356,8 +336,8 @@ export class LawnmowerComponent implements OnInit {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'LawnmowerComponent.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interceptor';
+            var COMPODOC_CURRENT_PAGE_URL = 'JwtInterceptor.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
