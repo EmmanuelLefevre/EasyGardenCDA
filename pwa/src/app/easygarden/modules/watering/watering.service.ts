@@ -24,9 +24,9 @@ export class WateringService {
   }
 
   // Delete Watering
-  deleteWatering(watering: WateringModel | number): Observable<any> {
+  deleteWatering(watering: WateringModel | number): Observable<WateringModel> {
     const id = typeof watering === 'number' ? watering : watering.id;
-    return this.httpClient.delete<DataWateringModel[]>(environment.apis.watering.url+'/'+id)
+    return this.httpClient.delete<WateringModel>(environment.apis.watering.url+'/'+id)
   }
 
   // unsubscribe() {
