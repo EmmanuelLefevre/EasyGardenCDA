@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PortalComponent } from './component/portal/portal.component';
+import { PortalComponent } from './components/portal/portal.component';
 
 const routes: Routes = [
   { path: '', component: PortalComponent },

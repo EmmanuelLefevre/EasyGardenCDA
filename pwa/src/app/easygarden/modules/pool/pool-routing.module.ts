@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PoolComponent } from './component/pool/pool.component';
+import { PoolComponent } from './components/pool/pool.component';
 
 const routes: Routes = [
   { path: '', component: PoolComponent },

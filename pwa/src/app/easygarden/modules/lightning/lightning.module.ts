@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { LightningRoutingModule } from './lightning-routing.module';
-import { LightningComponent } from './component/lightning/lightning.component';
+import { LightningComponent } from './components/lightning/lightning.component';
 
 
 @NgModule({

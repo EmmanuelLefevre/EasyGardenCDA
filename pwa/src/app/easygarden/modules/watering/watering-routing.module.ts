@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { WateringComponent } from './component/watering/watering.component';
+import { WateringComponent } from './components/watering/watering.component';
 
 const routes: Routes = [
   { path: '', component: WateringComponent },

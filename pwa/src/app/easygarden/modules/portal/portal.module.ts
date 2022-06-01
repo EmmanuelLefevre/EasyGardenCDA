@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { PortalRoutingModule } from './portal-routing.module';
-import { PortalComponent } from './component/portal/portal.component';
+import { PortalComponent } from './components/portal/portal.component';
 
 
 @NgModule({

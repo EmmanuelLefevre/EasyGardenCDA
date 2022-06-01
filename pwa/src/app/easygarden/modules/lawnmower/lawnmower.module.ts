@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { LawnmowerRoutingModule } from './lawnmower-routing.module';
-import { LawnmowerComponent } from './component/lawnmower.component';
+import { LawnmowerComponent } from './components/lawnmower/lawnmower.component';
 
 
 @NgModule({

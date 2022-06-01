@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { LawnmowerService } from '../lawnmower.service';
-import { LawnmowerModel } from '../lawnmowerModel';
+import { LawnmowerService } from '../../lawnmower.service';
+import { LawnmowerModel } from '../../lawnmowerModel';
 
 @Component({
   selector: 'app-lawnmower',

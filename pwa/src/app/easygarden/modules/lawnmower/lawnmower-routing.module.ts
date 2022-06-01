@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LawnmowerComponent } from './component/lawnmower.component';
+import { LawnmowerComponent } from './components/lawnmower/lawnmower.component';
 
 const routes: Routes = [
   { path: '', component: LawnmowerComponent },
