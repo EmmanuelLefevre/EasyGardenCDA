@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { PoolRoutingModule } from './pool-routing.module';
 import { PoolComponent } from './component/pool/pool.component';
@@ -11,7 +12,8 @@ import { PoolComponent } from './component/pool/pool.component';
   ],
   imports: [
     CommonModule,
-    PoolRoutingModule
+    PoolRoutingModule,
+    FontAwesomeModule
   ]
 })
 

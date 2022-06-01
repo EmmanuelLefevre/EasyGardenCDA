@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PoolComponent } from './component/pool/pool.component';
 
 const routes: Routes = [
-  { path: '', component: PoolComponent }
+  { path: '', component: PoolComponent },
+  { path: ':id', component: PoolComponent }
 ];
 
 @NgModule({

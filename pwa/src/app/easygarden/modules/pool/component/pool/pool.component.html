@@ -1,1 +1,55 @@
-<p>pool works!</p>
+<div class="div-wrapper animate__animated animate__jackInTheBox">
+  <div>
+    <img class="logo-panel" src="assets/img/easygarden.png" alt="logo">
+  </div>
+  <hr>
+  <h1 class="titre-tableau">Panneau Bassin</h1>
+  <hr>
+  <div class="table form-border form-shadow">
+    <table class="t-hover">
+
+      <thead>             
+        <tr>
+          <th class="power">On/Off</th>
+          <th>Nom</th>
+          <th>Action</th>                   
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let pool of pools">
+          <td class="power">
+            <div class="status">
+              status:{{ pool.status }} / id:{{ pool.id }}
+            </div>
+            <button type="submit" 
+                    *ngIf="pool.status === true"
+                    (click)="updateStatus(pool.id, pool.status)">
+              <fa-icon [icon]="faPowerOff"></fa-icon>
+            </button>
+            <button type="submit" class="btn-off" 
+                    *ngIf="pool.status === false"
+                    (click)="updateStatus(pool.id, pool.status)">
+              <fa-icon [icon]="faPowerOff"></fa-icon>
+            </button>
+          </td>
+          <td>{{ pool.name }}</td>
+          <td>
+            <button type="button"
+                    routerLink="/easygarden/pool/{{pool.id}}">
+              <fa-icon [icon]="faPen"></fa-icon>
+            </button>
+            <button type="submit" class="trash"
+                    (click)="deletePool(pool)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="submit">
+    <button type="button" id="submit" class="button-shadow">Ajouter</button>
+  </div>
+</div>

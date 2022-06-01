@@ -13,7 +13,7 @@ export class LightningService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // Get Index of Waterings
+  // Get Index of Lightnings
   getAll(): Observable<DataLightningModel[]> {
     return this.httpClient.get<DataLightningModel[]>(environment.apis.lightning.url);
   }

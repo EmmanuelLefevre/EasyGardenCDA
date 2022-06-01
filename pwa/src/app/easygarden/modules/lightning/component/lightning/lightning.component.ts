@@ -25,7 +25,7 @@ export class LightningComponent implements OnInit {
     this.fetchLightnings();
   }
 
-  // Display Waterings
+  // Display Lightnings
   fetchLightnings(): void {
     this.lightningService.getAll()
       .subscribe(
@@ -64,7 +64,7 @@ export class LightningComponent implements OnInit {
     }
   }
 
-  // Delete Watering
+  // Delete Lightning
   deleteLightning(lightning: LightningModel): void {
     this.lightnings = this.lightnings.filter(h => h !== lightning);
     this.lightningService.deleteLightning(lightning).subscribe()
