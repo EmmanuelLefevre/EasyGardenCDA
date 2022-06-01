@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { LightningModel } from '../../lightningModel';
@@ -10,7 +10,7 @@ import { LightningService } from '../../lightning.service';
   styleUrls: ['./lightning.component.scss']
 })
 
-export class LightningComponent implements OnInit {
+export class LightningComponent implements OnInit, OnDestroy {
 
   faPowerOff = faPowerOff;
   faPen = faPen;

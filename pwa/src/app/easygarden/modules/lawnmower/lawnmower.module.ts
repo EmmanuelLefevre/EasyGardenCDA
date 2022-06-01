@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { LawnmowerRoutingModule } from './lawnmower-routing.module';
 import { LawnmowerComponent } from './component/lawnmower.component';
@@ -11,7 +12,8 @@ import { LawnmowerComponent } from './component/lawnmower.component';
   ],
   imports: [
     CommonModule,
-    LawnmowerRoutingModule
+    LawnmowerRoutingModule,
+    FontAwesomeModule
   ]
 })
 

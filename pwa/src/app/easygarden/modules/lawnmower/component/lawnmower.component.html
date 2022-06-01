@@ -1,1 +1,57 @@
-<p>lawnmower works!</p>
+<div class="div-wrapper animate__animated animate__jackInTheBox">
+  <div>
+    <img class="logo-panel" src="assets/img/easygarden.png" alt="logo">
+  </div>
+  <hr>
+  <h1 class="titre-tableau">Panneau Tondeuse</h1>
+  <hr>
+  <div class="table form-border form-shadow">
+    <table class="t-hover">
+
+      <thead>             
+        <tr>
+          <th class="power">On/Off</th>
+          <th>Nom</th>
+          <th>Batterie</th>
+          <th>Action</th>                   
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let lawnmower of lawnmowers">
+          <td class="power">
+            <div class="status">
+              status:{{ lawnmower.status }} / id:{{ lawnmower.id }}
+            </div>
+            <button type="submit" 
+                    *ngIf="lawnmower.status === true"
+                    (click)="updateStatus(lawnmower.id, lawnmower.status)">
+              <fa-icon [icon]="faPowerOff"></fa-icon>
+            </button>
+            <button type="submit" class="btn-off" 
+                    *ngIf="lawnmower.status === false"
+                    (click)="updateStatus(lawnmower.id, lawnmower.status)">
+              <fa-icon [icon]="faPowerOff"></fa-icon>
+            </button>
+          </td>
+          <td>{{ lawnmower.name }}</td>
+          <td>{{ lawnmower.batterySensor }}</td>
+          <td>
+            <button type="button"
+                    routerLink="/easygarden/lawnmower/{{lawnmower.id}}">
+              <fa-icon [icon]="faPen"></fa-icon>
+            </button>
+            <button type="submit" class="trash"
+                    (click)="deleteLawnmower(lawnmower)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="submit">
+    <button type="button" id="submit" class="button-shadow">Ajouter</button>
+  </div>
+</div>

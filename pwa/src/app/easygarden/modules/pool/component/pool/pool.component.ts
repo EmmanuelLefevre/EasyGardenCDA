@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { PoolService } from '../../pool.service';
@@ -10,7 +10,7 @@ import { PoolModel } from '../../poolModel';
   styleUrls: ['./pool.component.scss']
 })
 
-export class PoolComponent implements OnInit {
+export class PoolComponent implements OnInit, OnDestroy {
 
   faPowerOff = faPowerOff;
   faPen = faPen;
@@ -68,6 +68,10 @@ export class PoolComponent implements OnInit {
   deletePool(pool: PoolModel): void {
     this.pools = this.pools.filter(h => h !== pool);
     this.poolService.deletePool(pool).subscribe()
+  }
+
+  ngOnDestroy() {
+    // this.lawnmowerService.unsubscribe();
   }
 
 }
