@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LightningComponent } from './component/lightning/lightning.component';
 
 const routes: Routes = [
-  { path: '', component: LightningComponent }
+  { path: '', component: LightningComponent },
+  { path: ':id', component: LightningComponent }
 ];
 
 @NgModule({
