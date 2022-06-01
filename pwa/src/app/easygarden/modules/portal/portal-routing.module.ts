@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PortalComponent } from './component/portal/portal.component';
 
 const routes: Routes = [
-  { path: '', component: PortalComponent }
+  { path: '', component: PortalComponent },
+  { path: ':id', component: PortalComponent }
 ];
 
 @NgModule({
