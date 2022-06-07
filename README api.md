@@ -31,21 +31,25 @@ composer require symfony/maker-bundle --dev
 ```
 composer require sensio/framework-extra-bundle
 ```
-9. &nbsp;&nbsp;*/EasyGardenCDA/.env.local*
+9. &nbsp;&nbsp;*/EasyGardenCDA/api*
+```
+composer require --dev symfony/profiler-pack
+```
+10. &nbsp;&nbsp;*/EasyGardenCDA/.env.local*
 \
 **Commenter** &nbsp;&nbsp; DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
 **Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenCDA?serverVersion=mariadb-10.5.8"
 \
 **Noter** &nbsp;&nbsp; APP_ENV=dev
-10. */EasyGardenCDA/api/.env*
+11. */EasyGardenCDA/api/.env*
 \
 **Commenter** &nbsp;&nbsp; DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8"
 \
 **Décommenter** &nbsp;&nbsp; DATABASE_URL="mysql://root:@127.0.0.1:3306/EasyGardenCDA?serverVersion=mariadb-10.5.8"
 \
 **Noter**APP_ENV=prod
-11. */EasyGardenCDA/api*
+12. */EasyGardenCDA/api*
 ```
 composer require --dev symfony/profiler-pack
 ```
