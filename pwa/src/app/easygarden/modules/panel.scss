@@ -112,8 +112,9 @@ div {
         }
       }
       button.btn-off {
-        background-color: var(--ang-color-alert);
-        border-color: var(--ang-color-alert2);
+        background-color: rgba(193, 193, 193, 0.5);
+        // border-color: var(--ang-color-alert);
+        border-color: rgba(255, 15, 15, 0.2);
         &:hover {
           background-color: var(--ang-color-border-button);
           border-color: var(--ang-color-green);
