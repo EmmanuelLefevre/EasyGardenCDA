@@ -35,7 +35,7 @@
 
   /*------Shadows------*/
   --ang-color-title-form-shadow: #858585;
-  --ang-color-button-shadow-rgba: rgba(0,0,0,0.5);
+  --ang-color-button-shadow-rgba: rgba(0,0,0,0.4);
   --ang-color-form-shadow-rgba: rgba(0,0,0,0.3);
   
   /*------Borders------*/
@@ -173,12 +173,16 @@ body {
       color: var(--ang-color-white);
       border: 2px solid var(--ang-color-green);
       border-radius: 50%;
-      margin: 0px;
-      padding: 0px;
+      margin: 0;
+      padding: 0;
       &:hover {
         color: var(--ang-color-white);
-        background: var(--ang-color-alert);
-        border: 2px solid var(--ang-color-alert);
+        background: rgba(255, 15, 15, 0.7);
+        border: 2px solid rgba(255, 15, 15, 0.5);
+        -webkit-animation: bounce 1.9s infinite;
+        animation: bounce 1.9s infinite;
+        -webkit-transform-origin: center bottom;
+        transform-origin: center bottom;
       }
       fa-icon {
         display: flex;
@@ -199,7 +203,7 @@ body {
     -webkit-box-shadow: 0 8px 10px -6px var(--ang-color-button-shadow-rgba);
     &:hover {
       box-shadow: 0 8px 20px -3px var(--ang-color-button-shadow-rgba);
-    -webkit-box-shadow: 0 8px 20px -3px var(--ang-color-button-shadow-rgba);
+      -webkit-box-shadow: 0 8px 20px -3px var(--ang-color-button-shadow-rgba);
     }
   }
   .input-inset-shadow{
