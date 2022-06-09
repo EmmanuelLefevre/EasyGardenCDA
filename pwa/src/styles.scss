@@ -6,6 +6,7 @@
   --ang-color-white: #ffffff;
   --ang-color-grey: #666666;
   --ang-color-alert: #ff0f0f;
+  --ang-color-alert-rgba: rgb(255,143,0,1);
   --ang-color-alert2: #eb8100;
   --ang-color-focus: #2fa6ff;
   --ang-color-background: #f2f2f2;
@@ -121,19 +122,21 @@ body {
   .form-title {
     font-family: "Charlotte Southern";
     font-size: 3.5rem;
+    font-weight: 900;
     color: var(--ang-color-green);
     margin-bottom: 1.5rem;
   }
   .form-title-content {
     position: relative;
-    font-size: 1.5rem;
-    font-weight: bold;
     color: var(--ang-color-green);
     text-transform: uppercase;
     border-bottom: 2px solid var(--ang-color-green);
     top: -2.2rem;
     .p-form-title-content {
       padding-bottom: 2rem;
+      font-family: "Charlotte Southern";;
+      font-size: 1.7rem;
+      font-weight: 700;
     }
   }
   /*------Button------*/

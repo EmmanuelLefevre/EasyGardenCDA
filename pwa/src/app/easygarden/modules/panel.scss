@@ -96,31 +96,33 @@ div {
     table>thead>tr>th.power,
     table>tbody>tr>td.power {
       width: 7rem;
-      div.status {
-        display: none;
-      }
       button {
         border-radius: 50%;
         &:hover {
-          background-color: var(--ang-color-alert);
+          background-color: var(--ang-color-alert-rgba);
           border-color: var(--ang-color-alert2);
-          -webkit-animation: pulse-red 2s infinite;
-          animation: pulse-red 2s infinite;
+          -webkit-animation: pulse-red 3s infinite;
+          animation: pulse-red 3s infinite;
         }
         fa-icon {
           color: var(--ang-color-grey);
+          // &:hover {
+          //   color: var(--color-text);
+          // }
         }
       }
       button.btn-off {
         background-color: rgba(193, 193, 193, 0.5);
-        // border-color: var(--ang-color-alert);
         border-color: rgba(255, 15, 15, 0.2);
         &:hover {
           background-color: var(--ang-color-border-button);
           border-color: var(--ang-color-green);
-          -webkit-animation: pulse-green 2s infinite;
-          animation: pulse-green 2s infinite;
+          -webkit-animation: pulse-green 3s infinite;
+          animation: pulse-green 3s infinite;
         }
+      }
+      button:hover fa-icon {
+        color: var(--color-text);
       }
     }
   }
