@@ -14,9 +14,9 @@ api_platform:
     #     force_eager: false
     #     fetch_partial: true
     defaults:
-        pagination_enabled: false
-        pagination_client_enabled: false
-        pagination_client_items_per_page: false
+        pagination_enabled: true
+        pagination_client_enabled: true
+        pagination_client_items_per_page: true
     collection:
         pagination:
             enabled_parameter_name: pagination
