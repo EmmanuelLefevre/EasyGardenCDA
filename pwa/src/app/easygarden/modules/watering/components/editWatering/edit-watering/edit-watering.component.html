@@ -24,7 +24,7 @@
         [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }">
         <div *ngIf="submitted && f['name'].errors">
           <div class="text-alert" *ngIf="f['name'].errors['required']">Veuillez saisir un nom!</div>
-          <!-- <div class="text-alert" *ngIf="f['name'].errors['lenght']">
+          <!-- <div class="text-alert" *ngIf="f['name'].errors['name']">
             Le nom doit contenir entre 4 et 20 caractères..
           </div> -->
           <div class="text-alert" *ngIf="f['name'].errors['validEquipmentName']">
