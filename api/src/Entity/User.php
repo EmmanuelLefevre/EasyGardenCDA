@@ -23,6 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     normalizationContext: ['groups' => ['read:User']],
     denormalizationContext: ['groups' => ['write:User']],
+    paginationItemsPerPage: 100,
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:User']]],
                            'post' => ['denormalization_context' => ['groups']]],
     attributes: ['pagination_client_enabled' => true,

@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Lightning']],
     denormalizationContext: ['groups' => ['write:Lightning']],
+    paginationItemsPerPage: 7,
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Lightning']]],
                            'post' => ['denormalization_context' => ['groups']]])]
 #[ApiFilter(BooleanFilter::class, properties: ['status'])]
