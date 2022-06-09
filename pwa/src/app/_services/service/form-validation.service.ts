@@ -98,4 +98,17 @@ export class FormValidationService {
     };
   }
 
+  validEquipmentName(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      if (control.value == '') return null;
+
+      let re = new RegExp('^([0-9a-zA-Z ]){3,20}$');
+      if (re.test(control.value)) {
+        return null;
+      } else {
+        return { validEquipmentName: true };
+      }
+    };
+  }
+
 }
