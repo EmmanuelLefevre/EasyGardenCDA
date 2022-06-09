@@ -23,15 +23,16 @@ export class WateringComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.fetchWaterings();
+    window.scrollTo(0, 0);
   }
   
   // Display Waterings
   fetchWaterings(): void {
-    this.wateringService.getAll()
+    this.wateringService.getAllWaterings()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          // console.log(JSON.stringify(res))  
+          // console.log(res);
           this.waterings = res['hydra:member'];
         }
       )

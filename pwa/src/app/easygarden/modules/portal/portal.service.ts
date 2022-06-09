@@ -14,7 +14,7 @@ export class PortalService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Portals
-  getAll(): Observable<DataPortalModel[]> {
+  getAllPortals(): Observable<DataPortalModel[]> {
     return this.httpClient.get<DataPortalModel[]>(environment.apis.portal.url);
   }
 

@@ -14,7 +14,7 @@ export class LawnmowerService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Lawnmowers
-  getAll(): Observable<DataLawnmowerModel[]> {
+  getAllLawnmowers(): Observable<DataLawnmowerModel[]> {
     return this.httpClient.get<DataLawnmowerModel[]>(environment.apis.lawnmower.url);
   }
 

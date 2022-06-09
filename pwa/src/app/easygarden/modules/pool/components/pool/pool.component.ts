@@ -27,11 +27,11 @@ export class PoolComponent implements OnInit, OnDestroy {
 
   // Display Pools
   fetchPools(): void {
-    this.poolService.getAll()
+    this.poolService.getAllPools()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          // console.log(JSON.stringify(res))  
+          // console.log(res)  
           this.pools = res['hydra:member'];
         }
       )

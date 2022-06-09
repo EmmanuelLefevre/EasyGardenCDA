@@ -27,11 +27,11 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
 
   // Display Lawnmowers
   fetchLawnmowers(): void {
-    this.lawnmowerService.getAll()
+    this.lawnmowerService.getAllLawnmowers()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          // console.log(JSON.stringify(res))  
+          // console.log(res)  
           this.lawnmowers = res['hydra:member'];
         }
       )

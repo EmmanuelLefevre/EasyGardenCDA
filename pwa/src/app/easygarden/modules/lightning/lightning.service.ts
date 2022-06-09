@@ -14,7 +14,7 @@ export class LightningService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Lightnings
-  getAll(): Observable<DataLightningModel[]> {
+  getAllLightnings(): Observable<DataLightningModel[]> {
     return this.httpClient.get<DataLightningModel[]>(environment.apis.lightning.url);
   }
 

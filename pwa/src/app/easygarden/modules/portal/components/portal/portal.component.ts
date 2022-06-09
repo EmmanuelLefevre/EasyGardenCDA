@@ -27,11 +27,11 @@ export class PortalComponent implements OnInit, OnDestroy {
 
   // Display Portals
   fetchPortals(): void {
-    this.portalService.getAll()
+    this.portalService.getAllPortals()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          // console.log(JSON.stringify(res))  
+          // console.log(res) 
           this.portals = res['hydra:member'];
         }
       )

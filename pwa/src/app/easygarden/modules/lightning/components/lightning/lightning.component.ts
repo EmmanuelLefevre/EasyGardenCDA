@@ -27,11 +27,11 @@ export class LightningComponent implements OnInit, OnDestroy {
 
   // Display Lightnings
   fetchLightnings(): void {
-    this.lightningService.getAll()
+    this.lightningService.getAllLightnings()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          // console.log(JSON.stringify(res))  
+          // console.log(res)   
           this.lightnings = res['hydra:member'];
         }
       )

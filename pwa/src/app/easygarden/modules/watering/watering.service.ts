@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { DataWateringModel, WateringModel } from './wateringModel';
+import { WateringModel, SingleWateringModel, DataWateringModel } from './wateringModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,23 @@ export class WateringService {
   constructor(private httpClient: HttpClient) { }
   
   // Get Index of Waterings
-  getAll(): Observable<DataWateringModel[]> {
+  getAllWaterings(): Observable<DataWateringModel[]> {
     return this.httpClient.get<DataWateringModel[]>(environment.apis.watering.url);
+  }
+
+  // Get Watering
+  getWatering(wid: string | null): Observable<SingleWateringModel>{
+    return this.httpClient.get<SingleWateringModel>(environment.apis.watering.url+'/'+wid)
   }
 
   // Update Status
   updateStatus(status: boolean, id: number): Observable<DataWateringModel[]> {
     return this.httpClient.put<DataWateringModel[]>(environment.apis.watering.url+'/'+id, {status})
+  }
+
+  // Update Watering
+  updateWatering(watering: WateringModel): Observable<DataWateringModel[]> {
+    return this.httpClient.put<DataWateringModel[]>(environment.apis.watering.url+'/'+watering.id, {watering})
   }
 
   // Delete Watering
