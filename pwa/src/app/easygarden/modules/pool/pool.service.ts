@@ -13,7 +13,7 @@ export class PoolService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Pools
-  getAll(): Observable<DataPoolModel[]> {
+  getAllPools(): Observable<DataPoolModel[]> {
     return this.httpClient.get<DataPoolModel[]>(environment.apis.pool.url);
   }
 
