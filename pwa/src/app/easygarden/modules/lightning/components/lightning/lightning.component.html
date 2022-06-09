@@ -19,9 +19,6 @@
       <tbody>
         <tr *ngFor="let lightning of lightnings">
           <td class="power">
-            <div class="status">
-              status:{{ lightning.status }} / id:{{ lightning.id }}
-            </div>
             <button type="submit" 
                     *ngIf="lightning.status === true"
                     (click)="updateStatus(lightning.id, lightning.status)">

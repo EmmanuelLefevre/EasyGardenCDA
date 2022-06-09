@@ -20,9 +20,6 @@
       <tbody>
         <tr *ngFor="let portal of portals">
           <td class="power">
-            <div class="status">
-              status:{{ portal.status }} / id:{{ portal.id }}
-            </div>
             <button type="submit" 
                     *ngIf="portal.status === true"
                     (click)="updateStatus(portal.id, portal.status)">

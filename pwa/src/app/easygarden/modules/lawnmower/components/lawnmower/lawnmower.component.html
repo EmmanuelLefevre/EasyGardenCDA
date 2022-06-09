@@ -20,9 +20,6 @@
       <tbody>
         <tr *ngFor="let lawnmower of lawnmowers">
           <td class="power">
-            <div class="status">
-              status:{{ lawnmower.status }} / id:{{ lawnmower.id }}
-            </div>
             <button type="submit" 
                     *ngIf="lawnmower.status === true"
                     (click)="updateStatus(lawnmower.id, lawnmower.status)">

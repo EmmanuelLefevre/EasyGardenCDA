@@ -19,9 +19,6 @@
       <tbody>
         <tr *ngFor="let pool of pools">
           <td class="power">
-            <div class="status">
-              status:{{ pool.status }} / id:{{ pool.id }}
-            </div>
             <button type="submit" 
                     *ngIf="pool.status === true"
                     (click)="updateStatus(pool.id, pool.status)">

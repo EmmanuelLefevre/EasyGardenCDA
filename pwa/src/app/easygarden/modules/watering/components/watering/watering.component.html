@@ -21,9 +21,6 @@
       <tbody>
         <tr *ngFor="let watering of waterings">
           <td class="power">
-            <div class="status">
-              status:{{ watering.status }} / id:{{ watering.id }}
-            </div>
             <button type="submit" 
                     *ngIf="watering.status === true"
                     (click)="updateStatus(watering.id, watering.status)">
