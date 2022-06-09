@@ -118,6 +118,7 @@ body {
   h1 {
     font-size: 2.5rem;
     line-height: 1.2;
+    letter-spacing: 1.4px;
   }
   .form-title {
     font-family: "Charlotte Southern";
@@ -133,10 +134,11 @@ body {
     border-bottom: 2px solid var(--ang-color-green);
     top: -2.2rem;
     .p-form-title-content {
-      padding-bottom: 2rem;
-      font-family: "Charlotte Southern";;
+      font-family: "Charlotte Southern";
       font-size: 1.7rem;
       font-weight: 700;
+      letter-spacing: 1.2px;
+      padding-bottom: 2rem;
     }
   }
   /*------Button------*/
