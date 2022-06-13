@@ -12,10 +12,6 @@ export interface PoolModel {
   }
 }
 
-export interface SinglePoolModel{
-  data: PoolModel
-}
-
 export interface DataPoolModel {
   data: PoolModel[]
 }

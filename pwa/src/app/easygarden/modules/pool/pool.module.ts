@@ -5,11 +5,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { PoolRoutingModule } from './pool-routing.module';
 import { PoolComponent } from './components/pool/pool.component';
+import { EditPoolComponent } from './components/editPool/edit-pool.component';
 
 
 @NgModule({
   declarations: [
-    PoolComponent
+    PoolComponent,
+    EditPoolComponent
   ],
   imports: [
     CommonModule,

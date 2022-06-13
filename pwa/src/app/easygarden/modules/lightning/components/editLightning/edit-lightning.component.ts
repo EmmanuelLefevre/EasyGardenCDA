@@ -49,8 +49,8 @@ export class EditLightningComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0);
 
-    let wid = this.activated.snapshot.paramMap.get('id')
-    this.lightningService.getLightning(wid).subscribe(
+    let lid = this.activated.snapshot.paramMap.get('id')
+    this.lightningService.getLightning(lid).subscribe(
       data => {
         this.lightning = data
         this.value = this.lightning.name;

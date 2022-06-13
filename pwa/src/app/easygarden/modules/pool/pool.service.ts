@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { DataPoolModel, PoolModel } from './poolModel';
+import { PoolModel, DataPoolModel } from './poolModel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,19 @@ export class PoolService {
     return this.httpClient.get<DataPoolModel[]>(environment.apis.pool.url);
   }
 
+  // Get Pools
+  getPool(pid: string | null): Observable<PoolModel>{
+    return this.httpClient.get<PoolModel>(environment.apis.pool.url+'/'+pid)
+  }
+
   // Update Status
   updateStatus(status: boolean, id: number): Observable<DataPoolModel[]> {
     return this.httpClient.put<DataPoolModel[]>(environment.apis.pool.url+'/'+id, {status})
+  }
+
+  // Update Lawnmower
+  updatePool(pool: PoolModel, pid: string | null): Observable<DataPoolModel[]> {
+    return this.httpClient.put<DataPoolModel[]>(environment.apis.pool.url+'/'+pid, pool)
   }
 
   // Delete Pool
