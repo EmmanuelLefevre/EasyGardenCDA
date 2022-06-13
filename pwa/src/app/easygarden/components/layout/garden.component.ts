@@ -30,11 +30,9 @@ export class GardenComponent implements OnInit {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          console.log(res);
           this.gardens = res['hydra:member'];
         }
       )
-    // console.log(res);
   }
 
   // Delete Garden

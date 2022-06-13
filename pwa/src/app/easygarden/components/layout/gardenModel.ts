@@ -3,7 +3,7 @@ export interface GardenModel {
   name: string,
   user: {
     id: string,
-    name: string
+    pseudo: string
   }
 }
 

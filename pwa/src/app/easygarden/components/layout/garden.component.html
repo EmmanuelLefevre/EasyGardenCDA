@@ -13,6 +13,7 @@
       <thead>             
         <tr>
           <th>Nom</th>
+          <th>Nom</th>
           <th>Action</th>                   
         </tr>
       </thead>
@@ -20,6 +21,7 @@
       <tbody>
         <tr *ngFor="let garden of gardens">
           <td>{{ garden.name }}</td>
+          <td>{{ garden.user.pseudo}}</td>
           <td>
             <button type="button"
                     routerLink="/easygarden/{{garden.id}}">
