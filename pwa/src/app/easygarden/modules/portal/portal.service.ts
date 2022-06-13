@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { DataPortalModel, PortalModel } from './portalModel';
+import {  PortalModel, DataPortalModel } from './portalModel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,19 @@ export class PortalService {
     return this.httpClient.get<DataPortalModel[]>(environment.apis.portal.url);
   }
 
+  // Get Portal
+  getPortal(pid: string | null): Observable<PortalModel>{
+    return this.httpClient.get<PortalModel>(environment.apis.portal.url+'/'+pid)
+  }
+
   // Update Status
   updateStatus(status: boolean, id: number): Observable<DataPortalModel[]> {
     return this.httpClient.put<DataPortalModel[]>(environment.apis.portal.url+'/'+id, {status})
+  }
+
+  // Update Portal
+  updatePortal(portal: PortalModel, pid: string | null): Observable<DataPortalModel[]> {
+    return this.httpClient.put<DataPortalModel[]>(environment.apis.portal.url+'/'+pid, portal)
   }
 
   // Delete Portal

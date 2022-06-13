@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PortalComponent } from './components/portal/portal.component';
+import { EditPortalComponent } from './components/editPortal/edit-portal.component';
 
 const routes: Routes = [
   { path: '', component: PortalComponent },
-  { path: ':id', component: PortalComponent }
+  { path: ':id', component: EditPortalComponent }
 ];
 
 @NgModule({

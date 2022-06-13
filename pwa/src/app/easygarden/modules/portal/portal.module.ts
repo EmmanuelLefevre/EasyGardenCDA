@@ -5,11 +5,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './components/portal/portal.component';
+import { EditPortalComponent } from './components/editPortal/edit-portal.component';
 
 
 @NgModule({
   declarations: [
-    PortalComponent
+    PortalComponent,
+    EditPortalComponent
   ],
   imports: [
     CommonModule,

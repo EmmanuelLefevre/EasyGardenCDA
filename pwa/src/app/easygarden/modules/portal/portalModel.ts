@@ -13,10 +13,6 @@ export interface PortalModel {
   }
 }
 
-export interface SinglePortalModel{
-  data: PortalModel
-}
-
 export interface DataPortalModel {
   data: PortalModel[]
 }
