@@ -23,6 +23,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fetchLawnmowers();
+    window.scrollTo(0, 0);
   }
 
   // Display Lawnmowers

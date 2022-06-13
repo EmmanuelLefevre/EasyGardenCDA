@@ -23,6 +23,7 @@ export class PoolComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fetchPools();
+    window.scrollTo(0, 0);
   }
 
   // Display Pools

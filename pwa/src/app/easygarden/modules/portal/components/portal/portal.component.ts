@@ -23,6 +23,7 @@ export class PortalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fetchPortals();
+    window.scrollTo(0, 0);
   }
 
   // Display Portals

@@ -23,6 +23,7 @@ export class LightningComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fetchLightnings();
+    window.scrollTo(0, 0);
   }
 
   // Display Lightnings
