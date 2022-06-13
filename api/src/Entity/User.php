@@ -62,12 +62,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: "The email '{{ value }}' is not a valid email."
     )]
     #[Groups(['read:User',
-              'read:Garden',
-              'read:Lawnmower',
-              'read:Lightning',
-              'read:Pool',
-              'read:Portal',
-              'read:Watering',
               'write:User'])]
     private $email;
 
