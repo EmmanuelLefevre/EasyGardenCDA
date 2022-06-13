@@ -65,7 +65,6 @@ export class EditWateringComponent implements OnInit {
   // Submit button
   onSubmit() {
     this.submitted = true;
-    console.log(this.editWateringForm);
     if (this.editWateringForm.invalid) {
       return;
     } else {
