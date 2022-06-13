@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+<div class="div-wrapper animate__animated animate__jackInTheBox">
+  <div>
+    <img class="logo-panel" src="assets/img/easygarden.png" alt="logo">
+  </div>
+  <hr>
+  <h1 class="titre-tableau">Panneau Jardin</h1>
+  <hr>
+  <div class="table form-border form-shadow">
+    <table class="t-hover">
+
+      <thead>             
+        <tr>
+          <th>Nom</th>
+          <th>Action</th>                   
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let garden of gardens">
+          <td>{{ garden.name }}</td>
+          <td>
+            <button type="button"
+                    routerLink="/easygarden/{{garden.id}}">
+              <fa-icon [icon]="faPen"></fa-icon>
+            </button>
+            <button type="submit" class="trash"
+                    (click)="deleteGarden(garden)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="submit">
+    <button type="button" id="submit" class="button-shadow">Ajouter</button>
+  </div>
+</div>

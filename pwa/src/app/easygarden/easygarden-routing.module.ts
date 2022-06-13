@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LayoutComponent } from './components/layout/layout.component';
+import { GardenComponent } from './components/layout/garden.component';
 
 const routes: Routes = [
   {
-    path: '', component: LayoutComponent, children: [
-      { path: 'easygarden', component: LayoutComponent },
+    path: '', component: GardenComponent, children: [
+      { path: 'easygarden', component: GardenComponent },
       {
         path: 'profil', loadChildren: () => import('./modules/profil/profil.module')
           .then(module => module.ProfilModule)
