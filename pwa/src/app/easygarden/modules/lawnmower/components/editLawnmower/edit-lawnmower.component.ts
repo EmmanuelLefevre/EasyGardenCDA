@@ -50,7 +50,7 @@ export class EditLawnmowerComponent implements OnInit {
     window.scrollTo(0, 0);
 
     let wid = this.activated.snapshot.paramMap.get('id')
-    this.lawnmowerService.getWatering(wid).subscribe(
+    this.lawnmowerService.getLawnmower(wid).subscribe(
       data => {
         this.lawnmower = data
         this.value = this.lawnmower.name;
@@ -71,7 +71,7 @@ export class EditLawnmowerComponent implements OnInit {
       const typedEditLawnmowerForm: LawnmowerModel = this.editLawnmowerForm.value;
       this.success = JSON.stringify(typedEditLawnmowerForm);
       let wid = this.activated.snapshot.paramMap.get('id')
-      this.lawnmowerService.updateWatering(typedEditLawnmowerForm, wid).subscribe()
+      this.lawnmowerService.updateLawnmower(typedEditLawnmowerForm, wid).subscribe()
       this.location.back()
     } 
   }
@@ -82,7 +82,7 @@ export class EditLawnmowerComponent implements OnInit {
     this.editLawnmowerForm.reset();
   }
 
-  // Close editWateringComponent
+  // Close editLawnmowerComponent
   goBack(): void {
     this.location.back()
   }

@@ -19,7 +19,7 @@ export class LawnmowerService {
   }
 
   // Get Lawnmower
-  getWatering(lid: string | null): Observable<LawnmowerModel>{
+  getLawnmower(lid: string | null): Observable<LawnmowerModel>{
     return this.httpClient.get<LawnmowerModel>(environment.apis.lawnmower.url+'/'+lid)
   }
 
@@ -29,7 +29,7 @@ export class LawnmowerService {
   }
 
   // Update Lawnmower
-  updateWatering(lawnmower: LawnmowerModel, lid: string | null): Observable<DataLawnmowerModel[]> {
+  updateLawnmower(lawnmower: LawnmowerModel, lid: string | null): Observable<DataLawnmowerModel[]> {
     return this.httpClient.put<DataLawnmowerModel[]>(environment.apis.lawnmower.url+'/'+lid, lawnmower)
   }
 
