@@ -14,10 +14,6 @@ export interface WateringModel {
   }
 }
 
-export interface SingleWateringModel{
-  data: WateringModel
-}
-
 export interface DataWateringModel {
   data: WateringModel[]
 }

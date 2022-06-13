@@ -21,12 +21,16 @@
         id="name"
         type="text"
         class="input-inset-shadow"
-        [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }">
+        [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }"
+        value={{value}}>
         <div *ngIf="submitted && f['name'].errors">
           <div class="text-alert" *ngIf="f['name'].errors['required']">Veuillez saisir un nom!</div>
-          <!-- <div class="text-alert" *ngIf="f['name'].errors['name']">
-            Le nom doit contenir entre 4 et 20 caractères..
-          </div> -->
+          <div class="text-alert" *ngIf="f['name'].errors['minlength']">
+            Le nom doit contenir au minimum 3 caractères.
+          </div>
+          <div class="text-alert" *ngIf="f['name'].errors['maxlength']">
+            Le nom doit contenir au maximum 20 caractères.
+          </div>
           <div class="text-alert" *ngIf="f['name'].errors['validEquipmentName']">
             Le nom ne peut contenir de caractères spéciaux!
           </div>
