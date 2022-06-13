@@ -132,6 +132,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: 'Your pseudo should be between 3 and 20 characters',
     )]
     #[Groups(['read:User',
+              'read:Garden',
               'write:User'])]
     private $pseudo;
 
