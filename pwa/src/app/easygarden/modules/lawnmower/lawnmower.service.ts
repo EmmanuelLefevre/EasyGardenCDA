@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { DataLawnmowerModel, LawnmowerModel } from './lawnmowerModel';
+import { LawnmowerModel, DataLawnmowerModel } from './lawnmowerModel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,19 @@ export class LawnmowerService {
     return this.httpClient.get<DataLawnmowerModel[]>(environment.apis.lawnmower.url);
   }
 
+  // Get Lawnmower
+  getWatering(lid: string | null): Observable<LawnmowerModel>{
+    return this.httpClient.get<LawnmowerModel>(environment.apis.lawnmower.url+'/'+lid)
+  }
+
   // Update Status
   updateStatus(status: boolean, id: number): Observable<DataLawnmowerModel[]> {
     return this.httpClient.put<DataLawnmowerModel[]>(environment.apis.lawnmower.url+'/'+id, {status})
+  }
+
+  // Update Lawnmower
+  updateWatering(lawnmower: LawnmowerModel, lid: string | null): Observable<DataLawnmowerModel[]> {
+    return this.httpClient.put<DataLawnmowerModel[]>(environment.apis.lawnmower.url+'/'+lid, lawnmower)
   }
 
   // Delete Lawnmower

@@ -5,11 +5,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { LawnmowerRoutingModule } from './lawnmower-routing.module';
 import { LawnmowerComponent } from './components/lawnmower/lawnmower.component';
+import { EditLawnmowerComponent } from './components/editLawnmower/edit-lawnmower.component';
 
 
 @NgModule({
   declarations: [
-    LawnmowerComponent
+    LawnmowerComponent,
+    EditLawnmowerComponent
   ],
   imports: [
     CommonModule,

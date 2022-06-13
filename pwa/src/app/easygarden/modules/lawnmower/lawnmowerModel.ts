@@ -13,10 +13,6 @@ export interface LawnmowerModel {
   }
 }
 
-export interface SingleLawnmowerModel{
-  data: LawnmowerModel
-}
-
 export interface DataLawnmowerModel {
   data: LawnmowerModel[]
 }
