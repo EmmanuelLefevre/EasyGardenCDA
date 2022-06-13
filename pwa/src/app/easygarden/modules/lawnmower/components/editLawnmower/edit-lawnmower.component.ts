@@ -70,8 +70,8 @@ export class EditLawnmowerComponent implements OnInit {
     } else {
       const typedEditLawnmowerForm: LawnmowerModel = this.editLawnmowerForm.value;
       this.success = JSON.stringify(typedEditLawnmowerForm);
-      let wid = this.activated.snapshot.paramMap.get('id')
-      this.lawnmowerService.updateLawnmower(typedEditLawnmowerForm, wid).subscribe()
+      let lid = this.activated.snapshot.paramMap.get('id')
+      this.lawnmowerService.updateLawnmower(typedEditLawnmowerForm, lid).subscribe()
       this.location.back()
     } 
   }
