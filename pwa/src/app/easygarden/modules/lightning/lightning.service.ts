@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { DataLightningModel, LightningModel } from './lightningModel';
+import { LightningModel, DataLightningModel } from './lightningModel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,19 @@ export class LightningService {
     return this.httpClient.get<DataLightningModel[]>(environment.apis.lightning.url);
   }
 
+  // Get Lightning
+  getLightning(lid: string | null): Observable<LightningModel>{
+    return this.httpClient.get<LightningModel>(environment.apis.lightning.url+'/'+lid)
+  }
+
   // Update Status
   updateStatus(status: boolean, id: number): Observable<DataLightningModel[]> {
     return this.httpClient.put<DataLightningModel[]>(environment.apis.lightning.url+'/'+id, {status})
+  }
+
+  // Update Lightning
+  updateLightning(lightning: LightningModel, lid: string | null): Observable<DataLightningModel[]> {
+    return this.httpClient.put<DataLightningModel[]>(environment.apis.lightning.url+'/'+lid, lightning)
   }
 
   // Delete Lightning

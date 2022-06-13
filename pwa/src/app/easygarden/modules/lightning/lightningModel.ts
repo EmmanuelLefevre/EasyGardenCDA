@@ -12,10 +12,6 @@ export interface LightningModel {
   }
 }
 
-export interface SingleLightningModel{
-  data: LightningModel
-}
-
 export interface DataLightningModel {
   data: LightningModel[]
 }

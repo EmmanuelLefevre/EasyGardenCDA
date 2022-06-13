@@ -5,11 +5,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { LightningRoutingModule } from './lightning-routing.module';
 import { LightningComponent } from './components/lightning/lightning.component';
+import { EditLightningComponent } from './components/editLightning/edit-lightning.component';
 
 
 @NgModule({
   declarations: [
-    LightningComponent
+    LightningComponent,
+    EditLightningComponent
   ],
   imports: [
     CommonModule,
