@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { LightningRoutingModule } from './lightning-routing.module';
 import { LightningComponent } from './components/lightning/lightning.component';
@@ -13,7 +14,9 @@ import { LightningComponent } from './components/lightning/lightning.component';
   imports: [
     CommonModule,
     LightningRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 
