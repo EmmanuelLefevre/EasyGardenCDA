@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { GardenService } from './garden.service';
 import { GardenModel } from './gardenModel';
