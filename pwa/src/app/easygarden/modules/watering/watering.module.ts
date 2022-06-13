@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { WateringRoutingModule } from './watering-routing.module';
 import { WateringComponent } from './components/watering/watering.component';
-import { EditWateringComponent } from './components/editWatering/edit-watering/edit-watering.component';
+import { EditWateringComponent } from './components/editWatering/edit-watering.component';
 
 
 @NgModule({
