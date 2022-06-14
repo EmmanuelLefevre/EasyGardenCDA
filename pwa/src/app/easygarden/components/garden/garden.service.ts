@@ -18,6 +18,16 @@ export class GardenService {
     return this.httpClient.get<DataGardenModel[]>(environment.apis.garden.url);
   }
 
+  // Get Garden
+  getGarden(gid: string | null): Observable<GardenModel>{
+    return this.httpClient.get<GardenModel>(environment.apis.garden.url+'/'+gid)
+  }
+
+  // Update Garden
+  updateGarden(garden: GardenModel, gid: string | null): Observable<DataGardenModel[]> {
+    return this.httpClient.put<DataGardenModel[]>(environment.apis.garden.url+'/'+gid, garden)
+  }
+
   // Delete Garden
   deleteGarden(garden: GardenModel | number): Observable<GardenModel> {
     const id = typeof garden === 'number' ? garden : garden.id;

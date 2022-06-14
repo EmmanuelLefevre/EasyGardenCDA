@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { GardenService } from './garden.service';
-import { GardenModel } from './gardenModel';
+import { GardenService } from '../../garden.service';
+import { GardenModel } from '../../gardenModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
