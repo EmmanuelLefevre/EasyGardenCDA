@@ -22,7 +22,7 @@ export class WateringComponent implements OnInit, OnDestroy {
   waterings: WateringModel[] = [];
   status: boolean | undefined;
 
-  result: string = '';
+  result: boolean |undefined;
   
   constructor(private wateringService: WateringService,
               public dialog: MatDialog) {
@@ -31,7 +31,6 @@ export class WateringComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.fetchWaterings();
-    // window.scrollTo(0, 0);
   }
   
   // Display Waterings
@@ -82,11 +81,12 @@ export class WateringComponent implements OnInit, OnDestroy {
       data: dialogData
     });
     
-    this.waterings = this.waterings.filter(h => h !== watering);
-    this.wateringService.deleteWatering(watering).subscribe()
-
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
+      if (this.result === true) {
+        this.waterings = this.waterings.filter(h => h !== watering);
+        this.wateringService.deleteWatering(watering).subscribe();
+      }   
     });
   }
 
