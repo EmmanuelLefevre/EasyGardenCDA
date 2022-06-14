@@ -1,0 +1,17 @@
+h2.confirm-dialog-title {
+  color: var(--ang-color-alert)
+}
+div {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1vh;
+  button {
+  margin: 2vh 1vh 1vh 1vh;
+  }
+  button.confirm {
+    &:hover {
+      color: var(--ang-color-alert);
+      border-color: var(--ang-color-alert);
+    }
+  }
+}

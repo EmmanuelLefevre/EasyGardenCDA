@@ -4,6 +4,9 @@ import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { WateringService } from '../../watering.service';
 import { WateringModel } from '../../wateringModel';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
 @Component({
   selector: 'app-watering',
   templateUrl: './watering.component.html',
@@ -18,12 +21,17 @@ export class WateringComponent implements OnInit, OnDestroy {
 
   waterings: WateringModel[] = [];
   status: boolean | undefined;
+
+  result: string = '';
   
-  constructor(private wateringService: WateringService) { }
+  constructor(private wateringService: WateringService,
+              public dialog: MatDialog) {
+    window.scrollTo(0, 0);
+  }
   
   ngOnInit(): void {
     this.fetchWaterings();
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }
   
   // Display Waterings
@@ -66,9 +74,20 @@ export class WateringComponent implements OnInit, OnDestroy {
   }
 
   // Delete Watering
-  deleteWatering(watering: WateringModel): void {
+  confirmDialog(watering: WateringModel): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ watering.name +'" ?';
+    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    
     this.waterings = this.waterings.filter(h => h !== watering);
     this.wateringService.deleteWatering(watering).subscribe()
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+    });
   }
 
   ngOnDestroy() {
