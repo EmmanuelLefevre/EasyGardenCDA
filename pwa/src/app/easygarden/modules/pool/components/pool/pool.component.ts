@@ -4,6 +4,9 @@ import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { PoolService } from '../../pool.service';
 import { PoolModel } from '../../poolModel';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
 @Component({
   selector: 'app-pool',
   templateUrl: './pool.component.html',
@@ -16,14 +19,21 @@ export class PoolComponent implements OnInit, OnDestroy {
   faPen = faPen;
   faTrash = faTrash;
 
-  pools: PoolModel[] = [];
+  // Confirm Dialog this.result = boolean
+  result: boolean |undefined;
+
+  // updateStatus()
   status: boolean | undefined;
 
-  constructor(private poolService: PoolService) { }
+  pools: PoolModel[] = [];
+
+  constructor(private poolService: PoolService,
+              public dialog: MatDialog) {
+    window.scrollTo(0, 0);
+  }
 
   ngOnInit(): void {
     this.fetchPools();
-    window.scrollTo(0, 0);
   }
 
   // Display Pools
@@ -31,8 +41,7 @@ export class PoolComponent implements OnInit, OnDestroy {
     this.poolService.getAllPools()
       .subscribe(
         (res:any) => {
-          if (res.hasOwnProperty('hydra:member'))
-          // console.log(res)  
+          if (res.hasOwnProperty('hydra:member'))  
           this.pools = res['hydra:member'];
         }
       )
@@ -42,23 +51,19 @@ export class PoolComponent implements OnInit, OnDestroy {
   updateStatus(id: number, status: boolean): void {
     if (status === true) {
       status = !status;
-      // console.log(id, status)
       this.poolService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchPools();
           }
         )
     } else if (status === false) {
       status = !status;
-      // console.log(id, status)
       this.poolService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchPools();
           }
         )
@@ -66,9 +71,21 @@ export class PoolComponent implements OnInit, OnDestroy {
   }
 
   // Delete Pool
-  deletePool(pool: PoolModel): void {
-    this.pools = this.pools.filter(h => h !== pool);
-    this.poolService.deletePool(pool).subscribe()
+  confirmDialog(pool: PoolModel): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ pool.name +'" ?';
+    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (this.result === true) {
+        this.pools = this.pools.filter(h => h !== pool);
+        this.poolService.deletePool(pool).subscribe();
+      }   
+    });
   }
 
   ngOnDestroy() {
