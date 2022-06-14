@@ -4,6 +4,9 @@ import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { PortalService } from '../../portal.service';
 import { PortalModel } from '../../portalModel';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
 @Component({
   selector: 'app-portal',
   templateUrl: './portal.component.html',
@@ -16,14 +19,21 @@ export class PortalComponent implements OnInit, OnDestroy {
   faPen = faPen;
   faTrash = faTrash;
 
-  portals: PortalModel[] = [];
+  // Confirm Dialog this.result = boolean
+  result: boolean |undefined;
+
+  // updateStatus()
   status: boolean | undefined;
 
-  constructor(private portalService: PortalService) { }
+  portals: PortalModel[] = [];
+
+  constructor(private portalService: PortalService,
+              public dialog: MatDialog) {
+  window.scrollTo(0, 0);
+  }
 
   ngOnInit(): void {
     this.fetchPortals();
-    window.scrollTo(0, 0);
   }
 
   // Display Portals
@@ -32,7 +42,6 @@ export class PortalComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          // console.log(res) 
           this.portals = res['hydra:member'];
         }
       )
@@ -42,23 +51,19 @@ export class PortalComponent implements OnInit, OnDestroy {
   updateStatus(id: number, status: boolean): void {
     if (status === true) {
       status = !status;
-      // console.log(id, status)
       this.portalService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchPortals();
           }
         )
     } else if (status === false) {
       status = !status;
-      // console.log(id, status)
       this.portalService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchPortals();
           }
         )
@@ -66,9 +71,21 @@ export class PortalComponent implements OnInit, OnDestroy {
   }
 
   // Delete Portal
-  deletePortal(portal: PortalModel): void {
-    this.portals = this.portals.filter(h => h !== portal);
-    this.portalService.deletePortal(portal).subscribe()
+  confirmDialog(portal: PortalModel): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ portal.name +'" ?';
+    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (this.result === true) {
+        this.portals = this.portals.filter(h => h !== portal);
+        this.portalService.deletePortal(portal).subscribe();
+      }   
+    });
   }
 
   ngOnDestroy() {
