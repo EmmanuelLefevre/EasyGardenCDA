@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { GardenComponent } from './components/garden/components/garden/garden.component';
-import { EditGardenComponent } from './components/garden/components/editGarden/edit-garden.component';
 
 const routes: Routes = [
   {
     path: '', component: GardenComponent, children: [
-      { path: 'easygarden', component: GardenComponent },
-      { path: ':id', component: EditGardenComponent },
+      { path: 'easygarden', component: GardenComponent }
       
       {
         path: 'profil', loadChildren: () => import('./modules/profil/profil.module')
