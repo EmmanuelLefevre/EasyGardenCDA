@@ -4,6 +4,9 @@ import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { LawnmowerService } from '../../lawnmower.service';
 import { LawnmowerModel } from '../../lawnmowerModel';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
 @Component({
   selector: 'app-lawnmower',
   templateUrl: './lawnmower.component.html',
@@ -16,14 +19,21 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
   faPen = faPen;
   faTrash = faTrash;
 
-  lawnmowers: LawnmowerModel[] = [];
+  // Confirm Dialog this.result = boolean
+  result: boolean |undefined;
+
+  // updateStatus()
   status: boolean | undefined;
 
-  constructor(private lawnmowerService: LawnmowerService) { }
+  lawnmowers: LawnmowerModel[] = [];
+
+  constructor(private lawnmowerService: LawnmowerService,
+              public dialog: MatDialog) {
+    window.scrollTo(0, 0);
+  }
 
   ngOnInit(): void {
     this.fetchLawnmowers();
-    window.scrollTo(0, 0);
   }
 
   // Display Lawnmowers
@@ -31,8 +41,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
     this.lawnmowerService.getAllLawnmowers()
       .subscribe(
         (res:any) => {
-          if (res.hasOwnProperty('hydra:member'))
-          // console.log(res)  
+          if (res.hasOwnProperty('hydra:member')) 
           this.lawnmowers = res['hydra:member'];
         }
       )
@@ -42,23 +51,19 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
   updateStatus(id: number, status: boolean): void {
     if (status === true) {
       status = !status;
-      // console.log(id, status)
       this.lawnmowerService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchLawnmowers();
           }
         )
     } else if (status === false) {
       status = !status;
-      // console.log(id, status)
       this.lawnmowerService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchLawnmowers();
           }
         )
@@ -66,9 +71,21 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
   }
 
   // Delete Lawnmower
-  deleteLawnmower(lawnmower: LawnmowerModel): void {
-    this.lawnmowers = this.lawnmowers.filter(h => h !== lawnmower);
-    this.lawnmowerService.deleteLawnmower(lawnmower).subscribe()
+  confirmDialog(lawnmower: LawnmowerModel): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ lawnmower.name +'" ?';
+    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (this.result === true) {
+        this.lawnmowers = this.lawnmowers.filter(h => h !== lawnmower);
+        this.lawnmowerService.deleteLawnmower(lawnmower).subscribe();
+      }   
+    });
   }
 
   ngOnDestroy() {
