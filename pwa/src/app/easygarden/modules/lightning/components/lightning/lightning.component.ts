@@ -4,6 +4,9 @@ import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { LightningModel } from '../../lightningModel';
 import { LightningService } from '../../lightning.service';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
 @Component({
   selector: 'app-lightning',
   templateUrl: './lightning.component.html',
@@ -16,14 +19,21 @@ export class LightningComponent implements OnInit, OnDestroy {
   faPen = faPen;
   faTrash = faTrash;
 
-  lightnings: LightningModel[] = [];
+  // Confirm Dialog this.result = boolean
+  result: boolean |undefined;
+
+  // updateStatus()
   status: boolean | undefined;
 
-  constructor(private lightningService: LightningService) { }
+  lightnings: LightningModel[] = [];
+
+  constructor(private lightningService: LightningService,
+              public dialog: MatDialog) {
+    window.scrollTo(0, 0);
+  }
 
   ngOnInit(): void {
     this.fetchLightnings();
-    window.scrollTo(0, 0);
   }
 
   // Display Lightnings
@@ -31,8 +41,7 @@ export class LightningComponent implements OnInit, OnDestroy {
     this.lightningService.getAllLightnings()
       .subscribe(
         (res:any) => {
-          if (res.hasOwnProperty('hydra:member'))
-          // console.log(res)   
+          if (res.hasOwnProperty('hydra:member')) 
           this.lightnings = res['hydra:member'];
         }
       )
@@ -42,23 +51,19 @@ export class LightningComponent implements OnInit, OnDestroy {
   updateStatus(id: number, status: boolean): void {
     if (status === true) {
       status = !status;
-      // console.log(id, status)
       this.lightningService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchLightnings();
           }
         )
     } else if (status === false) {
       status = !status;
-      // console.log(id, status)
       this.lightningService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchLightnings();
           }
         )
@@ -66,9 +71,21 @@ export class LightningComponent implements OnInit, OnDestroy {
   }
 
   // Delete Lightning
-  deleteLightning(lightning: LightningModel): void {
-    this.lightnings = this.lightnings.filter(h => h !== lightning);
-    this.lightningService.deleteLightning(lightning).subscribe()
+  confirmDialog(lightning: LightningModel): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ lightning.name +'" ?';
+    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (this.result === true) {
+        this.lightnings = this.lightnings.filter(h => h !== lightning);
+        this.lightningService.deleteLightning(lightning).subscribe();
+      }   
+    });
   }
 
   ngOnDestroy() {
