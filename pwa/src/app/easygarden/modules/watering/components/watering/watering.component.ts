@@ -19,11 +19,14 @@ export class WateringComponent implements OnInit, OnDestroy {
   faPen = faPen;
   faTrash = faTrash;
 
-  waterings: WateringModel[] = [];
+  // Confirm Dialog this.result = boolean
+  result: boolean |undefined;
+
+  // updateStatus()
   status: boolean | undefined;
 
-  result: boolean |undefined;
-  
+  waterings: WateringModel[] = [];
+
   constructor(private wateringService: WateringService,
               public dialog: MatDialog) {
     window.scrollTo(0, 0);
