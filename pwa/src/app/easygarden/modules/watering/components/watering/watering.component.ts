@@ -25,6 +25,9 @@ export class WateringComponent implements OnInit, OnDestroy {
   // updateStatus()
   status: boolean | undefined;
 
+  // Ngx-paginator
+  p: number = 1;
+
   waterings: WateringModel[] = [];
 
   constructor(private wateringService: WateringService,
