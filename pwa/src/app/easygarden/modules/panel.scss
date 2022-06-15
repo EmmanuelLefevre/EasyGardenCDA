@@ -133,25 +133,23 @@ div {
     border: 2px solid var(--ang-color-green);
     border-radius: 10px;
     margin-top: 0.5vh;
-    pagination-controls {
-      pagination-template {
-        nav {
-          padding: 0.3vh 0.2vh;
-          ul {
-            margin-bottom: 0;
-            li {
-              font-size: 14px;
-              margin: 0 2px;
-              a {
-                &:hover {
-                  color: var(--ang-color-white);
-                  background-color: var(--ang-color-green);
-                  border-radius: 6px;
-                }
+    pagination-controls { 
+      nav {
+        padding: 0.3vh 0.2vh;
+        ul {
+          margin-bottom: 0;
+          li {
+            font-size: 14px;
+            margin: 0 2px;
+            a {
+              &:hover {
+                color: var(--ang-color-white);
+                background-color: var(--ang-color-green);
+                border-radius: 6px;
               }
             }
-          } 
-        }
+          }
+        } 
       }
     }
     pagination-controls .current {
