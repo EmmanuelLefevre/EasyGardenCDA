@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { WateringRoutingModule } from './watering-routing.module';
 import { WateringComponent } from './components/watering/watering.component';
@@ -18,7 +19,8 @@ import { EditWateringComponent } from './components/editWatering/edit-watering.c
     WateringRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ]
 })
 

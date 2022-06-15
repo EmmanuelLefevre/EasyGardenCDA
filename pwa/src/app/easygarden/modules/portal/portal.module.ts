@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './components/portal/portal.component';
@@ -18,7 +19,8 @@ import { EditPortalComponent } from './components/editPortal/edit-portal.compone
     PortalRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ]
 })
 

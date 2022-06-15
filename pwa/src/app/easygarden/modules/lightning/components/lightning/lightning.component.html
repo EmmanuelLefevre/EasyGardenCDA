@@ -36,11 +36,19 @@
           <td>
             <button type="button"
                     aria-label="Modifier"
+                    mat-raised-button
+                    matTooltip="Modifier"
+                    matTooltipPosition="before"
+                    matTooltipShowDelay="500"
                     routerLink="/easygarden/lightning/{{lightning.id}}">
               <fa-icon [icon]="faPen"></fa-icon>
             </button>
             <button type="submit" class="trash"
                     aria-label="Supprimer"
+                    mat-raised-button
+                    matTooltip="Supprimer"
+                    matTooltipPosition="after"
+                    matTooltipShowDelay="500"
                     (click)="confirmDialog(lightning)">
               <fa-icon [icon]="faTrash"></fa-icon>
             </button>
