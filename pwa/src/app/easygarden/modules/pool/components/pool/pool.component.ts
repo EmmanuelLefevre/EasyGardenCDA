@@ -25,6 +25,9 @@ export class PoolComponent implements OnInit, OnDestroy {
   // updateStatus()
   status: boolean | undefined;
 
+  // Ngx-paginator
+  p: number = 1;
+
   pools: PoolModel[] = [];
 
   constructor(private poolService: PoolService,

@@ -17,7 +17,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let pool of pools">
+        <tr *ngFor="let pool of pools | paginate: { itemsPerPage: 7, currentPage: p }">
           <td class="power">
             <button type="submit"
                     aria-label="On" 
@@ -57,6 +57,16 @@
       </tbody>
 
     </table>
+  </div>
+  <div class="pagination">
+    <pagination-controls class="pagination-control"
+                         (pageChange)="p = $event" 
+                         previousLabel="" 
+                         nextLabel=""
+                         [autoHide]="true"
+                         [responsive]="true"
+                         aria-label="Pagination">
+    </pagination-controls>
   </div>
   <div class="submit">
     <button type="button" id="submit" class="button-shadow">Ajouter</button>
