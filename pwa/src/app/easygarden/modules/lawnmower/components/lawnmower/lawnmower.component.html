@@ -35,10 +35,12 @@
           <td>{{ lawnmower.batterySensor }}</td>
           <td>
             <button type="button"
+                    aria-label="Modifier"
                     routerLink="/easygarden/lawnmower/{{lawnmower.id}}">
               <fa-icon [icon]="faPen"></fa-icon>
             </button>
             <button type="submit" class="trash"
+                    aria-label="Supprimer"
                     (click)="confirmDialog(lawnmower)">
               <fa-icon [icon]="faTrash"></fa-icon>
             </button>

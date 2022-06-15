@@ -35,10 +35,12 @@
           <td>{{ portal.presenceSensor }}</td>
           <td>
             <button type="button"
+                    aria-label="Modifier"
                     routerLink="/easygarden/portal/{{portal.id}}">
               <fa-icon [icon]="faPen"></fa-icon>
             </button>
             <button type="submit" class="trash"
+                    aria-label="Supprimer"
                     (click)="confirmDialog(portal)">
               <fa-icon [icon]="faTrash"></fa-icon>
             </button>

@@ -37,10 +37,12 @@
           <td>{{ watering.pressureSensor }}</td>
           <td>
             <button type="button"
+                    aria-label="Modifier"
                     routerLink="/easygarden/watering/{{watering.id}}">
               <fa-icon [icon]="faPen"></fa-icon>
             </button>
             <button type="submit" class="trash"
+                    aria-label="Supprimer"
                     (click)="confirmDialog(watering)">
               <fa-icon [icon]="faTrash"></fa-icon>
             </button>
