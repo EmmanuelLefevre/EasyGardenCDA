@@ -80,6 +80,12 @@ Installer JWT Decode
 ```
 npm i jwt-decode
 ```
+6. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+\
+Installer ngx-pagination
+```
+npm i ngx-pagination
+```
 # COMMANDES
 1. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
 \
