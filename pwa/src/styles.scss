@@ -186,11 +186,11 @@ body {
     padding: 0.5rem 1rem;
     border: 2px solid var(--color-border);
     border-radius: 4px;
+    cursor: pointer;
     &:hover {
       color: var(--ang-color-text-button);
       background-color: var(--ang-color-white);
       border-color: var(--ang-color-green);
-      cursor: pointer;
     }
   }
   .div-form-button {
