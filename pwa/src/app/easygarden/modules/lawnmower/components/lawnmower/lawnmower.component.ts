@@ -25,6 +25,9 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
   // updateStatus()
   status: boolean | undefined;
 
+  // Ngx-paginator
+  p: number = 1;
+
   lawnmowers: LawnmowerModel[] = [];
 
   constructor(private lawnmowerService: LawnmowerService,
