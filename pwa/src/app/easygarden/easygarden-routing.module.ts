@@ -6,7 +6,7 @@ import { GardenComponent } from './components/garden/components/garden/garden.co
 const routes: Routes = [
   {
     path: '', component: GardenComponent, children: [
-      { path: 'easygarden', component: GardenComponent }
+      { path: 'easygarden', component: GardenComponent },
       
       {
         path: 'profil', loadChildren: () => import('./modules/profil/profil.module')
