@@ -25,6 +25,9 @@ export class LightningComponent implements OnInit, OnDestroy {
   // updateStatus()
   status: boolean | undefined;
 
+  // Ngx-paginator
+  p: number = 1;
+
   lightnings: LightningModel[] = [];
 
   constructor(private lightningService: LightningService,
