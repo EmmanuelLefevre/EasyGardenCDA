@@ -26,8 +26,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     paginationItemsPerPage: 100,
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:User']]],
                            'post' => ['denormalization_context' => ['groups']]],
-    attributes: ['pagination_client_enabled' => true,
-                 'pagination_client_items_per_page' => 20],
     order: ['pseudo' => 'ASC'])]
 #[ApiFilter(BooleanFilter::class, properties: ['isVerified'])]
 #[ApiFilter(DateFilter::class, properties: ['createdAt' => DateFilter::EXCLUDE_NULL,

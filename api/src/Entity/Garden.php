@@ -17,11 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     normalizationContext: ['groups' => ['read:Garden']],
     denormalizationContext: ['groups' => ['write:Garden']],
-    paginationItemsPerPage: 13,
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Garden']]],
                            'post' => ['denormalization_context' => ['groups']]],
-    attributes: ['pagination_client_enabled' => true,
-                 'pagination_client_items_per_page' => 5],
     order: ['name' => 'ASC'])]
 #[ApiFilter(OrderFilter::class, properties: ['name'])]
 #[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
