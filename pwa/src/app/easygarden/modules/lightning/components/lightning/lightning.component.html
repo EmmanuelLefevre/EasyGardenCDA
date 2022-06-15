@@ -19,12 +19,14 @@
       <tbody>
         <tr *ngFor="let lightning of lightnings">
           <td class="power">
-            <button type="submit" 
+            <button type="submit"
+                    aria-label="On"
                     *ngIf="lightning.status === true"
                     (click)="updateStatus(lightning.id, lightning.status)">
               <fa-icon [icon]="faPowerOff"></fa-icon>
             </button>
-            <button type="submit" class="btn-off" 
+            <button type="submit" class="btn-off"
+                    aria-label="Off"
                     *ngIf="lightning.status === false"
                     (click)="updateStatus(lightning.id, lightning.status)">
               <fa-icon [icon]="faPowerOff"></fa-icon>
