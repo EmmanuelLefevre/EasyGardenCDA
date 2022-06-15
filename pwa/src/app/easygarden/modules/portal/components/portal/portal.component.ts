@@ -25,6 +25,9 @@ export class PortalComponent implements OnInit, OnDestroy {
   // updateStatus()
   status: boolean | undefined;
 
+  // Ngx-paginator
+  p: number = 1;
+
   portals: PortalModel[] = [];
 
   constructor(private portalService: PortalService,
