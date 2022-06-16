@@ -9,8 +9,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 @Component({
   selector: 'app-watering',
-  templateUrl: './watering.component.html',
-  styleUrls: ['./watering.component.scss']
+  templateUrl: './watering.component.html'
 })
 
 export class WateringComponent implements OnInit, OnDestroy {

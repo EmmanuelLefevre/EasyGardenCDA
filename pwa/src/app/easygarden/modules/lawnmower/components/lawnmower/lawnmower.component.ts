@@ -9,8 +9,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 @Component({
   selector: 'app-lawnmower',
-  templateUrl: './lawnmower.component.html',
-  styleUrls: ['./lawnmower.component.scss']
+  templateUrl: './lawnmower.component.html'
 })
 
 export class LawnmowerComponent implements OnInit, OnDestroy {

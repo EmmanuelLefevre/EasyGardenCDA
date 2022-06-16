@@ -10,8 +10,7 @@ import { LightningModel } from '../../lightningModel';
 
 @Component({
   selector: 'app-edit-lightning',
-  templateUrl: './edit-lightning.component.html',
-  styleUrls: ['./edit-lightning.component.scss']
+  templateUrl: './edit-lightning.component.html'
 })
 
 export class EditLightningComponent implements OnInit {

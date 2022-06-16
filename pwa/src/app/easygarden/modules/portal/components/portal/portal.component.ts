@@ -9,8 +9,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 @Component({
   selector: 'app-portal',
-  templateUrl: './portal.component.html',
-  styleUrls: ['./portal.component.scss']
+  templateUrl: './portal.component.html'
 })
 
 export class PortalComponent implements OnInit, OnDestroy {

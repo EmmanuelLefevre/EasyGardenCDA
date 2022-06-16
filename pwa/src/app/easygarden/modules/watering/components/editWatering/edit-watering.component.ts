@@ -10,8 +10,7 @@ import { WateringModel } from '../../wateringModel';
 
 @Component({
   selector: 'app-edit-watering',
-  templateUrl: './edit-watering.component.html',
-  styleUrls: ['./edit-watering.component.scss']
+  templateUrl: './edit-watering.component.html'
 })
 
 export class EditWateringComponent implements OnInit {

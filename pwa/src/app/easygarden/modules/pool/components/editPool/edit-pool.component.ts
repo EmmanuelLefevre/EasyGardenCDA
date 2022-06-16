@@ -10,8 +10,7 @@ import { PoolModel } from '../../poolModel';
 
 @Component({
   selector: 'app-edit-pool',
-  templateUrl: './edit-pool.component.html',
-  styleUrls: ['./edit-pool.component.scss']
+  templateUrl: './edit-pool.component.html'
 })
 
 export class EditPoolComponent implements OnInit {

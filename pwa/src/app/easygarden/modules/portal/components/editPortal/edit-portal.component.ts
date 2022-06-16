@@ -10,8 +10,7 @@ import { PortalModel } from '../../portalModel';
 
 @Component({
   selector: 'app-edit-portal',
-  templateUrl: './edit-portal.component.html',
-  styleUrls: ['./edit-portal.component.scss']
+  templateUrl: './edit-portal.component.html'
 })
 
 export class EditPortalComponent implements OnInit {

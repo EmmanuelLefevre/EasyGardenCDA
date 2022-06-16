@@ -9,8 +9,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 @Component({
   selector: 'app-lightning',
-  templateUrl: './lightning.component.html',
-  styleUrls: ['./lightning.component.scss']
+  templateUrl: './lightning.component.html'
 })
 
 export class LightningComponent implements OnInit, OnDestroy {

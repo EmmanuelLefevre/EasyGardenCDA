@@ -10,8 +10,7 @@ import { LawnmowerModel } from '../../lawnmowerModel';
 
 @Component({
   selector: 'app-editLawnmower',
-  templateUrl: './edit-lawnmower.component.html',
-  styleUrls: ['./edit-lawnmower.component.scss']
+  templateUrl: './edit-lawnmower.component.html'
 })
 
 export class EditLawnmowerComponent implements OnInit {
