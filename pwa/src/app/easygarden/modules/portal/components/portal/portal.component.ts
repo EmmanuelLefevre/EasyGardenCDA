@@ -27,9 +27,6 @@ export class PortalComponent implements OnInit, OnDestroy {
   // Ngx-paginator
   p: number = 1;
 
-  // Presence Sensor
-  // presenceSensor: string | undefined;
-
   portals: PortalModel[] = [];
 
   constructor(private portalService: PortalService,
