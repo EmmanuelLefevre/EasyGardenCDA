@@ -122,6 +122,10 @@ div {
         color: var(--color-text);
       }
     }
+    table>tbody>tr>td.alert {
+      color: var(--ang-color-alert);
+      outline: 1px solid var(--ang-color-alert);
+    }
   }
   div.submit {
     button {
