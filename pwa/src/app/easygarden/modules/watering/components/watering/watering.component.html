@@ -37,8 +37,8 @@
             </button>
           </td>
           <td>{{ watering.name }}</td>
-          <td>{{ watering.flowSensor }}</td>
-          <td>{{ watering.pressureSensor }}</td>
+          <td [ngClass]="{'alert': watering.flowSensor < '1800'}">{{ watering.flowSensor }}</td>
+          <td [ngClass]="{'alert': watering.pressureSensor < '2bars'}">{{ watering.pressureSensor }}</td>
           <td>
             <button type="button"
                     aria-label="Modifier"
