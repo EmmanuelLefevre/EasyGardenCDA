@@ -124,7 +124,9 @@ div {
     }
     table>tbody>tr>td.alert {
       color: var(--ang-color-alert);
-      outline: 1px solid var(--ang-color-alert);
+      box-shadow: inset 0 0px 6px 2px var(--ang-color-alert);
+      -webkit-box-shadow: inset 0 0px 10px 2px var(--ang-color-alert);
+      background-color: #f7f7f7;
     }
   }
   div.submit {
