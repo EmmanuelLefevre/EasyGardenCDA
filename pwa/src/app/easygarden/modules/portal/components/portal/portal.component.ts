@@ -19,13 +19,16 @@ export class PortalComponent implements OnInit, OnDestroy {
   faTrash = faTrash;
 
   // Confirm Dialog this.result = boolean
-  result: boolean |undefined;
+  result: boolean | undefined;
 
   // updateStatus()
   status: boolean | undefined;
 
   // Ngx-paginator
   p: number = 1;
+
+  // Presence Sensor
+  // presenceSensor: string | undefined;
 
   portals: PortalModel[] = [];
 
