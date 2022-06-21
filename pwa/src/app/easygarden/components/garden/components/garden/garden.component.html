@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
-<div class="div-wrapper">
+<div *ngIf="_router.url === '/easygarden'" class="div-wrapper">
   <div class="table form-border form-shadow">
     <table class="t-hover">
 

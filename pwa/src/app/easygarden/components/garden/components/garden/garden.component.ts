@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
 import { GardenModel } from '../../gardenModel';
@@ -24,7 +25,8 @@ export class GardenComponent implements OnInit {
   gardens: GardenModel[] = [];
 
   constructor(private gardenService: GardenService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              public _router: Router) {
     window.scrollTo(0, 0);
   }
 
