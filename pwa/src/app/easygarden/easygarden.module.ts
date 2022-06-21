@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EasygardenRoutingModule } from './easygarden-routing.module';
 import { ConfirmDialogModule } from './components/confirmDialog/confirmDialogModule/confirm-dialog.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -25,6 +26,7 @@ import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialog
     ReactiveFormsModule,
     FormsModule,
     ConfirmDialogModule,
+    MatTooltipModule,
     NgxPaginationModule
   ],
   entryComponents: [ConfirmDialogComponent]
