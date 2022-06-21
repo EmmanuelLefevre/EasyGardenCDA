@@ -19,11 +19,19 @@
           <td>
             <button type="button"
                     aria-label="Modifier"
+                    mat-raised-button
+                    matTooltip="Modifier"
+                    matTooltipPosition="before"
+                    matTooltipShowDelay="500"
                     routerLink="/easygarden/{{garden.id}}">
               <fa-icon [icon]="faPen"></fa-icon>
             </button>
             <button type="submit" class="trash"
                     aria-label="Supprimer"
+                    mat-raised-button
+                    matTooltip="Supprimer"
+                    matTooltipPosition="after"
+                    matTooltipShowDelay="500"
                     (click)="confirmDialog(garden)">
               <fa-icon [icon]="faTrash"></fa-icon>
             </button>
@@ -32,5 +40,17 @@
       </tbody>
 
     </table>
+  </div>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event" 
+                         previousLabel="" 
+                         nextLabel=""
+                         [autoHide]="true"
+                         [responsive]="true"
+                         aria-label="Pagination">
+    </pagination-controls>
+  </div>
+  <div class="submit">
+    <button type="button" id="submit" class="button-shadow">Ajouter</button>
   </div>
 </div>
