@@ -22,6 +22,9 @@ export class GardenComponent implements OnInit {
   // Confirm Dialog this.result = boolean
   result: boolean |undefined;
 
+  // Ngx-paginator
+  p: number = 1;
+
   gardens: GardenModel[] = [];
 
   constructor(private gardenService: GardenService,

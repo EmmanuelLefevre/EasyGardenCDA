@@ -13,7 +13,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let garden of gardens">
+        <tr *ngFor="let garden of gardens | paginate: { itemsPerPage: 5, currentPage: p }">
           <td>{{ garden.name }}</td>
           <td>{{ garden.user.pseudo}}</td>
           <td>
