@@ -36,8 +36,8 @@
             </button>
           </td>
           <td>{{ portal.name }}</td>
-          <td [ngClass]="portal.presenceSensor ? 'alert' : ''">{{ portal.presenceSensor | presenceSensor }}</td>
-          <!-- <td [ngClass]="{'alert': portal.presenceSensor === 'Attention!'}">{{ portal.presenceSensor | presenceSensor }}</td> -->
+          <td *ngIf="portal.status === true" [ngClass]="portal.presenceSensor ? 'alert' : ''">{{ portal.presenceSensor | presenceSensor }}</td>
+          <td *ngIf="portal.status === false">-</td>
           <td>
             <button type="button"
                     aria-label="Modifier"

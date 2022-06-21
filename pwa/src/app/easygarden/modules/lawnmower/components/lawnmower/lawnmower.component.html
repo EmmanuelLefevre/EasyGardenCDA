@@ -36,7 +36,8 @@
             </button>
           </td>
           <td>{{ lawnmower.name }}</td>
-          <td [ngClass]="{'alert': lawnmower.batterySensor < '30'}">{{ lawnmower.batterySensor }}</td>
+          <td *ngIf="lawnmower.status === true" [ngClass]="{'alert': lawnmower.batterySensor < '30'}">{{ lawnmower.batterySensor }}</td>
+          <td *ngIf="lawnmower.status === false">-</td>
           <td>
             <button type="button"
                     aria-label="Modifier"
