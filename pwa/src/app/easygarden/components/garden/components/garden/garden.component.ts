@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
 import { GardenModel } from '../../gardenModel';
@@ -30,8 +30,16 @@ export class GardenComponent implements OnInit {
   constructor(private gardenService: GardenService,
               private dialog: MatDialog,
               public router: Router) {
-    window.scrollTo(0, 0);
-  }
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+      return false;
+    }
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+          this.router.navigated = false;
+          window.scrollTo(0, 0);
+      }
+    });
+  } 
 
   ngOnInit(): void {
     this.fetchGardens();
