@@ -30,7 +30,7 @@ export class LightningComponent implements OnInit, OnDestroy {
   lightnings: LightningModel[] = [];
 
   constructor(private lightningService: LightningService,
-              public dialog: MatDialog) {
+              private dialog: MatDialog) {
     window.scrollTo(0, 0);
   }
 

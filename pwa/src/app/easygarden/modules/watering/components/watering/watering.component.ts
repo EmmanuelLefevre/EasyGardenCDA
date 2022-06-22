@@ -30,7 +30,7 @@ export class WateringComponent implements OnInit, OnDestroy {
   waterings: WateringModel[] = [];
 
   constructor(private wateringService: WateringService,
-              public dialog: MatDialog) {
+              private dialog: MatDialog) {
     window.scrollTo(0, 0);
   }
   

@@ -30,7 +30,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
   lawnmowers: LawnmowerModel[] = [];
 
   constructor(private lawnmowerService: LawnmowerService,
-              public dialog: MatDialog) {
+              private dialog: MatDialog) {
     window.scrollTo(0, 0);
   }
 

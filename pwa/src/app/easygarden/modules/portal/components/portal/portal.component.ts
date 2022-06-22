@@ -30,7 +30,7 @@ export class PortalComponent implements OnInit, OnDestroy {
   portals: PortalModel[] = [];
 
   constructor(private portalService: PortalService,
-              public dialog: MatDialog) {
+              private dialog: MatDialog) {
   window.scrollTo(0, 0);
   }
 

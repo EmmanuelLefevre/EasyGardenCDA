@@ -28,7 +28,7 @@ export class GardenComponent implements OnInit {
   gardens: GardenModel[] = [];
 
   constructor(private gardenService: GardenService,
-              public dialog: MatDialog,
+              private dialog: MatDialog,
               public router: Router) {
     window.scrollTo(0, 0);
   }

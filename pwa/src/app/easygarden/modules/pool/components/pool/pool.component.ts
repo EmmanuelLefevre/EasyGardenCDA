@@ -30,7 +30,7 @@ export class PoolComponent implements OnInit, OnDestroy {
   pools: PoolModel[] = [];
 
   constructor(private poolService: PoolService,
-              public dialog: MatDialog) {
+              private dialog: MatDialog) {
     window.scrollTo(0, 0);
   }
 
