@@ -29,7 +29,7 @@ export class GardenComponent implements OnInit {
 
   constructor(private gardenService: GardenService,
               public dialog: MatDialog,
-              public _router: Router) {
+              public router: Router) {
     window.scrollTo(0, 0);
   }
 
