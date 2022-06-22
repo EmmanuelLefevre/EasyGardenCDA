@@ -70,6 +70,7 @@ export class GardenComponent implements OnInit {
       if (this.result === true) {
         this.gardens = this.gardens.filter(h => h !== garden);
         this.gardenService.deleteGarden(garden).subscribe();
+        window.location.reload();
       }   
     });
   }

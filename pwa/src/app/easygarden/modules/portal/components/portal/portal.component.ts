@@ -86,6 +86,7 @@ export class PortalComponent implements OnInit, OnDestroy {
       if (this.result === true) {
         this.portals = this.portals.filter(h => h !== portal);
         this.portalService.deletePortal(portal).subscribe();
+        window.location.reload();
       }   
     });
   }

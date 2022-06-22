@@ -91,6 +91,7 @@ export class WateringComponent implements OnInit, OnDestroy {
       if (this.result === true) {
         this.waterings = this.waterings.filter(h => h !== watering);
         this.wateringService.deleteWatering(watering).subscribe();
+        window.location.reload();
       }   
     });
   }
