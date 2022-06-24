@@ -29,8 +29,8 @@ export class AuthService {
       firstName: user.firstName,
       pseudo: user.pseudo,
       phoneNumber: user.phoneNumber,
-      createdAt: "2022-05-17 01:31:36",
-      isVerified: true,
+      createdAt: new Date(),
+      isVerified: false,
       roles:["ROLE_USER"]
     };
     return this.httpClient.post(environment.apis.user.url, profile)

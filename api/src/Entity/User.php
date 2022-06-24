@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -208,7 +209,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
+        $this->roles = ['ROLE_USER'];
 
         return $this;
     }
@@ -312,7 +313,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new DateTimeImmutable();
 
         return $this;
     }
@@ -336,7 +337,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setIsVerified(bool $isVerified): self
     {
-        $this->isVerified = $isVerified;
+        $this->isVerified = false;
 
         return $this;
     }
