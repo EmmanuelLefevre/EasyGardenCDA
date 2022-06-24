@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
 import { GardenModel } from '../../gardenModel';
@@ -14,7 +14,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
   styleUrls: ['./garden.component.scss']
 })
 
-export class GardenComponent implements OnInit {
+export class GardenComponent implements OnInit, OnDestroy {
 
   faPen = faPen;
   faTrash = faTrash;
@@ -30,15 +30,7 @@ export class GardenComponent implements OnInit {
   constructor(private gardenService: GardenService,
               private dialog: MatDialog,
               public router: Router) {
-    this.router.routeReuseStrategy.shouldReuseRoute = function(){
-      return false;
-    }
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-          this.router.navigated = false;
-          window.scrollTo(0, 0);
-      }
-    });
+    window.scrollTo(0, 0);
   } 
 
   ngOnInit(): void {

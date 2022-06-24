@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
@@ -30,6 +30,7 @@ export class EditGardenComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
+              private router: Router,
               private location: Location,
               private activated: ActivatedRoute,
               private gardenService: GardenService) {
@@ -72,7 +73,9 @@ export class EditGardenComponent implements OnInit {
       this.success = JSON.stringify(typedEditGardenForm);
       let gid = this.activated.snapshot.paramMap.get('id')
       this.gardenService.updateGarden(typedEditGardenForm, gid).subscribe()
-      this.location.back()
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate(['/easygarden']);
+      });
     } 
   }
 
