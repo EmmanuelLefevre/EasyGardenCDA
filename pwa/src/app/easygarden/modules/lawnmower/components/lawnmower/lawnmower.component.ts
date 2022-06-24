@@ -86,7 +86,6 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
       if (this.result === true) {
         this.lawnmowers = this.lawnmowers.filter(h => h !== lawnmower);
         this.lawnmowerService.deleteLawnmower(lawnmower).subscribe();
-        window.location.reload();
       }   
     });
   }

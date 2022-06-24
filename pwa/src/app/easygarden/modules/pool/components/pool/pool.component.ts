@@ -86,7 +86,6 @@ export class PoolComponent implements OnInit, OnDestroy {
       if (this.result === true) {
         this.pools = this.pools.filter(h => h !== pool);
         this.poolService.deletePool(pool).subscribe();
-        window.location.reload();
       }   
     });
   }

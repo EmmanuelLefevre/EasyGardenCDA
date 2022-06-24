@@ -86,7 +86,6 @@ export class LightningComponent implements OnInit, OnDestroy {
       if (this.result === true) {
         this.lightnings = this.lightnings.filter(h => h !== lightning);
         this.lightningService.deleteLightning(lightning).subscribe();
-        window.location.reload();
       }   
     });
   }
