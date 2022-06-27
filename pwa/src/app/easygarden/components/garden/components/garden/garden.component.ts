@@ -20,7 +20,7 @@ export class GardenComponent implements OnInit, OnDestroy {
   faTrash = faTrash;
 
   // Confirm Dialog this.result = boolean
-  result: boolean |undefined;
+  result: boolean | undefined;
 
   // Ngx-paginator
   p: number = 1;
