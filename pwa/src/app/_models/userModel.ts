@@ -10,39 +10,39 @@ export interface UserModel {
     updatedAt: string,
     isVerified: boolean,
     roles: JSON,
-    garden: {
+    garden: [{
         id: string,
         name: string,
-        lawnmower: {
+        lawnmower: [{
             id: number,
             name: string,
             batterySensor: string,
             status: boolean
-        },
-        lightning: {
+        }],
+        lightning: [{
             id: number,
             name: string,
             status: boolean
-        },
-        pool: {
+        }],
+        pool: [{
             id: number,
             name: string,
             status: boolean
-        },
-        portal: {
+        }],
+        portal: [{
             id: number,
             name: string,
             presenceSensor: string,
             status: boolean
-        },
-        watering: {
+        }],
+        watering: [{
             id: number,
             name: string,
             flowSensor: string,
             pressureSensor: string,
             status: boolean
-        }
-    }
+        }]
+    }]
 }
 
 export interface SingleUserModel {
