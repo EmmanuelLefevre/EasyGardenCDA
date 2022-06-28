@@ -44,7 +44,6 @@ export class GardenComponent implements OnInit, OnDestroy {
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
           this.users = res['hydra:member'];
-          console.log(this.users)
         }
       )
   }
