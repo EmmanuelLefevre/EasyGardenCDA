@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { GardenModel, DataGardenModel } from './gardenModel';
+import { DataUserModel } from '../../../_models/userModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class GardenService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Gardens
-  getAllGardens(): Observable<DataGardenModel[]> {
-    return this.httpClient.get<DataGardenModel[]>(environment.apis.garden.url);
+  getAllGardens(): Observable<DataUserModel[]> {
+    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
   // Get Garden
@@ -29,8 +30,7 @@ export class GardenService {
   }
 
   // Delete Garden
-  deleteGarden(garden: GardenModel | number): Observable<GardenModel> {
-    const id = typeof garden === 'number' ? garden : garden.id;
+  deleteGarden(id: string): Observable<GardenModel> {
     return this.httpClient.delete<GardenModel>(environment.apis.garden.url+'/'+id)
   }
 

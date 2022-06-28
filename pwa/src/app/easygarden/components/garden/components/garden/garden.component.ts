@@ -3,7 +3,7 @@ import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
-import { GardenModel } from '../../gardenModel';
+import { UserModel } from '../../../../../_models/userModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
@@ -25,7 +25,7 @@ export class GardenComponent implements OnInit, OnDestroy {
   // Ngx-paginator
   p: number = 1;
 
-  gardens: GardenModel[] = [];
+  users: UserModel[] = [];
 
   constructor(private gardenService: GardenService,
               private dialog: MatDialog,
@@ -43,14 +43,15 @@ export class GardenComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          this.gardens = res['hydra:member'];
+          this.users = res['hydra:member'];
+          console.log(this.users)
         }
       )
   }
 
   // Delete Garden
-  confirmDialog(garden: GardenModel): void {
-    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ garden.name +'" ?';
+  confirmDialog(id: string, name: string): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ name +'" ?';
     const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
@@ -60,8 +61,8 @@ export class GardenComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.gardens = this.gardens.filter(h => h !== garden);
-        this.gardenService.deleteGarden(garden).subscribe();
+        this.gardenService.deleteGarden(id).subscribe();
+        this.fetchGardens();
       }   
     });
   }

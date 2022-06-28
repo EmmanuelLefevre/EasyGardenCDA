@@ -13,30 +13,32 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let garden of gardens | paginate: { itemsPerPage: 5, currentPage: p }">
-          <td>{{ garden.name }}</td>
-          <td>{{ garden.user.pseudo}}</td>
-          <td>
-            <button type="button"
-                    aria-label="Modifier"
-                    mat-raised-button
-                    matTooltip="Modifier"
-                    matTooltipPosition="before"
-                    matTooltipShowDelay="500"
-                    routerLink="/easygarden/{{garden.id}}">
-              <fa-icon [icon]="faPen"></fa-icon>
-            </button>
-            <button type="submit" class="trash"
-                    aria-label="Supprimer"
-                    mat-raised-button
-                    matTooltip="Supprimer"
-                    matTooltipPosition="after"
-                    matTooltipShowDelay="500"
-                    (click)="confirmDialog(garden)">
-              <fa-icon [icon]="faTrash"></fa-icon>
-            </button>
-          </td>
-        </tr>
+        <ng-container *ngFor="let user of users">
+          <tr *ngFor="let garden of user.garden | paginate: { itemsPerPage: 5, currentPage: p }">
+            <td>{{ garden.name }}</td>
+            <td>{{ user.pseudo }}</td>
+            <td>
+              <button type="button"
+                      aria-label="Modifier"
+                      mat-raised-button
+                      matTooltip="Modifier"
+                      matTooltipPosition="before"
+                      matTooltipShowDelay="500"
+                      routerLink="/easygarden/{{garden.id}}">
+                <fa-icon [icon]="faPen"></fa-icon>
+              </button>
+              <button type="submit" class="trash"
+                      aria-label="Supprimer"
+                      mat-raised-button
+                      matTooltip="Supprimer"
+                      matTooltipPosition="after"
+                      matTooltipShowDelay="500"
+                      (click)="confirmDialog(garden.id, garden.name)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
       </tbody>
 
     </table>
