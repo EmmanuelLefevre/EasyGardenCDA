@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { WateringModel, DataWateringModel } from './wateringModel';
+import { DataUserModel } from '../../../_models/userModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class WateringService {
   constructor(private httpClient: HttpClient) { }
   
   // Get Index of Waterings
-  getAllWaterings(): Observable<DataWateringModel[]> {
-    return this.httpClient.get<DataWateringModel[]>(environment.apis.watering.url);
+  getAllWaterings(): Observable<DataUserModel[]> {
+    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
   // Get Watering
@@ -34,8 +35,7 @@ export class WateringService {
   }
 
   // Delete Watering
-  deleteWatering(watering: WateringModel | number): Observable<WateringModel> {
-    const id = typeof watering === 'number' ? watering : watering.id;
+  deleteWatering(id: number): Observable<WateringModel> {
     return this.httpClient.delete<WateringModel>(environment.apis.watering.url+'/'+id)
   }
 
