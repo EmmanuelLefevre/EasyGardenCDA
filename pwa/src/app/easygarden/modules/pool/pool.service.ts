@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { PoolModel, DataPoolModel } from './poolModel';
+import { DataUserModel } from '../../../_models/userModel';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class PoolService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Pools
-  getAllPools(): Observable<DataPoolModel[]> {
-    return this.httpClient.get<DataPoolModel[]>(environment.apis.pool.url);
+  getAllPools(): Observable<DataUserModel[]> {
+    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
   // Get Pools
@@ -33,8 +34,7 @@ export class PoolService {
   }
 
   // Delete Pool
-  deletePool(pool: PoolModel | number): Observable<PoolModel> {
-    const id = typeof pool === 'number' ? pool : pool.id;
+  deletePool(id: number): Observable<PoolModel> {
     return this.httpClient.delete<PoolModel>(environment.apis.pool.url+'/'+id)
   }
 
