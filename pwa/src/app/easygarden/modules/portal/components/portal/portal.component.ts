@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { PortalService } from '../../portal.service';
-import { PortalModel } from '../../portalModel';
+import { UserModel } from '../../../../../_models/userModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
@@ -27,7 +27,7 @@ export class PortalComponent implements OnInit, OnDestroy {
   // Ngx-paginator
   p: number = 1;
 
-  portals: PortalModel[] = [];
+  users: UserModel[] = [];
 
   constructor(private portalService: PortalService,
               private dialog: MatDialog) {
@@ -44,7 +44,7 @@ export class PortalComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          this.portals = res['hydra:member'];
+          this.users = res['hydra:member'];
         }
       )
   }
@@ -73,8 +73,8 @@ export class PortalComponent implements OnInit, OnDestroy {
   }
 
   // Delete Portal
-  confirmDialog(portal: PortalModel): void {
-    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ portal.name +'" ?';
+  confirmDialog(id: number, name: string): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ name +'" ?';
     const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
@@ -84,8 +84,7 @@ export class PortalComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.portals = this.portals.filter(h => h !== portal);
-        this.portalService.deletePortal(portal).subscribe();
+        this.portalService.deletePortal(id).subscribe();
       }   
     });
   }

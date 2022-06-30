@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import {  PortalModel, DataPortalModel } from './portalModel';
+import { PortalModel, DataPortalModel } from './portalModel';
+import { DataUserModel } from '../../../_models/userModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class PortalService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Portals
-  getAllPortals(): Observable<DataPortalModel[]> {
-    return this.httpClient.get<DataPortalModel[]>(environment.apis.portal.url);
+  getAllPortals(): Observable<DataUserModel[]> {
+    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
   // Get Portal
@@ -34,8 +35,7 @@ export class PortalService {
   }
 
   // Delete Portal
-  deletePortal(portal: PortalModel | number): Observable<PortalModel> {
-    const id = typeof portal === 'number' ? portal : portal.id;
+  deletePortal(id: number): Observable<PortalModel> {
     return this.httpClient.delete<PortalModel>(environment.apis.portal.url+'/'+id)
   }
 
