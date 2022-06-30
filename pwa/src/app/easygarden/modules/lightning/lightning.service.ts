@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { LightningModel, DataLightningModel } from './lightningModel';
+import { DataUserModel } from '../../../_models/userModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class LightningService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Lightnings
-  getAllLightnings(): Observable<DataLightningModel[]> {
-    return this.httpClient.get<DataLightningModel[]>(environment.apis.lightning.url);
+  getAllLightnings(): Observable<DataUserModel[]> {
+    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
   // Get Lightning
@@ -34,8 +35,7 @@ export class LightningService {
   }
 
   // Delete Lightning
-  deleteLightning(lightning: LightningModel | number): Observable<LightningModel> {
-    const id = typeof lightning === 'number' ? lightning : lightning.id;
+  deleteLightning(id: number): Observable<LightningModel> {
     return this.httpClient.delete<LightningModel>(environment.apis.lightning.url+'/'+id)
   }
 

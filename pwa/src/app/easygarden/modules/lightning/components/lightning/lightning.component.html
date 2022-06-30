@@ -1,8 +1,5 @@
 <div class="div-wrapper table-wrapper">
   <div>
-    <img class="logo-panel" src="assets/img/easygarden.png" alt="logo">
-  </div>
-  <div>
     <hr>
     <h1 class="titre-tableau">Eclairage</h1>
     <hr>
@@ -19,43 +16,47 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let lightning of lightnings | paginate: { itemsPerPage: 5, currentPage: p }">
-          <td class="power">
-            <button type="submit"
-                    aria-label="On"
-                    *ngIf="lightning.status === true"
-                    (click)="updateStatus(lightning.id, lightning.status)">
-              <fa-icon [icon]="faPowerOff"></fa-icon>
-            </button>
-            <button type="submit" class="btn-off"
-                    aria-label="Off"
-                    *ngIf="lightning.status === false"
-                    (click)="updateStatus(lightning.id, lightning.status)">
-              <fa-icon [icon]="faPowerOff"></fa-icon>
-            </button>
-          </td>
-          <td>{{ lightning.name }}</td>
-          <td>
-            <button type="button"
-                    aria-label="Modifier"
-                    mat-raised-button
-                    matTooltip="Modifier"
-                    matTooltipPosition="before"
-                    matTooltipShowDelay="500"
-                    routerLink="/easygarden/lightning/{{lightning.id}}">
-              <fa-icon [icon]="faPen"></fa-icon>
-            </button>
-            <button type="submit" class="trash"
-                    aria-label="Supprimer"
-                    mat-raised-button
-                    matTooltip="Supprimer"
-                    matTooltipPosition="after"
-                    matTooltipShowDelay="500"
-                    (click)="confirmDialog(lightning)">
-              <fa-icon [icon]="faTrash"></fa-icon>
-            </button>
-          </td>
-        </tr>
+        <ng-container *ngFor="let user of users">
+          <ng-container *ngFor="let garden of user.garden">
+            <tr *ngFor="let lightning of garden.lightning | paginate: { itemsPerPage: 2, currentPage: p }">
+              <td class="power">
+                <button type="submit"
+                        aria-label="On"
+                        *ngIf="lightning.status === true"
+                        (click)="updateStatus(lightning.id, lightning.status)">
+                  <fa-icon [icon]="faPowerOff"></fa-icon>
+                </button>
+                <button type="submit" class="btn-off"
+                        aria-label="Off"
+                        *ngIf="lightning.status === false"
+                        (click)="updateStatus(lightning.id, lightning.status)">
+                  <fa-icon [icon]="faPowerOff"></fa-icon>
+                </button>
+              </td>
+              <td>{{ lightning.name }}</td>
+              <td>
+                <button type="button"
+                        aria-label="Modifier"
+                        mat-raised-button
+                        matTooltip="Modifier"
+                        matTooltipPosition="before"
+                        matTooltipShowDelay="500"
+                        routerLink="/easygarden/lightning/{{lightning.id}}">
+                  <fa-icon [icon]="faPen"></fa-icon>
+                </button>
+                <button type="submit" class="trash"
+                        aria-label="Supprimer"
+                        mat-raised-button
+                        matTooltip="Supprimer"
+                        matTooltipPosition="after"
+                        matTooltipShowDelay="500"
+                        (click)="confirmDialog(lightning.id, lightning.name)">
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
       </tbody>
 
     </table>

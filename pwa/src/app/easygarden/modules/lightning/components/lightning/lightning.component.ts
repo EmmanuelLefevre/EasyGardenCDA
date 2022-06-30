@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { LightningModel } from '../../lightningModel';
 import { LightningService } from '../../lightning.service';
+import { UserModel } from '../../../../../_models/userModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
@@ -27,7 +27,7 @@ export class LightningComponent implements OnInit, OnDestroy {
   // Ngx-paginator
   p: number = 1;
 
-  lightnings: LightningModel[] = [];
+  users: UserModel[] = [];
 
   constructor(private lightningService: LightningService,
               private dialog: MatDialog) {
@@ -44,7 +44,7 @@ export class LightningComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.lightnings = res['hydra:member'];
+          this.users = res['hydra:member'];
         }
       )
   }
@@ -73,8 +73,8 @@ export class LightningComponent implements OnInit, OnDestroy {
   }
 
   // Delete Lightning
-  confirmDialog(lightning: LightningModel): void {
-    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ lightning.name +'" ?';
+  confirmDialog(id: number, name: string): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ name +'" ?';
     const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
@@ -84,8 +84,8 @@ export class LightningComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.lightnings = this.lightnings.filter(h => h !== lightning);
-        this.lightningService.deleteLightning(lightning).subscribe();
+        this.lightningService.deleteLightning(id).subscribe();
+        this.fetchLightnings();
       }   
     });
   }
