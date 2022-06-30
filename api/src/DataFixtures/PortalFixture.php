@@ -22,7 +22,7 @@ class PortalFixture extends Fixture implements DependentFixtureInterface
         //PORTAL Saint-Savin
         $gardenUser1 = $this->getReference(gardenFixture::GARDEN1_REFERENCE);
         $portal1 = new \App\Entity\Portal();
-        $portal1->setName('Portail de Manu (Saint-Savin)');
+        $portal1->setName('Portail (Saint-Savin)');
         $portal1->setPresenceSensor(mt_rand(0, 1));
         $portal1->setStatus(mt_rand(0, 1));
         $portal1->setGarden($gardenUser1);
@@ -31,17 +31,17 @@ class PortalFixture extends Fixture implements DependentFixtureInterface
         // PORTAL Cazaux
         $gardenUser2 = $this->getReference(gardenFixture::GARDEN2_REFERENCE);
         $portal2 = new \App\Entity\Portal();
-        $portal2->setName('Portail de Manu (Cazaux)');
+        $portal2->setName('Portail (Cazaux)');
         $portal2->setPresenceSensor(mt_rand(0, 1));
         $portal2->setStatus(mt_rand(0, 1));
         $portal2->setGarden($gardenUser2);
         $manager->persist($portal2);
     
-        // Create Portal for Sofiane
-        // PORTAL Fargues St Hilaire
+        // Create Portal for Nicolas
+        // PORTAL Angoulême
         $gardenUser3 = $this->getReference(gardenFixture::GARDEN3_REFERENCE);
         $portal3 = new \App\Entity\Portal();
-        $portal3->setName('Portail de Sofiane');
+        $portal3->setName('Portail');
         $portal3->setPresenceSensor(mt_rand(0, 1));
         $portal3->setStatus(mt_rand(0, 1));
         $portal3->setGarden($gardenUser3); 
@@ -51,7 +51,7 @@ class PortalFixture extends Fixture implements DependentFixtureInterface
         for ($nbrPortals=0; $nbrPortals < 15 ; $nbrPortals++) {
             $garden = $this->getReference('garden_'.$faker->unique()->numberBetween(3, 39));
             $portal = new \App\Entity\Portal();
-            $portal->setName('Portail de '.stringWithoutParenthesis($garden->getName()));
+            $portal->setName('Portail '.stringWithoutParenthesis($garden->getName()));
             $portal->setPresenceSensor(mt_rand(0, 1));
             $portal->setStatus(mt_rand(0, 1));
             $portal->setGarden($garden);

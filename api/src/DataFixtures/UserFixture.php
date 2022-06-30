@@ -34,10 +34,10 @@ class UserFixture extends Fixture
         $admin->setFirstName('prenomADMIN');
         $admin->setLastName('nomADMIN');
         $admin->setPseudo('pseudoADMIN');
-        $admin->setPassword($this->hasher->hashPassword($admin,'Admin!33'));
+        $admin->setPassword($this->hasher->hashPassword($admin,'Admin!33kzo'));
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setEmail('Admin@outlook.fr');
-        $admin->setPhoneNumber('06 12 25 48 71');
+        $admin->setEmail('admin@protonmail.fr');
+        $admin->setPhoneNumber('05 12 25 48 71');
         $admin->setCreatedAt(new \DateTimeImmutable());
         $admin->setIsVerified(true);
         $manager->persist($admin);
@@ -46,11 +46,11 @@ class UserFixture extends Fixture
         $user1 = new User();
         $user1->setFirstName('Emmanuel');
         $user1->setLastName('Lefevre');
-        $user1->setPseudo('Darka');
+        $user1->setPseudo('Emmanuel');
         $user1->setPassword($this->hasher->hashPassword($user1,'Darka!33kzo'));
         $user1->setRoles(['ROLE_USER']);
-        $user1->setEmail('manu@protonmail.com');
-        $user1->setPhoneNumber('07 85 98 25 07');
+        $user1->setEmail('emmanuel@protonmail.com');
+        $user1->setPhoneNumber('06 45 91 23 07');
         $user1->setCreatedAt(new \DateTimeImmutable());
         $user1->setIsVerified(true); 
         $manager->persist($user1);
@@ -58,13 +58,13 @@ class UserFixture extends Fixture
 
         // User Sofiane
         $user2 = new User();
-        $user2->setFirstName('Sofiane');
-        $user2->setLastName('Khalfi');
-        $user2->setPseudo('soso');
-        $user2->setPassword($this->hasher->hashPassword($user2,'Sofiane!33bdx'));
+        $user2->setFirstName('Nicolas');
+        $user2->setLastName('Clement');
+        $user2->setPseudo('Nico');
+        $user2->setPassword($this->hasher->hashPassword($user2,'Nico!33kzo'));
         $user2->setRoles(['ROLE_USER']);
-        $user2->setEmail('sofiane@gmail.com');
-        $user2->setPhoneNumber('06 54 85 78 14');
+        $user2->setEmail('nico@gmail.com');
+        $user2->setPhoneNumber('07 12 45 75 64');
         $user2->setCreatedAt(new \DateTimeImmutable());
         $user2->setIsVerified(true); 
         $manager->persist($user2);

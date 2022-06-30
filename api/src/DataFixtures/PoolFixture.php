@@ -23,7 +23,7 @@ class PoolFixture extends Fixture implements DependentFixtureInterface
         for ($nbrPools=0; $nbrPools < 8; $nbrPools++) {
             $gardenUser1 = $this->getReference(gardenFixture::GARDEN1_REFERENCE);
             $pool = new \App\Entity\Pool();
-            $pool->setName(poolsData().' (Saint-Savin/Manu)');
+            $pool->setName(poolsData().' (Saint-Savin)');
             $pool->setStatus(mt_rand(0, 1));
             $pool->setGarden($gardenUser1);
             $manager->persist($pool);
@@ -33,18 +33,18 @@ class PoolFixture extends Fixture implements DependentFixtureInterface
         for ($nbrPools=0; $nbrPools < 5; $nbrPools++) {
             $gardenUser2 = $this->getReference(gardenFixture::GARDEN2_REFERENCE);
             $pool = new \App\Entity\Pool();
-            $pool->setName(poolsData().' (Cazaux/Manu)');
+            $pool->setName(poolsData().' (Cazaux)');
             $pool->setStatus(mt_rand(0, 1));
             $pool->setGarden($gardenUser2);
             $manager->persist($pool);
         }
 
-        // Create Pools for Sofiane
-        // POOLS Fargues St Hilaire
+        // Create Pools for Nicolas
+        // POOLS Angoulême
         for ($nbrPools=0; $nbrPools < 6; $nbrPools++) {
             $gardenUser3 = $this->getReference(gardenFixture::GARDEN3_REFERENCE);
             $pool = new \App\Entity\Pool();
-            $pool->setName(poolsData().' (Sofiane)');
+            $pool->setName(poolsData());
             $pool->setStatus(mt_rand(0, 1));
             $pool->setGarden($gardenUser3);
             $manager->persist($pool);

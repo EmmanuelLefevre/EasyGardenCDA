@@ -30,7 +30,7 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
         // GARDEN Saint-Savin
         $user1 = $this->getReference(userFixture::USER1_REFERENCE);
         $gardenUser1 = new \App\Entity\Garden();
-        $gardenUser1->setName('Saint-Savin (Manu)');
+        $gardenUser1->setName('Saint-Savin');
         $gardenUser1->setUser($user1);
         $manager->persist($gardenUser1);
         $this->addReference(self::GARDEN1_REFERENCE , $gardenUser1);
@@ -38,16 +38,16 @@ class GardenFixture extends Fixture implements DependentFixtureInterface
         // GARDEN Cazaux
         $user1 = $this->getReference(userFixture::USER1_REFERENCE);
         $gardenUser2 = new \App\Entity\Garden();
-        $gardenUser2->setName('Cazaux (Manu)');
+        $gardenUser2->setName('Cazaux');
         $gardenUser2->setUser($user1);
         $manager->persist($gardenUser2);
         $this->addReference(self::GARDEN2_REFERENCE , $gardenUser2);
 
-        // Create Garden for Sofiane
-        // GARDEN fargues St Hilaire
+        // Create Garden for Nicolas
+        // GARDEN Angoulême
         $user2 = $this->getReference(userFixture::USER2_REFERENCE);
         $gardenUser3 = new \App\Entity\Garden();
-        $gardenUser3->setName('Fargues St Hilaire (Sofiane)');
+        $gardenUser3->setName('Angoulême');
         $gardenUser3->setUser($user2);
         $manager->persist($gardenUser3);
         $this->addReference(self::GARDEN3_REFERENCE , $gardenUser3);
