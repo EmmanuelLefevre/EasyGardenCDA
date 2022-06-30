@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { LawnmowerService } from '../../lawnmower.service';
-import { LawnmowerModel } from '../../lawnmowerModel';
+import { UserModel } from '../../../../../_models/userModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
@@ -27,7 +27,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
   // Ngx-paginator
   p: number = 1;
 
-  lawnmowers: LawnmowerModel[] = [];
+  users: UserModel[] = [];
 
   constructor(private lawnmowerService: LawnmowerService,
               private dialog: MatDialog) {
@@ -44,7 +44,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.lawnmowers = res['hydra:member'];
+          this.users = res['hydra:member'];
         }
       )
   }
@@ -73,8 +73,8 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
   }
 
   // Delete Lawnmower
-  confirmDialog(lawnmower: LawnmowerModel): void {
-    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ lawnmower.name +'" ?';
+  confirmDialog(id: number, name: string): void {
+    const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ name +'" ?';
     const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
@@ -84,8 +84,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.lawnmowers = this.lawnmowers.filter(h => h !== lawnmower);
-        this.lawnmowerService.deleteLawnmower(lawnmower).subscribe();
+        this.lawnmowerService.deleteLawnmower(id).subscribe();
       }   
     });
   }
