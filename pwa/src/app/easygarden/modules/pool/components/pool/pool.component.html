@@ -1,8 +1,5 @@
 <div class="div-wrapper table-wrapper">
   <div>
-    <img class="logo-panel" src="assets/img/easygarden.png" alt="logo">
-  </div>
-  <div>
     <hr>
     <h1 class="titre-tableau">Bassin</h1>
     <hr>
@@ -21,7 +18,7 @@
       <tbody>
         <ng-container *ngFor="let user of users">
           <ng-container *ngFor="let garden of user.garden">
-            <tr *ngFor="let pool of garden.pool | paginate: { itemsPerPage: 2, currentPage: p }">
+            <tr *ngFor="let pool of garden.pool | paginate: { itemsPerPage: 3, currentPage: p }">
               <td class="power">
                 <button type="submit"
                         aria-label="On" 

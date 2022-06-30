@@ -14,7 +14,7 @@
 
       <tbody>
         <ng-container *ngFor="let user of users">
-          <tr *ngFor="let garden of user.garden | paginate: { itemsPerPage: 5, currentPage: p }">
+          <tr *ngFor="let garden of user.garden | paginate: { itemsPerPage: 3, currentPage: p }">
             <td>{{ garden.name }}</td>
             <td>{{ user.pseudo }}</td>
             <td>
