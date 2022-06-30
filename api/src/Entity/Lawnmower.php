@@ -17,7 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     normalizationContext: ['groups' => ['read:Lawnmower']],
     denormalizationContext: ['groups' => ['write:Lawnmower']],
     collectionOperations: ['get' => ['normalization_context' => ['groups' => ['read:Lawnmower']]],
-                           'post' => ['denormalization_context' => ['groups']]])]
+                           'post' => ['denormalization_context' => ['groups']]],
+    order: ['status' => 'DESC'])]
 #[ApiFilter(BooleanFilter::class, properties: ['status'])]
 #[ApiFilter(OrderFilter::class, properties: ['name'])]
 #[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
