@@ -46,6 +46,7 @@ export class WateringComponent implements OnInit, OnDestroy {
           if (res.hasOwnProperty('hydra:member'))
           // console.log(res);
           this.users = res['hydra:member'];
+          // console.log(this.users);
         }
       )
   }

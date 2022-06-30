@@ -20,7 +20,7 @@
       <tbody>
         <ng-container *ngFor="let user of users">
           <ng-container *ngFor="let garden of user.garden">
-            <tr *ngFor="let watering of garden.watering | paginate: { itemsPerPage: 3, currentPage: p }">
+            <tr *ngFor="let watering of garden.watering | paginate: { itemsPerPage: 4, currentPage: p }">
               <td class="power">
                 <button type="submit" 
                         aria-label="On"
