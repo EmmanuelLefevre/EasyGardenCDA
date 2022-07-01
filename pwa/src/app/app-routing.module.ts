@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'easygarden', loadChildren: () => import('./easygarden/easygarden.module')
       .then(module => module.EasygardenModule), canActivate:[AuthGuard]
   },
-  { path: '**', component: ErrorComponent}
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
