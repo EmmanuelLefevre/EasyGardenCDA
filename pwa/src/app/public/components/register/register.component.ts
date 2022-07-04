@@ -127,8 +127,8 @@ export class RegisterComponent implements OnInit {
     delete this.registerForm.value.confirmPassword;
     this.success = JSON.stringify(typedRegisterForm);
     this.authService.registerIn(typedRegisterForm).subscribe(() =>
-      this.router.navigate(['/'])
-    );
+    this.router.navigate(['/home'])
+    )
   }
 
   onReset(): void {
