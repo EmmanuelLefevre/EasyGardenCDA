@@ -33,7 +33,7 @@ const routes: Routes = [
           .then(module => module.LawnmowerModule)
       },
       
-      { path: ':id', component: EditGardenComponent }
+      { path: 'garden/:id', component: EditGardenComponent }
     ]
   }
 ];
