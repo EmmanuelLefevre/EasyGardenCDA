@@ -14,6 +14,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 export class PoolComponent implements OnInit, OnDestroy {
 
+  title = "Bassin";
   faPowerOff = faPowerOff;
   faPen = faPen;
   faTrash = faTrash;
