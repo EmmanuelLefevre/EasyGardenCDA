@@ -84,7 +84,11 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.lawnmowerService.deleteLawnmower(id).subscribe();
+        this.lawnmowerService.deleteLawnmower(id).subscribe(
+          (_res:any) => {
+            this.fetchLawnmowers();
+          }
+        );
       }   
     });
   }

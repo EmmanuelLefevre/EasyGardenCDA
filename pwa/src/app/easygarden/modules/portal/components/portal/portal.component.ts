@@ -84,7 +84,11 @@ export class PortalComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.portalService.deletePortal(id).subscribe();
+        this.portalService.deletePortal(id).subscribe(
+          (_res:any) => {
+            this.fetchPortals();
+          }
+        );
       }   
     });
   }

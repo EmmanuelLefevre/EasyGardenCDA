@@ -84,7 +84,11 @@ export class PoolComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.poolService.deletePool(id).subscribe();
+        this.poolService.deletePool(id).subscribe(
+          (_res:any) => {
+            this.fetchPools();
+          }
+        );
       }   
     });
   }

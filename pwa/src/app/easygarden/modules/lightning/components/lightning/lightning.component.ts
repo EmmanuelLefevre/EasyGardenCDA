@@ -84,8 +84,11 @@ export class LightningComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.lightningService.deleteLightning(id).subscribe();
-        this.fetchLightnings();
+        this.lightningService.deleteLightning(id).subscribe(
+          (_res:any) => {
+            this.fetchLightnings();
+          }
+        );
       }   
     });
   }

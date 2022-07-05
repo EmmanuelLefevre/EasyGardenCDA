@@ -90,8 +90,11 @@ export class WateringComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.wateringService.deleteWatering(id).subscribe();
-        this.fetchWaterings();
+        this.wateringService.deleteWatering(id).subscribe(
+          (_res:any) => {
+            this.fetchWaterings();
+          }
+        );
       }   
     });
   }
