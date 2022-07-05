@@ -14,6 +14,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 export class PortalComponent implements OnInit, OnDestroy {
 
+  title = "Portail";
   faPowerOff = faPowerOff;
   faPen = faPen;
   faTrash = faTrash;
