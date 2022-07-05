@@ -20,7 +20,7 @@ class WateringFixture extends Fixture implements DependentFixtureInterface
 
         // Create Waterings for Manu
         // WATERINGS Saint-Savin     
-        for ($nbrWaterings=0; $nbrWaterings < 10; $nbrWaterings++) {
+        for ($nbrWaterings=0; $nbrWaterings < 12; $nbrWaterings++) {
             $gardenUser1 = $this->getReference(gardenFixture::GARDEN1_REFERENCE);
             $watering = new \App\Entity\Watering();
             $watering->setName(wateringsData().' (Saint-Savin)');
@@ -32,7 +32,7 @@ class WateringFixture extends Fixture implements DependentFixtureInterface
         }
 
         // WATERINGS Cazaux
-        for ($nbrWaterings=0; $nbrWaterings < 6; $nbrWaterings++) {
+        for ($nbrWaterings=0; $nbrWaterings < 8; $nbrWaterings++) {
             $gardenUser2 = $this->getReference(gardenFixture::GARDEN2_REFERENCE);
             $watering = new \App\Entity\Watering();
             $watering->setName(wateringsData().' (Cazaux)');

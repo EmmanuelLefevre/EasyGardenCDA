@@ -20,7 +20,7 @@ class PoolFixture extends Fixture implements DependentFixtureInterface
 
         // Create Pools for Manu
         // POOLS Saint-Savin
-        for ($nbrPools=0; $nbrPools < 8; $nbrPools++) {
+        for ($nbrPools=0; $nbrPools < 12; $nbrPools++) {
             $gardenUser1 = $this->getReference(gardenFixture::GARDEN1_REFERENCE);
             $pool = new \App\Entity\Pool();
             $pool->setName(poolsData().' (Saint-Savin)');
@@ -30,7 +30,7 @@ class PoolFixture extends Fixture implements DependentFixtureInterface
         }
 
         // POOLS Cazaux
-        for ($nbrPools=0; $nbrPools < 5; $nbrPools++) {
+        for ($nbrPools=0; $nbrPools < 8; $nbrPools++) {
             $gardenUser2 = $this->getReference(gardenFixture::GARDEN2_REFERENCE);
             $pool = new \App\Entity\Pool();
             $pool->setName(poolsData().' (Cazaux)');
