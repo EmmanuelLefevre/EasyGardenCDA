@@ -14,6 +14,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 export class WateringComponent implements OnInit, OnDestroy {
 
+  title = 'Arrosage';
   faPowerOff = faPowerOff;
   faPen = faPen;
   faTrash = faTrash;
