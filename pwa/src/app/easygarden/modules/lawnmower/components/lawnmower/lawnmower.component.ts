@@ -14,6 +14,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 export class LawnmowerComponent implements OnInit, OnDestroy {
 
+  title = "Tondeuse";
   faPowerOff = faPowerOff;
   faPen = faPen;
   faTrash = faTrash;
