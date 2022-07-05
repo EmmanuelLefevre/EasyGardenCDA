@@ -32,11 +32,11 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
 
   constructor(private lawnmowerService: LawnmowerService,
               private dialog: MatDialog) {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   ngOnInit(): void {
-    this.fetchLawnmowers();
+    this.fetchLawnmowers()
   }
 
   // Display Lawnmowers
@@ -45,7 +45,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.users = res['hydra:member'];
+          this.users = res['hydra:member']
         }
       )
   }
@@ -58,7 +58,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
         .subscribe(
           (res:any) => {
             this.status = res
-            this.fetchLawnmowers();
+            this.fetchLawnmowers()
           }
         )
     } else if (status === false) {
@@ -67,7 +67,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
         .subscribe(
           (res:any) => {
             this.status = res
-            this.fetchLawnmowers();
+            this.fetchLawnmowers()
           }
         )
     }
@@ -80,22 +80,22 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
-    });
+    })
     
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
         this.lawnmowerService.deleteLawnmower(id).subscribe(
-          (_res:any) => {
-            this.fetchLawnmowers();
+          () => {
+            this.fetchLawnmowers()
           }
-        );
+        )
       }   
-    });
+    })
   }
 
   ngOnDestroy() {
-    // this.lawnmowerService.unsubscribe();
+    // this.lawnmowerService.unsubscribe()
   }
 
 }

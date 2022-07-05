@@ -32,11 +32,11 @@ export class WateringComponent implements OnInit, OnDestroy {
 
   constructor(private wateringService: WateringService,
               private dialog: MatDialog) {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
   
   ngOnInit(): void {
-    this.fetchWaterings();
+    this.fetchWaterings()
   }
   
   // Display Waterings
@@ -45,9 +45,9 @@ export class WateringComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          // console.log(res);
-          this.users = res['hydra:member'];
-          // console.log(this.users);
+          // console.log(res)
+          this.users = res['hydra:member']
+          // console.log(this.users)
         }
       )
   }
@@ -62,7 +62,7 @@ export class WateringComponent implements OnInit, OnDestroy {
           (res:any) => {
             this.status = res
             // console.log(status)
-            this.fetchWaterings();
+            this.fetchWaterings()
           }
         )
     } else if (status === false) {
@@ -73,7 +73,7 @@ export class WateringComponent implements OnInit, OnDestroy {
           (res:any) => {
             this.status = res
             // console.log(status)
-            this.fetchWaterings();
+            this.fetchWaterings()
           }
         )
     }
@@ -86,22 +86,22 @@ export class WateringComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
-    });
+    })
     
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
         this.wateringService.deleteWatering(id).subscribe(
-          (_res:any) => {
-            this.fetchWaterings();
+          () => {
+            this.fetchWaterings()
           }
-        );
+        )
       }   
-    });
+    })
   }
 
   ngOnDestroy() {
-    // this.wateringService.unsubscribe();
+    // this.wateringService.unsubscribe()
   }
 
 }

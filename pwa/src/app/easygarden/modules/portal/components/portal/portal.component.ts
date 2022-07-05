@@ -32,11 +32,11 @@ export class PortalComponent implements OnInit, OnDestroy {
 
   constructor(private portalService: PortalService,
               private dialog: MatDialog) {
-  window.scrollTo(0, 0);
+  window.scrollTo(0, 0)
   }
 
   ngOnInit(): void {
-    this.fetchPortals();
+    this.fetchPortals()
   }
 
   // Display Portals
@@ -45,7 +45,7 @@ export class PortalComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          this.users = res['hydra:member'];
+          this.users = res['hydra:member']
         }
       )
   }
@@ -58,7 +58,7 @@ export class PortalComponent implements OnInit, OnDestroy {
         .subscribe(
           (res:any) => {
             this.status = res
-            this.fetchPortals();
+            this.fetchPortals()
           }
         )
     } else if (status === false) {
@@ -67,7 +67,7 @@ export class PortalComponent implements OnInit, OnDestroy {
         .subscribe(
           (res:any) => {
             this.status = res
-            this.fetchPortals();
+            this.fetchPortals()
           }
         )
     }
@@ -80,22 +80,22 @@ export class PortalComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
-    });
+    })
     
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
         this.portalService.deletePortal(id).subscribe(
-          (_res:any) => {
-            this.fetchPortals();
+          () => {
+            this.fetchPortals()
           }
-        );
+        )
       }   
-    });
+    })
   }
 
   ngOnDestroy() {
-    // this.portalsService.unsubscribe();
+    // this.portalsService.unsubscribe()
   }
 
 }

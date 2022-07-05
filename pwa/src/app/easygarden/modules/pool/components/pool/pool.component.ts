@@ -32,11 +32,11 @@ export class PoolComponent implements OnInit, OnDestroy {
 
   constructor(private poolService: PoolService,
               private dialog: MatDialog) {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   ngOnInit(): void {
-    this.fetchPools();
+    this.fetchPools()
   }
 
   // Display Pools
@@ -45,7 +45,7 @@ export class PoolComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))  
-          this.users = res['hydra:member'];
+          this.users = res['hydra:member']
         }
       )
   }
@@ -58,7 +58,7 @@ export class PoolComponent implements OnInit, OnDestroy {
         .subscribe(
           (res:any) => {
             this.status = res
-            this.fetchPools();
+            this.fetchPools()
           }
         )
     } else if (status === false) {
@@ -67,7 +67,7 @@ export class PoolComponent implements OnInit, OnDestroy {
         .subscribe(
           (res:any) => {
             this.status = res
-            this.fetchPools();
+            this.fetchPools()
           }
         )
     }
@@ -80,22 +80,22 @@ export class PoolComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
-    });
+    })
     
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
         this.poolService.deletePool(id).subscribe(
-          (_res:any) => {
-            this.fetchPools();
+          () => {
+            this.fetchPools()
           }
-        );
+        )
       }   
-    });
+    })
   }
 
   ngOnDestroy() {
-    // this.lawnmowerService.unsubscribe();
+    // this.lawnmowerService.unsubscribe()
   }
 
 }

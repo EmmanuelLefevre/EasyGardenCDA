@@ -32,11 +32,11 @@ export class LightningComponent implements OnInit, OnDestroy {
 
   constructor(private lightningService: LightningService,
               private dialog: MatDialog) {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   ngOnInit(): void {
-    this.fetchLightnings();
+    this.fetchLightnings()
   }
 
   // Display Lightnings
@@ -45,7 +45,7 @@ export class LightningComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.users = res['hydra:member'];
+          this.users = res['hydra:member']
         }
       )
   }
@@ -58,7 +58,7 @@ export class LightningComponent implements OnInit, OnDestroy {
         .subscribe(
           (res:any) => {
             this.status = res
-            this.fetchLightnings();
+            this.fetchLightnings()
           }
         )
     } else if (status === false) {
@@ -67,7 +67,7 @@ export class LightningComponent implements OnInit, OnDestroy {
         .subscribe(
           (res:any) => {
             this.status = res
-            this.fetchLightnings();
+            this.fetchLightnings()
           }
         )
     }
@@ -80,22 +80,22 @@ export class LightningComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
-    });
+    })
     
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
         this.lightningService.deleteLightning(id).subscribe(
-          (_res:any) => {
-            this.fetchLightnings();
+          () => {
+            this.fetchLightnings()
           }
-        );
+        )
       }   
-    });
+    })
   }
 
   ngOnDestroy() {
-    // this.lighningService.unsubscribe();
+    // this.lighningService.unsubscribe()
   }
 
 }
