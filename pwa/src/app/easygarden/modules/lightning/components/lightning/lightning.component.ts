@@ -14,6 +14,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 export class LightningComponent implements OnInit, OnDestroy {
 
+  title = "Eclairage";
   faPowerOff = faPowerOff;
   faPen = faPen;
   faTrash = faTrash;
