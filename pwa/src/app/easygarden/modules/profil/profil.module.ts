@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { ProfilRoutingModule } from './profil-routing.module';
 import { ProfilComponent } from './components/profil/profil.component';
@@ -11,7 +13,10 @@ import { ProfilComponent } from './components/profil/profil.component';
   ],
   imports: [
     CommonModule,
-    ProfilRoutingModule
+    ProfilRoutingModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 
