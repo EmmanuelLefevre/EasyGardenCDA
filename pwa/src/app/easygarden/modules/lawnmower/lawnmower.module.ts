@@ -8,12 +8,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LawnmowerRoutingModule } from './lawnmower-routing.module';
 import { LawnmowerComponent } from './components/lawnmower/lawnmower.component';
 import { EditLawnmowerComponent } from './components/editLawnmower/edit-lawnmower.component';
-
+import { AddLawnmowerComponent } from './components/addLawnmower/add-lawnmower.component';
 
 @NgModule({
   declarations: [
     LawnmowerComponent,
-    EditLawnmowerComponent
+    EditLawnmowerComponent,
+    AddLawnmowerComponent
   ],
   imports: [
     CommonModule,

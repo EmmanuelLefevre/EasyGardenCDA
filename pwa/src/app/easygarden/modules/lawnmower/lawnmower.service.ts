@@ -19,6 +19,15 @@ export class LawnmowerService {
     return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
+  // Add Lawnmower
+  addLawnmower(lawnmower: LawnmowerModel) {
+    const json = {
+      name: lawnmower.name,
+      garden: lawnmower.garden
+    };
+    return this.httpClient.post(environment.apis.lawnmower.url, json)
+  }
+
   // Get Lawnmower
   getLawnmower(lid: string | null): Observable<LawnmowerModel>{
     return this.httpClient.get<LawnmowerModel>(environment.apis.lawnmower.url+'/'+lid)

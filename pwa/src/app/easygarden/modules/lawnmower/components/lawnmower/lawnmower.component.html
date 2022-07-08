@@ -44,7 +44,7 @@
                         matTooltip="Modifier"
                         matTooltipPosition="before"
                         matTooltipShowDelay="500"
-                        routerLink="/easygarden/lawnmower/{{lawnmower.id}}">
+                        routerLink="/easygarden/lawnmower/edit/{{lawnmower.id}}">
                   <fa-icon [icon]="faPen"></fa-icon>
                 </button>
                 <button type="submit" class="trash"
@@ -74,6 +74,9 @@
     </pagination-controls>
   </div>
   <div class="submit">
-    <button type="button" id="submit" class="button-shadow">Ajouter</button>
+    <button type="button" 
+    id="submit" 
+    class="button-shadow"
+    routerLink="/easygarden/lawnmower/add">Ajouter</button>
   </div>
 </div>

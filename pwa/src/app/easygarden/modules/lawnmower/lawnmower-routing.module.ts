@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LawnmowerComponent } from './components/lawnmower/lawnmower.component';
 import { EditLawnmowerComponent } from './components/editLawnmower/edit-lawnmower.component';
+import { AddLawnmowerComponent } from './components/addLawnmower/add-lawnmower.component';
 
 const routes: Routes = [
   { path: '', component: LawnmowerComponent },
-  { path: ':id', component: EditLawnmowerComponent }
+  { path: 'edit/:id', component: EditLawnmowerComponent },
+  { path: 'add', component: AddLawnmowerComponent }
 ];
 
 @NgModule({
