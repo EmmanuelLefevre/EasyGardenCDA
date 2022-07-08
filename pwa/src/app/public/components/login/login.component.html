@@ -7,9 +7,9 @@
     <div class="form-content form-border form-shadow">
       <div class="div-button-close">
         <button type="button"
-                aria-label="Fermer" 
-                (click)="closeLoginForm()" 
-                class="button-circle button-shadow">
+          aria-label="Fermer" 
+          (click)="closeLoginForm()" 
+          class="button-circle button-shadow">
           <fa-icon [icon]="faCircleXmark"></fa-icon>
         </button>
       </div>
@@ -18,12 +18,12 @@
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <input formControlName="email" 
-        name="email"
-        id="email"
-        type="email"
-        placeholder="Email"
-        class="input-inset-shadow"
-        [ngClass]="{ 'invalid-feedback': submitted && f['email'].errors }">
+          name="email"
+          id="email"
+          type="email"
+          placeholder="Email"
+          class="input-inset-shadow"
+          [ngClass]="{ 'invalid-feedback': submitted && f['email'].errors }">
         <div *ngIf="submitted && f['email'].errors">
           <div class="text-alert" *ngIf="f['email'].errors['required']">Veuillez saisir un email!</div>
           <div class="text-alert" *ngIf="f['email'].errors['email']">Format d'email invalide!</div>
@@ -33,12 +33,12 @@
         </div>
         <div class="div-password-icon">
           <input formControlName="password"
-          name="password"
-          id="password"
-          [type]=" visible ? 'text' : 'password' "
-          placeholder="Password"
-          class="input-inset-shadow"
-          [ngClass]="{ 'invalid-feedback': submitted && f['password'].errors }">
+            name="password"
+            id="password"
+            [type]=" visible ? 'text' : 'password' "
+            placeholder="Password"
+            class="input-inset-shadow"
+            [ngClass]="{ 'invalid-feedback': submitted && f['password'].errors }">
           <fa-icon [icon]="visible ? faEyeSlash : faEye" aria-hidden="true" (click)="toggle()"></fa-icon>
           <div *ngIf="submitted && f['password'].errors">
             <div class="text-alert" *ngIf="f['password'].errors['required']">Veuillez saisir un mot de passe!</div>
@@ -46,12 +46,12 @@
         </div>
         <div class="div-form-button">
           <button type="submit" 
-                  class="button-shadow" 
-                  [routerLink]="['easygarden']">Connexion
+            class="button-shadow" 
+            [routerLink]="['easygarden']">Connexion
           </button>
           <button type="button" 
-                  (click)="onReset()" 
-                  class="button-shadow">Annuler
+            (click)="onReset()" 
+            class="button-shadow">Annuler
           </button>
         </div>
       </form>
