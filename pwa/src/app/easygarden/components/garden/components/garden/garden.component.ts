@@ -30,11 +30,11 @@ export class GardenComponent implements OnInit, OnDestroy {
   constructor(private gardenService: GardenService,
               private dialog: MatDialog,
               public router: Router) {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   } 
 
   ngOnInit(): void {
-    this.fetchGardens();
+    this.fetchGardens()
   }
 
   // Display Gardens
@@ -43,7 +43,7 @@ export class GardenComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          this.users = res['hydra:member'];
+          this.users = res['hydra:member']
         }
       )
   }
@@ -55,19 +55,22 @@ export class GardenComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
-    });
+    })
     
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.gardenService.deleteGarden(id).subscribe();
-        this.fetchGardens();
+        this.gardenService.deleteGarden(id).subscribe(
+          () => {
+            this.fetchGardens()           
+          }
+        )
       }   
-    });
+    })
   }
 
   ngOnDestroy() {
-    // this.gardenService.unsubscribe();
+    // this.gardenService.unsubscribe()
   }
 
 }
