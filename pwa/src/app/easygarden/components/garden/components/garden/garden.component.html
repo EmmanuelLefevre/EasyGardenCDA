@@ -52,7 +52,12 @@
                          aria-label="Pagination">
     </pagination-controls>
   </div>
-  <div class="submit">
-    <button type="button" id="submit" class="button-shadow">Ajouter</button>
-  </div>
+  <ng-container *ngFor="let user of users">
+    <div class="submit">
+      <button type="button" 
+        id="submit" 
+        class="button-shadow"
+        routerLink="/easygarden/add/{{user.id}}">Ajouter</button>
+    </div>
+  </ng-container>
 </div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { GardenComponent } from './components/garden/components/garden/garden.component';
 import { EditGardenComponent } from './components/garden/components/editGarden/edit-garden.component';
+import { AddGardenComponent } from './components/garden/components/addGarden/add-garden.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
           .then(module => module.LawnmowerModule)
       },
       
-      { path: 'garden/:id', component: EditGardenComponent }
+      { path: 'garden/:id', component: EditGardenComponent },
+      { path: 'add/:id', component: AddGardenComponent },
     ]
   }
 ];

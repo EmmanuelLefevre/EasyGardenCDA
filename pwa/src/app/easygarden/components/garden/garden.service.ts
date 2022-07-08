@@ -19,6 +19,15 @@ export class GardenService {
     return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
+  // Add Garden
+  addgarden(garden: GardenModel) {
+    const json = {
+      name: garden.name,
+      user: garden.user
+    };
+    return this.httpClient.post(environment.apis.garden.url, json)
+  }
+
   // Get Garden
   getGarden(gid: string | null): Observable<GardenModel>{
     return this.httpClient.get<GardenModel>(environment.apis.garden.url+'/'+gid)

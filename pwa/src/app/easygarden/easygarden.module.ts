@@ -10,6 +10,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GardenComponent } from './components/garden/components/garden/garden.component';
 import { EditGardenComponent } from './components/garden/components/editGarden/edit-garden.component';
+import { AddGardenComponent } from './components/garden/components/addGarden/add-garden.component';
 import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
 
 
@@ -17,7 +18,8 @@ import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialog
   declarations: [
     NavbarComponent,
     EditGardenComponent,
-    GardenComponent
+    GardenComponent,
+    AddGardenComponent
   ],
   imports: [
     CommonModule,
