@@ -10,9 +10,10 @@ import { Location } from '@angular/common';
 export class ErrorComponent implements OnInit {
 
   time: number = 7;
+  timeOut: any;
 
   constructor(private location: Location) { 
-    setTimeout(() => {
+    this.timeOut = setTimeout(() => {
       this.location.back();
     }, 7000);
   }
@@ -23,6 +24,7 @@ export class ErrorComponent implements OnInit {
 
   goBack() {
     this.location.back();
+    clearTimeout(this.timeOut);
   }
 
 }
