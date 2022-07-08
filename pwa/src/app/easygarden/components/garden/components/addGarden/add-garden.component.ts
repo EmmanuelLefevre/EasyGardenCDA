@@ -19,7 +19,7 @@ export class AddGardenComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
 
-  // EditWateringForm Group
+  // addWateringForm Group
   addGardenForm = new FormGroup({
     name: new FormControl('')
   });
@@ -80,7 +80,7 @@ export class AddGardenComponent implements OnInit {
     this.addGardenForm.reset();
   }
 
-  // Close editWateringComponent
+  // Close addGardenComponent
   goBack(): void {
     this.location.back()
   }
