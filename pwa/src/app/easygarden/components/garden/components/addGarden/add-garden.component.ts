@@ -66,7 +66,7 @@ export class AddGardenComponent implements OnInit {
     } else {
       const typedAddGardenForm: GardenModel = this.addGardenForm.value;
       this.success = JSON.stringify(typedAddGardenForm);
-      this.gardenService.addgarden(typedAddGardenForm).subscribe(
+      this.gardenService.addGarden(typedAddGardenForm).subscribe(
         () => {
           this.router.navigate(['/easygarden'])
         }

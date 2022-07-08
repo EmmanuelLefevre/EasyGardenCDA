@@ -20,7 +20,7 @@ export class GardenService {
   }
 
   // Add Garden
-  addgarden(garden: GardenModel) {
+  addGarden(garden: GardenModel) {
     const json = {
       name: garden.name,
       user: garden.user
