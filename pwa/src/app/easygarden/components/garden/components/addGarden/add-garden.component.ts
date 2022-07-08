@@ -25,7 +25,6 @@ export class AddGardenComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  value = '';
   garden!: GardenModel;
 
   constructor(private formBuilder: FormBuilder,
