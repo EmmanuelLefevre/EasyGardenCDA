@@ -1,0 +1,55 @@
+<div class="div-wrapper table-wrapper">
+  <h2 class="form-title title-form-shadow">{{title}}</h2>
+  <div class="form-content form-border form-shadow animate__animated animate__fadeInDown">
+    <div class="div-button-close">
+      <button type="button" 
+              (click)="goBack()" 
+              class="button-circle button-shadow">
+        <fa-icon [icon]="faCircleXmark"></fa-icon>
+      </button>
+    </div>
+    <div class="form-title-content">
+      <p class="p-form-title-content">AJOUTER</p>
+    </div>
+    <form [formGroup]="addPoolForm" (ngSubmit)="onSubmit()">
+      <select formControlName="garden" 
+        name="garden"
+        class="form-select">
+        <ng-container *ngFor="let user of users">
+            <option [value]="'api/gardens/'+garden.id" 
+              selected 
+              *ngFor="let garden of user.garden">
+              {{garden.name}}
+            </option>
+        </ng-container>
+      </select>
+      <input formControlName="name"
+        name="name"
+        id="name"
+        type="text"
+        class="input-inset-shadow"
+        [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }">
+      <div *ngIf="submitted && f['name'].errors">
+        <div class="text-alert" *ngIf="f['name'].errors['required']">Veuillez saisir un nom!</div>
+        <div class="text-alert" *ngIf="f['name'].errors['minlength']">
+          Le nom doit contenir au minimum 3 caractères.
+        </div>
+        <div class="text-alert" *ngIf="f['name'].errors['maxlength']">
+          Le nom doit contenir au maximum 20 caractères.
+        </div>
+        <div class="text-alert" *ngIf="f['name'].errors['validEquipmentName']">
+          Le nom ne peut contenir de caractères spéciaux!
+        </div>
+      </div>
+      <div class="div-form-button">
+        <button type="submit" 
+          class="button-shadow">Ajouter
+        </button>
+        <button type="button" 
+          (click)="onReset()" 
+          class="button-shadow">Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

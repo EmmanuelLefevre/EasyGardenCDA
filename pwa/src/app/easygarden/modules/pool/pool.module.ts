@@ -8,12 +8,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PoolRoutingModule } from './pool-routing.module';
 import { PoolComponent } from './components/pool/pool.component';
 import { EditPoolComponent } from './components/editPool/edit-pool.component';
+import { AddPoolComponent } from './components/addPool/add-pool.component';
 
 
 @NgModule({
   declarations: [
     PoolComponent,
-    EditPoolComponent
+    EditPoolComponent,
+    AddPoolComponent
   ],
   imports: [
     CommonModule,

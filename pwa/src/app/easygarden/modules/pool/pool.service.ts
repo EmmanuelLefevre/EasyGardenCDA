@@ -18,7 +18,16 @@ export class PoolService {
     return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
-  // Get Pools
+  // Add Lawnmower
+  addPool(pool: PoolModel) {
+    const json = {
+      name: pool.name,
+      garden: pool.garden
+    };
+    return this.httpClient.post(environment.apis.pool.url, json)
+  }
+
+  // Get Pool
   getPool(pid: string | null): Observable<PoolModel>{
     return this.httpClient.get<PoolModel>(environment.apis.pool.url+'/'+pid)
   }
