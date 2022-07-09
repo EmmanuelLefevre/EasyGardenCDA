@@ -19,6 +19,15 @@ export class WateringService {
     return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
+  // Add Watering
+  addWatering(watering: WateringModel) {
+    const json = {
+      name: watering.name,
+      garden: watering.garden
+    };
+    return this.httpClient.post(environment.apis.watering.url, json)
+  }
+
   // Get Watering
   getWatering(wid: string | null): Observable<WateringModel>{
     return this.httpClient.get<WateringModel>(environment.apis.watering.url+'/'+wid)

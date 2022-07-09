@@ -8,12 +8,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { WateringRoutingModule } from './watering-routing.module';
 import { WateringComponent } from './components/watering/watering.component';
 import { EditWateringComponent } from './components/editWatering/edit-watering.component';
+import { AddWateringComponent } from './components/addWatering/add-watering.component';
 
 
 @NgModule({
   declarations: [
     WateringComponent,
-    EditWateringComponent
+    EditWateringComponent,
+    AddWateringComponent
   ],
   imports: [
     CommonModule,
