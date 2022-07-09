@@ -8,12 +8,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LightningRoutingModule } from './lightning-routing.module';
 import { LightningComponent } from './components/lightning/lightning.component';
 import { EditLightningComponent } from './components/editLightning/edit-lightning.component';
+import { AddLightningComponent } from './components/addLightning/add-lightning.component';
 
 
 @NgModule({
   declarations: [
     LightningComponent,
-    EditLightningComponent
+    EditLightningComponent,
+    AddLightningComponent
   ],
   imports: [
     CommonModule,

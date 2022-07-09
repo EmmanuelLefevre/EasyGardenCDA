@@ -19,6 +19,15 @@ export class LightningService {
     return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
+  // Add Lightning
+  addLightning(lightning: LightningModel) {
+    const json = {
+      name: lightning.name,
+      garden: lightning.garden
+    };
+    return this.httpClient.post(environment.apis.lightning.url, json)
+  }
+
   // Get Lightning
   getLightning(lid: string | null): Observable<LightningModel>{
     return this.httpClient.get<LightningModel>(environment.apis.lightning.url+'/'+lid)

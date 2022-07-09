@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LightningComponent } from './components/lightning/lightning.component';
 import { EditLightningComponent } from './components/editLightning/edit-lightning.component';
+import { AddLightningComponent } from './components/addLightning/add-lightning.component';
 
 const routes: Routes = [
   { path: '', component: LightningComponent },
-  { path: ':id', component: EditLightningComponent }
+  { path: 'edit/:id', component: EditLightningComponent },
+  { path: 'add', component: AddLightningComponent }
 ];
 
 @NgModule({
