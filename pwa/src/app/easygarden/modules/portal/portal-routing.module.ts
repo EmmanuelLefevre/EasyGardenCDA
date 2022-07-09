@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PortalComponent } from './components/portal/portal.component';
 import { EditPortalComponent } from './components/editPortal/edit-portal.component';
+import { AddPortalComponent } from './components/addPortal/add-portal.component';
 
 const routes: Routes = [
   { path: '', component: PortalComponent },
-  { path: ':id', component: EditPortalComponent }
+  { path: 'edit/:id', component: EditPortalComponent },
+  { path: 'add', component: AddPortalComponent }
 ];
 
 @NgModule({

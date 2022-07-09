@@ -22,15 +22,15 @@
             <tr *ngFor="let portal of garden.portal | paginate: { itemsPerPage: 3, currentPage: p }">
               <td class="power">
                 <button type="submit" 
-                        aria-label="On"
-                        *ngIf="portal.status === true"
-                        (click)="updateStatus(portal.id, portal.status)">
+                  aria-label="On"
+                  *ngIf="portal.status === true"
+                  (click)="updateStatus(portal.id, portal.status)">
                   <fa-icon [icon]="faPowerOff"></fa-icon>
                 </button>
                 <button type="submit" class="btn-off" 
-                        aria-label="Off"
-                        *ngIf="portal.status === false"
-                        (click)="updateStatus(portal.id, portal.status)">
+                  aria-label="Off"
+                  *ngIf="portal.status === false"
+                  (click)="updateStatus(portal.id, portal.status)">
                   <fa-icon [icon]="faPowerOff"></fa-icon>
                 </button>
               </td>
@@ -39,21 +39,21 @@
               <td *ngIf="portal.status === false">-</td>
               <td>
                 <button type="button"
-                        aria-label="Modifier"
-                        mat-raised-button
-                        matTooltip="Modifier"
-                        matTooltipPosition="before"
-                        matTooltipShowDelay="500"
-                        routerLink="/easygarden/portal/{{portal.id}}">
+                  aria-label="Modifier"
+                  mat-raised-button
+                  matTooltip="Modifier"
+                  matTooltipPosition="before"
+                  matTooltipShowDelay="500"
+                  routerLink="/easygarden/portal/edit/{{portal.id}}">
                   <fa-icon [icon]="faPen"></fa-icon>
                 </button>
                 <button type="submit" class="trash"
-                        aria-label="Supprimer"
-                        mat-raised-button
-                        matTooltip="Supprimer"
-                        matTooltipPosition="after"
-                        matTooltipShowDelay="500"
-                        (click)="confirmDialog(portal.id, portal.name)">
+                  aria-label="Supprimer"
+                  mat-raised-button
+                  matTooltip="Supprimer"
+                  matTooltipPosition="after"
+                  matTooltipShowDelay="500"
+                  (click)="confirmDialog(portal.id, portal.name)">
                   <fa-icon [icon]="faTrash"></fa-icon>
                 </button>
               </td>
@@ -74,6 +74,9 @@
     </pagination-controls>
   </div>
   <div class="submit">
-    <button type="button" id="submit" class="button-shadow">Ajouter</button>
+    <button type="button" 
+      id="submit" 
+      class="button-shadow"
+      routerLink="/easygarden/portal/add">Ajouter</button>
   </div>
 </div>

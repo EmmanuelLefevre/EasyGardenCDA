@@ -9,13 +9,14 @@ import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './components/portal/portal.component';
 import { EditPortalComponent } from './components/editPortal/edit-portal.component';
 import { PresenceSensorPipe } from './pipe/presence-sensor.pipe';
-
+import { AddPortalComponent } from './components/addPortal/add-portal.component';
 
 @NgModule({
   declarations: [
     PortalComponent,
     EditPortalComponent,
-    PresenceSensorPipe
+    PresenceSensorPipe,
+    AddPortalComponent
   ],
   imports: [
     CommonModule,

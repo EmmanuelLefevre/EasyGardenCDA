@@ -19,6 +19,15 @@ export class PortalService {
     return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
   }
 
+  // Add Portal
+  addPortal(portal: PortalModel) {
+    const json = {
+      name: portal.name,
+      garden: portal.garden
+    };
+    return this.httpClient.post(environment.apis.portal.url, json)
+  }
+
   // Get Portal
   getPortal(pid: string | null): Observable<PortalModel>{
     return this.httpClient.get<PortalModel>(environment.apis.portal.url+'/'+pid)
