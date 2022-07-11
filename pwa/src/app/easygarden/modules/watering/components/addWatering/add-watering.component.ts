@@ -46,7 +46,10 @@ export class AddWateringComponent implements OnInit {
         ]
       ],
       garden: [
-        ''
+        '',
+        [
+          Validators.required
+        ]
       ]
     })
   }

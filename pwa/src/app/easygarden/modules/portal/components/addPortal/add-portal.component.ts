@@ -46,7 +46,10 @@ export class AddPortalComponent implements OnInit {
         ]
       ],
       garden: [
-        ''
+        '',
+        [
+          Validators.required
+        ]
       ]
     })
   }

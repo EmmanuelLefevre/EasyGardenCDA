@@ -46,7 +46,10 @@ export class AddLightningComponent implements OnInit {
         ]
       ],
       garden: [
-        ''
+        '',
+        [
+          Validators.required
+        ]
       ]
     })
   }

@@ -46,7 +46,10 @@ export class AddLawnmowerComponent implements OnInit {
         ]
       ],
       garden: [
-        ''
+        '',
+        [
+          Validators.required
+        ]
       ]
     })
   }

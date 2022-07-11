@@ -46,7 +46,10 @@ export class AddPoolComponent implements OnInit {
         ]
       ],
       garden: [
-        ''
+        '',
+        [
+          Validators.required
+        ]
       ]
     })
   }
