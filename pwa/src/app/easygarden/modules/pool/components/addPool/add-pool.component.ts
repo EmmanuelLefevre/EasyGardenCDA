@@ -56,7 +56,7 @@ export class AddPoolComponent implements OnInit {
     this.fetchPools()
   }
 
-    // Display Lawnmowers
+    // Display Gardens
     fetchPools(): void {
       this.poolService.getAllPools()
         .subscribe(

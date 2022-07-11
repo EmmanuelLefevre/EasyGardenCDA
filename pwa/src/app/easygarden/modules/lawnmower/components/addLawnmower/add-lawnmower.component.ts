@@ -56,7 +56,7 @@ export class AddLawnmowerComponent implements OnInit {
     this.fetchLawnmowers()
   }
 
-  // Display Lawnmowers
+  // Display Gardens
   fetchLawnmowers(): void {
     this.lawnmowerService.getAllLawnmowers()
       .subscribe(
