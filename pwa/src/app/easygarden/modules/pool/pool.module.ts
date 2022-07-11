@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSelectModule } from '@angular/material/select';
 
 import { PoolRoutingModule } from './pool-routing.module';
 import { PoolComponent } from './components/pool/pool.component';
@@ -24,7 +25,8 @@ import { AddPoolComponent } from './components/addPool/add-pool.component';
     ReactiveFormsModule,
     FormsModule,
     MatTooltipModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSelectModule
   ]
 })
 

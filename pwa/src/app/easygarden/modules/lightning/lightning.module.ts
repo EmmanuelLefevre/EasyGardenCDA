@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSelectModule } from '@angular/material/select';
 
 import { LightningRoutingModule } from './lightning-routing.module';
 import { LightningComponent } from './components/lightning/lightning.component';
@@ -24,7 +25,8 @@ import { AddLightningComponent } from './components/addLightning/add-lightning.c
     ReactiveFormsModule,
     FormsModule,
     MatTooltipModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSelectModule
   ]
 })
 

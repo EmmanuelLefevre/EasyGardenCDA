@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSelectModule } from '@angular/material/select';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './components/portal/portal.component';
@@ -25,7 +26,8 @@ import { AddPortalComponent } from './components/addPortal/add-portal.component'
     ReactiveFormsModule,
     FormsModule,
     MatTooltipModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSelectModule
   ]
 })
 
