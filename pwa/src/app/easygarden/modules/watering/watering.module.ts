@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSelectModule } from '@angular/material/select';
 
 import { WateringRoutingModule } from './watering-routing.module';
 import { WateringComponent } from './components/watering/watering.component';
@@ -24,7 +25,8 @@ import { AddWateringComponent } from './components/addWatering/add-watering.comp
     ReactiveFormsModule,
     FormsModule,
     MatTooltipModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSelectModule
   ]
 })
 

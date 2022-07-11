@@ -12,21 +12,25 @@
       <p class="p-form-title-content">AJOUTER</p>
     </div>
     <form [formGroup]="addWateringForm" (ngSubmit)="onSubmit()">
-      <select formControlName="garden" 
-        name="garden"
-        class="form-select">
-        <ng-container *ngFor="let user of users">
-            <option [value]="'api/gardens/'+garden.id" 
-              selected 
-              *ngFor="let garden of user.garden">
-              {{garden.name}}
-            </option>
-        </ng-container>
-      </select>
+      <mat-form-field appearance="fill">
+        <mat-label>Jardin</mat-label>
+        <mat-select formControlName="garden" 
+          name="garden"
+          class="form-select">
+          <ng-container *ngFor="let user of users">
+              <mat-option [value]="'api/gardens/'+garden.id" 
+                selected 
+                *ngFor="let garden of user.garden">
+                {{garden.name}}
+              </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
       <input formControlName="name"
         name="name"
         id="name"
         type="text"
+        placeholder="Nom"
         class="input-inset-shadow"
         [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }">
       <div *ngIf="submitted && f['name'].errors">
