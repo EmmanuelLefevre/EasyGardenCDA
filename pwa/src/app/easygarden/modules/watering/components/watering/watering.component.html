@@ -70,7 +70,8 @@
   <div class="pagination">
     <pagination-controls (pageChange)="p = $event" 
                          previousLabel="" 
-                         nextLabel=""                       
+                         nextLabel=""
+                         [autoHide]="true"
                          [responsive]="true"
                          aria-label="Pagination">
     </pagination-controls>

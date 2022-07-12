@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EasygardenRoutingModule } from './easygarden-routing.module';
 import { ConfirmDialogModule } from './components/confirmDialog/confirmDialogModule/confirm-dialog.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GardenComponent } from './components/garden/components/garden/garden.component';
@@ -27,7 +28,8 @@ import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialog
     ReactiveFormsModule,
     FormsModule,
     ConfirmDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxPaginationModule
   ],
   entryComponents: [ConfirmDialogComponent]
 })

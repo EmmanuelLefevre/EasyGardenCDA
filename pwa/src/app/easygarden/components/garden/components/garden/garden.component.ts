@@ -22,6 +22,9 @@ export class GardenComponent implements OnInit, OnDestroy {
   // Confirm Dialog this.result = boolean
   result: boolean | undefined;
 
+  // Ngx-paginator
+  p: number = 1;
+
   users: UserModel[] = [];
 
   constructor(private gardenService: GardenService,
