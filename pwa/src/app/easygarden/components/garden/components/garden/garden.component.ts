@@ -16,6 +16,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 export class GardenComponent implements OnInit, OnDestroy {
 
+  title = "Jardin";
   faPen = faPen;
   faTrash = faTrash;
 
