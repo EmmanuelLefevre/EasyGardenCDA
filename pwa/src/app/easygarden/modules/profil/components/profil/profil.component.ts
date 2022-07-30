@@ -283,8 +283,8 @@ export class ProfilComponent implements OnInit {
   }
 
   // Delete Account
-  confirmDialog(id: number): void {
-    const message = 'Êtes-vous certain de vouloir supprimer votre compte? Ceci entraînera la suppression de tous les jardins et leurs équipements associés.';
+  confirmDialog(id: number, firstName: string): void {
+    const message = 'Êtes-vous certain de vouloir supprimer votre compte '+ firstName +' ? Ceci entraînera la suppression de tous les jardins et leurs équipements associés.';
     const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
