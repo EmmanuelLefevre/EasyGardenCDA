@@ -127,7 +127,7 @@ export class RegisterComponent implements OnInit {
     delete this.registerForm.value.confirmPassword;
     this.success = JSON.stringify(typedRegisterForm);
     this.authService.registerIn(typedRegisterForm).subscribe(() =>
-    this.router.navigate(['/home'])
+      this.router.navigate(['/home'])
     )
   }
 
