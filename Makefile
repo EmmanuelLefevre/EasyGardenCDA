@@ -16,9 +16,22 @@ ang-serv: ## Launch Angular local server
 	cd pwa && $(MAKE) ang
 .PHONY: ang-serv
 
-serv: ## Launch project local server
+serv: ## Launch EasyGarden local server
 	make -j 2 ang-serv sf-serv
 .PHONY: serv
+
+
+sf-stop: ## Stop Symfony local server
+	cd api && $(MAKE) stop
+.PHONY: sf-stop
+
+ang-stop: ## Stop Angular local server
+	cd pwa && $(MAKE) stop
+.PHONY: ang-stop
+
+stop-serv: ## Stop EasyGarden local server
+	make -j 2 ang-stop sf-stop
+.PHONY: stop-serv
 
 
 ## ============ INSTALL ============
