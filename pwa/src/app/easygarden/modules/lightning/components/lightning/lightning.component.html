@@ -21,36 +21,34 @@
             <tr *ngFor="let lightning of garden.lightning | paginate: { itemsPerPage: 4, currentPage: p }">
               <td class="power">
                 <button type="submit"
-                  aria-label="On"
-                  *ngIf="lightning.status === true"
-                  (click)="updateStatus(lightning.id, lightning.status)">
+                        aria-label="On"
+                        *ngIf="lightning.status === true"
+                        (click)="updateStatus(lightning.id, lightning.status)">
                   <fa-icon [icon]="faPowerOff"></fa-icon>
                 </button>
                 <button type="submit" class="btn-off"
-                  aria-label="Off"
-                  *ngIf="lightning.status === false"
-                  (click)="updateStatus(lightning.id, lightning.status)">
+                        aria-label="Off"
+                        *ngIf="lightning.status === false"
+                        (click)="updateStatus(lightning.id, lightning.status)">
                   <fa-icon [icon]="faPowerOff"></fa-icon>
                 </button>
               </td>
               <td>{{ lightning.name }}</td>
               <td>
                 <button type="button"
-                  aria-label="Modifier"
-                  mat-raised-button
-                  matTooltip="Modifier"
-                  matTooltipPosition="before"
-                  matTooltipShowDelay="500"
-                  routerLink="/easygarden/lightning/edit/{{lightning.id}}">
+                        aria-label="Modifier"
+                        matTooltip="Modifier"
+                        matTooltipPosition="before"
+                        matTooltipShowDelay="500"
+                        routerLink="/easygarden/lightning/edit/{{lightning.id}}">
                   <fa-icon [icon]="faPen"></fa-icon>
                 </button>
                 <button type="submit" class="trash"
-                  aria-label="Supprimer"
-                  mat-raised-button
-                  matTooltip="Supprimer"
-                  matTooltipPosition="after"
-                  matTooltipShowDelay="500"
-                  (click)="confirmDialog(lightning.id, lightning.name)">
+                        aria-label="Supprimer"
+                        matTooltip="Supprimer"
+                        matTooltipPosition="after"
+                        matTooltipShowDelay="500"
+                        (click)="confirmDialog(lightning.id, lightning.name)">
                   <fa-icon [icon]="faTrash"></fa-icon>
                 </button>
               </td>
@@ -63,17 +61,17 @@
   </div>
   <div class="pagination">
     <pagination-controls (pageChange)="p = $event" 
-      previousLabel="" 
-      nextLabel=""
-      [autoHide]="true"
-      [responsive]="true"
-      aria-label="Pagination">
+                          previousLabel="" 
+                          nextLabel=""
+                          [autoHide]="true"
+                          [responsive]="true"
+                          aria-label="Pagination">
     </pagination-controls>
   </div>
   <div class="submit">
     <button type="button" 
-      id="submit" 
-      class="button-shadow"
-      routerLink="/easygarden/lightning/add">Ajouter</button>
+            id="submit" 
+            class="button-shadow"
+            routerLink="/easygarden/lightning/add">Ajouter</button>
   </div>
 </div>

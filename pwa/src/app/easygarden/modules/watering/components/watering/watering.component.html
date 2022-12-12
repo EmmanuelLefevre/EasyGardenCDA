@@ -23,15 +23,15 @@
             <tr *ngFor="let watering of garden.watering | paginate: { itemsPerPage: 4, currentPage: p }">
               <td class="power">
                 <button type="submit" 
-                  aria-label="On"
-                  *ngIf="watering.status === true"
-                  (click)="updateStatus(watering.id, watering.status)">
+                        aria-label="On"
+                        *ngIf="watering.status === true"
+                        (click)="updateStatus(watering.id, watering.status)">
                   <fa-icon [icon]="faPowerOff"></fa-icon>
                 </button>
                 <button type="submit" class="btn-off" 
-                  aria-label="Off"
-                  *ngIf="watering.status === false"
-                  (click)="updateStatus(watering.id, watering.status)">
+                        aria-label="Off"
+                        *ngIf="watering.status === false"
+                        (click)="updateStatus(watering.id, watering.status)">
                   <fa-icon [icon]="faPowerOff"></fa-icon>
                 </button>
               </td>
@@ -42,21 +42,19 @@
               <td *ngIf="watering.status === false">-</td>
               <td>
                 <button type="button"
-                  aria-label="Modifier"
-                  mat-raised-button
-                  matTooltip="Modifier"
-                  matTooltipPosition="before"
-                  matTooltipShowDelay="500"
-                  routerLink="/easygarden/watering/edit/{{watering.id}}">
+                        aria-label="Modifier"
+                        matTooltip="Modifier"
+                        matTooltipPosition="before"
+                        matTooltipShowDelay="500"
+                        routerLink="/easygarden/watering/edit/{{watering.id}}">
                   <fa-icon [icon]="faPen"></fa-icon>
                 </button>
                 <button type="submit" class="trash"
-                  aria-label="Supprimer"
-                  mat-raised-button
-                  matTooltip="Supprimer"
-                  matTooltipPosition="after"
-                  matTooltipShowDelay="500"
-                  (click)="confirmDialog(watering.id, watering.name)">
+                        aria-label="Supprimer"
+                        matTooltip="Supprimer"
+                        matTooltipPosition="after"
+                        matTooltipShowDelay="500"
+                        (click)="confirmDialog(watering.id, watering.name)">
                   <fa-icon [icon]="faTrash"></fa-icon>
                 </button>
               </td>
@@ -78,8 +76,8 @@
   </div>
   <div class="submit">
     <button type="button" 
-      id="submit" 
-      class="button-shadow"
-      routerLink="/easygarden/watering/add">Ajouter</button>
+            id="submit" 
+            class="button-shadow"
+            routerLink="/easygarden/watering/add">Ajouter</button>
   </div>
 </div>

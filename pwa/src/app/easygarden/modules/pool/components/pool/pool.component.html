@@ -21,36 +21,34 @@
             <tr *ngFor="let pool of garden.pool | paginate: { itemsPerPage: 3, currentPage: p }">
               <td class="power">
                 <button type="submit"
-                  aria-label="On" 
-                  *ngIf="pool.status === true"
-                  (click)="updateStatus(pool.id, pool.status)">
+                        aria-label="On" 
+                        *ngIf="pool.status === true"
+                        (click)="updateStatus(pool.id, pool.status)">
                   <fa-icon [icon]="faPowerOff"></fa-icon>
                 </button>
                 <button type="submit" class="btn-off" 
-                  aria-label="Off"
-                  *ngIf="pool.status === false"
-                  (click)="updateStatus(pool.id, pool.status)">
+                        aria-label="Off"
+                        *ngIf="pool.status === false"
+                        (click)="updateStatus(pool.id, pool.status)">
                   <fa-icon [icon]="faPowerOff"></fa-icon>
                 </button>
               </td>
               <td>{{ pool.name }}</td>
               <td>
                 <button type="button"
-                  aria-label="Modifier"
-                  mat-raised-button
-                  matTooltip="Modifier"
-                  matTooltipPosition="before"
-                  matTooltipShowDelay="500"
-                  routerLink="/easygarden/pool/edit/{{pool.id}}">
+                        aria-label="Modifier"
+                        matTooltip="Modifier"
+                        matTooltipPosition="before"
+                        matTooltipShowDelay="500"
+                        routerLink="/easygarden/pool/edit/{{pool.id}}">
                   <fa-icon [icon]="faPen"></fa-icon>
                 </button>
                 <button type="submit" class="trash"
-                  aria-label="Supprimer"
-                  mat-raised-button
-                  matTooltip="Supprimer"
-                  matTooltipPosition="after"
-                  matTooltipShowDelay="500"
-                  (click)="confirmDialog(pool.id, pool.name)">
+                        aria-label="Supprimer"
+                        matTooltip="Supprimer"
+                        matTooltipPosition="after"
+                        matTooltipShowDelay="500"
+                        (click)="confirmDialog(pool.id, pool.name)">
                   <fa-icon [icon]="faTrash"></fa-icon>
                 </button>
               </td>
@@ -72,8 +70,8 @@
   </div>
   <div class="submit">
     <button type="button" 
-      id="submit" 
-      class="button-shadow"
-      routerLink="/easygarden/pool/add">Ajouter</button>
+            id="submit" 
+            class="button-shadow"
+            routerLink="/easygarden/pool/add">Ajouter</button>
   </div>
 </div>
