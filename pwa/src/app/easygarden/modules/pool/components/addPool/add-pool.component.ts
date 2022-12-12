@@ -9,6 +9,8 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { PoolModel } from '../../poolModel';
 import { UserModel } from '../../../../../_models/userModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-addpool',
   templateUrl: './add-pool.component.html',
@@ -28,13 +30,15 @@ export class AddPoolComponent implements OnInit {
   });
   submitted = false;
   success = '';
+  value = '';
   pool!: PoolModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
-              private poolService: PoolService) { 
+              private poolService: PoolService,
+              public snackBar: MatSnackBar) { 
     this.addPoolForm = this.formBuilder.group({
       name: [
         '',
@@ -99,6 +103,16 @@ export class AddPoolComponent implements OnInit {
     // Close addPoolComponent
     goBack(): void {
       this.location.back()
+    }
+
+    // Snackbar
+    openSnackBar(_value: string, action: string) {
+      this.snackBar.open('L\'équipement "' + this.value + '"' + ' a bien été ajouté.', action, {
+          duration: 4000,
+          panelClass: ['snackbar-animation'],
+          verticalPosition: 'bottom',
+          horizontalPosition: 'start'
+      });
     }
 
 }

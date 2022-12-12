@@ -8,6 +8,8 @@ import { PoolService } from '../../pool.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { PoolModel } from '../../poolModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-edit-pool',
   templateUrl: './edit-pool.component.html'
@@ -24,6 +26,7 @@ export class EditPoolComponent implements OnInit {
   });
   submitted = false;
   success = '';
+  name = '';
   value = '';
   pool!: PoolModel;
 
@@ -31,7 +34,8 @@ export class EditPoolComponent implements OnInit {
               private customValidator : FormValidationService,
               private location: Location,
               private activated: ActivatedRoute,
-              private poolService: PoolService) {
+              private poolService: PoolService,
+              public snackBar: MatSnackBar) {
     this.editPoolForm = this.formBuilder.group({
       name: [
         '',
@@ -84,6 +88,16 @@ export class EditPoolComponent implements OnInit {
   // Close editPoolComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(_value: string, action: string) {
+    this.snackBar.open('L\'équipement "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', action, {
+        duration: 4000,
+        panelClass: ['snackbar-animation'],
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start'
+    });
   }
 
 }
