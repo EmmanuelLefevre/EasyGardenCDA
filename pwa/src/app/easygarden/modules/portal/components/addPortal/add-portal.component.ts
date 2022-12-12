@@ -63,7 +63,7 @@ export class AddPortalComponent implements OnInit {
     this.fetchPortals()
   }
 
-  // Display Gardens
+  // Display Portals
   fetchPortals(): void {
     this.portalService.getAllPortals()
       .subscribe(
