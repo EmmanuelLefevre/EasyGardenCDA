@@ -28,7 +28,7 @@
       </mat-form-field>
       <input formControlName="name"
               name="name"
-              [(ngModel)]="name"
+              [(ngModel)]="value"
               id="name"
               type="text"      
               placeholder="Nom"
@@ -48,7 +48,7 @@
       </div>
       <div class="div-form-button">
         <button type="submit"
-                (click)="openSnackBar( name , 'Close')" 
+                (click)="openSnackBar( value , 'Close')" 
                 class="button-shadow">Ajouter
         </button>
         <button type="button" 
