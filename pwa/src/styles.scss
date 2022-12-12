@@ -46,6 +46,7 @@ $easygardenAngular-theme: mat.define-light-theme((
   --ang-color-background: #e5e5e5;
   
   /*------Background------*/
+  --bg-cancel-button: #f6f6f6;
   --bg-color: var(--ang-color-background);
 
   /*------Text------*/
@@ -188,7 +189,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     &:hover {
-      color: var(--ang-color-text-button);
+      color: var(--ang-color-green);
       background-color: var(--ang-color-white);
       border-color: var(--ang-color-green);
     }
@@ -196,6 +197,14 @@ body {
   .div-form-button {
     display: flex;
     justify-content: space-evenly;
+    button.cancel {
+      color: var(--ang-color-green);
+      background-color: var(--bg-cancel-button);
+      &:hover {
+        color: var(--ang-color-alert);
+        border-color: var(--ang-color-alert);
+      }
+    }
   }
   .div-button-close {
     display: flex;
