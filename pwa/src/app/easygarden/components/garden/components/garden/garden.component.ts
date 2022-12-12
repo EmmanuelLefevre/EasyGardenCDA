@@ -51,8 +51,9 @@ export class GardenComponent implements OnInit, OnDestroy {
 
   // Delete Garden
   confirmDialog(id: string, name: string): void {
+    const value = name;
     const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ name +'" ?';
-    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
+    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message, value);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData

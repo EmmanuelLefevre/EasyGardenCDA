@@ -6,8 +6,8 @@
   <div class="form-content form-border form-shadow animate__animated animate__fadeInDown">
     <div class="div-button-close">
       <button type="button" 
-        (click)="goBack()" 
-        class="button-circle button-shadow">
+              (click)="goBack()" 
+              class="button-circle button-shadow">
         <fa-icon [icon]="faCircleXmark"></fa-icon>
       </button>
     </div>
@@ -16,12 +16,13 @@
     </div>
     <form [formGroup]="addGardenForm" (ngSubmit)="onSubmit()">
       <input formControlName="name"
-        name="name"
-        id="name"
-        type="text"
-        placeholder="Nom"
-        class="input-inset-shadow"
-        [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }">
+              name="name"
+              [(ngModel)]="name"
+              id="name"
+              type="text"
+              placeholder="Nom"
+              class="input-inset-shadow"
+              [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }">
       <div *ngIf="submitted && f['name'].errors">
         <div class="text-alert" *ngIf="f['name'].errors['required']">Veuillez saisir un nom!</div>
         <div class="text-alert" *ngIf="f['name'].errors['minlength']">
@@ -36,6 +37,7 @@
       </div>
       <div class="div-form-button">
         <button type="submit" 
+                (click)="openSnackBar( name , 'Close')"
                 class="button-shadow">Ajouter
         </button>
         <button type="button" 
