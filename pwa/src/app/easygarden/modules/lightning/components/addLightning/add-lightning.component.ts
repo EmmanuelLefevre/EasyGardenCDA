@@ -30,7 +30,6 @@ export class AddLightningComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  name = '';
   value = '';
   lightning!: LightningModel;
 
@@ -108,7 +107,7 @@ export class AddLightningComponent implements OnInit {
 
   // Snackbar
   openSnackBar(_value: string, action: string) {
-    this.snackBar.open('L\'éclairage "' + this.name + '"' + ' a bien été ajouté.', action, {
+    this.snackBar.open('L\'éclairage "' + this.value + '"' + ' a bien été ajouté.', action, {
         duration: 4000,
         panelClass: ['snackbar-animation'],
         verticalPosition: 'bottom',
