@@ -75,8 +75,9 @@ export class LightningComponent implements OnInit, OnDestroy {
 
   // Delete Lightning
   confirmDialog(id: number, name: string): void {
+    const value = name;
     const message = 'Êtes-vous certain de vouloir supprimer l\'équipement "'+ name +'" ?';
-    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message);
+    const dialogData = new ConfirmDialogModel("Confirmer l'action!", message, value);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData

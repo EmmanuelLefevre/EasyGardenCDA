@@ -9,6 +9,8 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { LightningModel } from '../../lightningModel';
 import { UserModel } from '../../../../../_models/userModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-add-lightning',
   templateUrl: './add-lightning.component.html',
@@ -28,13 +30,16 @@ export class AddLightningComponent implements OnInit {
   });
   submitted = false;
   success = '';
+  name = '';
+  value = '';
   lightning!: LightningModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
-              private lightningService: LightningService) { 
+              private lightningService: LightningService,
+              public snackBar: MatSnackBar) { 
     this.addLightningForm = this.formBuilder.group({
       name: [
         '',
@@ -99,6 +104,16 @@ export class AddLightningComponent implements OnInit {
   // Close addLightningComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(_value: string, action: string) {
+    this.snackBar.open('L\'éclairage "' + this.name + '"' + ' a bien été ajouté.', action, {
+        duration: 4000,
+        panelClass: ['snackbar-animation'],
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start'
+    });
   }
 
 }

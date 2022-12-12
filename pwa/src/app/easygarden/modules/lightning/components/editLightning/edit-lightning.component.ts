@@ -8,6 +8,8 @@ import { LightningService } from '../../lightning.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { LightningModel } from '../../lightningModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-edit-lightning',
   templateUrl: './edit-lightning.component.html'
@@ -24,6 +26,7 @@ export class EditLightningComponent implements OnInit {
   });
   submitted = false;
   success = '';
+  name = '';
   value = '';
   lightning!: LightningModel;
 
@@ -31,7 +34,8 @@ export class EditLightningComponent implements OnInit {
               private customValidator : FormValidationService,
               private location: Location,
               private activated: ActivatedRoute,
-              private lightningService: LightningService) {
+              private lightningService: LightningService,
+              public snackBar: MatSnackBar) {
     this.editLightningForm = this.formBuilder.group({
       name: [
         '',
@@ -84,6 +88,16 @@ export class EditLightningComponent implements OnInit {
   // Close editLightningComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(_value: string, action: string) {
+    this.snackBar.open('L\'éclairage "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', action, {
+        duration: 4000,
+        panelClass: ['snackbar-animation'],
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start'
+    });
   }
 
 }
