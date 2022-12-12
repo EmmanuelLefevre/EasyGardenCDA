@@ -6,6 +6,8 @@ import { EasygardenRoutingModule } from './easygarden-routing.module';
 import { ConfirmDialogModule } from './components/confirmDialog/confirmDialogModule/confirm-dialog.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GardenComponent } from './components/garden/components/garden/garden.component';
@@ -29,7 +31,9 @@ import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialog
     FormsModule,
     ConfirmDialogModule,
     MatTooltipModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
   entryComponents: [ConfirmDialogComponent]
 })
