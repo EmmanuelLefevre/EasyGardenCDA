@@ -9,6 +9,8 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { LawnmowerModel } from '../../lawnmowerModel';
 import { UserModel } from '../../../../../_models/userModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-add-lawnmower',
   templateUrl: './add-lawnmower.component.html',
@@ -28,13 +30,15 @@ export class AddLawnmowerComponent implements OnInit {
   });
   submitted = false;
   success = '';
+  name = '';
   lawnmower!: LawnmowerModel;
   
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
-              private lawnmowerService: LawnmowerService) { 
+              private lawnmowerService: LawnmowerService,
+              public snackBar: MatSnackBar) { 
     this.addLawnmowerForm = this.formBuilder.group({
       name: [
         '',
@@ -99,6 +103,16 @@ export class AddLawnmowerComponent implements OnInit {
   // Close addLawnmowerComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(_value: string, action: string) {
+    this.snackBar.open('La tondeuse "' + this.name + '"' + ' a bien été ajouté.', action, {
+        duration: 4000,
+        panelClass: ['snackbar-animation'],
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start'
+    });
   }
 
 }

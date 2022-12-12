@@ -8,6 +8,8 @@ import { LawnmowerService } from '../../lawnmower.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { LawnmowerModel } from '../../lawnmowerModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-editLawnmower',
   templateUrl: './edit-lawnmower.component.html'
@@ -25,13 +27,15 @@ export class EditLawnmowerComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
+  name = '';
   lawnmower!: LawnmowerModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private location: Location,
               private activated: ActivatedRoute,
-              private lawnmowerService: LawnmowerService) {
+              private lawnmowerService: LawnmowerService,
+              public snackBar: MatSnackBar) {
     this.editLawnmowerForm = this.formBuilder.group({
       name: [
         '',
@@ -84,6 +88,16 @@ export class EditLawnmowerComponent implements OnInit {
   // Close editLawnmowerComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(_value: string, action: string) {
+    this.snackBar.open('La tondeuse "' + this.value + '"' + ' a bien été renommé en "' + this.name + '".', action, {
+      duration: 4000,
+      panelClass: ['snackbar-animation'],
+      verticalPosition: 'bottom',
+      horizontalPosition: 'start'
+    });
   }
 
 }
