@@ -8,6 +8,8 @@ import { PortalService } from '../../portal.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { PortalModel } from '../../portalModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-edit-portal',
   templateUrl: './edit-portal.component.html'
@@ -25,13 +27,15 @@ export class EditPortalComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
+  name = '';
   portal!: PortalModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private location: Location,
               private activated: ActivatedRoute,
-              private portalService: PortalService) {
+              private portalService: PortalService,
+              public snackBar: MatSnackBar) {
     this.editPortalForm = this.formBuilder.group({
       name: [
         '',
@@ -84,6 +88,16 @@ export class EditPortalComponent implements OnInit {
   // Close editPortalComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(_value: string, action: string) {
+    this.snackBar.open('Le portail "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', action, {
+      duration: 4000,
+      panelClass: ['snackbar-animation'],
+      verticalPosition: 'bottom',
+      horizontalPosition: 'start'
+    });
   }
 
 }

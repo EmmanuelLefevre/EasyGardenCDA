@@ -17,12 +17,13 @@
     </div>
     <form [formGroup]="editPortalForm" (ngSubmit)="onSubmit()">
       <input formControlName="name"
-      name="name"
-      id="name"
-      type="text"
-      class="input-inset-shadow"
-      [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }"
-      value={{value}}>
+              name="name"
+              [(ngModel)]="name"
+              id="name"
+              type="text"
+              class="input-inset-shadow"
+              [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }"
+              value={{value}}>
       <div *ngIf="submitted && f['name'].errors">
         <div class="text-alert" *ngIf="f['name'].errors['required']">Veuillez saisir un nom!</div>
         <div class="text-alert" *ngIf="f['name'].errors['minlength']">
@@ -37,6 +38,7 @@
       </div>
       <div class="div-form-button">
         <button type="submit" 
+                (click)="openSnackBar( name , 'Close')"
                 class="button-shadow">Modifier
         </button>
         <button type="button" 

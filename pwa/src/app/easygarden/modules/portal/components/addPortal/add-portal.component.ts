@@ -9,6 +9,8 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { PortalModel } from '../../portalModel';
 import { UserModel } from '../../../../../_models/userModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-add-portal',
   templateUrl: './add-portal.component.html',
@@ -28,13 +30,15 @@ export class AddPortalComponent implements OnInit {
   });
   submitted = false;
   success = '';
+  name = '';
   portal!: PortalModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
-              private portalService: PortalService) { 
+              private portalService: PortalService,
+              public snackBar: MatSnackBar) { 
     this.addPortalForm = this.formBuilder.group({
       name: [
         '',
@@ -99,6 +103,16 @@ export class AddPortalComponent implements OnInit {
   // Close addPortalComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(_value: string, action: string) {
+    this.snackBar.open('Le portail "' + this.name + '"' + ' a bien été ajoutée.', action, {
+        duration: 4000,
+        panelClass: ['snackbar-animation'],
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start'
+    });
   }
 
 }
