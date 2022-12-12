@@ -8,6 +8,8 @@ import { WateringService } from '../../watering.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { WateringModel } from '../../wateringModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-edit-watering',
   templateUrl: './edit-watering.component.html'
@@ -25,13 +27,15 @@ export class EditWateringComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
+  name = '';
   watering!: WateringModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private location: Location,
               private activated: ActivatedRoute,
-              private wateringService: WateringService) {
+              private wateringService: WateringService,
+              public snackBar: MatSnackBar) {
     this.editWateringForm = this.formBuilder.group({
       name: [
         '',
@@ -84,6 +88,19 @@ export class EditWateringComponent implements OnInit {
   // Close editWateringComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(value: string, action: string) {
+    this.snackBar.dismiss();
+    setTimeout(() =>
+      this.snackBar.open('L\'arrosage "' + this.value + '"' + ' a bien été renommé en "' + this.name + '".', action, {
+        duration: 4000,
+        panelClass: ['snackbar-animation'],
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start'
+      }), 0
+    );
   }
 
 }

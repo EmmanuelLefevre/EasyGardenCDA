@@ -9,6 +9,8 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { WateringModel } from '../../wateringModel';
 import { UserModel } from '../../../../../_models/userModel';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-add-watering',
   templateUrl: './add-watering.component.html',
@@ -28,13 +30,15 @@ export class AddWateringComponent implements OnInit {
   });
   submitted = false;
   success = '';
+  name = '';
   watering!: WateringModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
-              private wateringService: WateringService) { 
+              private wateringService: WateringService,
+              public snackBar: MatSnackBar) { 
     this.addWateringForm = this.formBuilder.group({
       name: [
         '',
@@ -99,6 +103,19 @@ export class AddWateringComponent implements OnInit {
   // Close addWateringComponent
   goBack(): void {
     this.location.back()
+  }
+
+  // Snackbar
+  openSnackBar(value: string, action: string) {
+    this.snackBar.dismiss();
+    setTimeout(() =>
+      this.snackBar.open('L\'arrosage "' + this.name + '"' + ' a bien été ajouté.', action, {
+        duration: 4000,
+        panelClass: ['snackbar-animation'],
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start'
+      }), 0
+    );
   }
 
 }
