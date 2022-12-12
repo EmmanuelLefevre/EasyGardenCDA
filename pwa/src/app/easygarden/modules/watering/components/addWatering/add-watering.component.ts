@@ -63,7 +63,7 @@ export class AddWateringComponent implements OnInit {
     this.fetchWaterings()
   }
 
-  // Display Gardens
+  // Display Waterings
   fetchWaterings(): void {
     this.wateringService.getAllWaterings()
       .subscribe(
