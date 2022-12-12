@@ -63,7 +63,7 @@ export class AddPoolComponent implements OnInit {
     this.fetchPools()
   }
 
-    // Display Gardens
+    // Display Pools
     fetchPools(): void {
       this.poolService.getAllPools()
         .subscribe(
