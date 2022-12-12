@@ -63,7 +63,7 @@ export class AddLightningComponent implements OnInit {
     this.fetchLightnings()
   }
 
-  // Display Gardens
+  // Display Lightnings
   fetchLightnings(): void {
     this.lightningService.getAllLightnings()
       .subscribe(
