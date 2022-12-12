@@ -30,7 +30,7 @@ export class AddLawnmowerComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  name = '';
+  value = '';
   lawnmower!: LawnmowerModel;
   
   constructor(private formBuilder: FormBuilder,
@@ -107,7 +107,7 @@ export class AddLawnmowerComponent implements OnInit {
 
   // Snackbar
   openSnackBar(_value: string, action: string) {
-    this.snackBar.open('La tondeuse "' + this.name + '"' + ' a bien été ajoutée.', action, {
+    this.snackBar.open('La tondeuse "' + this.value + '"' + ' a bien été ajoutée.', action, {
         duration: 4000,
         panelClass: ['snackbar-animation'],
         verticalPosition: 'bottom',
