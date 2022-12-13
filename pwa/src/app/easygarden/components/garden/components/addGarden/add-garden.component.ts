@@ -90,8 +90,8 @@ export class AddGardenComponent implements OnInit {
   }
   
   // Snackbar
-  openSnackBar(_value: string, action: string) {
-    this.snackBar.open('Le jardin "' + this.name + '"' + ' a bien été ajoutée.', action, {
+  openSnackBar(_value: string) {
+    this.snackBar.open('Le jardin "' + this.name + '"' + ' a bien été ajoutée.', '', {
         duration: 4000,
         panelClass: ['snackbar-animation'],
         verticalPosition: 'bottom',

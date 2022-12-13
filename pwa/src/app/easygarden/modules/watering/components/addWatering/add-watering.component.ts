@@ -106,8 +106,8 @@ export class AddWateringComponent implements OnInit {
   }
 
   // Snackbar
-  openSnackBar(_value: string, action: string) {
-    this.snackBar.open('L\'arrosage "' + this.name + '"' + ' a bien été ajouté.', action, {
+  openSnackBar(_value: string) {
+    this.snackBar.open('L\'arrosage "' + this.name + '"' + ' a bien été ajouté.', '', {
         duration: 4000,
         panelClass: ['snackbar-animation'],
         verticalPosition: 'bottom',

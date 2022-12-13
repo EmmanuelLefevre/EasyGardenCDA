@@ -91,8 +91,8 @@ export class EditLightningComponent implements OnInit {
   }
 
   // Snackbar
-  openSnackBar(_value: string, action: string) {
-    this.snackBar.open('L\'éclairage "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', action, {
+  openSnackBar(_value: string) {
+    this.snackBar.open('L\'éclairage "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', '', {
         duration: 4000,
         panelClass: ['snackbar-animation'],
         verticalPosition: 'bottom',

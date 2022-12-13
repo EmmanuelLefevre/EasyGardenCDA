@@ -91,8 +91,8 @@ export class EditWateringComponent implements OnInit {
   }
 
   // Snackbar
-  openSnackBar(_value: string, action: string) {
-    this.snackBar.open('L\'arrosage "' + this.value + '"' + ' a bien été renommé en "' + this.name + '".', action, {
+  openSnackBar(_value: string) {
+    this.snackBar.open('L\'arrosage "' + this.value + '"' + ' a bien été renommé en "' + this.name + '".', '', {
       duration: 4000,
       panelClass: ['snackbar-animation'],
       verticalPosition: 'bottom',
