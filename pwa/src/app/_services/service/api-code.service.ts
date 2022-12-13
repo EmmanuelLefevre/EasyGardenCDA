@@ -5,14 +5,14 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 
-export class ApiErrorService {
+export class ApiCodeService {
 
-  apiError = new Subject<string>()
+  apiCode = new Subject<string>()
 
   constructor() { }
 
-  sendError(message: string): void{
-    this.apiError.next(message)
+  sendCode(message: string): void{
+    this.apiCode.next(message)
   }
 
 }
