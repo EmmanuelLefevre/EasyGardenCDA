@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { TokenService } from '../../_services/auth/token.service';
-import { ApiCodeService } from '../service/api-code.service';
+import { ApiErrorService } from '../service/api-error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import { ApiCodeService } from '../service/api-code.service';
 
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private tokenService: TokenService, private apiCodeService: ApiCodeService) { }
+  constructor(private tokenService: TokenService, private apiErrorService: ApiErrorService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
@@ -32,7 +32,7 @@ export class JwtInterceptor implements HttpInterceptor {
             this.tokenService.clearTokenExpired()
           }
 
-          this.apiCodeService.sendCode(error.error.message)
+          this.apiErrorService.sendError(error.error.message)
           return throwError(() => new error('Session Expired'))
         })
       )
