@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { JWTInterceptorProvider } from './_services/utils/jwt.interceptor';
+import { SnackbarInterceptorProvider } from './_services/utils/snackbar.interceptor';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -29,7 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatSnackBarModule
   ],
-  providers: [JWTInterceptorProvider,MatSnackBarModule],
+  providers: [JWTInterceptorProvider, SnackbarInterceptorProvider],
   bootstrap: [AppComponent]
 })
 
