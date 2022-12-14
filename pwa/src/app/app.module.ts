@@ -12,6 +12,8 @@ import { JWTInterceptorProvider } from './_services/utils/jwt.interceptor';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorComponent } from './_services/utils/components/error/error.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { ErrorComponent } from './_services/utils/components/error/error.compone
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
-  providers: [JWTInterceptorProvider],
+  providers: [JWTInterceptorProvider,MatSnackBarModule],
   bootstrap: [AppComponent]
 })
 
