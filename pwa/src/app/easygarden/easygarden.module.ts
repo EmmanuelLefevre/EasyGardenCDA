@@ -31,7 +31,9 @@ import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialog
     MatTooltipModule,
     NgxPaginationModule
   ],
-  entryComponents: [ConfirmDialogComponent]
+  entryComponents: [
+    ConfirmDialogComponent
+  ]
 })
 
 export class EasygardenModule { }
