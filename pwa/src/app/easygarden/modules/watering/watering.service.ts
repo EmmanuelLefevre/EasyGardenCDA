@@ -11,8 +11,6 @@ import { DataUserModel } from '../../../_models/userModel';
 })
 
 export class WateringService {
-
-  unsubscribe: any;
   
   constructor(private httpClient: HttpClient) { }
   
