@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorComponent } from './_services/utils/components/error/error.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackbarComponent } from './easygarden/components/snackbar/snackbar.component';
 
 
 @NgModule({
@@ -29,6 +30,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatSnackBarModule
+  ],
+  entryComponents: [
+    SnackbarComponent
   ],
   providers: [JWTInterceptorProvider, SnackbarInterceptorProvider],
   bootstrap: [AppComponent]
