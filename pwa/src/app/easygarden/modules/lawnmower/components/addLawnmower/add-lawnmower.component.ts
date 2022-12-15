@@ -106,7 +106,7 @@ export class AddLawnmowerComponent implements OnInit {
   }
 
   // Snackbar
-  openSnackBar(_value: string) {
+  openSnackBar(_name: string) {
     this.snackBar.open('La tondeuse "' + this.name + '"' + ' a bien été ajoutée.', '', {
         duration: 4000,
         panelClass: ['snackbar-animation'],
