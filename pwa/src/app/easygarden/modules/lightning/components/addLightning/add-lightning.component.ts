@@ -30,7 +30,7 @@ export class AddLightningComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  value = '';
+  name = '';
   lightning!: LightningModel;
 
   constructor(private formBuilder: FormBuilder,
@@ -106,8 +106,8 @@ export class AddLightningComponent implements OnInit {
   }
 
   // Snackbar
-  openSnackBar(_value: string) {
-    this.snackBar.open('L\'éclairage "' + this.value + '"' + ' a bien été ajouté.', '', {
+  openSnackBar(_name: string) {
+    this.snackBar.open('L\'éclairage "' + this.name + '"' + ' a bien été ajouté.', '', {
         duration: 4000,
         panelClass: ['snackbar-animation'],
         verticalPosition: 'bottom',
