@@ -12,8 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-garden',
-  templateUrl: './add-garden.component.html',
-  styleUrls: ['./add-garden.component.scss']
+  templateUrl: './add-garden.component.html'
 })
 
 export class AddGardenComponent implements OnInit {

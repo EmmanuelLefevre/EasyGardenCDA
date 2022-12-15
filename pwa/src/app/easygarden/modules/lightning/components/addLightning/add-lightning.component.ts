@@ -13,8 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-lightning',
-  templateUrl: './add-lightning.component.html',
-  styleUrls: ['./add-lightning.component.scss']
+  templateUrl: './add-lightning.component.html'
 })
 
 export class AddLightningComponent implements OnInit {

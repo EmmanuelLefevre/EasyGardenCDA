@@ -13,8 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-addpool',
-  templateUrl: './add-pool.component.html',
-  styleUrls: ['./add-pool.component.scss']
+  templateUrl: './add-pool.component.html'
 })
 
 export class AddPoolComponent implements OnInit {

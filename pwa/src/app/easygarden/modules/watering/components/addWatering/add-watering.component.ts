@@ -13,8 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-watering',
-  templateUrl: './add-watering.component.html',
-  styleUrls: ['./add-watering.component.scss']
+  templateUrl: './add-watering.component.html'
 })
 
 export class AddWateringComponent implements OnInit {

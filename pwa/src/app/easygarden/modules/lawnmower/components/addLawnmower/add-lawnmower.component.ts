@@ -13,8 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-lawnmower',
-  templateUrl: './add-lawnmower.component.html',
-  styleUrls: ['./add-lawnmower.component.scss']
+  templateUrl: './add-lawnmower.component.html'
 })
 
 export class AddLawnmowerComponent implements OnInit {
