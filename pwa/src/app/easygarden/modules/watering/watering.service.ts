@@ -11,6 +11,8 @@ import { DataUserModel } from '../../../_models/userModel';
 })
 
 export class WateringService {
+
+  unsubscribe: any;
   
   constructor(private httpClient: HttpClient) { }
   
@@ -47,9 +49,5 @@ export class WateringService {
   deleteWatering(id: number): Observable<WateringModel> {
     return this.httpClient.delete<WateringModel>(environment.apis.watering.url+'/'+id)
   }
-
-  // unsubscribe() {
-  //   throw new Error('WateringService Destroy');
-  // }
   
 }
