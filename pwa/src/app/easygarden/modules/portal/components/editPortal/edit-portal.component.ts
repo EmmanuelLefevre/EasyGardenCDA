@@ -91,7 +91,7 @@ export class EditPortalComponent implements OnInit {
   }
 
   // Snackbar
-  openSnackBar(_value: string) {
+  openSnackBar(_value: string, _name: string) {
     this.snackBar.open('Le portail "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', '', {
       duration: 4000,
       panelClass: ['snackbar-animation'],

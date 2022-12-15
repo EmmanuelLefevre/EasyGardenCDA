@@ -18,7 +18,6 @@
     <form [formGroup]="editPortalForm" (ngSubmit)="onSubmit()">
       <input formControlName="name"
               name="name"
-              [(ngModel)]="name"
               id="name"
               type="text"
               class="input-inset-shadow"
@@ -38,7 +37,7 @@
       </div>
       <div class="div-form-button">
         <button type="submit" 
-                (click)="openSnackBar(name)"
+                (click)="openSnackBar(value, name)"
                 class="button-shadow">Modifier
         </button>
         <button type="button" 

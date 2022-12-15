@@ -13,8 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-portal',
-  templateUrl: './add-portal.component.html',
-  styleUrls: ['./add-portal.component.scss']
+  templateUrl: './add-portal.component.html'
 })
 
 export class AddPortalComponent implements OnInit {
@@ -106,7 +105,7 @@ export class AddPortalComponent implements OnInit {
   }
 
   // Snackbar
-  openSnackBar(_value: string) {
+  openSnackBar(_name: string) {
     this.snackBar.open('Le portail "' + this.name + '"' + ' a bien été ajoutée.', '', {
         duration: 4000,
         panelClass: ['snackbar-animation'],
