@@ -12,8 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-garden',
-  templateUrl: './edit-garden.component.html',
-  styleUrls: ['./edit-garden.component.scss']
+  templateUrl: './edit-garden.component.html'
 })
 
 export class EditGardenComponent implements OnInit {
@@ -95,7 +94,7 @@ export class EditGardenComponent implements OnInit {
   }
 
   // Snackbar
-  openSnackBar(_value: string) {
+  openSnackBar(_value: string, _name: string) {
     this.snackBar.open('Le jardin "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', '', {
       duration: 4000,
       panelClass: ['snackbar-animation'],
