@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { TokenService } from '../../_services/auth/token.service';
-import { ApiErrorService } from '../service/api-error.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,10 @@ import { ApiErrorService } from '../service/api-error.service';
 
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private tokenService: TokenService, private apiErrorService: ApiErrorService) { }
+  constructor(private tokenService: TokenService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
-    // console.log(request)
     const token = this.tokenService.getToken()
 
     // SI token à insérer dans le header
@@ -23,22 +22,27 @@ export class JwtInterceptor implements HttpInterceptor {
       let clone = request.clone({
         headers: request.headers.set('Authorization', 'bearer '+token)
       })
-      // console.log(clone)
       return next.handle(clone).pipe(
         catchError(error => {
-          // console.log(error)
-
           if(error.status === 401){
             this.tokenService.clearTokenExpired()
           }
-
-          this.apiErrorService.sendError(error.error.message)
           return throwError(() => new error('Session Expired'))
         })
       )
     }
     
-    return next.handle(request);
+    return next.handle(request)
+
+    // .pipe(
+    //   tap(event => {
+    //     if (event instanceof HttpResponse) {
+    //       this.snackBar.openSnackBar(event.statusText,'Close','green-snackbar');
+    //       // this.apiStatusCodeService.sendCode(event.status.code)
+    //       // http response status code
+    //       console.log(event.status);
+    //     }
+    //   }));
   }
 
 }
