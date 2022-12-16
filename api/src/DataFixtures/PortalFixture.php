@@ -23,7 +23,7 @@ class PortalFixture extends Fixture implements DependentFixtureInterface
         $gardenUser1 = $this->getReference(gardenFixture::GARDEN1_REFERENCE);
         $portal1 = new \App\Entity\Portal();
         $portal1->setName('Portail (Saint-Savin)');
-        $portal1->setPresenceSensor(mt_rand(0, 1));
+        $portal1->setPresenceSensor(1);
         $portal1->setStatus(mt_rand(0, 1));
         $portal1->setGarden($gardenUser1);
         $manager->persist($portal1);
