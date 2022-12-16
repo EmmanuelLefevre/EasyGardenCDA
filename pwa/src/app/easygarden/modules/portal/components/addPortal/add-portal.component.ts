@@ -5,11 +5,14 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { PortalService } from '../../portal.service';
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { PortalModel } from '../../portalModel';
+import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-add-portal',
@@ -29,14 +32,20 @@ export class AddPortalComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  name = '';
   portal!: PortalModel;
+
+  // Snackbar display which garden is selected
+  selected = '';
+  gardenName = '';
+  garden!: GardenModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
               private portalService: PortalService,
+              private gardenService: GardenService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) { 
     this.addPortalForm = this.formBuilder.group({
       name: [
@@ -87,6 +96,14 @@ export class AddPortalComponent implements OnInit {
       this.success = JSON.stringify(typedAddPortalForm);
       this.portalService.addPortal(typedAddPortalForm).subscribe(
         () => {
+          const name = this.addPortalForm.get('name')?.value;
+          this.gardenService.getGardenName(this.selected).subscribe(
+            data => {
+              this.garden = data
+              this.gardenName = this.garden.name
+              this.snackbarService.showNotification('Le portail "' + name + '"' + ' a bien été ajouté au jardin de ' + this.gardenName + '.', 'created');
+            }
+          )
           this.router.navigate(['/easygarden/portal'])
         }
       )
@@ -102,16 +119,6 @@ export class AddPortalComponent implements OnInit {
   // Close addPortalComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_name: string) {
-    this.snackBar.open('Le portail "' + this.name + '"' + ' a bien été ajoutée.', '', {
-        duration: 4000,
-        panelClass: ['snackbar-animation'],
-        verticalPosition: 'bottom',
-        horizontalPosition: 'start'
-    });
   }
 
 }

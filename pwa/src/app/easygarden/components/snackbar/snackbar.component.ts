@@ -1,29 +1,33 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+// Add ViewEncapsulation for resolve problems with loading custom scss from the service snackbar.service.ts at property panelClass: ['snackbar-animation']
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-// import { SnackbarInterceptor } from '../../../_services/utils/snackbar.interceptor';
-
-// import { EditWateringComponent } from '../../../easygarden/modules/watering/components/editWatering/edit-watering.component';
-
 
 @Component({
   selector: 'app-snackbar',
   templateUrl: './snackbar.component.html',
-  styleUrls: ['./snackbar.component.scss']
+  styleUrls: ['./snackbar.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class SnackbarComponent implements OnInit {
 
-  message: string;
+  message: SnackbarModel;
 
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any,
-              public dialogRef: MatDialogRef<SnackbarComponent>,
               public snackBar: MatSnackBar) { 
     this.message = data.message;
   }
 
   ngOnInit(): void {}
+
+}
+
+/**
+ * Class to represent snackbar model.
+ */
+ export class SnackbarModel {
+
+  constructor(public message: string) {}
 
 }

@@ -16,7 +16,8 @@
         <mat-label>Jardin</mat-label>
         <mat-select formControlName="garden" 
                     name="garden"
-                    class="form-select">
+                    class="form-select"
+                    [(value)]="selected">
           <ng-container *ngFor="let user of users">
               <mat-option [value]="'api/gardens/'+garden.id" 
                           selected 
@@ -46,8 +47,7 @@
         </div>
       </div>
       <div class="div-form-button">
-        <button type="submit" 
-                (click)="openSnackBar(name)"
+        <button type="submit"
                 class="button-shadow">Ajouter
         </button>
         <button type="button" 

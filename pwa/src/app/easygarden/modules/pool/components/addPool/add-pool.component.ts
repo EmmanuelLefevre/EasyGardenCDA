@@ -5,11 +5,14 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { PoolService } from '../../pool.service';
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { PoolModel } from '../../poolModel';
+import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-addpool',
@@ -29,14 +32,20 @@ export class AddPoolComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  name = '';
   pool!: PoolModel;
+
+  // Snackbar display which garden is selected
+  selected = '';
+  gardenName = '';
+  garden!: GardenModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
               private poolService: PoolService,
+              private gardenService: GardenService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) { 
     this.addPoolForm = this.formBuilder.group({
       name: [
@@ -87,6 +96,14 @@ export class AddPoolComponent implements OnInit {
         this.success = JSON.stringify(typedAddPoolForm);
         this.poolService.addPool(typedAddPoolForm).subscribe(
           () => {
+            const name = this.addPoolForm.get('name')?.value;
+            this.gardenService.getGardenName(this.selected).subscribe(
+              data => {
+                this.garden = data
+                this.gardenName = this.garden.name
+                this.snackbarService.showNotification('L\'équipement "' + name + '"' + ' a bien été ajouté au jardin de ' + this.gardenName + '.', 'created');
+              }
+            )
             this.router.navigate(['/easygarden/pool'])
           }
         )
@@ -102,16 +119,6 @@ export class AddPoolComponent implements OnInit {
     // Close addPoolComponent
     goBack(): void {
       this.location.back()
-    }
-
-    // Snackbar
-    openSnackBar(_name: string) {
-      this.snackBar.open('L\'équipement "' + this.name + '"' + ' a bien été ajouté.', '', {
-          duration: 4000,
-          panelClass: ['snackbar-animation'],
-          verticalPosition: 'bottom',
-          horizontalPosition: 'start'
-      });
     }
 
 }

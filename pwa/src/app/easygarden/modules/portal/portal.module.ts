@@ -5,18 +5,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatSelectModule } from '@angular/material/select';
+import { MainPipeModule } from '../../pipe/pipe.module';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './components/portal/portal.component';
 import { EditPortalComponent } from './components/editPortal/edit-portal.component';
-import { PresenceSensorPipe } from './pipe/presence-sensor.pipe';
 import { AddPortalComponent } from './components/addPortal/add-portal.component';
 
 @NgModule({
   declarations: [
     PortalComponent,
     EditPortalComponent,
-    PresenceSensorPipe,
     AddPortalComponent
   ],
   imports: [
@@ -27,7 +26,8 @@ import { AddPortalComponent } from './components/addPortal/add-portal.component'
     FormsModule,
     MatTooltipModule,
     NgxPaginationModule,
-    MatSelectModule
+    MatSelectModule,
+    MainPipeModule
   ]
 })
 

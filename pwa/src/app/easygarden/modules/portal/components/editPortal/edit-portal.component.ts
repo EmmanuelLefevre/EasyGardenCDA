@@ -9,6 +9,7 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { PortalModel } from '../../portalModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-edit-portal',
@@ -27,7 +28,6 @@ export class EditPortalComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  name = '';
   portal!: PortalModel;
 
   constructor(private formBuilder: FormBuilder,
@@ -35,6 +35,7 @@ export class EditPortalComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private portalService: PortalService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) {
     this.editPortalForm = this.formBuilder.group({
       name: [
@@ -74,7 +75,12 @@ export class EditPortalComponent implements OnInit {
       const typedEditPortalForm: PortalModel = this.editPortalForm.value;
       this.success = JSON.stringify(typedEditPortalForm);
       let pid = this.activated.snapshot.paramMap.get('id')
-      this.portalService.updatePortal(typedEditPortalForm, pid).subscribe()
+      this.portalService.updatePortal(typedEditPortalForm, pid).subscribe(
+        () => {
+          const name = this.editPortalForm.get('name')?.value;
+          this.snackbarService.showNotification('Le portail "' + this.value + '"' + ' a bien été renommé en "' + name + '".', 'modified');
+        }
+      )
       this.location.back()
     } 
   }
@@ -88,16 +94,6 @@ export class EditPortalComponent implements OnInit {
   // Close editPortalComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_value: string, _name: string) {
-    this.snackBar.open('Le portail "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', '', {
-      duration: 4000,
-      panelClass: ['snackbar-animation'],
-      verticalPosition: 'bottom',
-      horizontalPosition: 'start'
-    });
   }
 
 }

@@ -5,11 +5,14 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { LawnmowerService } from '../../lawnmower.service';
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { LawnmowerModel } from '../../lawnmowerModel';
+import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-add-lawnmower',
@@ -29,14 +32,20 @@ export class AddLawnmowerComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  name = '';
   lawnmower!: LawnmowerModel;
+
+  // Snackbar display which garden is selected
+  selected = '';
+  gardenName = '';
+  garden!: GardenModel;
   
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
               private lawnmowerService: LawnmowerService,
+              private gardenService: GardenService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) { 
     this.addLawnmowerForm = this.formBuilder.group({
       name: [
@@ -87,6 +96,14 @@ export class AddLawnmowerComponent implements OnInit {
       this.success = JSON.stringify(typedAddLawnmowerForm);
       this.lawnmowerService.addLawnmower(typedAddLawnmowerForm).subscribe(
         () => {
+          const name = this.addLawnmowerForm.get('name')?.value;
+          this.gardenService.getGardenName(this.selected).subscribe(
+            data => {
+              this.garden = data
+              this.gardenName = this.garden.name
+              this.snackbarService.showNotification('La tondeuse "' + name + '"' + ' a bien été ajoutée au jardin de ' + this.gardenName + '.', 'created');
+            }
+          )
           this.router.navigate(['/easygarden/lawnmower'])
         }
       )
@@ -102,16 +119,6 @@ export class AddLawnmowerComponent implements OnInit {
   // Close addLawnmowerComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_name: string) {
-    this.snackBar.open('La tondeuse "' + this.name + '"' + ' a bien été ajoutée.', '', {
-        duration: 4000,
-        panelClass: ['snackbar-animation'],
-        verticalPosition: 'bottom',
-        horizontalPosition: 'start'
-    });
   }
 
 }

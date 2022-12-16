@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -16,7 +18,9 @@ export class ConfirmDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel,
-              public snackBar: MatSnackBar) {
+              private snackbarService: SnackbarService,
+              public snackBar: MatSnackBar,
+              private router: Router) {
     this.title = data.title;
     this.message = data.message;
     this.value = data.value ?? "";
@@ -26,30 +30,22 @@ export class ConfirmDialogComponent implements OnInit {
   }
 
   onConfirm(): void {
-    // Close the dialog, return true
     this.dialogRef.close(true);
+    // Snackbar
+    if (this.router.url === '/easygarden') {
+      this.snackbarService.showNotification('Le jardin "' + this.value + '" a bien été supprimé ainsi que tout ses équipements.', 'deleted');
+    }
+    else this.snackbarService.showNotification('L\'équipement "' + this.value + '"' + ' a bien été supprimé.', 'deleted');
   }
 
   onDismiss(): void {
-    // Close the dialog, return false
     this.dialogRef.close(false);
   }
 
-  // Snackbar
-  openSnackBar(_value: string) {
-    this.snackBar.open('"' + this.value + '"' + ' a bien été supprimé.', '', {
-      duration: 4000,
-      panelClass: ['snackbar-animation'],
-      verticalPosition: 'bottom',
-      horizontalPosition: 'start'
-    });
-  }
 }
 
 /**
  * Class to represent confirm dialog model.
- *
- * It has been kept here to keep it as part of shared component.
  */
 export class ConfirmDialogModel {
 

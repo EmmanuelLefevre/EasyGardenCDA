@@ -9,6 +9,7 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { PoolModel } from '../../poolModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-edit-pool',
@@ -26,7 +27,6 @@ export class EditPoolComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  name = '';
   value = '';
   pool!: PoolModel;
 
@@ -35,6 +35,7 @@ export class EditPoolComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private poolService: PoolService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) {
     this.editPoolForm = this.formBuilder.group({
       name: [
@@ -74,7 +75,12 @@ export class EditPoolComponent implements OnInit {
       const typedEditPoolForm: PoolModel = this.editPoolForm.value;
       this.success = JSON.stringify(typedEditPoolForm);
       let lid = this.activated.snapshot.paramMap.get('id')
-      this.poolService.updatePool(typedEditPoolForm, lid).subscribe()
+      this.poolService.updatePool(typedEditPoolForm, lid).subscribe(
+        () => {
+          const name = this.editPoolForm.get('name')?.value;
+          this.snackbarService.showNotification('L\'équipement "' + this.value + '"' + ' a bien été renommé en "' + name + '".', 'modified');
+        }
+      )
       this.location.back()
     } 
   }
@@ -88,16 +94,6 @@ export class EditPoolComponent implements OnInit {
   // Close editPoolComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_value: string, _name: string) {
-    this.snackBar.open('L\'équipement "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', '', {
-        duration: 4000,
-        panelClass: ['snackbar-animation'],
-        verticalPosition: 'bottom',
-        horizontalPosition: 'start'
-    });
   }
 
 }

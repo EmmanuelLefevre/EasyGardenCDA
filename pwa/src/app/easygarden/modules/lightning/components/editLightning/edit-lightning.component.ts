@@ -9,6 +9,7 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { LightningModel } from '../../lightningModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-edit-lightning',
@@ -26,7 +27,6 @@ export class EditLightningComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  name = '';
   value = '';
   lightning!: LightningModel;
 
@@ -35,6 +35,7 @@ export class EditLightningComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private lightningService: LightningService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) {
     this.editLightningForm = this.formBuilder.group({
       name: [
@@ -74,7 +75,12 @@ export class EditLightningComponent implements OnInit {
       const typedEditLightningForm: LightningModel = this.editLightningForm.value;
       this.success = JSON.stringify(typedEditLightningForm);
       let lid = this.activated.snapshot.paramMap.get('id')
-      this.lightningService.updateLightning(typedEditLightningForm, lid).subscribe()
+      this.lightningService.updateLightning(typedEditLightningForm, lid).subscribe(
+        () => {
+          const name = this.editLightningForm.get('name')?.value;
+          this.snackbarService.showNotification('L\'éclairage "' + this.value + '"' + ' a bien été renommé en "' + name + '".', 'modified');
+        }
+      )
       this.location.back()
     } 
   }
@@ -88,16 +94,6 @@ export class EditLightningComponent implements OnInit {
   // Close editLightningComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_value: string, _name: string) {
-    this.snackBar.open('L\'éclairage "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', '', {
-        duration: 4000,
-        panelClass: ['snackbar-animation'],
-        verticalPosition: 'bottom',
-        horizontalPosition: 'start'
-    });
   }
 
 }

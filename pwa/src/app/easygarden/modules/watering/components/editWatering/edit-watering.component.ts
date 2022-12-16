@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
@@ -9,6 +9,8 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { WateringModel } from '../../wateringModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+// import { SnackbarInterceptor } from '../../../../../_services/utils/snackbar.interceptor';
 
 @Component({
   selector: 'app-edit-watering',
@@ -27,7 +29,6 @@ export class EditWateringComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  name = '';
   watering!: WateringModel;
 
   constructor(private formBuilder: FormBuilder,
@@ -35,6 +36,7 @@ export class EditWateringComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private wateringService: WateringService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) {
     this.editWateringForm = this.formBuilder.group({
       name: [
@@ -74,7 +76,12 @@ export class EditWateringComponent implements OnInit {
       const typedEditWateringForm: WateringModel = this.editWateringForm.value;
       this.success = JSON.stringify(typedEditWateringForm);
       let wid = this.activated.snapshot.paramMap.get('id')
-      this.wateringService.updateWatering(typedEditWateringForm, wid).subscribe()
+      this.wateringService.updateWatering(typedEditWateringForm, wid).subscribe(
+        () => {
+          const name = this.editWateringForm.get('name')?.value;
+          this.snackbarService.showNotification('L\'arrosage "' + this.value + '"' + ' a bien été renommé en "' + name + '".', 'modified');
+        }
+      )
       this.location.back()
     } 
   }
@@ -88,16 +95,6 @@ export class EditWateringComponent implements OnInit {
   // Close editWateringComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_value: string) {
-    this.snackBar.open('L\'arrosage "' + this.value + '"' + ' a bien été renommé en "' + this.name + '".', '', {
-      duration: 4000,
-      panelClass: ['snackbar-animation'],
-      verticalPosition: 'bottom',
-      horizontalPosition: 'start'
-    });
   }
 
 }

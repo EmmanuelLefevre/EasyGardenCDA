@@ -5,11 +5,14 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { LightningService } from '../../lightning.service';
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { LightningModel } from '../../lightningModel';
+import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-add-lightning',
@@ -29,14 +32,20 @@ export class AddLightningComponent implements OnInit {
   });
   submitted = false;
   success = '';
-  name = '';
   lightning!: LightningModel;
+
+  // Snackbar display which garden is selected
+  selected = '';
+  gardenName = '';
+  garden!: GardenModel;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private router: Router, 
               private location: Location,
               private lightningService: LightningService,
+              private gardenService: GardenService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) { 
     this.addLightningForm = this.formBuilder.group({
       name: [
@@ -87,6 +96,14 @@ export class AddLightningComponent implements OnInit {
       this.success = JSON.stringify(typedAddLightningForm);
       this.lightningService.addLightning(typedAddLightningForm).subscribe(
         () => {
+          const name = this.addLightningForm.get('name')?.value;
+          this.gardenService.getGardenName(this.selected).subscribe(
+            data => {
+              this.garden = data
+              this.gardenName = this.garden.name
+              this.snackbarService.showNotification('L\'éclairage "' + name + '"' + ' a bien été ajouté au jardin de ' + this.gardenName + '.', 'created');
+            }
+          )   
           this.router.navigate(['/easygarden/lightning'])
         }
       )
@@ -102,16 +119,6 @@ export class AddLightningComponent implements OnInit {
   // Close addLightningComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_name: string) {
-    this.snackBar.open('L\'éclairage "' + this.name + '"' + ' a bien été ajouté.', '', {
-        duration: 4000,
-        panelClass: ['snackbar-animation'],
-        verticalPosition: 'bottom',
-        horizontalPosition: 'start'
-    });
   }
 
 }

@@ -6,12 +6,14 @@ import { EasygardenRoutingModule } from './easygarden-routing.module';
 import { ConfirmDialogModule } from './components/confirmDialog/confirmDialogModule/confirm-dialog.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MainPipeModule } from './pipe/pipe.module';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GardenComponent } from './components/garden/components/garden/garden.component';
 import { EditGardenComponent } from './components/garden/components/editGarden/edit-garden.component';
 import { AddGardenComponent } from './components/garden/components/addGarden/add-garden.component';
 import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialog
     FormsModule,
     ConfirmDialogModule,
     MatTooltipModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MainPipeModule
   ],
   entryComponents: [
     ConfirmDialogComponent

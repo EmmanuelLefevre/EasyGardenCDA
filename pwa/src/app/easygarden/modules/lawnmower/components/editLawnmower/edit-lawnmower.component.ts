@@ -9,6 +9,7 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { LawnmowerModel } from '../../lawnmowerModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-editLawnmower',
@@ -27,7 +28,6 @@ export class EditLawnmowerComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  name = '';
   lawnmower!: LawnmowerModel;
 
   constructor(private formBuilder: FormBuilder,
@@ -35,6 +35,7 @@ export class EditLawnmowerComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private lawnmowerService: LawnmowerService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) {
     this.editLawnmowerForm = this.formBuilder.group({
       name: [
@@ -74,7 +75,12 @@ export class EditLawnmowerComponent implements OnInit {
       const typedEditLawnmowerForm: LawnmowerModel = this.editLawnmowerForm.value;
       this.success = JSON.stringify(typedEditLawnmowerForm);
       let lid = this.activated.snapshot.paramMap.get('id')
-      this.lawnmowerService.updateLawnmower(typedEditLawnmowerForm, lid).subscribe()
+      this.lawnmowerService.updateLawnmower(typedEditLawnmowerForm, lid).subscribe(
+        () => {
+          const name = this.editLawnmowerForm.get('name')?.value;
+          this.snackbarService.showNotification('La tondeuse "' + this.value + '"' + ' a bien été renommée en "' + name + '".', 'modified');
+        }
+      )
       this.location.back()
     } 
   }
@@ -88,16 +94,6 @@ export class EditLawnmowerComponent implements OnInit {
   // Close editLawnmowerComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_value: string, _name: string) {
-    this.snackBar.open('La tondeuse "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', '', {
-      duration: 4000,
-      panelClass: ['snackbar-animation'],
-      verticalPosition: 'bottom',
-      horizontalPosition: 'start'
-    });
   }
 
 }

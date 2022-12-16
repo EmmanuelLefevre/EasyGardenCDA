@@ -43,4 +43,9 @@ export class GardenService {
     return this.httpClient.delete<GardenModel>(environment.apis.garden.url+'/'+id)
   }
 
+  // Get garden.name for snackbar
+  getGardenName(selected: string): Observable<GardenModel>{
+    return this.httpClient.get<GardenModel>(environment.apis.gardenName.url+'/'+selected)
+  }
+
 }
