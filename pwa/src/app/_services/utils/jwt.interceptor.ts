@@ -34,15 +34,6 @@ export class JwtInterceptor implements HttpInterceptor {
     
     return next.handle(request)
 
-    // .pipe(
-    //   tap(event => {
-    //     if (event instanceof HttpResponse) {
-    //       this.snackBar.openSnackBar(event.statusText,'Close','green-snackbar');
-    //       // this.apiStatusCodeService.sendCode(event.status.code)
-    //       // http response status code
-    //       console.log(event.status);
-    //     }
-    //   }));
   }
 
 }
