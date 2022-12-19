@@ -13,7 +13,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private tokenService: TokenService) { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     const token = this.tokenService.getToken()
 
@@ -25,7 +25,7 @@ export class JwtInterceptor implements HttpInterceptor {
       return next.handle(clone).pipe(
         catchError(error => {
           if(error.status === 401){
-            this.tokenService.clearTokenExpired()
+            this.tokenService.clearToken()
           }
           return throwError(() => new error('Session Expired'))
         })
