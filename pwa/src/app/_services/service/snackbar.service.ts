@@ -11,7 +11,7 @@ export class SnackbarService {
 
   constructor(private snackbar: MatSnackBar) { }
 
-  showNotification(displayMessage: string, messageType: 'created' | 'modified' | 'deleted') {
+  showNotification(displayMessage: string, messageType: 'created' | 'modified' | 'deleted' | 'welcome') {
     this.snackbar.openFromComponent(SnackbarComponent, {
       data: {
         message: displayMessage
