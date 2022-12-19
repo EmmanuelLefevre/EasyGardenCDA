@@ -9,6 +9,7 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { GardenModel } from '../../gardenModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
   selector: 'app-edit-garden',
@@ -27,7 +28,6 @@ export class EditGardenComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  name = '';
   garden!: GardenModel;
 
   constructor(private formBuilder: FormBuilder,
@@ -36,6 +36,7 @@ export class EditGardenComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private gardenService: GardenService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) {
     this.editGardenForm = this.formBuilder.group({
       name: [
@@ -77,6 +78,8 @@ export class EditGardenComponent implements OnInit {
       let gid = this.activated.snapshot.paramMap.get('id')
       this.gardenService.updateGarden(typedEditGardenForm, gid).subscribe()
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        const name = this.editGardenForm.get('name')?.value;
+          this.snackbarService.showNotification('Le jardin "' + this.value + '"' + ' a bien été renommé en "' + name + '".', 'modified');
         this.router.navigate(['/easygarden']);
       });
     } 
@@ -91,16 +94,6 @@ export class EditGardenComponent implements OnInit {
   // Close editGardenComponent
   goBack(): void {
     this.location.back()
-  }
-
-  // Snackbar
-  openSnackBar(_value: string, _name: string) {
-    this.snackBar.open('Le jardin "' + this.value + '"' + ' a bien été renommée en "' + this.name + '".', '', {
-      duration: 4000,
-      panelClass: ['snackbar-animation'],
-      verticalPosition: 'bottom',
-      horizontalPosition: 'start'
-    });
   }
 
 }

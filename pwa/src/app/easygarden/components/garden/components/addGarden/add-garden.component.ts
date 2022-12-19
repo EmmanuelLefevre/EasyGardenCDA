@@ -9,6 +9,8 @@ import { FormValidationService } from '../../../../../_services/service/form-val
 import { GardenModel } from '../../gardenModel';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
 
 @Component({
   selector: 'app-add-garden',
@@ -35,6 +37,7 @@ export class AddGardenComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private gardenService: GardenService,
+              private snackbarService: SnackbarService,
               public snackBar: MatSnackBar) {
     let gid = this.activated.snapshot.paramMap.get('id')
     this.addGardenForm = this.formBuilder.group({
@@ -71,6 +74,8 @@ export class AddGardenComponent implements OnInit {
       this.success = JSON.stringify(typedAddGardenForm);
       this.gardenService.addGarden(typedAddGardenForm).subscribe(
         () => {
+          const name = this.addGardenForm.get('name')?.value;
+          this.snackbarService.showNotification('Le jardin "' + name + '"' + ' a bien été ajouté.', 'welcome');
           this.router.navigate(['/easygarden'])
         }
       )
@@ -86,16 +91,6 @@ export class AddGardenComponent implements OnInit {
   // Close addGardenComponent
   goBack(): void {
     this.location.back()
-  }
-  
-  // Snackbar
-  openSnackBar(_name: string) {
-    this.snackBar.open('Le jardin "' + this.name + '"' + ' a bien été ajoutée.', '', {
-        duration: 4000,
-        panelClass: ['snackbar-animation'],
-        verticalPosition: 'bottom',
-        horizontalPosition: 'start'
-    });
   }
 
 }
