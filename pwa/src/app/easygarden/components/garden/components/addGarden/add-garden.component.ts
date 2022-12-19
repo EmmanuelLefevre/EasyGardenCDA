@@ -75,7 +75,7 @@ export class AddGardenComponent implements OnInit {
       this.gardenService.addGarden(typedAddGardenForm).subscribe(
         () => {
           const name = this.addGardenForm.get('name')?.value;
-          this.snackbarService.showNotification('Le jardin "' + name + '"' + ' a bien été ajouté.', 'welcome');
+          this.snackbarService.showNotification('Le jardin "' + name + '"' + ' a bien été ajouté.', 'created');
           this.router.navigate(['/easygarden'])
         }
       )
