@@ -54,9 +54,6 @@ export interface DataUserModel {
 }
 
 export interface TokenUserModel {
-    id: number,
-    nom: string,
-    prenom: string,
     email: string,
     iap?: number,
     exp?: number
