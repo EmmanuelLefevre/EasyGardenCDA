@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -6,6 +7,7 @@ import { AuthService } from '../../../_services/auth/auth.service';
 import { FormValidationService } from '../../../_services/service/form-validation.service';
 import { TokenService } from '../../../_services/auth/token.service';
 import { CredentialsModel } from '../../../_models/credentialsModel';
+
 
 @Component({
   selector: 'app-login',
@@ -42,7 +44,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   success = '';
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private authService: AuthService,
               private tokenService: TokenService) {
@@ -68,19 +71,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    // console.log(this.loginForm);
     if (this.loginForm.invalid) {
       return;
     }
     const typedLoginForm: CredentialsModel = this.loginForm.value;
     this.success = JSON.stringify(typedLoginForm);
-    // console.log(typedLoginForm)
     this.authService.logIn(typedLoginForm).subscribe(
       data => {
-        // console.log(data.token)
         this.tokenService.saveToken(data.token)
-      },
-      err => console.log(err)
+        this.router.navigate(['easygarden'])
+      }
     )
   }
 
