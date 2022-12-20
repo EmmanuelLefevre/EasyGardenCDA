@@ -11,7 +11,6 @@ import { LightningModel } from '../../lightningModel';
 import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
@@ -45,8 +44,7 @@ export class AddLightningComponent implements OnInit {
               private location: Location,
               private lightningService: LightningService,
               private gardenService: GardenService,
-              private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar) { 
+              private snackbarService: SnackbarService) { 
     this.addLightningForm = this.formBuilder.group({
       name: [
         '',

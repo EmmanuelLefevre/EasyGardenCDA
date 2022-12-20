@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
@@ -19,7 +18,6 @@ export class ConfirmDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel,
               private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar,
               private router: Router) {
     this.title = data.title;
     this.message = data.message;

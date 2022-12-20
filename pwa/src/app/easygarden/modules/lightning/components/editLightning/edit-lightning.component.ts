@@ -8,7 +8,6 @@ import { LightningService } from '../../lightning.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { LightningModel } from '../../lightningModel';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
@@ -35,8 +34,7 @@ export class EditLightningComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private lightningService: LightningService,
-              private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar) {
+              private snackbarService: SnackbarService) {
     this.editLightningForm = this.formBuilder.group({
       name: [
         '',

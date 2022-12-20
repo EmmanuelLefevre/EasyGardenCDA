@@ -11,7 +11,6 @@ import { LawnmowerModel } from '../../lawnmowerModel';
 import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
@@ -45,8 +44,7 @@ export class AddLawnmowerComponent implements OnInit {
               private location: Location,
               private lawnmowerService: LawnmowerService,
               private gardenService: GardenService,
-              private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar) { 
+              private snackbarService: SnackbarService) { 
     this.addLawnmowerForm = this.formBuilder.group({
       name: [
         '',

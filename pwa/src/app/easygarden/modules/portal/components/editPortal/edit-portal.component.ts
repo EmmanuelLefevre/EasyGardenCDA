@@ -8,7 +8,6 @@ import { PortalService } from '../../portal.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { PortalModel } from '../../portalModel';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
@@ -35,8 +34,7 @@ export class EditPortalComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private portalService: PortalService,
-              private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar) {
+              private snackbarService: SnackbarService) {
     this.editPortalForm = this.formBuilder.group({
       name: [
         '',

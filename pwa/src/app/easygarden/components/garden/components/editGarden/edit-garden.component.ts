@@ -8,7 +8,6 @@ import { GardenService } from '../../garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { GardenModel } from '../../gardenModel';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
@@ -36,8 +35,7 @@ export class EditGardenComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private gardenService: GardenService,
-              private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar) {
+              private snackbarService: SnackbarService) {
     this.editGardenForm = this.formBuilder.group({
       name: [
         '',

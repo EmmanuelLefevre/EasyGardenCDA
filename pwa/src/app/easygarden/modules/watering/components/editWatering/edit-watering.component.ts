@@ -8,7 +8,6 @@ import { WateringService } from '../../watering.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { WateringModel } from '../../wateringModel';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 // import { SnackbarInterceptor } from '../../../../../_services/utils/snackbar.interceptor';
 
@@ -36,8 +35,7 @@ export class EditWateringComponent implements OnInit {
               private location: Location,
               private activated: ActivatedRoute,
               private wateringService: WateringService,
-              private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar) {
+              private snackbarService: SnackbarService) {
     this.editWateringForm = this.formBuilder.group({
       name: [
         '',

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TokenService } from '../../../_services/auth/token.service';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,12 +12,14 @@ import { TokenService } from '../../../_services/auth/token.service';
 
 export class NavbarComponent implements OnInit {
 
-  constructor(private tokenService: TokenService) { }
+  constructor(private tokenService: TokenService,
+              private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
   }
 
   logOut(): void{
+    this.snackbarService.showNotificationLoginLogout(`Vous êtes bien déconnecté.`, 'logIn-logOut')
     this.tokenService.clearToken()
   }
 

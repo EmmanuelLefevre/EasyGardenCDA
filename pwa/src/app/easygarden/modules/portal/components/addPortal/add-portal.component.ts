@@ -11,7 +11,6 @@ import { PortalModel } from '../../portalModel';
 import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
@@ -45,8 +44,7 @@ export class AddPortalComponent implements OnInit {
               private location: Location,
               private portalService: PortalService,
               private gardenService: GardenService,
-              private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar) { 
+              private snackbarService: SnackbarService) { 
     this.addPortalForm = this.formBuilder.group({
       name: [
         '',

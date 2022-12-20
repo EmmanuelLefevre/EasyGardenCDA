@@ -7,7 +7,6 @@ import { UserModel } from '../../../../../_models/userModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-garden',
@@ -21,8 +20,6 @@ export class GardenComponent implements OnInit, OnDestroy {
   faPen = faPen;
   faTrash = faTrash;
 
-  message = ''
-
   // Confirm Dialog this.result = boolean
   result: boolean | undefined;
 
@@ -33,7 +30,6 @@ export class GardenComponent implements OnInit, OnDestroy {
 
   constructor(private gardenService: GardenService,
               private dialog: MatDialog,
-              private snackbar: MatSnackBar,
               public router: Router) {
     window.scrollTo(0, 0)
   } 
@@ -49,7 +45,6 @@ export class GardenComponent implements OnInit, OnDestroy {
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
           this.users = res['hydra:member']
-          console.log(res)
         }
       )
   }

@@ -11,7 +11,6 @@ import { PoolModel } from '../../poolModel';
 import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
 @Component({
@@ -45,8 +44,7 @@ export class AddPoolComponent implements OnInit {
               private location: Location,
               private poolService: PoolService,
               private gardenService: GardenService,
-              private snackbarService: SnackbarService,
-              public snackBar: MatSnackBar) { 
+              private snackbarService: SnackbarService) { 
     this.addPoolForm = this.formBuilder.group({
       name: [
         '',
