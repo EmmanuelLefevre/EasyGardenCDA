@@ -47,7 +47,7 @@ class UserFixture extends Fixture
         $user1->setFirstName('Emmanuel');
         $user1->setLastName('Lefevre');
         $user1->setPseudo('Manu');
-        $user1->setPassword($this->hasher->hashPassword($user1,'Darka!33kzo'));
+        $user1->setPassword($this->hasher->hashPassword($user1,'xx'));
         $user1->setRoles(['ROLE_USER']);
         $user1->setEmail('emmanuel@protonmail.com');
         $user1->setPhoneNumber('06 45 91 23 07');
