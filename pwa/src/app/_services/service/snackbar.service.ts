@@ -12,6 +12,17 @@ export class SnackbarService {
   constructor(private snackbar: MatSnackBar) { }
 
   showNotification(displayMessage: string, messageType: 'created' | 'modified' | 'deleted' | 'logIn-logOut') {
+    if (messageType === 'logIn-logOut') {
+      this.snackbar.openFromComponent(SnackbarComponent, {
+            data: {
+              message: displayMessage
+            },
+            duration: 3000,
+            panelClass: messageType,
+            verticalPosition: 'top',
+            horizontalPosition: 'end'
+          });
+    } else
     this.snackbar.openFromComponent(SnackbarComponent, {
       data: {
         message: displayMessage
@@ -22,5 +33,5 @@ export class SnackbarService {
       horizontalPosition: 'start'
     });
   }
-
+  
 }

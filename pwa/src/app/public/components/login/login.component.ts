@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenService.saveToken(data.token)
         this.router.navigate(['easygarden'])
-        this.snackbarService.showNotificationLoginLogout(`Bonjour ${this.decodedTokenService.emailDecoded()}.`, 'logIn-logOut')
+        this.snackbarService.showNotification(`Bonjour ${this.decodedTokenService.emailDecoded()}.`, 'logIn-logOut')
       }
     )
   }
