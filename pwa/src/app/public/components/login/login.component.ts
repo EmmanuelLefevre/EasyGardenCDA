@@ -6,6 +6,9 @@ import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-ic
 import { AuthService } from '../../../_services/auth/auth.service';
 import { FormValidationService } from '../../../_services/service/form-validation.service';
 import { TokenService } from '../../../_services/auth/token.service';
+import { DecodedTokenService } from 'src/app/_services/service/decoded-token.service';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
 import { CredentialsModel } from '../../../_models/credentialsModel';
 
 
@@ -48,7 +51,9 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private authService: AuthService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private snackbarService: SnackbarService,
+              private decodedTokenService: DecodedTokenService) {
     this.loginForm = this.formBuilder.group({
       email: [
         '',
@@ -80,6 +85,7 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenService.saveToken(data.token)
         this.router.navigate(['easygarden'])
+        this.snackbarService.showNotificationLoginLogout(`Bonjour ${this.decodedTokenService.emailDecoded()}.`, 'logIn-logOut')
       }
     )
   }
