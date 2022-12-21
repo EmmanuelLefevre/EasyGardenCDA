@@ -52,9 +52,3 @@ export interface SingleUserModel {
 export interface DataUserModel {
     data: UserModel[]
 }
-
-export interface TokenUserModel {
-    email: string,
-    iap?: number,
-    exp?: number
-}
