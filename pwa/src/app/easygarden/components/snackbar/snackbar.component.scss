@@ -9,7 +9,6 @@ snack-bar-container {
   background-color: #292929;
   position: relative;
   overflow: hidden;
-  white-space: pre-line;
   &::before {
     content: "";
     width: 22vh;
@@ -57,4 +56,5 @@ snack-bar-container.register {
   background-color: var(--ang-color-green);
   position: relative;
   overflow: hidden;
+  white-space: pre-line;
 }
