@@ -30,8 +30,7 @@ export class AuthService {
       pseudo: user.pseudo,
       phoneNumber: user.phoneNumber,
       createdAt: new Date(),
-      isVerified: false,
-      roles:["ROLE_USER"]
+      isVerified: false
     };
     return this.httpClient.post(environment.apis.user.url, profile)
   }

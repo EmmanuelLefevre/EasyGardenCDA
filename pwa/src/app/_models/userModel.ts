@@ -9,7 +9,6 @@ export interface UserModel {
     createdAt: string,
     updatedAt: string,
     isVerified: boolean,
-    roles: JSON,
     garden: [{
         id: string,
         name: string,
