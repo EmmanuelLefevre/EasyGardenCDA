@@ -3,11 +3,11 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss']
+  templateUrl: './error404.component.html',
+  styleUrls: ['./error404.component.scss']
 })
 
-export class ErrorComponent implements OnInit {
+export class Error404Component implements OnInit {
 
   time: number = 7;
   timeOut: any;

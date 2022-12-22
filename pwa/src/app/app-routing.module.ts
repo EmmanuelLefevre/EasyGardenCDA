@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './_services/guard/auth.guard';
 
-import { ErrorComponent } from './_services/utils/components/error/error.component';
+import { Error404Component } from './_services/utils/components/error404/error404.component';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'easygarden', loadChildren: () => import('./easygarden/easygarden.module')
       .then(module => module.EasygardenModule), canActivate:[AuthGuard]
   },
-  { path: '**', component: ErrorComponent }
+  { path: '**', component: Error404Component }
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ErrorComponent } from './_services/utils/components/error/error.component';
+import { Error404Component } from './_services/utils/components/error404/error404.component';
 import { SnackbarComponent } from './easygarden/components/snackbar/snackbar.component';
 
 import { JWTInterceptorProvider } from './_services/utils/jwt.interceptor';
@@ -17,7 +17,7 @@ import { JWTInterceptorProvider } from './_services/utils/jwt.interceptor';
   declarations: [
     AppComponent,
     FooterComponent,
-    ErrorComponent
+    Error404Component
   ],
   imports: [
     BrowserModule,
