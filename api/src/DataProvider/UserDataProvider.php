@@ -42,10 +42,10 @@ final class UserDataProvider implements DenormalizedIdentifiersAwareItemDataProv
         }
         $user = $token->getUser();
         $roles = $user->getRoles();
-        if ($user && in_array("ROLE_ADMIN", $roles)) {
+        if ($user && in_array("ADMIN", $roles)) {
             return $this->userRepository->findAll();
         }
-        elseif ($user && in_array("ROLE_USER", $roles)) {
+        elseif ($user && in_array("USER", $roles)) {
             return [$user];
         }
     }
