@@ -21,7 +21,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut(): void{
-    this.snackbarService.showNotification(`Vous êtes bien déconnecté ${this.decodedTokenService.emailDecoded()}.`, 'logIn-logOut')
+    this.snackbarService.showNotification(`A bientôt ${this.decodedTokenService.firstNameDecoded()} 
+                                          ${this.decodedTokenService.lastNameDecoded()}.`, 'logIn-logOut')
     this.tokenService.clearToken()
   }
 

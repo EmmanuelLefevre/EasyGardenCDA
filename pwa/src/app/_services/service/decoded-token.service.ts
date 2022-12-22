@@ -26,4 +26,30 @@ export class DecodedTokenService {
     return throwError(() => ('Token not found'))
   }
 
+  firstNameDecoded() {
+    const token = this.tokenService.getToken()
+    if (token) {
+      type tokenInfoModel = JwtPayload & { firstName: string }
+      jwtDecode<tokenInfoModel>(token, { header: true })
+      const object = JSON.parse(atob(token.split('.')[1]))
+      const upperFirst = object['firstName']
+      const firstName = upperFirst.charAt(0).toUpperCase() + upperFirst.slice(1)
+      return firstName
+    }
+    return throwError(() => ('Token not found'))
+  }
+
+  lastNameDecoded() {
+    const token = this.tokenService.getToken()
+    if (token) {
+      type tokenInfoModel = JwtPayload & { lastName: string }
+      jwtDecode<tokenInfoModel>(token, { header: true })
+      const object = JSON.parse(atob(token.split('.')[1]))
+      const upperFirst = object['lastName']
+      const lastName = upperFirst.charAt(0).toUpperCase() + upperFirst.slice(1)
+      return lastName
+    }
+    return throwError(() => ('Token not found'))
+  }
+
 }
