@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -29,14 +29,6 @@ export class LoginComponent implements OnInit {
   visible: boolean = false;
   public toggle(): void {
     this.visible = !this.visible;
-  }
-
-  // Close component Login
-  @Output()
-  onClose: EventEmitter<boolean> = new EventEmitter();
-
-  closeLoginForm() {
-    this.onClose.emit(true);
   }
 
   // LoginForm Group

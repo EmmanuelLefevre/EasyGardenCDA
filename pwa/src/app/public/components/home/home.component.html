@@ -1,36 +1,23 @@
-<div *ngIf="loginComponent || registerComponent; else homepageBlock">
-  <ng-container *ngIf="loginComponent">
-    <app-login (onClose)="loginComponentClosed($event)"></app-login>
-  </ng-container>
-  <ng-container *ngIf="registerComponent">
-    <app-register (onClose)="registerComponentClosed($event)"></app-register>
-  </ng-container>
-</div>
-
-<ng-template #homepageBlock>
-  <div id="homePage">
-    <div class="connexion">
-      <div class="icon">
-        <button type="button" 
-                class="button-circle"
-                (click)="loadLoginComponent()" 
-                [routerLink]="['login']">
-          <fa-icon [icon]="faUserCircle"></fa-icon>
-        </button>
-        <p>Log In</p>
-      </div>
-    </div>
-    <div class="logo">
-      {{title}}
-    </div>
-    <div class="resume">
-      Easy Garden l'application qui vous facilite la gestion de vos équipements de parcs et jardins.
-      Une application all-in-one pour gérer tout les équipements tels que vos systèmes d'arrosage
-      intégrés, vos jeux de lumières, l'ouverture de votre portail, votre tondeuse intelligente et bien plus encore!<br>
+<div id="homePage">
+  <div class="connexion">
+    <div class="icon">
       <button type="button" 
-              (click)="loadRegisterComponent()" 
-              [routerLink]="['register']">Inscription
+              class="button-circle"
+              [routerLink]="['login']">
+        <fa-icon [icon]="faUserCircle"></fa-icon>
       </button>
+      <p>Log In</p>
     </div>
   </div>
-</ng-template>
+  <div class="logo">
+    {{title}}
+  </div>
+  <div class="resume">
+    Easy Garden l'application qui vous facilite la gestion de vos équipements de parcs et jardins.
+    Une application all-in-one pour gérer tout les équipements tels que vos systèmes d'arrosage
+    intégrés, vos jeux de lumières, l'ouverture de votre portail, votre tondeuse intelligente et bien plus encore!<br>
+    <button type="button"
+            [routerLink]="['register']">Inscription
+    </button>
+  </div>
+</div>

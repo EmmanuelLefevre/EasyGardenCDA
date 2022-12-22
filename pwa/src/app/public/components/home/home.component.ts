@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
 
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,29 +13,8 @@ export class HomeComponent implements OnInit {
   title = 'Easy Garden';
   faUserCircle = faUserCircle;
 
-  constructor(private router: Router) { }
+  constructor() { }
   
-  ngOnInit(): void {
-  }
-
-  // Login Component
-  public loginComponent = false;
-  loadLoginComponent(){
-    this.loginComponent = !this.loginComponent;
-  }
-  loginComponentClosed(_onClosed: boolean) {
-    this.loginComponent = false;
-    this.router.navigate(['home']);
-  }
-
-  // Register Component
-  public registerComponent = false;
-  loadRegisterComponent(){
-    this.registerComponent = !this.registerComponent;
-  }
-  registerComponentClosed(_onClosed: boolean) {
-    this.registerComponent = false;
-    this.router.navigate(['home']);
-  }
+  ngOnInit(): void {}
 
 }

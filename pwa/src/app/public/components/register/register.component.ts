@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -26,14 +27,6 @@ export class RegisterComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  // Close component Register
-  @Output()
-  onClose: EventEmitter<boolean> = new EventEmitter();
-
-  closeRegisterForm() {
-    this.onClose.emit(true);
-  }
-
   // RegisterForm Group
   registerForm = new FormGroup({
     email: new FormControl(''),
@@ -50,7 +43,8 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private authService: AuthService,
-              private snackbarService: SnackbarService) {
+              private snackbarService: SnackbarService,
+              private router: Router) {
     this.registerForm = this.formBuilder.group({
       email: [
         '',
@@ -127,12 +121,12 @@ export class RegisterComponent implements OnInit {
     this.success = JSON.stringify(typedRegisterForm);
     this.authService.registerIn(typedRegisterForm).subscribe(
       () => {
-        this.onClose.emit(true)
         const firstName = this.registerForm.get('firstName')?.value;
         const lastName = this.registerForm.get('lastName')?.value;
         this.snackbarService.showNotification(`Bienvenu ` + firstName + ' ' + lastName + ',' +
           `\nveuillez confirmer votre compte dans l\'email qui vous a été envoyé.`, 'register')
-      }
+        this.router.navigate(['login'])
+        }
     )
   }
 
