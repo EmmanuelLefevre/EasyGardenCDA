@@ -1,9 +1,9 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCircleXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
 
 import { AuthService } from '../../../_services/auth/auth.service';
+import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 import { FormValidationService } from '../../../_services/service/form-validation.service';
 import { UserModel } from '../../../_models/userModel';
 
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
               private authService: AuthService,
-              private router : Router) {
+              private snackbarService: SnackbarService) {
     this.registerForm = this.formBuilder.group({
       email: [
         '',
@@ -119,15 +119,20 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    // console.log(this.registerForm);
     if (this.registerForm.invalid) {
       return;
     }
     const typedRegisterForm: UserModel = this.registerForm.value;
     delete this.registerForm.value.confirmPassword;
     this.success = JSON.stringify(typedRegisterForm);
-    this.authService.registerIn(typedRegisterForm).subscribe(() =>
-      this.router.navigate(['/home'])
+    this.authService.registerIn(typedRegisterForm).subscribe(
+      () => {
+        this.onClose.emit(true)
+        const firstName = this.registerForm.get('firstName')?.value;
+        const lastName = this.registerForm.get('lastName')?.value;
+        this.snackbarService.showNotification(`Bienvenu ` + firstName + ' ' + lastName + ',' +
+          `\nveuillez confirmer votre compte dans l\'email qui vous a été envoyé.`, 'register')
+      }
     )
   }
 

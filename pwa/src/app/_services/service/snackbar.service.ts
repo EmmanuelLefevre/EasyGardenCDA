@@ -11,27 +11,37 @@ export class SnackbarService {
 
   constructor(private snackbar: MatSnackBar) { }
 
-  showNotification(displayMessage: string, messageType: 'created' | 'modified' | 'deleted' | 'logIn-logOut') {
+  showNotification(displayMessage: string, messageType: 'created' | 'modified' | 'deleted' | 'logIn-logOut' | 'register') {
     if (messageType === 'logIn-logOut') {
       this.snackbar.openFromComponent(SnackbarComponent, {
-            data: {
-              message: displayMessage
-            },
-            duration: 3000,
-            panelClass: messageType,
-            verticalPosition: 'top',
-            horizontalPosition: 'end'
-          });
-    } else
-    this.snackbar.openFromComponent(SnackbarComponent, {
-      data: {
-        message: displayMessage
-      },
-      duration: 4000,
-      panelClass: messageType,
-      verticalPosition: 'bottom',
-      horizontalPosition: 'start'
-    });
+        data: {
+          message: displayMessage
+        },
+        duration: 3000,
+        panelClass: messageType,
+        verticalPosition: 'top',
+        horizontalPosition: 'end'
+      });
+    } else if (messageType === 'register') {
+      this.snackbar.openFromComponent(SnackbarComponent, {
+        data: {
+          message: displayMessage
+        },
+        duration: 7000,
+        panelClass: messageType,
+        verticalPosition: 'top',
+        horizontalPosition: 'end'
+      });
+    } else 
+      this.snackbar.openFromComponent(SnackbarComponent, {
+        data: {
+          message: displayMessage
+        },
+        duration: 4000,
+        panelClass: messageType,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start'
+      });
   }
   
 }

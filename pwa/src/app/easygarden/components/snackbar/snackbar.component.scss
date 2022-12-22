@@ -45,3 +45,15 @@ snack-bar-container.logIn-logOut {
   position: relative;
   overflow: hidden;
 }
+
+snack-bar-container.register {
+  -webkit-animation: fadeInRight 1.5s;
+  animation: fadeInRight 1.5s;
+  text-align: center;
+  margin: 12vh 6vh !important;
+  color: var(--ang-color-white);
+  border: 2px solid var(--ang-color-border-button);
+  background-color: var(--ang-color-green);
+  position: relative;
+  overflow: hidden;
+}
