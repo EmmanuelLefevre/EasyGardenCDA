@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './_services/guard/auth.guard';
 
-import { Error404Component } from './_services/utils/components/error404/error404.component';
+import { Error404Component } from './_services/utils/components/error/error404.component';
 
 const routes: Routes = [
   {
