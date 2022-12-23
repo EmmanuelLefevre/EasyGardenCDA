@@ -9,10 +9,18 @@
 
       <thead>             
         <tr>
-          <th class="power">On/Off</th>
-          <th>Nom</th>
-          <th>Débit (m3/s)</th>
-          <th>Pression (bars)</th>
+          <th (click)="sort('status')" class="power order">On/Off 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
+          <th (click)="sort('name')" class="order">Nom 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
+          <th (click)="sort('flowSensor')" class="order">Débit 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
+          <th (click)="sort('pressureSensor')" class="order">Pression 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
           <th>Action</th>                   
         </tr>
       </thead>
@@ -20,7 +28,7 @@
       <tbody>
         <ng-container *ngFor="let user of users">
           <ng-container *ngFor="let garden of user.garden">
-            <tr *ngFor="let watering of garden.watering | paginate: { itemsPerPage: 4, currentPage: p }">
+            <tr *ngFor="let watering of garden.watering | paginate: { itemsPerPage: 4, currentPage: p } | orderBy: orderHeader">
               <td class="power">
                 <button type="submit" 
                         aria-label="On"

@@ -39,6 +39,19 @@ div {
           background-color: var(--ang-color-green);
           border: 2px solid var(--ang-color-white);
           height: 6vh;
+          fa-icon {
+            margin-left: 0.5vh;
+            color: var(--ang-color-white);
+          }
+        }
+        th.order {
+          &:hover {
+            color: var(--ang-color-title-form-shadow);
+            cursor: pointer;
+            fa-icon {
+              color: var(--ang-color-title-form-shadow);
+            }
+          }
         }
       }
       tbody {

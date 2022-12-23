@@ -86,6 +86,12 @@ Installer ngx-pagination
 ```
 npm i ngx-pagination
 ```
+7. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+\
+Installer order-pipe
+```
+npm i ngx-order-pipe
+```
 # COMMANDES
 1. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
 \
