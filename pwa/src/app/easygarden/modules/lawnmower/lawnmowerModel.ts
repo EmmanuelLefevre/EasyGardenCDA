@@ -16,3 +16,8 @@ export interface LawnmowerModel {
 export interface DataLawnmowerModel {
   data: LawnmowerModel[]
 }
+
+// Ngx-filter
+export interface LawnmowerFilterModel {
+  name: string
+}

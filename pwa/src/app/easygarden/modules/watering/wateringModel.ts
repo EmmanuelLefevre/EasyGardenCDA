@@ -17,3 +17,8 @@ export interface WateringModel {
 export interface DataWateringModel {
   data: WateringModel[]
 }
+
+// Ngx-filter
+export interface WateringFilterModel {
+  name: string
+}

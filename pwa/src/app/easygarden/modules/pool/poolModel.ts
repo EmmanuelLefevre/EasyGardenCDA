@@ -15,3 +15,8 @@ export interface PoolModel {
 export interface DataPoolModel {
   data: PoolModel[]
 }
+
+// Ngx-filter
+export interface PoolFilterModel {
+  name: string
+}

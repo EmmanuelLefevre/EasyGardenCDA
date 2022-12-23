@@ -15,3 +15,8 @@ export interface LightningModel {
 export interface DataLightningModel {
   data: LightningModel[]
 }
+
+// Ngx-filter
+export interface LightningFilterModel {
+  name: string
+}

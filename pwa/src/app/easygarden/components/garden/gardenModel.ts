@@ -10,3 +10,8 @@ export interface GardenModel {
 export interface DataGardenModel {
   data: GardenModel[]
 }
+
+// Ngx-filter
+export interface GardenFilterModel {
+  name: string
+}

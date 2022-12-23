@@ -16,3 +16,8 @@ export interface PortalModel {
 export interface DataPortalModel {
   data: PortalModel[]
 }
+
+// Ngx-filter
+export interface PortalFilterModel {
+  name: string
+}
