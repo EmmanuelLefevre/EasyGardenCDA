@@ -1,78 +1,100 @@
-<div class="div-wrapper table-wrapper">
+<div class="div-wrapper table-wrapper"
+     (click)="clearInput()">
+     
   <div>
-    <hr>
-    <h1 class="titre-tableau">{{title}}</h1>
-    <hr>
-  </div>
-  <div class="table form-border form-shadow animate__animated animate__jackInTheBox">
-    <table class="t-hover">
+    <h1>{{title}}</h1>
+    <div class="iconContainer">
+      <div class="circle">
+      </div>
+      <fa-icon [icon]="faDroplet" class="iconCategory"></fa-icon>
+    </div>
 
-      <thead>             
-        <tr>
-          <th (click)="sort('status')" class="power order">On/Off 
-            <fa-icon [icon]="faSort"></fa-icon>
-          </th>
-          <th (click)="sort('name')" class="order">Nom 
-            <fa-icon [icon]="faSort"></fa-icon>
-          </th>
-          <th (click)="sort('flowSensor')" class="order">Débit 
-            <fa-icon [icon]="faSort"></fa-icon>
-          </th>
-          <th (click)="sort('pressureSensor')" class="order">Pression 
-            <fa-icon [icon]="faSort"></fa-icon>
-          </th>
-          <th>Action</th>                   
-        </tr>
-      </thead>
+    <div class="divSearch">
+      <div class="inputSearch">
+        <input id="inputSearch"
+               type="text" 
+               class="fas fa-search"
+               [(ngModel)]="searchInput.name"
+               placeholder="Rechercher...">
+        <fa-icon [icon]="faSearch" class="icon"></fa-icon>
+      </div>
+    </div>
 
-      <tbody>
-        <ng-container *ngFor="let user of users">
-          <ng-container *ngFor="let garden of user.garden">
-            <tr *ngFor="let watering of garden.watering | paginate: { itemsPerPage: 4, currentPage: p } | orderBy: orderHeader: isDescOrder">
-              <td class="power">
-                <button type="submit" 
-                        aria-label="On"
-                        *ngIf="watering.status === true"
-                        (click)="updateStatus(watering.id, watering.status)">
-                  <fa-icon [icon]="faPowerOff"></fa-icon>
-                </button>
-                <button type="submit" class="btn-off" 
-                        aria-label="Off"
-                        *ngIf="watering.status === false"
-                        (click)="updateStatus(watering.id, watering.status)">
-                  <fa-icon [icon]="faPowerOff"></fa-icon>
-                </button>
-              </td>
-              <td>{{ watering.name }}</td>
-              <td *ngIf="watering.status === true" [ngClass]="{'alert': watering.flowSensor < '1800'}">{{ watering.flowSensor }}</td>
-              <td *ngIf="watering.status === false">-</td>
-              <td *ngIf="watering.status === true" [ngClass]="{'alert': watering.pressureSensor < '2bars'}">{{ watering.pressureSensor }}</td>
-              <td *ngIf="watering.status === false">-</td>
-              <td>
-                <button type="button"
-                        aria-label="Modifier"
-                        matTooltip="Modifier"
-                        matTooltipPosition="before"
-                        matTooltipShowDelay="500"
-                        routerLink="/easygarden/watering/edit/{{watering.id}}">
-                  <fa-icon [icon]="faPen"></fa-icon>
-                </button>
-                <button type="submit" class="trash"
-                        aria-label="Supprimer"
-                        matTooltip="Supprimer"
-                        matTooltipPosition="after"
-                        matTooltipShowDelay="500"
-                        (click)="confirmDialog(watering.id, watering.name)">
-                  <fa-icon [icon]="faTrash"></fa-icon>
-                </button>
-              </td>
-            </tr>
+    <div class="table form-border form-shadow animate__animated animate__jackInTheBox">
+      <table class="t-hover">
+  
+        <thead>             
+          <tr>
+            <th (click)="sort('status')" class="power order">On/Off 
+              <fa-icon [icon]="faSort"></fa-icon>
+            </th>
+            <th (click)="sort('name')" class="order">Nom 
+              <fa-icon [icon]="faSort"></fa-icon>
+            </th>
+            <th (click)="sort('flowSensor')" class="order">Débit 
+              <fa-icon [icon]="faSort"></fa-icon>
+            </th>
+            <th (click)="sort('pressureSensor')" class="order">Pression 
+              <fa-icon [icon]="faSort"></fa-icon>
+            </th>
+            <th>Action</th>                   
+          </tr>
+        </thead>
+  
+        <tbody>
+          <ng-container *ngFor="let user of users">
+            <ng-container *ngFor="let garden of user.garden">
+              <tr *ngFor="let watering of garden.watering 
+                          | paginate: { itemsPerPage: 4, currentPage: p } 
+                          | orderBy: orderHeader: isDescOrder
+                          | filterBy: searchInput">
+                <td class="power">
+                  <button type="submit" 
+                          aria-label="On"
+                          *ngIf="watering.status === true"
+                          (click)="updateStatus(watering.id, watering.status)">
+                    <fa-icon [icon]="faPowerOff"></fa-icon>
+                  </button>
+                  <button type="submit" class="btn-off" 
+                          aria-label="Off"
+                          *ngIf="watering.status === false"
+                          (click)="updateStatus(watering.id, watering.status)">
+                    <fa-icon [icon]="faPowerOff"></fa-icon>
+                  </button>
+                </td>
+                <td>{{ watering.name }}</td>
+                <td *ngIf="watering.status === true" [ngClass]="{'alert': watering.flowSensor < '1800'}">{{ watering.flowSensor }}</td>
+                <td *ngIf="watering.status === false">-</td>
+                <td *ngIf="watering.status === true" [ngClass]="{'alert': watering.pressureSensor < '2bars'}">{{ watering.pressureSensor }}</td>
+                <td *ngIf="watering.status === false">-</td>
+                <td>
+                  <button type="button"
+                          aria-label="Modifier"
+                          matTooltip="Modifier"
+                          matTooltipPosition="before"
+                          matTooltipShowDelay="500"
+                          routerLink="/easygarden/watering/edit/{{watering.id}}">
+                    <fa-icon [icon]="faPen"></fa-icon>
+                  </button>
+                  <button type="submit" class="trash"
+                          aria-label="Supprimer"
+                          matTooltip="Supprimer"
+                          matTooltipPosition="after"
+                          matTooltipShowDelay="500"
+                          (click)="confirmDialog(watering.id, watering.name)">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+              <!-- <div *ngIf="(waterings | filterBy: searchInput).lenght === 0">Aucune correspondance trouvée..</div> -->
+            </ng-container>
           </ng-container>
-        </ng-container>
-      </tbody>
-
-    </table>
+        </tbody>
+  
+      </table>
+    </div>
   </div>
+
   <div class="pagination">
     <pagination-controls (pageChange)="p = $event" 
                          previousLabel="" 
@@ -82,6 +104,7 @@
                          aria-label="Pagination">
     </pagination-controls>
   </div>
+
   <div class="submit">
     <button type="button" 
             id="submit" 

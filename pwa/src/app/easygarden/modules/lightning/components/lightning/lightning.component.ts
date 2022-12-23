@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { faPowerOff, faPen, faTrash, faSort } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faPen, faTrash, faSort, faSearch, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 
 import { LightningService } from '../../lightning.service';
 import { UserModel } from '../../../../../_models/userModel';
+import { LightningFilterModel } from '../../lightningModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
@@ -19,6 +20,8 @@ export class LightningComponent implements OnInit, OnDestroy {
   faPen = faPen;
   faTrash = faTrash;
   faSort = faSort;
+  faSearch = faSearch;
+  faLightbulb = faLightbulb;
 
   // Confirm Dialog this.result = boolean
   result: boolean | undefined;
@@ -34,6 +37,10 @@ export class LightningComponent implements OnInit, OnDestroy {
   sort(headerName:String) {
     this.isDescOrder = !this.isDescOrder;
     this.orderHeader = headerName;
+  }// Ngx-filter
+  searchInput: LightningFilterModel = { name: ''};
+  clearInput() {
+    this.searchInput.name = '';
   }
 
   users: UserModel[] = [];

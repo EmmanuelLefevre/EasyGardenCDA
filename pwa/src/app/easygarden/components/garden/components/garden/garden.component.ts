@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { faPen, faTrash, faSort } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faSort, faSearch, faTree } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
 import { UserModel } from '../../../../../_models/userModel';
+import { GardenFilterModel } from '../../gardenModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
@@ -20,6 +21,8 @@ export class GardenComponent implements OnInit, OnDestroy {
   faPen = faPen;
   faTrash = faTrash;
   faSort = faSort;
+  faSearch = faSearch;
+  faTree = faTree;
 
   // Confirm Dialog this.result = boolean
   result: boolean | undefined;
@@ -32,6 +35,11 @@ export class GardenComponent implements OnInit, OnDestroy {
   sort(headerName:String) {
     this.isDescOrder = !this.isDescOrder;
     this.orderHeader = headerName;
+  }
+  // Ngx-filter
+  searchInput: GardenFilterModel = { name: ''};
+  clearInput() {
+    this.searchInput.name = '';
   }
 
   users: UserModel[] = [];
