@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { MatSelectModule } from '@angular/material/select';
 import { MainPipeModule } from '../../pipe/pipe.module';
 
@@ -28,6 +29,7 @@ import { AddPortalComponent } from './components/addPortal/add-portal.component'
     MatTooltipModule,
     NgxPaginationModule,
     OrderModule,
+    FilterPipeModule,
     MatSelectModule,
     MainPipeModule
   ]

@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { MatSelectModule } from '@angular/material/select';
 
 import { WateringRoutingModule } from './watering-routing.module';
@@ -28,6 +29,7 @@ import { AddWateringComponent } from './components/addWatering/add-watering.comp
     MatTooltipModule,
     NgxPaginationModule,
     OrderModule,
+    FilterPipeModule,
     MatSelectModule
   ]
 })

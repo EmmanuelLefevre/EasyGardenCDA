@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { MatSelectModule } from '@angular/material/select';
 
 import { LawnmowerRoutingModule } from './lawnmower-routing.module';
@@ -27,6 +28,7 @@ import { AddLawnmowerComponent } from './components/addLawnmower/add-lawnmower.c
     MatTooltipModule,
     NgxPaginationModule,
     OrderModule,
+    FilterPipeModule,
     MatSelectModule
   ]
 })

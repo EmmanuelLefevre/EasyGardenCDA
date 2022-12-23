@@ -7,6 +7,7 @@ import { ConfirmDialogModule } from './components/confirmDialog/confirmDialogMod
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { MainPipeModule } from './pipe/pipe.module';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -34,6 +35,7 @@ import { ConfirmDialogComponent } from './components/confirmDialog/confirmDialog
     MatTooltipModule,
     NgxPaginationModule,
     OrderModule,
+    FilterPipeModule,
     MainPipeModule
   ],
   entryComponents: [

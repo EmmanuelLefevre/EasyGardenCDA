@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { MatSelectModule } from '@angular/material/select';
 
 import { PoolRoutingModule } from './pool-routing.module';
@@ -28,6 +29,7 @@ import { AddPoolComponent } from './components/addPool/add-pool.component';
     MatTooltipModule,
     NgxPaginationModule,
     OrderModule,
+    FilterPipeModule,
     MatSelectModule
   ]
 })
