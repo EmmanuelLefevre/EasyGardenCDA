@@ -92,6 +92,12 @@ Installer order-pipe
 ```
 npm i ngx-order-pipe
 ```
+7. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
+\
+Installer filter-pipe
+```
+npm i ngx-filter-pipe
+```
 # COMMANDES
 1. &nbsp;&nbsp;*/EasyGardenCDA/pwa*
 \
