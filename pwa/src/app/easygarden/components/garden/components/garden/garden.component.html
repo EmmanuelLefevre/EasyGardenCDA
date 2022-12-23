@@ -11,15 +11,19 @@
 
       <thead>             
         <tr>
-          <th>Nom</th>
-          <th>Utilisateur</th>
+          <th (click)="sort('name')" class="order">Nom 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
+          <th (click)="sort('pseudo')" class="order">Utilisateur 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
           <th>Action</th>                   
         </tr>
       </thead>
 
       <tbody>
         <ng-container *ngFor="let user of users">
-          <tr *ngFor="let garden of user.garden | paginate: { itemsPerPage: 3, currentPage: p }">
+          <tr *ngFor="let garden of user.garden | paginate: { itemsPerPage: 3, currentPage: p } | orderBy: orderHeader: isDescOrder">
             <td>{{ garden.name }}</td>
             <td>{{ user.pseudo }}</td>
             <td>

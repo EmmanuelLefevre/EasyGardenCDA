@@ -30,7 +30,9 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
   p: number = 1;
   // Ngx-order
   orderHeader: String = '';
+  isDescOrder: boolean = true;
   sort(headerName:String) {
+    this.isDescOrder = !this.isDescOrder;
     this.orderHeader = headerName;
   }
 

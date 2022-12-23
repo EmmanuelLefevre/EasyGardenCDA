@@ -25,7 +25,7 @@
       <tbody>
         <ng-container *ngFor="let user of users">
           <ng-container *ngFor="let garden of user.garden">
-            <tr *ngFor="let lawnmower of garden.lawnmower | paginate: { itemsPerPage: 3, currentPage: p } | orderBy: orderHeader">
+            <tr *ngFor="let lawnmower of garden.lawnmower | paginate: { itemsPerPage: 3, currentPage: p } | orderBy: orderHeader: isDescOrder">
               <td class="power">
                 <button type="submit" 
                         aria-label="On"

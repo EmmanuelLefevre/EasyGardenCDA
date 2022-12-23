@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faSort } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
@@ -19,12 +19,20 @@ export class GardenComponent implements OnInit, OnDestroy {
   title = "Jardin";
   faPen = faPen;
   faTrash = faTrash;
+  faSort = faSort;
 
   // Confirm Dialog this.result = boolean
   result: boolean | undefined;
 
   // Ngx-paginator
   p: number = 1;
+  // Ngx-order
+  orderHeader: String = '';
+  isDescOrder: boolean = true;
+  sort(headerName:String) {
+    this.isDescOrder = !this.isDescOrder;
+    this.orderHeader = headerName;
+  }
 
   users: UserModel[] = [];
 
