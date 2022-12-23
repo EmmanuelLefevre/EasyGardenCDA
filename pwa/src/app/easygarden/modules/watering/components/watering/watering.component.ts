@@ -28,7 +28,6 @@ export class WateringComponent implements OnInit, OnDestroy {
 
   // Ngx-paginator
   p: number = 1;
-
   // Ngx-order
   orderHeader: String = '';
   sort(headerName:String) {

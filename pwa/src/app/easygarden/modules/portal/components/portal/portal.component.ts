@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { faPowerOff, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faPen, faTrash, faSort } from '@fortawesome/free-solid-svg-icons';
 
 import { PortalService } from '../../portal.service';
 import { UserModel } from '../../../../../_models/userModel';
@@ -18,6 +18,7 @@ export class PortalComponent implements OnInit, OnDestroy {
   faPowerOff = faPowerOff;
   faPen = faPen;
   faTrash = faTrash;
+  faSort = faSort;
 
   // Confirm Dialog this.result = boolean
   result: boolean | undefined;
@@ -27,6 +28,11 @@ export class PortalComponent implements OnInit, OnDestroy {
 
   // Ngx-paginator
   p: number = 1;
+  // Ngx-order
+  orderHeader: String = '';
+  sort(headerName:String) {
+    this.orderHeader = headerName;
+  }
 
   users: UserModel[] = [];
 

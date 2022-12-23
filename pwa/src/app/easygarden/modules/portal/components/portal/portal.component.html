@@ -9,9 +9,15 @@
 
       <thead>             
         <tr>
-          <th class="power">On/Off</th>
-          <th>Nom</th>
-          <th>Obstacle</th>
+          <th (click)="sort('status')" class="power order">On/Off 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
+          <th (click)="sort('name')" class="order">Nom 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
+          <th (click)="sort('presenceSensor')" class="order">Obstacle 
+            <fa-icon [icon]="faSort"></fa-icon>
+          </th>
           <th>Action</th>                   
         </tr>
       </thead>
@@ -19,7 +25,7 @@
       <tbody>
         <ng-container *ngFor="let user of users">
           <ng-container *ngFor="let garden of user.garden">
-            <tr *ngFor="let portal of garden.portal | paginate: { itemsPerPage: 3, currentPage: p }">
+            <tr *ngFor="let portal of garden.portal | paginate: { itemsPerPage: 3, currentPage: p } | orderBy: orderHeader">
               <td class="power">
                 <button type="submit" 
                         aria-label="On"
