@@ -26,4 +26,5 @@ export class LightningResolver implements Resolve<DataUserModel[]> {
       )
     );
   }
+  
 }
