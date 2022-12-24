@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { catchError, Observable, throwError, delay } from 'rxjs';
 
-import { WateringService } from '../watering.service';
+import { WateringService } from './watering.service';
 import { DataUserModel } from 'src/app/_models/userModel';
 
 

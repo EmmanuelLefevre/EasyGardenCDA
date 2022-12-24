@@ -5,7 +5,7 @@ import { WateringComponent } from './components/watering/watering.component';
 import { EditWateringComponent } from './components/editWatering/edit-watering.component';
 import { AddWateringComponent } from './components/addWatering/add-watering.component';
 
-import { WateringResolver } from './components/watering.resolver';
+import { WateringResolver } from './watering.resolver';
 
 const routes: Routes = [
   { path: '', component: WateringComponent, resolve: {
