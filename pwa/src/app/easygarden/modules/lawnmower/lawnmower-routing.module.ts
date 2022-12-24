@@ -5,8 +5,13 @@ import { LawnmowerComponent } from './components/lawnmower/lawnmower.component';
 import { EditLawnmowerComponent } from './components/editLawnmower/edit-lawnmower.component';
 import { AddLawnmowerComponent } from './components/addLawnmower/add-lawnmower.component';
 
+import { LawnmowerResolver } from './lawnmower.resolver';
+
 const routes: Routes = [
-  { path: '', component: LawnmowerComponent },
+  { path: '', component: LawnmowerComponent, resolve: {
+    lawnmower: LawnmowerResolver
+    } 
+  },
   { path: 'edit/:id', component: EditLawnmowerComponent },
   { path: 'add', component: AddLawnmowerComponent }
 ];
