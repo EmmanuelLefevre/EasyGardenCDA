@@ -5,8 +5,13 @@ import { PoolComponent } from './components/pool/pool.component';
 import { EditPoolComponent } from './components/editPool/edit-pool.component';
 import { AddPoolComponent } from './components/addPool/add-pool.component';
 
+import { PoolResolver } from './pool.resolver';
+
 const routes: Routes = [
-  { path: '', component: PoolComponent },
+  { path: '', component: PoolComponent, resolve: {
+    pool: PoolResolver
+    }
+  },
   { path: 'edit/:id', component: EditPoolComponent },
   { path: 'add', component: AddPoolComponent }
 ];
