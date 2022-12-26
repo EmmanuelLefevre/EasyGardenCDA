@@ -12,7 +12,11 @@
   margin-top: 8vh;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
-  fa-icon {
-    margin-top: 0;
+  .iconContainer {
+    -webkit-animation: iconCategorySpin 4s linear infinite;
+    animation: iconCategorySpin 4s linear infinite;
+    fa-icon {
+      margin-top: 0;
+    }
   }
 }
