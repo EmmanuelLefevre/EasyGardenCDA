@@ -17,7 +17,7 @@ export class LawnmowerResolver implements Resolve<DataUserModel[]> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<DataUserModel[]> {
     return this.lawnmowerService.getAllLawnmowers().pipe(
-      delay(1200),
+      delay(1000),
       catchError(
         () => {
           this.router.navigate([""]);
