@@ -21,7 +21,7 @@ export class LawnmowerResolver implements Resolve<DataUserModel[]> {
       catchError(
         () => {
           this.router.navigate([""]);
-          return throwError(() => ('Aucune donnée n\'a été trouvée.'))
+          return throwError(() => ('Aucune tondeuse n\'a été trouvée.'))
         }
       )
     );

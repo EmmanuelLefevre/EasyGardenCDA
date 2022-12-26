@@ -17,11 +17,11 @@ export class WateringResolver implements Resolve<DataUserModel[]> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<DataUserModel[]> {
     return this.wateringService.getAllWaterings().pipe(
-      delay(1200),
+      delay(1000),
       catchError(
         () => {
           this.router.navigate([""]);
-          return throwError(() => ('Aucune donnée n\'a été trouvée.'))
+          return throwError(() => ('Aucun arrosage n\'a été trouvé.'))
         }
       )
     );
