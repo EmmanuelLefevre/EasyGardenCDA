@@ -34,8 +34,8 @@ class UserFixture extends Fixture
         $admin->setFirstName('prenomADMIN');
         $admin->setLastName('nomADMIN');
         $admin->setPseudo('pseudoADMIN');
-        $admin->setPassword($this->hasher->hashPassword($admin,'Admin!33kzo'));
-        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setPassword($this->hasher->hashPassword($admin,'xx'));
+        $admin->setRoles(array('ROLE_ADMIN'));
         $admin->setEmail('admin@protonmail.fr');
         $admin->setPhoneNumber('05 12 25 48 71');
         $admin->setCreatedAt(new \DateTimeImmutable());
@@ -56,13 +56,13 @@ class UserFixture extends Fixture
         $manager->persist($user1);
         $this->addReference(self::USER1_REFERENCE , $user1);
 
-        // User Sofiane
+        // User Nicolas
         $user2 = new User();
         $user2->setFirstName('Nicolas');
         $user2->setLastName('Clement');
         $user2->setPseudo('Nico');
         $user2->setPassword($this->hasher->hashPassword($user2,'Nico!33kzo'));
-        $user2->setRoles(['ROLE_USER']);
+        $user2->setRoles(['ROLE_ADMIN']);
         $user2->setEmail('nico@gmail.com');
         $user2->setPhoneNumber('07 12 45 75 64');
         $user2->setCreatedAt(new \DateTimeImmutable());

@@ -166,7 +166,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->garden = new ArrayCollection();
-        $this->setRoles(['USER']);
+        $this->setRoles(['ROLE_USER']);
     }
 
     public function getId(): ?int
@@ -203,14 +203,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'USER';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
 
     public function setRoles(array $roles): self
     {
-        $this->roles = ['USER'];
+        $this->roles = $roles;
 
         return $this;
     }
