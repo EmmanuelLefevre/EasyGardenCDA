@@ -1,4 +1,4 @@
-export interface GardenModel {
+export interface IGarden {
   id: number,
   name: string,
   user: {
@@ -6,12 +6,14 @@ export interface GardenModel {
     pseudo: string
   }
 }
-
-export interface DataGardenModel {
-  data: GardenModel[]
+export interface ISingleGarden {
+  data: IGarden
+}
+export interface IDataGarden {
+  data: IGarden[]
 }
 
 // Ngx-filter
-export interface GardenFilterModel {
+export interface IGardenFilter {
   name: string
 }

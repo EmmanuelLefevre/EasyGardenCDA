@@ -8,7 +8,7 @@ import { PoolService } from '../../pool.service';
 import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
 import { PoolModel } from '../../poolModel';
-import { GardenModel } from 'src/app/easygarden/components/garden/gardenModel';
+import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
 import { UserModel } from '../../../../../_models/userModel';
 
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
@@ -36,7 +36,7 @@ export class AddPoolComponent implements OnInit {
   // Snackbar display which garden is selected
   selected = '';
   gardenName = '';
-  garden!: GardenModel;
+  garden!: IGarden;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,

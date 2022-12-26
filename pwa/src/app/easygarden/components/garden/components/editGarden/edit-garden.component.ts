@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { GardenModel } from '../../gardenModel';
+import { IGarden } from '../../gardenModel';
 
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
@@ -27,7 +27,7 @@ export class EditGardenComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  garden!: GardenModel;
+  garden!: IGarden;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
@@ -71,7 +71,7 @@ export class EditGardenComponent implements OnInit {
     if (this.editGardenForm.invalid) {
       return;
     } else {
-      const typedEditGardenForm: GardenModel = this.editGardenForm.value;
+      const typedEditGardenForm: IGarden = this.editGardenForm.value;
       this.success = JSON.stringify(typedEditGardenForm);
       let gid = this.activated.snapshot.paramMap.get('id')
       this.gardenService.updateGarden(typedEditGardenForm, gid).subscribe()

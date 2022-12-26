@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { GardenModel } from '../../gardenModel';
+import { IGarden } from '../../gardenModel';
 
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
 
@@ -28,7 +28,7 @@ export class AddGardenComponent implements OnInit {
   submitted = false;
   success = '';  
   name = '';
-  garden!: GardenModel;
+  garden!: IGarden;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
@@ -68,7 +68,7 @@ export class AddGardenComponent implements OnInit {
     if (this.addGardenForm.invalid) {
       return;
     } else {
-      const typedAddGardenForm: GardenModel = this.addGardenForm.value;
+      const typedAddGardenForm: IGarden = this.addGardenForm.value;
       this.success = JSON.stringify(typedAddGardenForm);
       this.gardenService.addGarden(typedAddGardenForm).subscribe(
         () => {

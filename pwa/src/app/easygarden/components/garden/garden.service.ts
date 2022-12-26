@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { GardenModel, DataGardenModel } from './gardenModel';
+import { IGarden, IDataGarden } from './gardenModel';
 import { DataUserModel } from '../../../_models/userModel';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class GardenService {
   }
 
   // Add Garden
-  addGarden(garden: GardenModel) {
+  addGarden(garden: IGarden) {
     const json = {
       name: garden.name,
       user: garden.user
@@ -29,23 +29,23 @@ export class GardenService {
   }
 
   // Get Garden
-  getGarden(gid: string | null): Observable<GardenModel>{
-    return this.httpClient.get<GardenModel>(environment.apis.garden.url+'/'+gid)
+  getGarden(gid: string | null): Observable<IGarden>{
+    return this.httpClient.get<IGarden>(environment.apis.garden.url+'/'+gid)
   }
 
   // Update Garden
-  updateGarden(garden: GardenModel, gid: string | null): Observable<DataGardenModel[]> {
-    return this.httpClient.put<DataGardenModel[]>(environment.apis.garden.url+'/'+gid, garden)
+  updateGarden(garden: IGarden, gid: string | null): Observable<IDataGarden[]> {
+    return this.httpClient.put<IDataGarden[]>(environment.apis.garden.url+'/'+gid, garden)
   }
 
   // Delete Garden
-  deleteGarden(id: string): Observable<GardenModel> {
-    return this.httpClient.delete<GardenModel>(environment.apis.garden.url+'/'+id)
+  deleteGarden(id: string): Observable<IGarden> {
+    return this.httpClient.delete<IGarden>(environment.apis.garden.url+'/'+id)
   }
 
   // Get garden.name for snackbar
-  getGardenName(selected: string): Observable<GardenModel>{
-    return this.httpClient.get<GardenModel>(environment.apis.gardenName.url+'/'+selected)
+  getGardenName(selected: string): Observable<IGarden>{
+    return this.httpClient.get<IGarden>(environment.apis.gardenName.url+'/'+selected)
   }
 
 }

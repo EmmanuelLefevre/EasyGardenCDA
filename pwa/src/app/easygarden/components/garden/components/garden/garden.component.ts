@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
 import { UserModel } from '../../../../../_models/userModel';
-import { GardenFilterModel } from '../../gardenModel';
+import { IGardenFilter } from '../../gardenModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
@@ -37,7 +37,7 @@ export class GardenComponent implements OnInit, OnDestroy {
     this.orderHeader = headerName;
   }
   // Ngx-filter
-  searchInput: GardenFilterModel = { name: ''};
+  searchInput: IGardenFilter = { name: ''};
   clearInput() {
     this.searchInput.name = '';
   }
@@ -56,6 +56,7 @@ export class GardenComponent implements OnInit, OnDestroy {
 
   // Display Gardens
   fetchGardens(): void {
+    // id = 
     this.gardenService.getAllGardens()
       .subscribe(
         (res:any) => {
