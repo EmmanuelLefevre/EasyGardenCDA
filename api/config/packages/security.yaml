@@ -42,8 +42,8 @@ security:
         - { path: ^/api/users, roles: PUBLIC_ACCESS,
             methods: [POST] }
         - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY,
-            methods: [GET, PUT, DELETE] }
-        - { path: ^/api/gardens, roles: IS_AUTHENTICATED_FULLY }
+                methods: [GET, PUT, PATCH, DELETE] }
+        - { path: ^/api/gardens, roles: IS_AUTHENTICATED_FULLY, }
         - { path: ^/api/lawnmowers, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/lightnings, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/pools, roles: IS_AUTHENTICATED_FULLY }
