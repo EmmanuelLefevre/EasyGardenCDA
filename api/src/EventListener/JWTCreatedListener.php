@@ -24,6 +24,9 @@ class JWTCreatedListener
         ],
         [
           'lastName' => $user->getLastName()
+        ],
+        [
+          'id' => $user->getId()
         ]
       );
 
