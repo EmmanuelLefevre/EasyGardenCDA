@@ -11,7 +11,21 @@ import { TokenService } from '../auth/token.service';
 export class DecodedTokenService {
 
   constructor(private tokenService: TokenService) { }
+  
+  // userId
+  idDecoded() {
+    const token = this.tokenService.getToken()
+    if (token) {
+      type tokenInfoModel = JwtPayload & { id: string }
+      jwtDecode<tokenInfoModel>(token, { header: true })
+      const object = JSON.parse(atob(token.split('.')[1]))
+      const id= object['id']
+      return id
+    }
+    return throwError(() => ('Token not found'))
+  }
 
+  // userEmail
   emailDecoded() {
     const token = this.tokenService.getToken()
     if (token) {
@@ -26,6 +40,7 @@ export class DecodedTokenService {
     return throwError(() => ('Token not found'))
   }
 
+  // userFirstName
   firstNameDecoded() {
     const token = this.tokenService.getToken()
     if (token) {
@@ -39,6 +54,7 @@ export class DecodedTokenService {
     return throwError(() => ('Token not found'))
   }
 
+  // userLastName
   lastNameDecoded() {
     const token = this.tokenService.getToken()
     if (token) {
