@@ -191,6 +191,11 @@ div {
         padding: 0.3vh 0.2vh;
         ul {
           margin-bottom: 0;
+          display: flex;
+          justify-content: center;
+          padding: 0.5vh;
+          border: 2px solid var(--ang-color-green);
+          border-radius: 5px;
           li {
             font-size: 14px;
             margin: 0 2px;
