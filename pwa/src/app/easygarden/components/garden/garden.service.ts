@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { IGarden, IDataGarden } from './gardenModel';
-import { DataUserModel } from '../../../_models/userModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class GardenService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Gardens
-  getAllGardens(): Observable<DataUserModel[]> {
-    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
+  getAllGardens(): Observable<IDataGarden[]> {
+    return this.httpClient.get<IDataGarden[]>(environment.apis.garden.url);
   }
 
   // Add Garden

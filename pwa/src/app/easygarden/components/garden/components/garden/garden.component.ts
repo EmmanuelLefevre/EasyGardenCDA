@@ -3,11 +3,12 @@ import { faPen, faTrash, faSort, faSearch, faTree } from '@fortawesome/free-soli
 import { Router } from '@angular/router';
 
 import { GardenService } from '../../garden.service';
-import { UserModel } from '../../../../../_models/userModel';
-import { IGardenFilter } from '../../gardenModel';
+import { IGarden, IGardenFilter } from '../../gardenModel';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+import { DecodedTokenService } from 'src/app/_services/service/decoded-token.service';
+
 
 @Component({
   selector: 'app-garden',
@@ -17,6 +18,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/c
 
 export class GardenComponent implements OnInit, OnDestroy {
 
+  id: String = '';
   title = "Jardin";
   faPen = faPen;
   faTrash = faTrash;
@@ -37,31 +39,32 @@ export class GardenComponent implements OnInit, OnDestroy {
     this.orderHeader = headerName;
   }
   // Ngx-filter
-  searchInput: IGardenFilter = { name: ''};
+  searchInput: IGardenFilter = { name: '' };
   clearInput() {
     this.searchInput.name = '';
   }
 
-  users: UserModel[] = [];
+  gardens: IGarden[] = [];
 
   constructor(private gardenService: GardenService,
               private dialog: MatDialog,
-              public router: Router) {
+              public router: Router,
+              private decodedTokenService: DecodedTokenService) {
     window.scrollTo(0, 0)
   } 
 
   ngOnInit(): void {
-    this.fetchGardens()
+    this.fetchGardens();
   }
 
   // Display Gardens
   fetchGardens(): void {
-    // id = 
     this.gardenService.getAllGardens()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          this.users = res['hydra:member']
+          this.gardens = res['hydra:member']
+          this.id = this.decodedTokenService.idDecoded();
         }
       )
   }
