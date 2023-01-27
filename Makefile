@@ -20,6 +20,9 @@ serv: ## Launch EasyGarden local server
 	make -j 2 ang-serv sf-serv
 .PHONY: serv
 
+servx: ## Relaunch Angular with clear cache
+	cd pwa && $(MAKE) ang-relaunch
+.PHONY: servx
 
 sf-stop: ## Stop Symfony local server
 	cd api && $(MAKE) stop
@@ -37,10 +40,4 @@ stop-serv: ## Stop EasyGarden local server
 ## ============ INSTALL ============
 install-sf:
 	cd api && $(MAKE) install
-install-ang:
-	cd pwa && $(MAKE) install
-
-install: ## Install all composants and dependencies after a clone repository
-	$(MAKE) install-sf
-	$(MAKE) install-ang
-.PHONY: install
+.PHONY: install-sf
