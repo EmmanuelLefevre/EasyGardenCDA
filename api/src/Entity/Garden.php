@@ -29,7 +29,6 @@ class Garden
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     #[Groups(['read:Garden',
-              'read:User',
               'read:Lawnmower',
               'read:Lightning',
               'read:Pool',
@@ -50,7 +49,6 @@ class Garden
         message: 'The garden name should be between 3 and 20 characters',
     )]
     #[Groups(['read:Garden',
-              'read:User',
               'read:Lawnmower',
               'read:Lightning',
               'read:Pool',
@@ -62,7 +60,6 @@ class Garden
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'garden')]
     #[Groups(['read:Garden',
-              'read:User',
               'read:Lawnmower',
               'read:Lightning',
               'read:Pool',
@@ -71,28 +68,23 @@ class Garden
     private $user;
 
     #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Lawnmower::class, orphanRemoval: true)]   
-    #[Groups(['read:Garden',
-              'read:User'])]
+    #[Groups(['read:User'])]
     private $lawnmower;
 
     #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Lightning::class, orphanRemoval: true)]   
-    #[Groups(['read:Garden',
-              'read:User'])]
+    #[Groups(['read:User'])]
     private $lightning;
 
     #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Pool::class, orphanRemoval: true)]   
-    #[Groups(['read:Garden',
-              'read:User'])]
+    #[Groups(['read:User'])]
     private $pool;
 
     #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Portal::class, orphanRemoval: true)]   
-    #[Groups(['read:Garden',
-              'read:User'])]
+    #[Groups(['read:User'])]
     private $portal;
 
     #[ORM\OneToMany(mappedBy: 'garden', targetEntity: Watering::class, orphanRemoval: true)]   
-    #[Groups(['read:Garden',
-              'read:User'])]
+    #[Groups(['read:User'])]
     private $watering;
 
     public function __construct()
