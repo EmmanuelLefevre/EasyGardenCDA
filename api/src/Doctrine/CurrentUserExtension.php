@@ -6,6 +6,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInter
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use App\Entity\Garden;
+use App\Entity\Watering;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
 
@@ -21,19 +22,29 @@ final class CurrentUserExtension implements QueryCollectionExtensionInterface, Q
         $this->security = $security;
     }
 
-    public function applyToCollection(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null): void
+    public function applyToCollection(QueryBuilder $queryBuilder, 
+                                      QueryNameGeneratorInterface $queryNameGenerator, 
+                                      string $resourceClass, 
+                                      string $operationName = null): void
     {
         $this->addWhere($queryBuilder, $resourceClass);
     }
 
-    public function applyToItem(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, array $identifiers, string $operationName = null, array $context = []): void
+    public function applyToItem(QueryBuilder $queryBuilder, 
+                                QueryNameGeneratorInterface $queryNameGenerator, 
+                                string $resourceClass, 
+                                array $identifiers, 
+                                string $operationName = null, 
+                                array $context = []): void
     {
         $this->addWhere($queryBuilder, $resourceClass);
     }
 
     private function addWhere(QueryBuilder $queryBuilder, string $resourceClass): void
     {
-        if (Garden::class !== $resourceClass || $this->security->isGranted('ROLE_ADMIN') || null === $user = $this->security->getUser()) {
+        if (Garden::class !== $resourceClass 
+            || $this->security->isGranted('ROLE_ADMIN') 
+            || null === $user = $this->security->getUser()) {
             return;
         }
 
