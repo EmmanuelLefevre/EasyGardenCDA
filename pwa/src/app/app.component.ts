@@ -13,7 +13,6 @@ import { filter, mapTo, merge, Observable } from 'rxjs';
 
 export class AppComponent implements OnInit {
   
-  // loading = false;
   title = 'Easy Garden';
 
   // Loader
