@@ -28,7 +28,12 @@ class Garden
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read:Garden'])]
+    #[Groups(['read:Garden',
+              'read:Lawnmower',
+              'read:Lightning',
+              'read:Pool',
+              'read:Portal',
+              'read:Watering'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45, nullable: true)]
