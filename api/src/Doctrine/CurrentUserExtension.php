@@ -6,6 +6,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInter
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use App\Entity\Garden;
+use App\Entity\Lawnmower;
+use App\Entity\Lightning;
+use App\Entity\Pool;
+use App\Entity\Portal;
 use App\Entity\Watering;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
@@ -45,18 +49,20 @@ final class CurrentUserExtension implements QueryCollectionExtensionInterface, Q
         $rootAlias = $queryBuilder->getRootAliases()[0];
         
         switch ($resourceClass) {
-            // dd($resourceClass);
             case Garden::class:
                 $queryBuilder->andWhere(sprintf('%s.user = :current_user', $rootAlias))
-                             ->setParameter('current_user', $user->getId());
+                             ->setParameter('current_user', $user);
                 break;
 
+            case Lawnmower::class:
+            case Lightning::class:
+            case Pool::class:
+            case Portal::class:
             case Watering::class:
                 $gardenAlias = sprintf("%s_garden", $rootAlias);
                 $queryBuilder->innerJoin(sprintf('%s.garden', $rootAlias), $gardenAlias)
                              ->andWhere(sprintf('%s.user = :current_user', $gardenAlias))
                              ->setParameter('current_user', $user);
-                // dd($queryBuilder->getAllAliases());
                 break;
         }
     }
