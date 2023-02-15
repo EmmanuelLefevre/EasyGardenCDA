@@ -154,7 +154,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $isVerified;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Garden::class, orphanRemoval: true)]
-    #[Groups(['read:User'])]
     private $garden;
 
     public function __construct()
