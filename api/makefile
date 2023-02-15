@@ -14,6 +14,7 @@ sf: ## Launch Symfony local server
 
 stop: ## Stop Symfony local server
 	npx kill-port 8000
+	php bin/console cache:clear
 .PHONY: stop
 # taskkill /PID 14028 /F
 
