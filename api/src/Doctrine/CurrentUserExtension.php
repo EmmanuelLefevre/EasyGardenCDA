@@ -11,22 +11,20 @@ use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
 
 /**
- * This extension makes sure normal users can only access their own Gardens
+ * This extension makes sure normal users can only access their own Datas
  */
 final class CurrentUserExtension implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
 {
     private $security;
 
-    public function __construct(Security $security)
-    {
+    public function __construct(Security $security) {
         $this->security = $security;
     }
 
     public function applyToCollection(QueryBuilder $queryBuilder, 
                                       QueryNameGeneratorInterface $queryNameGenerator, 
                                       string $resourceClass, 
-                                      string $operationName = null): void
-    {
+                                      string $operationName = null): void {
         $this->addWhere($queryBuilder, $resourceClass);
     }
 
@@ -35,21 +33,31 @@ final class CurrentUserExtension implements QueryCollectionExtensionInterface, Q
                                 string $resourceClass, 
                                 array $identifiers, 
                                 string $operationName = null, 
-                                array $context = []): void
-    {
+                                array $context = []): void {
         $this->addWhere($queryBuilder, $resourceClass);
     }
 
-    private function addWhere(QueryBuilder $queryBuilder, string $resourceClass): void
-    {
-        if (Garden::class !== $resourceClass 
-            || $this->security->isGranted('ROLE_ADMIN') 
+    private function addWhere(QueryBuilder $queryBuilder, string $resourceClass): void {
+        if ($this->security->isGranted('ROLE_ADMIN') 
             || null === $user = $this->security->getUser()) {
             return;
         }
-
         $rootAlias = $queryBuilder->getRootAliases()[0];
-        $queryBuilder->andWhere(sprintf('%s.user = :current_user', $rootAlias));
-        $queryBuilder->setParameter('current_user', $user->getId());
+        
+        switch ($resourceClass) {
+            // dd($resourceClass);
+            case Garden::class:
+                $queryBuilder->andWhere(sprintf('%s.user = :current_user', $rootAlias))
+                             ->setParameter('current_user', $user->getId());
+                break;
+
+            case Watering::class:
+                $gardenAlias = sprintf("%s_garden", $rootAlias);
+                $queryBuilder->innerJoin(sprintf('%s.garden', $rootAlias), $gardenAlias)
+                             ->andWhere(sprintf('%s.user = :current_user', $gardenAlias))
+                             ->setParameter('current_user', $user);
+                // dd($queryBuilder->getAllAliases());
+                break;
+        }
     }
 }
