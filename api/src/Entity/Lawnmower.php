@@ -28,9 +28,7 @@ class Lawnmower
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Lawnmower'])]
+    #[Groups(['read:Lawnmower'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
@@ -45,23 +43,17 @@ class Lawnmower
         match: false,
         message: 'The lawnmower name should be between 3 and 20 characters',
     )]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Lawnmower',
+    #[Groups(['read:Lawnmower',
               'write:Lawnmower'])]
     private $name;
 
     #[ORM\Column(type: 'string', length: 12, nullable:true)]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Lawnmower',
+    #[Groups(['read:Lawnmower',
               'write:Lawnmower'])]
     private $batterySensor;
 
     #[ORM\Column(type: 'boolean', nullable:true)]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Lawnmower',
+    #[Groups(['read:Lawnmower',
               'write:Lawnmower'])]
     private $status;
 

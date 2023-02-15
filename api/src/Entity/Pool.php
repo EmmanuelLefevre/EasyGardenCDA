@@ -28,9 +28,7 @@ class Pool
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Pool'])]
+    #[Groups(['read:Pool'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
@@ -45,16 +43,12 @@ class Pool
         match: false,
         message: 'The pool name should be between 3 and 20 characters',
     )]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Pool',
+    #[Groups(['read:Pool',
               'write:Pool'])]
     private $name;
 
     #[ORM\Column(type: 'boolean', nullable:true)]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Pool',
+    #[Groups(['read:Pool',
               'write:Pool'])]
     private $status;
 

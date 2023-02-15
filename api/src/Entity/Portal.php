@@ -28,9 +28,7 @@ class Portal
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Portal'])]
+    #[Groups(['read:Portal'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
@@ -45,23 +43,17 @@ class Portal
         match: false,
         message: 'The portal name should be between 3 and 20 characters',
     )]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Portal',
+    #[Groups(['read:Portal',
               'write:Portal'])]
     private $name;
 
     #[ORM\Column(type: 'boolean', nullable:true)]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Portal',
+    #[Groups(['read:Portal',
               'write:Portal'])]
     private $presenceSensor;
 
     #[ORM\Column(type: 'boolean', nullable:true)]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Portal',
+    #[Groups(['read:Portal',
               'write:Portal'])]
     private $status;
 

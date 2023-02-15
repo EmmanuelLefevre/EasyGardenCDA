@@ -28,9 +28,7 @@ class Lightning
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Lightning'])]
+    #[Groups(['read:Lightning'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 45)]
@@ -44,16 +42,12 @@ class Lightning
         match: false,
         message: 'The lightning name should be between 3 and 20 characters',
     )]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Lightning',
+    #[Groups(['read:Lightning',
               'write:Lightning'])]
     private $name;
 
     #[ORM\Column(type: 'boolean', nullable:true)]
-    #[Groups(['read:User',
-              'read:Garden',
-              'read:Lightning',
+    #[Groups(['read:Lightning',
               'write:Lightning'])]
     private $status;
 
