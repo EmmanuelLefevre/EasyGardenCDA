@@ -92,17 +92,17 @@ export class AddWateringComponent implements OnInit {
     } else {
       const typedAddWateringForm: IWatering = this.addWateringForm.value;
       this.success = JSON.stringify(typedAddWateringForm);
+      this.router.navigate(['/easygarden/watering']);
       this.wateringService.addWatering(typedAddWateringForm).subscribe(
         () => {
           const name = this.addWateringForm.get('name')?.value;
-          this.gardenService.getGardenName(this.selected).subscribe(
+          this.gardenService.getGarden(this.selected).subscribe(
             data => {
               this.garden = data
               this.gardenName = this.garden.name
               this.snackbarService.showNotification('L\'arrosage "' + name + '"' + ' a bien été ajouté au jardin de ' + this.gardenName + '.', 'created');
             }
-          )   
-          this.router.navigate(['/easygarden/watering'])
+          )
         }
       )
     }

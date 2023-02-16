@@ -94,14 +94,14 @@ export class AddPoolComponent implements OnInit {
         this.poolService.addPool(typedAddPoolForm).subscribe(
           () => {
             const name = this.addPoolForm.get('name')?.value;
-            this.gardenService.getGardenName(this.selected).subscribe(
+            this.router.navigate(['/easygarden/pool']);
+            this.gardenService.getGarden(this.selected).subscribe(
               data => {
                 this.garden = data
                 this.gardenName = this.garden.name
                 this.snackbarService.showNotification('L\'équipement "' + name + '"' + ' a bien été ajouté au jardin de ' + this.gardenName + '.', 'created');
               }
             )
-            this.router.navigate(['/easygarden/pool'])
           }
         )
       }

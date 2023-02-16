@@ -32,6 +32,10 @@ export class GardenService {
   getGarden(gid: string | null): Observable<IGarden>{
     return this.httpClient.get<IGarden>(environment.apis.garden.url+'/'+gid)
   }
+  //Get garden.name for snackbar
+  getGardenName(selected: string): Observable<IGarden>{
+    return this.httpClient.get<IGarden>(environment.apis.gardenNameUri.url+'/'+selected)
+  }
 
   // Update Garden
   updateGarden(garden: IGarden, gid: string | null): Observable<IDataGarden[]> {
@@ -43,9 +47,5 @@ export class GardenService {
     return this.httpClient.delete<IGarden>(environment.apis.garden.url+'/'+id)
   }
 
-  // Get garden.name for snackbar
-  getGardenName(selected: string): Observable<IGarden>{
-    return this.httpClient.get<IGarden>(environment.apis.gardenName.url+'/'+selected)
-  }
 
 }

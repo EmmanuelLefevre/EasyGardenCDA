@@ -94,14 +94,14 @@ fetchGardens(): void {
       this.lightningService.addLightning(typedAddLightningForm).subscribe(
         () => {
           const name = this.addLightningForm.get('name')?.value;
+          this.router.navigate(['/easygarden/lightning']);
           this.gardenService.getGardenName(this.selected).subscribe(
             data => {
               this.garden = data
               this.gardenName = this.garden.name
               this.snackbarService.showNotification('L\'éclairage "' + name + '"' + ' a bien été ajouté au jardin de ' + this.gardenName + '.', 'created');
             }
-          )   
-          this.router.navigate(['/easygarden/lightning'])
+          )
         }
       )
     }

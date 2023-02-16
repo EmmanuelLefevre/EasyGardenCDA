@@ -18,7 +18,7 @@ export class PoolResolver implements Resolve<IDataPool[]> {
   resolve(route: ActivatedRouteSnapshot): Observable<IDataPool[]> {
     
     return this.poolService.getAllPools().pipe(
-      delay(1000),
+      delay(600),
       catchError(
         () => {
           this.router.navigate([""]);

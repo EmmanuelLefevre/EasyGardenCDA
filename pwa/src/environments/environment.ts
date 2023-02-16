@@ -14,6 +14,9 @@ export const environment = {
     garden: {
       url: 'http://localhost:8000/api/gardens'
     },
+    gardenNameUri: {
+      url: 'http://localhost:8000'
+    },
     lawnmower: {
       url: 'http://localhost:8000/api/lawnmowers'
     },
@@ -28,9 +31,6 @@ export const environment = {
     },
     watering: {
       url: 'http://localhost:8000/api/waterings'
-    },
-    gardenName: {
-      url: 'http://localhost:8000'
     }
   }
 };

@@ -17,7 +17,7 @@ export class LightningResolver implements Resolve<IDataLightning[]> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<IDataLightning[]> {
     return this.lightningService.getAllLightnings().pipe(
-      delay(1000),
+      delay(600),
       catchError(
         () => {
           this.router.navigate([""]);

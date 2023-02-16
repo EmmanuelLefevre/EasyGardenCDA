@@ -17,7 +17,7 @@ export class PortalResolver implements Resolve<IDataPortal[]> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<IDataPortal[]> {
     return this.portalService.getAllPortals().pipe(
-      delay(1000),
+      delay(600),
       catchError(
         () => {
           this.router.navigate([""]);

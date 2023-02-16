@@ -94,6 +94,7 @@ export class AddLawnmowerComponent implements OnInit {
       this.lawnmowerService.addLawnmower(typedAddLawnmowerForm).subscribe(
         () => {
           const name = this.addLawnmowerForm.get('name')?.value;
+          this.router.navigate(['/easygarden/lawnmower']);
           this.gardenService.getGardenName(this.selected).subscribe(
             data => {
               this.garden = data
@@ -101,7 +102,6 @@ export class AddLawnmowerComponent implements OnInit {
               this.snackbarService.showNotification('La tondeuse "' + name + '"' + ' a bien été ajoutée au jardin de ' + this.gardenName + '.', 'created');
             }
           )
-          this.router.navigate(['/easygarden/lawnmower'])
         }
       )
     }

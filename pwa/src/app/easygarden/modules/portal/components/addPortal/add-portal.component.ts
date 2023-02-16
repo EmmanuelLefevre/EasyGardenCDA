@@ -94,14 +94,14 @@ export class AddPortalComponent implements OnInit {
       this.portalService.addPortal(typedAddPortalForm).subscribe(
         () => {
           const name = this.addPortalForm.get('name')?.value;
-          this.gardenService.getGardenName(this.selected).subscribe(
+          this.router.navigate(['/easygarden/portal']);
+          this.gardenService.getGarden(this.selected).subscribe(
             data => {
               this.garden = data
               this.gardenName = this.garden.name
               this.snackbarService.showNotification('Le portail "' + name + '"' + ' a bien été ajouté au jardin de ' + this.gardenName + '.', 'created');
             }
           )
-          this.router.navigate(['/easygarden/portal'])
         }
       )
     }
