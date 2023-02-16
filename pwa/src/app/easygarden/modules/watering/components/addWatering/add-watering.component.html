@@ -18,12 +18,11 @@
                     name="garden"
                     class="form-select"
                     [(value)]="selected">
-          <ng-container *ngFor="let user of users">
-              <mat-option [value]="'api/gardens/'+garden.id" 
-                          selected 
-                          *ngFor="let garden of user.garden">
-                          {{garden.name}}
-              </mat-option>
+          <ng-container *ngFor="let garden of gardens">
+            <mat-option [value]="'api/gardens/'+garden.id" 
+                        selected>
+                        {{garden.name}}
+            </mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>

@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash, faSort, faSearch, faDroplet } from '@fortawesome/free-solid-svg-icons';
 
-import { WateringService } from '../../watering.service';
-import { UserModel } from '../../../../../_models/userModel';
-import { WateringFilterModel } from '../../wateringModel';
-
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
+import { WateringService } from '../../watering.service';
+
+import { IWatering, IWateringFilter } from '../../wateringModel';
+
 
 @Component({
   selector: 'app-watering',
@@ -39,12 +40,12 @@ export class WateringComponent implements OnInit, OnDestroy {
     this.orderHeader = headerName;
   }
   // Ngx-filter
-  searchInput: WateringFilterModel = { name: ''};
+  searchInput: IWateringFilter = { name: ''};
   clearInput() {
     this.searchInput.name = '';
   }
 
-  users: UserModel[] = [];
+  waterings: IWatering[] = [];
 
   constructor(private wateringService: WateringService,
               private dialog: MatDialog) {
@@ -61,9 +62,7 @@ export class WateringComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          // console.log(res)
-          this.users = res['hydra:member']
-          // console.log(this.users)
+          this.waterings = res['hydra:member']
         }
       )
   }
@@ -72,23 +71,19 @@ export class WateringComponent implements OnInit, OnDestroy {
   updateStatus(id: number, status: boolean): void {
     if (status === true) {
       status = !status;
-      // console.log(id, status)
       this.wateringService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchWaterings()
           }
         )
     } else if (status === false) {
       status = !status;
-      // console.log(id, status)
       this.wateringService.updateStatus(status, id)
         .subscribe(
           (res:any) => {
             this.status = res
-            // console.log(status)
             this.fetchWaterings()
           }
         )

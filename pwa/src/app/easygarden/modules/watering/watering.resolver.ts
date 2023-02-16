@@ -3,19 +3,19 @@ import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { catchError, Observable, throwError, delay } from 'rxjs';
 
 import { WateringService } from './watering.service';
-import { DataUserModel } from 'src/app/_models/userModel';
+import { IDataWatering } from './wateringModel';
 
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class WateringResolver implements Resolve<DataUserModel[]> {
+export class WateringResolver implements Resolve<IDataWatering[]> {
 
   constructor(private wateringService: WateringService,
               private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<DataUserModel[]> {
+  resolve(route: ActivatedRouteSnapshot): Observable<IDataWatering[]> {
     return this.wateringService.getAllWaterings().pipe(
       delay(1000),
       catchError(

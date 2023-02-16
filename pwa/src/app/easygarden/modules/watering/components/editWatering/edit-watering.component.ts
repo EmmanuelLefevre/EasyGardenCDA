@@ -4,12 +4,12 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { WateringService } from '../../watering.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { WateringModel } from '../../wateringModel';
-
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
-// import { SnackbarInterceptor } from '../../../../../_services/utils/snackbar.interceptor';
+import { WateringService } from '../../watering.service';
+
+import { IWatering } from '../../wateringModel';
+
 
 @Component({
   selector: 'app-edit-watering',
@@ -28,7 +28,7 @@ export class EditWateringComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  watering!: WateringModel;
+  watering!: IWatering;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
@@ -51,7 +51,6 @@ export class EditWateringComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-
     let wid = this.activated.snapshot.paramMap.get('id')
     this.wateringService.getWatering(wid).subscribe(
       data => {
@@ -71,7 +70,7 @@ export class EditWateringComponent implements OnInit {
     if (this.editWateringForm.invalid) {
       return;
     } else {
-      const typedEditWateringForm: WateringModel = this.editWateringForm.value;
+      const typedEditWateringForm: IWatering = this.editWateringForm.value;
       this.success = JSON.stringify(typedEditWateringForm);
       let wid = this.activated.snapshot.paramMap.get('id')
       this.wateringService.updateWatering(typedEditWateringForm, wid).subscribe(

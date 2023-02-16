@@ -1,24 +1,19 @@
-export interface WateringModel {
+export interface IWatering {
   id: number,
   name: string,
   flowSensor: string,
   pressureSensor: string,
   status: boolean,
   garden: {
-    id: string,
-    name: string,
-    user: {
-      id: string,
-      name: string
-    }
+    id: string
   }
 }
 
-export interface DataWateringModel {
-  data: WateringModel[]
+export interface IDataWatering {
+  data: IWatering[]
 }
 
 // Ngx-filter
-export interface WateringFilterModel {
+export interface IWateringFilter {
   name: string
 }

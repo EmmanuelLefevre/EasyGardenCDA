@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { WateringModel, DataWateringModel } from './wateringModel';
-import { DataUserModel } from '../../../_models/userModel';
+import { IWatering, IDataWatering } from './wateringModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,12 @@ export class WateringService {
   constructor(private httpClient: HttpClient) { }
   
   // Get Index of Waterings
-  getAllWaterings(): Observable<DataUserModel[]> {
-    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
+  getAllWaterings(): Observable<IDataWatering[]> {
+    return this.httpClient.get<IDataWatering[]>(environment.apis.watering.url);
   }
 
   // Add Watering
-  addWatering(watering: WateringModel) {
+  addWatering(watering: IWatering) {
     const json = {
       name: watering.name,
       garden: watering.garden
@@ -29,23 +29,23 @@ export class WateringService {
   }
 
   // Get Watering
-  getWatering(wid: string | null): Observable<WateringModel>{
-    return this.httpClient.get<WateringModel>(environment.apis.watering.url+'/'+wid)
+  getWatering(wid: string | null): Observable<IWatering>{
+    return this.httpClient.get<IWatering>(environment.apis.watering.url+'/'+wid)
   }
 
   // Update Status
-  updateStatus(status: boolean, id: number): Observable<DataWateringModel[]> {
-    return this.httpClient.put<DataWateringModel[]>(environment.apis.watering.url+'/'+id, {status})
+  updateStatus(status: boolean, id: number): Observable<IDataWatering[]> {
+    return this.httpClient.put<IDataWatering[]>(environment.apis.watering.url+'/'+id, {status})
   }
 
   // Update Watering
-  updateWatering(watering: WateringModel, wid: string | null): Observable<DataWateringModel[]> {
-    return this.httpClient.put<DataWateringModel[]>(environment.apis.watering.url+'/'+wid, watering)
+  updateWatering(watering: IWatering, wid: string | null): Observable<IDataWatering[]> {
+    return this.httpClient.put<IDataWatering[]>(environment.apis.watering.url+'/'+wid, watering)
   }
 
   // Delete Watering
-  deleteWatering(id: number): Observable<WateringModel> {
-    return this.httpClient.delete<WateringModel>(environment.apis.watering.url+'/'+id)
+  deleteWatering(id: number): Observable<IWatering> {
+    return this.httpClient.delete<IWatering>(environment.apis.watering.url+'/'+id)
   }
   
 }

@@ -4,14 +4,13 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { WateringService } from '../../watering.service';
-import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { WateringModel } from '../../wateringModel';
-import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
-import { UserModel } from '../../../../../_models/userModel';
-
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+import { WateringService } from '../../watering.service';
+
+import { IWatering } from '../../wateringModel';
+import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
 
 
 @Component({
@@ -24,7 +23,7 @@ export class AddWateringComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
 
-  users: UserModel[] = [];
+  gardens: IGarden[] = [];
 
   // addWateringForm Group
   addWateringForm = new FormGroup({
@@ -33,9 +32,9 @@ export class AddWateringComponent implements OnInit {
 
   submitted = false;
   success = '';
-  watering!: WateringModel;
+  watering!: IWatering;
   
-  // Snackbar display which garden is selected
+  // Snackbar display which garden have been selected
   selected = '';
   gardenName = '';
   garden!: IGarden;
@@ -68,16 +67,16 @@ export class AddWateringComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.fetchWaterings()
+    this.fetchGardens()
   }
 
   // Display Waterings
-  fetchWaterings(): void {
-    this.wateringService.getAllWaterings()
+  fetchGardens(): void {
+    this.gardenService.getAllGardens()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.users = res['hydra:member']
+          this.gardens = res['hydra:member']
         }
       )
   }
@@ -92,7 +91,7 @@ export class AddWateringComponent implements OnInit {
     if (this.addWateringForm.invalid) {
       return;
     } else {
-      const typedAddWateringForm: WateringModel = this.addWateringForm.value;
+      const typedAddWateringForm: IWatering = this.addWateringForm.value;
       this.success = JSON.stringify(typedAddWateringForm);
       this.wateringService.addWatering(typedAddWateringForm).subscribe(
         () => {
