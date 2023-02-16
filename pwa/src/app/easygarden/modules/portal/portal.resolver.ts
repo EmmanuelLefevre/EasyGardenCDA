@@ -3,19 +3,19 @@ import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { catchError, Observable, throwError, delay } from 'rxjs';
 
 import { PortalService } from './portal.service';
-import { DataUserModel } from 'src/app/_models/userModel';
+import { IDataPortal } from './portalModel';
 
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PortalResolver implements Resolve<DataUserModel[]> {
+export class PortalResolver implements Resolve<IDataPortal[]> {
 
   constructor(private portalService: PortalService,
               private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<DataUserModel[]> {
+  resolve(route: ActivatedRouteSnapshot): Observable<IDataPortal[]> {
     return this.portalService.getAllPortals().pipe(
       delay(1000),
       catchError(

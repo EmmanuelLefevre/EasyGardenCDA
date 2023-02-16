@@ -4,14 +4,14 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { PortalService } from '../../portal.service';
-import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { PortalModel } from '../../portalModel';
-import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
-import { UserModel } from '../../../../../_models/userModel';
-
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
+import { PortalService } from '../../portal.service';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
+import { IPortal } from '../../portalModel';
+import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
+
 
 @Component({
   selector: 'app-add-portal',
@@ -23,17 +23,16 @@ export class AddPortalComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
 
-  users: UserModel[] = [];
-
   // addPortalForm Group
   addPortalForm = new FormGroup({
     name: new FormControl('')
   });
   submitted = false;
   success = '';
-  portal!: PortalModel;
+  portal!: IPortal;
 
-  // Snackbar display which garden is selected
+  // Snackbar display which gardens are owned by user
+  gardens: IGarden[] = [];
   selected = '';
   gardenName = '';
   garden!: IGarden;
@@ -66,16 +65,16 @@ export class AddPortalComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.fetchPortals()
+    this.fetchGardens()
   }
 
-  // Display Portals
-  fetchPortals(): void {
-    this.portalService.getAllPortals()
+  // Display Gardens in select
+  fetchGardens(): void {
+    this.gardenService.getAllGardens()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.users = res['hydra:member']
+          this.gardens = res['hydra:member']
         }
       )
   }
@@ -90,7 +89,7 @@ export class AddPortalComponent implements OnInit {
     if (this.addPortalForm.invalid) {
       return;
     } else {
-      const typedAddPortalForm: PortalModel = this.addPortalForm.value;
+      const typedAddPortalForm: IPortal = this.addPortalForm.value;
       this.success = JSON.stringify(typedAddPortalForm);
       this.portalService.addPortal(typedAddPortalForm).subscribe(
         () => {

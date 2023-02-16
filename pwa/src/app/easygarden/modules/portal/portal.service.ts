@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { PortalModel, DataPortalModel } from './portalModel';
-import { DataUserModel } from '../../../_models/userModel';
+import { IPortal, IDataPortal } from './portalModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,12 @@ export class PortalService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Portals
-  getAllPortals(): Observable<DataUserModel[]> {
-    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
+  getAllPortals(): Observable<IDataPortal[]> {
+    return this.httpClient.get<IDataPortal[]>(environment.apis.portal.url);
   }
 
   // Add Portal
-  addPortal(portal: PortalModel) {
+  addPortal(portal: IPortal) {
     const json = {
       name: portal.name,
       garden: portal.garden
@@ -29,27 +29,23 @@ export class PortalService {
   }
 
   // Get Portal
-  getPortal(pid: string | null): Observable<PortalModel>{
-    return this.httpClient.get<PortalModel>(environment.apis.portal.url+'/'+pid)
+  getPortal(pid: string | null): Observable<IPortal>{
+    return this.httpClient.get<IPortal>(environment.apis.portal.url+'/'+pid)
   }
 
   // Update Status
-  updateStatus(status: boolean, id: number): Observable<DataPortalModel[]> {
-    return this.httpClient.put<DataPortalModel[]>(environment.apis.portal.url+'/'+id, {status})
+  updateStatus(status: boolean, id: number): Observable<IDataPortal[]> {
+    return this.httpClient.put<IDataPortal[]>(environment.apis.portal.url+'/'+id, {status})
   }
 
   // Update Portal
-  updatePortal(portal: PortalModel, pid: string | null): Observable<DataPortalModel[]> {
-    return this.httpClient.put<DataPortalModel[]>(environment.apis.portal.url+'/'+pid, portal)
+  updatePortal(portal: IPortal, pid: string | null): Observable<IDataPortal[]> {
+    return this.httpClient.put<IDataPortal[]>(environment.apis.portal.url+'/'+pid, portal)
   }
 
   // Delete Portal
-  deletePortal(id: number): Observable<PortalModel> {
-    return this.httpClient.delete<PortalModel>(environment.apis.portal.url+'/'+id)
+  deletePortal(id: number): Observable<IPortal> {
+    return this.httpClient.delete<IPortal>(environment.apis.portal.url+'/'+id)
   }
-
-  // unsubscribe() {
-  //   throw new Error('PortalService Destroy');
-  // }
 
 }

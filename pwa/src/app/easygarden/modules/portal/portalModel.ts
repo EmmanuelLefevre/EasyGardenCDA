@@ -1,23 +1,18 @@
-export interface PortalModel {
+export interface IPortal {
   id: number,
   name: string,
   presenceSensor: string,
   status: boolean,
   garden: {
-    id: string,
-    name: string,
-    user: {
-      id: string,
-      name: string
-    }
+    id: string
   }
 }
 
-export interface DataPortalModel {
-  data: PortalModel[]
+export interface IDataPortal {
+  data: IPortal[]
 }
 
 // Ngx-filter
-export interface PortalFilterModel {
+export interface IPortalFilter {
   name: string
 }

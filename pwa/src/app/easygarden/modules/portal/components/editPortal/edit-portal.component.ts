@@ -4,11 +4,12 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { PortalService } from '../../portal.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { PortalModel } from '../../portalModel';
-
+import { PortalService } from '../../portal.service';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
+import { IPortal } from '../../portalModel';
+
 
 @Component({
   selector: 'app-edit-portal',
@@ -27,7 +28,7 @@ export class EditPortalComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  portal!: PortalModel;
+  portal!: IPortal;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
@@ -70,7 +71,7 @@ export class EditPortalComponent implements OnInit {
     if (this.editPortalForm.invalid) {
       return;
     } else {
-      const typedEditPortalForm: PortalModel = this.editPortalForm.value;
+      const typedEditPortalForm: IPortal = this.editPortalForm.value;
       this.success = JSON.stringify(typedEditPortalForm);
       let pid = this.activated.snapshot.paramMap.get('id')
       this.portalService.updatePortal(typedEditPortalForm, pid).subscribe(

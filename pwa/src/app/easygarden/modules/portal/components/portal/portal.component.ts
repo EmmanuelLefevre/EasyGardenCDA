@@ -1,19 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash, faSort, faSearch, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 
-import { PortalService } from '../../portal.service';
-import { UserModel } from '../../../../../_models/userModel';
-import { PortalFilterModel } from '../../portalModel';
-
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
+import { PortalService } from '../../portal.service';
+
+import { IPortal, IPortalFilter } from '../../portalModel';
+
 
 @Component({
   selector: 'app-portal',
   templateUrl: './portal.component.html'
 })
 
-export class PortalComponent implements OnInit, OnDestroy {
+export class PortalComponent implements OnInit {
 
   title = "Portail";
   faPowerOff = faPowerOff;
@@ -39,12 +40,12 @@ export class PortalComponent implements OnInit, OnDestroy {
     this.orderHeader = headerName;
   }
   // Ngx-filter
-  searchInput: PortalFilterModel = { name: ''};
+  searchInput: IPortalFilter = { name: ''};
   clearInput() {
     this.searchInput.name = '';
   }
 
-  users: UserModel[] = [];
+  portals: IPortal[] = [];
 
   constructor(private portalService: PortalService,
               private dialog: MatDialog) {
@@ -61,7 +62,7 @@ export class PortalComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))
-          this.users = res['hydra:member']
+          this.portals = res['hydra:member']
         }
       )
   }
@@ -109,10 +110,6 @@ export class PortalComponent implements OnInit, OnDestroy {
         )
       }   
     })
-  }
-
-  ngOnDestroy() {
-    // this.portalsService.unsubscribe()
   }
 
 }
