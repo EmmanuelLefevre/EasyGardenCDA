@@ -15,7 +15,7 @@ export class WateringResolver implements Resolve<IDataWatering[]> {
   constructor(private wateringService: WateringService,
               private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<IDataWatering[]> {
+  resolve(_route: ActivatedRouteSnapshot): Observable<IDataWatering[]> {
     return this.wateringService.getAllWaterings().pipe(
       delay(1000),
       catchError(
