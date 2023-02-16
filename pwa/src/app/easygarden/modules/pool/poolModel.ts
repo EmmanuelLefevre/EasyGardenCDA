@@ -1,22 +1,17 @@
-export interface PoolModel {
+export interface IPool {
   id: number,
   name: string,
   status: boolean,
   garden: {
-    id: string,
-    name: string,
-    user: {
-      id: string,
-      name: string
-    }
+    id: string
   }
 }
 
-export interface DataPoolModel {
-  data: PoolModel[]
+export interface IDataPool {
+  data: IPool[]
 }
 
 // Ngx-filter
-export interface PoolFilterModel {
+export interface IPoolFilter {
   name: string
 }

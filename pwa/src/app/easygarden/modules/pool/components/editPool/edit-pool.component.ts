@@ -6,9 +6,10 @@ import { ActivatedRoute } from '@angular/router';
 
 import { PoolService } from '../../pool.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { PoolModel } from '../../poolModel';
-
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
+import { IPool } from '../../poolModel';
+
 
 @Component({
   selector: 'app-edit-pool',
@@ -27,7 +28,7 @@ export class EditPoolComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  pool!: PoolModel;
+  pool!: IPool;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
@@ -70,7 +71,7 @@ export class EditPoolComponent implements OnInit {
     if (this.editPoolForm.invalid) {
       return;
     } else {
-      const typedEditPoolForm: PoolModel = this.editPoolForm.value;
+      const typedEditPoolForm: IPool = this.editPoolForm.value;
       this.success = JSON.stringify(typedEditPoolForm);
       let lid = this.activated.snapshot.paramMap.get('id')
       this.poolService.updatePool(typedEditPoolForm, lid).subscribe(

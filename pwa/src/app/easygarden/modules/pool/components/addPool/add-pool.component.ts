@@ -4,14 +4,14 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { PoolService } from '../../pool.service';
-import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { PoolModel } from '../../poolModel';
-import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
-import { UserModel } from '../../../../../_models/userModel';
-
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
+import { PoolService } from '../../pool.service';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
+import { IPool } from '../../poolModel';
+import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
+
 
 @Component({
   selector: 'app-addpool',
@@ -23,17 +23,16 @@ export class AddPoolComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
 
-  users: UserModel[] = [];
-
   // addPoolForm Group
   addPoolForm = new FormGroup({
     name: new FormControl('')
   });
   submitted = false;
   success = '';
-  pool!: PoolModel;
+  pool!: IPool;
 
-  // Snackbar display which garden is selected
+  // Snackbar display which gardens are owned by user
+  gardens: IGarden[] = [];
   selected = '';
   gardenName = '';
   garden!: IGarden;
@@ -66,19 +65,19 @@ export class AddPoolComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.fetchPools()
+    this.fetchGardens()
   }
 
-    // Display Pools
-    fetchPools(): void {
-      this.poolService.getAllPools()
-        .subscribe(
-          (res:any) => {
-            if (res.hasOwnProperty('hydra:member')) 
-            this.users = res['hydra:member']
-          }
-        )
-    }
+  // Display Gardens in select
+  fetchGardens(): void {
+    this.gardenService.getAllGardens()
+      .subscribe(
+        (res:any) => {
+          if (res.hasOwnProperty('hydra:member')) 
+          this.gardens = res['hydra:member']
+        }
+      )
+  }
   
     get f(): { [key: string]: AbstractControl } {
       return this.addPoolForm.controls;
@@ -90,7 +89,7 @@ export class AddPoolComponent implements OnInit {
       if (this.addPoolForm.invalid) {
         return;
       } else {
-        const typedAddPoolForm: PoolModel = this.addPoolForm.value;
+        const typedAddPoolForm: IPool = this.addPoolForm.value;
         this.success = JSON.stringify(typedAddPoolForm);
         this.poolService.addPool(typedAddPoolForm).subscribe(
           () => {

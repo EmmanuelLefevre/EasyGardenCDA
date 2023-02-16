@@ -1,19 +1,19 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash, faSort, faSearch, faFish } from '@fortawesome/free-solid-svg-icons';
 
-import { PoolService } from '../../pool.service';
-import { UserModel } from '../../../../../_models/userModel';
-import { PoolFilterModel } from '../../poolModel';
-
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
+import { PoolService } from '../../pool.service';
+import { IPool, IPoolFilter } from '../../poolModel';
+
 
 @Component({
   selector: 'app-pool',
   templateUrl: './pool.component.html'
 })
 
-export class PoolComponent implements OnInit, OnDestroy {
+export class PoolComponent implements OnInit {
 
   title = "Bassin";
   faPowerOff = faPowerOff;
@@ -39,12 +39,12 @@ export class PoolComponent implements OnInit, OnDestroy {
     this.orderHeader = headerName;
   }
   // Ngx-filter
-  searchInput: PoolFilterModel = { name: ''};
+  searchInput: IPoolFilter = { name: ''};
   clearInput() {
     this.searchInput.name = '';
   }
 
-  users: UserModel[] = [];
+  pools: IPool[] = [];
 
   constructor(private poolService: PoolService,
               private dialog: MatDialog) {
@@ -61,7 +61,7 @@ export class PoolComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member'))  
-          this.users = res['hydra:member']
+          this.pools = res['hydra:member']
         }
       )
   }
@@ -109,10 +109,6 @@ export class PoolComponent implements OnInit, OnDestroy {
         )
       }   
     })
-  }
-
-  ngOnDestroy() {
-    // this.lawnmowerService.unsubscribe()
   }
 
 }
