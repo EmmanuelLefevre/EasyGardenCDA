@@ -4,11 +4,12 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { LightningService } from '../../lightning.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { LightningModel } from '../../lightningModel';
-
+import { LightningService } from '../../lightning.service';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
+import { ILightning } from '../../lightningModel';
+
 
 @Component({
   selector: 'app-edit-lightning',
@@ -27,7 +28,7 @@ export class EditLightningComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  lightning!: LightningModel;
+  lightning!: ILightning;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
@@ -70,7 +71,7 @@ export class EditLightningComponent implements OnInit {
     if (this.editLightningForm.invalid) {
       return;
     } else {
-      const typedEditLightningForm: LightningModel = this.editLightningForm.value;
+      const typedEditLightningForm: ILightning = this.editLightningForm.value;
       this.success = JSON.stringify(typedEditLightningForm);
       let lid = this.activated.snapshot.paramMap.get('id')
       this.lightningService.updateLightning(typedEditLightningForm, lid).subscribe(

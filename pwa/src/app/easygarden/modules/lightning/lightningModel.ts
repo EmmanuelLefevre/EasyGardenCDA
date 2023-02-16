@@ -1,22 +1,17 @@
-export interface LightningModel {
+export interface ILightning {
   id: number,
   name: string,
   status: boolean,
   garden: {
-    id: string,
-    name: string,
-    user: {
-      id: string,
-      name: string
-    }
+    id: string
   }
 }
 
-export interface DataLightningModel {
-  data: LightningModel[]
+export interface IDataLightning {
+  data: ILightning[]
 }
 
 // Ngx-filter
-export interface LightningFilterModel {
+export interface ILightningFilter {
   name: string
 }

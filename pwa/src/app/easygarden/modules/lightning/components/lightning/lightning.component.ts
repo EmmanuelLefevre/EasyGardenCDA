@@ -1,19 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash, faSort, faSearch, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 
-import { LightningService } from '../../lightning.service';
-import { UserModel } from '../../../../../_models/userModel';
-import { LightningFilterModel } from '../../lightningModel';
-
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
+import { LightningService } from '../../lightning.service';
+
+import { ILightning, ILightningFilter } from '../../lightningModel';
+
 
 @Component({
   selector: 'app-lightning',
   templateUrl: './lightning.component.html'
 })
 
-export class LightningComponent implements OnInit, OnDestroy {
+export class LightningComponent implements OnInit {
 
   title = "Eclairage";
   faPowerOff = faPowerOff;
@@ -38,12 +39,12 @@ export class LightningComponent implements OnInit, OnDestroy {
     this.isDescOrder = !this.isDescOrder;
     this.orderHeader = headerName;
   }// Ngx-filter
-  searchInput: LightningFilterModel = { name: ''};
+  searchInput: ILightningFilter = { name: ''};
   clearInput() {
     this.searchInput.name = '';
   }
 
-  users: UserModel[] = [];
+  lightnings: ILightning[] = [];
 
   constructor(private lightningService: LightningService,
               private dialog: MatDialog) {
@@ -60,7 +61,7 @@ export class LightningComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.users = res['hydra:member']
+          this.lightnings = res['hydra:member']
         }
       )
   }
@@ -108,10 +109,6 @@ export class LightningComponent implements OnInit, OnDestroy {
         )
       }   
     })
-  }
-
-  ngOnDestroy() {
-    // this.lighningService.unsubscribe()
   }
 
 }

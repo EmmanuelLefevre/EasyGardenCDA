@@ -4,14 +4,14 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { LightningService } from '../../lightning.service';
-import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { LightningModel } from '../../lightningModel';
-import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
-import { UserModel } from '../../../../../_models/userModel';
-
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
+import { LightningService } from '../../lightning.service';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
+import { ILightning } from '../../lightningModel';
+import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
+
 
 @Component({
   selector: 'app-add-lightning',
@@ -23,17 +23,16 @@ export class AddLightningComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
 
-  users: UserModel[] = [];
-
   // addLawnmowerForm Group
   addLightningForm = new FormGroup({
     name: new FormControl('')
   });
   submitted = false;
   success = '';
-  lightning!: LightningModel;
+  lightning!: ILightning;
 
-  // Snackbar display which garden is selected
+  // Snackbar display which gardens are owned by user
+  gardens: IGarden[] = [];
   selected = '';
   gardenName = '';
   garden!: IGarden;
@@ -66,19 +65,19 @@ export class AddLightningComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.fetchLightnings()
+    this.fetchGardens()
   }
 
-  // Display Lightnings
-  fetchLightnings(): void {
-    this.lightningService.getAllLightnings()
-      .subscribe(
-        (res:any) => {
-          if (res.hasOwnProperty('hydra:member')) 
-          this.users = res['hydra:member']
-        }
-      )
-  }
+// Display Gardens in select
+fetchGardens(): void {
+  this.gardenService.getAllGardens()
+    .subscribe(
+      (res:any) => {
+        if (res.hasOwnProperty('hydra:member')) 
+        this.gardens = res['hydra:member']
+      }
+    )
+}
 
   get f(): { [key: string]: AbstractControl } {
     return this.addLightningForm.controls;
@@ -90,7 +89,7 @@ export class AddLightningComponent implements OnInit {
     if (this.addLightningForm.invalid) {
       return;
     } else {
-      const typedAddLightningForm: LightningModel = this.addLightningForm.value;
+      const typedAddLightningForm: ILightning = this.addLightningForm.value;
       this.success = JSON.stringify(typedAddLightningForm);
       this.lightningService.addLightning(typedAddLightningForm).subscribe(
         () => {
