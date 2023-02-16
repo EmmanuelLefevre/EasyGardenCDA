@@ -23,8 +23,6 @@ export class AddWateringComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
 
-  gardens: IGarden[] = [];
-
   // addWateringForm Group
   addWateringForm = new FormGroup({
     name: new FormControl('')
@@ -35,6 +33,7 @@ export class AddWateringComponent implements OnInit {
   watering!: IWatering;
   
   // Snackbar display which garden are owned by user
+  gardens: IGarden[] = [];
   selected = '';
   gardenName = '';
   garden!: IGarden;
@@ -70,7 +69,7 @@ export class AddWateringComponent implements OnInit {
     this.fetchGardens()
   }
 
-  // Display Waterings
+  // Display Gardens in select
   fetchGardens(): void {
     this.gardenService.getAllGardens()
       .subscribe(
