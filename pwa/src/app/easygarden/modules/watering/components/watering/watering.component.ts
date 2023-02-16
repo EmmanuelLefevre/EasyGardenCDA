@@ -14,7 +14,7 @@ import { IWatering, IWateringFilter } from '../../wateringModel';
   templateUrl: './watering.component.html'
 })
 
-export class WateringComponent implements OnInit, OnDestroy {
+export class WateringComponent implements OnInit {
 
   title = 'Arrosage';
   faPowerOff = faPowerOff;
@@ -110,10 +110,6 @@ export class WateringComponent implements OnInit, OnDestroy {
         )
       }   
     })
-  }
-
-  ngOnDestroy() {
-    // this.wateringService.unsubscribe()
   }
 
 }
