@@ -48,8 +48,4 @@ export class LawnmowerService {
     return this.httpClient.delete<ILawnmower>(environment.apis.lawnmower.url+'/'+id)
   }
 
-  // unsubscribe() {
-  //   throw new Error('LawnmowerService Destroy');
-  // }
-
 }

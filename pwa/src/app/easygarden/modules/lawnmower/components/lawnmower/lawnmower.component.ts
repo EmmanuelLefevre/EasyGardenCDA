@@ -14,7 +14,7 @@ import { ILawnmower, ILawnmowerFilter } from '../../lawnmowerModel';
   templateUrl: './lawnmower.component.html'
 })
 
-export class LawnmowerComponent implements OnInit, OnDestroy {
+export class LawnmowerComponent implements OnInit {
 
   title = "Tondeuse";
   faPowerOff = faPowerOff;
@@ -110,10 +110,6 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
         )
       }   
     })
-  }
-
-  ngOnDestroy() {
-    // this.lawnmowerService.unsubscribe()
   }
 
 }
