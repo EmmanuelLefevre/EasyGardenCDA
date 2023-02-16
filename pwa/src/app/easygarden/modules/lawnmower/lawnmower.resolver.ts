@@ -3,19 +3,19 @@ import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { catchError, Observable, throwError, delay } from 'rxjs';
 
 import { LawnmowerService } from './lawnmower.service';
-import { DataUserModel } from 'src/app/_models/userModel';
+import { IDataLawnmower } from './lawnmowerModel';
 
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class LawnmowerResolver implements Resolve<DataUserModel[]> {
+export class LawnmowerResolver implements Resolve<IDataLawnmower[]> {
 
   constructor(private lawnmowerService: LawnmowerService,
               private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<DataUserModel[]> {
+  resolve(_route: ActivatedRouteSnapshot): Observable<IDataLawnmower[]> {
     return this.lawnmowerService.getAllLawnmowers().pipe(
       delay(1000),
       catchError(

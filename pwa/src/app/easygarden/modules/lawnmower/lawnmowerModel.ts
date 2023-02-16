@@ -1,23 +1,18 @@
-export interface LawnmowerModel {
+export interface ILawnmower {
   id: number,
   name: string,
   batterySensor: string,
   status: boolean,
   garden: {
-    id: string,
-    name: string,
-    user: {
-      id: string,
-      name: string
-    }
+    id: string
   }
 }
 
-export interface DataLawnmowerModel {
-  data: LawnmowerModel[]
+export interface IDataLawnmower {
+  data: ILawnmower[]
 }
 
 // Ngx-filter
-export interface LawnmowerFilterModel {
+export interface ILawnmowerFilter {
   name: string
 }

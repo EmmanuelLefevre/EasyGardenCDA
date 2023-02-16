@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faPowerOff, faPen, faTrash, faSort, faSearch, faSeedling } from '@fortawesome/free-solid-svg-icons';
 
-import { LawnmowerService } from '../../lawnmower.service';
-import { UserModel } from '../../../../../_models/userModel';
-import { LawnmowerFilterModel } from '../../lawnmowerModel';
-
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/easygarden/components/confirmDialog/confirmDialogComponent/confirm-dialog.component';
+
+import { LawnmowerService } from '../../lawnmower.service';
+
+import { ILawnmower, ILawnmowerFilter } from '../../lawnmowerModel';
+
 
 @Component({
   selector: 'app-lawnmower',
@@ -39,12 +40,12 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
     this.orderHeader = headerName;
   }
   // Ngx-filter
-  searchInput: LawnmowerFilterModel = { name: ''};
+  searchInput: ILawnmowerFilter = { name: ''};
   clearInput() {
     this.searchInput.name = '';
   }
 
-  users: UserModel[] = [];
+  lawnmowers: ILawnmower[] = [];
 
   constructor(private lawnmowerService: LawnmowerService,
               private dialog: MatDialog) {
@@ -61,7 +62,7 @@ export class LawnmowerComponent implements OnInit, OnDestroy {
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.users = res['hydra:member']
+          this.lawnmowers = res['hydra:member']
         }
       )
   }

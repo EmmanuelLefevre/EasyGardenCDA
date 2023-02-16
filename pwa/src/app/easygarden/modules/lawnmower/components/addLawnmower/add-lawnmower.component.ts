@@ -4,14 +4,14 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { LawnmowerService } from '../../lawnmower.service';
-import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { LawnmowerModel } from '../../lawnmowerModel';
-import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
-import { UserModel } from '../../../../../_models/userModel';
-
+import { GardenService } from 'src/app/easygarden/components/garden/garden.service';
+import { LawnmowerService } from '../../lawnmower.service';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
+import { IGarden } from 'src/app/easygarden/components/garden/gardenModel';
+import { ILawnmower } from '../../lawnmowerModel';
+
 
 @Component({
   selector: 'app-add-lawnmower',
@@ -23,17 +23,16 @@ export class AddLawnmowerComponent implements OnInit {
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
 
-  users: UserModel[] = [];
-
   // addLawnmowerForm Group
   addLawnmowerForm = new FormGroup({
     name: new FormControl('')
   });
   submitted = false;
   success = '';
-  lawnmower!: LawnmowerModel;
+  lawnmower!: ILawnmower;
 
-  // Snackbar display which garden is selected
+  // Snackbar display which garden are owned by user
+  gardens: IGarden[] = [];
   selected = '';
   gardenName = '';
   garden!: IGarden;
@@ -66,16 +65,16 @@ export class AddLawnmowerComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.fetchLawnmowers()
+    this.fetchGardens()
   }
 
-  // Display Lawnmowers
-  fetchLawnmowers(): void {
-    this.lawnmowerService.getAllLawnmowers()
+  // Display Gardens in select
+  fetchGardens(): void {
+    this.gardenService.getAllGardens()
       .subscribe(
         (res:any) => {
           if (res.hasOwnProperty('hydra:member')) 
-          this.users = res['hydra:member']
+          this.gardens = res['hydra:member']
         }
       )
   }
@@ -90,7 +89,7 @@ export class AddLawnmowerComponent implements OnInit {
     if (this.addLawnmowerForm.invalid) {
       return;
     } else {
-      const typedAddLawnmowerForm: LawnmowerModel = this.addLawnmowerForm.value;
+      const typedAddLawnmowerForm: ILawnmower = this.addLawnmowerForm.value;
       this.success = JSON.stringify(typedAddLawnmowerForm);
       this.lawnmowerService.addLawnmower(typedAddLawnmowerForm).subscribe(
         () => {

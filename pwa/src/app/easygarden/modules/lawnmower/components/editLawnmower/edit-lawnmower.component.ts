@@ -4,11 +4,12 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { LawnmowerService } from '../../lawnmower.service';
 import { FormValidationService } from '../../../../../_services/service/form-validation.service';
-import { LawnmowerModel } from '../../lawnmowerModel';
-
+import { LawnmowerService } from '../../lawnmower.service';
 import { SnackbarService } from 'src/app/_services/service/snackbar.service';
+
+import { ILawnmower } from '../../lawnmowerModel';
+
 
 @Component({
   selector: 'app-editLawnmower',
@@ -27,7 +28,7 @@ export class EditLawnmowerComponent implements OnInit {
   submitted = false;
   success = '';
   value = '';
-  lawnmower!: LawnmowerModel;
+  lawnmower!: ILawnmower;
 
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
@@ -50,7 +51,6 @@ export class EditLawnmowerComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-
     let lid = this.activated.snapshot.paramMap.get('id')
     this.lawnmowerService.getLawnmower(lid).subscribe(
       data => {
@@ -70,7 +70,7 @@ export class EditLawnmowerComponent implements OnInit {
     if (this.editLawnmowerForm.invalid) {
       return;
     } else {
-      const typedEditLawnmowerForm: LawnmowerModel = this.editLawnmowerForm.value;
+      const typedEditLawnmowerForm: ILawnmower = this.editLawnmowerForm.value;
       this.success = JSON.stringify(typedEditLawnmowerForm);
       let lid = this.activated.snapshot.paramMap.get('id')
       this.lawnmowerService.updateLawnmower(typedEditLawnmowerForm, lid).subscribe(

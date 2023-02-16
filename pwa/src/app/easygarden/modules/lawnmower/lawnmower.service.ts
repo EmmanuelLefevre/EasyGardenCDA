@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { LawnmowerModel, DataLawnmowerModel } from './lawnmowerModel';
-import { DataUserModel } from '../../../_models/userModel';
+import { ILawnmower, IDataLawnmower } from './lawnmowerModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,12 @@ export class LawnmowerService {
   constructor(private httpClient: HttpClient) { }
 
   // Get Index of Lawnmowers
-  getAllLawnmowers(): Observable<DataUserModel[]> {
-    return this.httpClient.get<DataUserModel[]>(environment.apis.user.url);
+  getAllLawnmowers(): Observable<IDataLawnmower[]> {
+    return this.httpClient.get<IDataLawnmower[]>(environment.apis.lawnmower.url);
   }
 
   // Add Lawnmower
-  addLawnmower(lawnmower: LawnmowerModel) {
+  addLawnmower(lawnmower: ILawnmower) {
     const json = {
       name: lawnmower.name,
       garden: lawnmower.garden
@@ -29,23 +29,23 @@ export class LawnmowerService {
   }
 
   // Get Lawnmower
-  getLawnmower(lid: string | null): Observable<LawnmowerModel>{
-    return this.httpClient.get<LawnmowerModel>(environment.apis.lawnmower.url+'/'+lid)
+  getLawnmower(lid: string | null): Observable<ILawnmower>{
+    return this.httpClient.get<ILawnmower>(environment.apis.lawnmower.url+'/'+lid)
   }
 
   // Update Status
-  updateStatus(status: boolean, id: number): Observable<DataLawnmowerModel[]> {
-    return this.httpClient.put<DataLawnmowerModel[]>(environment.apis.lawnmower.url+'/'+id, {status})
+  updateStatus(status: boolean, id: number): Observable<IDataLawnmower[]> {
+    return this.httpClient.put<IDataLawnmower[]>(environment.apis.lawnmower.url+'/'+id, {status})
   }
 
   // Update Lawnmower
-  updateLawnmower(lawnmower: LawnmowerModel, lid: string | null): Observable<DataLawnmowerModel[]> {
-    return this.httpClient.put<DataLawnmowerModel[]>(environment.apis.lawnmower.url+'/'+lid, lawnmower)
+  updateLawnmower(lawnmower: ILawnmower, lid: string | null): Observable<IDataLawnmower[]> {
+    return this.httpClient.put<IDataLawnmower[]>(environment.apis.lawnmower.url+'/'+lid, lawnmower)
   }
 
   // Delete Lawnmower
-  deleteLawnmower(id: number): Observable<LawnmowerModel> {
-    return this.httpClient.delete<LawnmowerModel>(environment.apis.lawnmower.url+'/'+id)
+  deleteLawnmower(id: number): Observable<ILawnmower> {
+    return this.httpClient.delete<ILawnmower>(environment.apis.lawnmower.url+'/'+id)
   }
 
   // unsubscribe() {
