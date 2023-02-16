@@ -31,7 +31,7 @@ export class AddLawnmowerComponent implements OnInit {
   success = '';
   lawnmower!: ILawnmower;
 
-  // Snackbar display which garden are owned by user
+  // Snackbar display which gardens are owned by user
   gardens: IGarden[] = [];
   selected = '';
   gardenName = '';
