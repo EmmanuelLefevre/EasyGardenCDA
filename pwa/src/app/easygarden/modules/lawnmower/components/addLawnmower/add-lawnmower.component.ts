@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
@@ -18,24 +18,30 @@ import { ILawnmower } from '../../lawnmowerModel';
   templateUrl: './add-lawnmower.component.html'
 })
 
-export class AddLawnmowerComponent implements OnInit {
+export class AddLawnmowerComponent {
 
   title = 'Easy Garden';
   faCircleXmark = faCircleXmark;
 
-  // addLawnmowerForm Group
-  addLawnmowerForm = new FormGroup({
-    name: new FormControl('')
-  });
-  submitted = false;
-  success = '';
-  lawnmower!: ILawnmower;
+  addLawnmowerForm = this.formBuilder.group({
+    name: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20),
+        this.customValidator.validEquipmentName()
+      ]
+    ],
+    garden:
+      // this.formBuilder.control<IGarden | null>(null, Validators.required)
+      [
+        null as IGarden | null,
+        Validators.required],
+        nonNullable: true
+  })
 
-  // Snackbar display which gardens are owned by user
   gardens: IGarden[] = [];
-  selected = '';
-  gardenName = '';
-  garden!: IGarden;
   
   constructor(private formBuilder: FormBuilder,
               private customValidator : FormValidationService,
@@ -43,73 +49,39 @@ export class AddLawnmowerComponent implements OnInit {
               private location: Location,
               private lawnmowerService: LawnmowerService,
               private gardenService: GardenService,
-              private snackbarService: SnackbarService) { 
-    this.addLawnmowerForm = this.formBuilder.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(20),
-          this.customValidator.validEquipmentName()
-        ]
-      ],
-      garden: [
-        '',
-        [
-          Validators.required
-        ]
-      ]
-    })
-  }
-
-  ngOnInit(): void {
-    window.scrollTo(0, 0);
-    this.fetchGardens()
-  }
-
-  // Display Gardens in select
-  fetchGardens(): void {
+              private snackbarService: SnackbarService) {
     this.gardenService.getAllGardens()
-      .subscribe(
-        (res:any) => {
-          if (res.hasOwnProperty('hydra:member')) 
-          this.gardens = res['hydra:member']
-        }
-      )
+    .subscribe(
+      (res:any) => {
+        if (res.hasOwnProperty('hydra:member')) 
+        this.gardens = res['hydra:member']
+      }
+    )
   }
 
   get f(): { [key: string]: AbstractControl } {
     return this.addLawnmowerForm.controls;
   }
 
-  // Submit button
+  // Submit
   onSubmit() {
-    this.submitted = true;
-    if (this.addLawnmowerForm.invalid) {
+    if (!this.addLawnmowerForm.valid) {
       return;
-    } else {
-      const typedAddLawnmowerForm: ILawnmower = this.addLawnmowerForm.value;
-      this.success = JSON.stringify(typedAddLawnmowerForm);
-      this.lawnmowerService.addLawnmower(typedAddLawnmowerForm).subscribe(
-        () => {
-          const name = this.addLawnmowerForm.get('name')?.value;
-          this.router.navigate(['/easygarden/lawnmower']);
-          this.gardenService.getGardenName(this.selected).subscribe(
-            data => {
-              this.garden = data
-              this.gardenName = this.garden.name
-              this.snackbarService.showNotification('La tondeuse "' + name + '"' + ' a bien été ajoutée au jardin de ' + this.gardenName + '.', 'created');
-            }
-          )
-        }
-      )
     }
+
+    const formValue: ILawnmower = this.addLawnmowerForm.getRawValue();
+    this.lawnmowerService.addLawnmower(formValue).subscribe(
+      () => {
+        const lawnmowerName = formValue.name;
+        this.router.navigate(['/easygarden/lawnmower']);
+        this.snackbarService.showNotification('La tondeuse "' + lawnmowerName + '"' + 
+        ' a bien été ajoutée au jardin de ' + formValue.garden.name + '.', 'created');
+      }
+    );
   }
 
   // Cancel button
   onReset(): void {
-    this.submitted = false;
     this.addLawnmowerForm.reset();
   }
 

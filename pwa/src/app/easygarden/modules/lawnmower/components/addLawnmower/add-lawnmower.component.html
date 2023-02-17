@@ -11,29 +11,31 @@
     <div class="form-title-content">
       <p class="p-form-title-content">AJOUTER</p>
     </div>
-    <form [formGroup]="addLawnmowerForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="fill">
+    <form [formGroup]="addLawnmowerForm" 
+          #ngForm="ngForm"
+          (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill"
+                      class="input-inset-shadow"
+                      [ngClass]="{ 'invalid-feedback': ngForm.submitted && f['name'].errors }">
         <mat-label>Jardin</mat-label>
-          <mat-select formControlName="garden" 
-                      name="garden"
-                      class="form-select"
-                      [(value)]="selected">
-            <ng-container *ngFor="let garden of gardens">
-              <mat-option [value]="'api/gardens/'+garden.id" 
-                          selected>
-                {{garden.name}}
-              </mat-option>
-            </ng-container>
-          </mat-select>
+        <mat-select formControlName="garden">
+          <!-- <mat-option [value]="null"></mat-option> -->
+          <mat-option *ngFor="let garden of gardens" [value]="garden">
+            {{ garden.name }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
+      <div *ngIf="ngForm.submitted && f['garden'].errors">
+        <div class="text-alert" *ngIf="f['garden'].errors['required']">Veuillez sélectionner un jardin!</div>
+      </div>
       <input formControlName="name"
               name="name"
               id="name"
               type="text"      
               placeholder="Nom"
               class="input-inset-shadow"
-              [ngClass]="{ 'invalid-feedback': submitted && f['name'].errors }">
-      <div *ngIf="submitted && f['name'].errors">
+              [ngClass]="{ 'invalid-feedback': ngForm.submitted && f['name'].errors }">
+      <div *ngIf="ngForm.submitted && f['name'].errors">
         <div class="text-alert" *ngIf="f['name'].errors['required']">Veuillez saisir un nom!</div>
         <div class="text-alert" *ngIf="f['name'].errors['minlength']">
           Le nom doit contenir au minimum 3 caractères.

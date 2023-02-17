@@ -23,7 +23,7 @@ export class LawnmowerService {
   addLawnmower(lawnmower: ILawnmower) {
     const json = {
       name: lawnmower.name,
-      garden: lawnmower.garden
+      garden: 'api/gardens/'+lawnmower.garden.id
     };
     return this.httpClient.post(environment.apis.lawnmower.url, json)
   }
