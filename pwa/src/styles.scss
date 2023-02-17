@@ -294,7 +294,7 @@ body {
   }
   /*------Input------*/
   input {
-    margin: 20px 0px 20px 0px;
+    margin: 10px 0px 10px 0px;
     padding: 15px;
   }
   .div-password-icon {
@@ -357,6 +357,7 @@ body {
     border: 2px solid var(--ang-color-green);
     -webkit-border-radius: 5px;
     border-radius: 5px;
+    margin: 10px 0px 10px 0px;
     .mat-form-field-wrapper {
       padding-bottom: 0;
     }
