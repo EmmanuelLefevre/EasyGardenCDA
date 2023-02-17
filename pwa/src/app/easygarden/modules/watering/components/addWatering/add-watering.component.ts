@@ -32,7 +32,7 @@ export class AddWateringComponent implements OnInit {
   success = '';
   watering!: IWatering;
   
-  // Snackbar display which gardens are owned by user
+  // Snackbar display which garden is selected by user
   gardens: IGarden[] = [];
   selected = '';
   gardenName = '';

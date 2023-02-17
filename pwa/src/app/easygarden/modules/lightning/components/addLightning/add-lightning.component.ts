@@ -31,7 +31,7 @@ export class AddLightningComponent implements OnInit {
   success = '';
   lightning!: ILightning;
 
-  // Snackbar display which gardens are owned by user
+  // Snackbar display which which garden is selected by user
   gardens: IGarden[] = [];
   selected = '';
   gardenName = '';

@@ -31,7 +31,7 @@ export class AddPortalComponent implements OnInit {
   success = '';
   portal!: IPortal;
 
-  // Snackbar display which gardens are owned by user
+  // Snackbar display which garden is selected by user
   gardens: IGarden[] = [];
   selected = '';
   gardenName = '';
