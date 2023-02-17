@@ -4,7 +4,8 @@ export interface ILawnmower {
   batterySensor: string,
   status: boolean,
   garden: {
-    id: string
+    id: string,
+    name: string
   }
 }
 
