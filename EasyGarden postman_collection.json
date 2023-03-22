@@ -1,0 +1,1434 @@
+{
+	"info": {
+		"_postman_id": "d4cbaf32-1acc-4599-b471-25e82da5900b",
+		"name": "EasyGarden V1.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8988890"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTI3NDA3MTQsImV4cCI6MTY1MjgwMDcxNCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoibWFudUBwcm90b25tYWlsLmNvbSJ9.a9o3zMpFJMbP4-qrYEJ_6CeWlyM5mAkdk_emnx8ir7zuem_W3sKEUKDFG9lxGZaLjLzJa-GRBODnDvdYcW7nzHq0hBWPhBsyuzHC-4GgVH_naYTMNQ6S0EtE6LnyPF1et4PrWjW7_-0ylfzh3nSLh06ZwQEwpupQUuFmUIlKvBA8yWrVVIGM1WbNpubKqqiyDhol0ZNOPI7BPusQO45pq2dT0QcOER6LxbLdzgOHOjDvPWU0oBy_xN9_kclkMJnlNAX2cGvkqW1NeOvZGSR98VZAcZnjBEMiRfNclQwF8HoYiY2Ggkt1oWAlTfeG7Prypl1igxjDIYfQlh53sxxSRaRI1AD9tsPM3IkG2q0_JIalc4saT9HYLhDLxTfCGVCEqh6qBSQ5d6KildqVuK7H1wSyLuUpWz5e6CHWWMaAc-4LXrns9cAVVauAgLExGJdZUADlAeerY_21bKhQecbPKjWbqLbTLUZ_pVIo3bONTpov415Lb8Etw9zYX013ePFm4cawJm8Kiz_o60tKE0CVJpdXuhnil_3GTFXKh4EpSUZU6awgBjHcXCmfQcVYXP809F00v7BPsGfZxNuGsNABaTcxpNUp9yrl_01xuvRX4RDKEprhyatKXciUpRe2i22y5YpU6nu_CDzDfAcYoUROKC7F9O1QUEy1do48G2euf3U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gardens",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDU0Njc2NDMsImV4cCI6MTY0NTUyNzY0Mywicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoibWFudUBwcm90b25tYWlsLmNvbSJ9.dixit1X4ZqnUsu96mVgeFpk1rcLwI4GBhZuxkRnKGP0EQilW3vzJc-iJ63p8ZBu6JSq6s5swesKrm6nYLYoRcNF_C1tdd8WVzX1_AhBLPTHu3y-gjzGLoFtBQL2l0uKoGn3DACK5iT21MrvvHc20qZ5U9kg8TErb5XvTgqQZqt6mLUwk440kBMNU5jwlQx5g0X-JkhB98xgG6Xz23DAmiLc4RssDrG_moqmoU_4Ga5T8bC_5mA4OK8-zWRgYdxwbs51a2iZgDwXWqbeHGGmMBn4jmWOBjQz6Ds727k8MH63fsl4iNvebNhh26eQfzQBuKzmn3RON0G4vvT_Ykvw1u8zcD6VZTXo3UT3sVrTFAE-K_KT4XQV7OvEmgtcr_K3B5IEKX2m87OFbgcGmc8P2BpJh2Wck52_OaoMgVMu1qdJFcH53pNdnNQs2a2Jxpre0AcKkQhT7e9keBNIrwUUlxscEe_F1cB8VIaI0-DLETrOW2yo_zOzobN9CdreH3LNyQjxmIhOEVNH_Ofb9Z1kK4eZwTNDzKuk2rt16dNohqMn1chQcBu_zZ80qDuHcW2ULrZW70Ci-2OzGg9PMsNRqAoKe5uvAYKx3OpeuNp_lwTLdJbsKNieav-ZGVRh284e86RYJ37hEz8YT4Qbs8DEQ5YLHwhPCxEUSLcoGKg_ovKw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"manu\",\r\n    \"password\":\"xx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/gardens",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"gardens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lawnmowers",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lawnmowers",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lawnmowers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lightnings",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lightnings",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lightnings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pools",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/pools",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Portals",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/portals/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"portals",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Waterings",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTM5ODk4NDQsImV4cCI6MTY1Mzk5MzQ0NCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoibWFudUBwcm90b25tYWlsLmNvbSJ9.uZRvUh8eG5saSK50oW0kZqklPzSMveUpvFcH9pFlfG9t02WXVRmYjvx9TR_utxz78OrjpB46RY5aj9nkENrxUtbrP4TOv0-YdZiOKur1oKDxZvqcgtLGGfBkfSx9afHbueYqfndznRK_Y4GyTUi8FZLbe7uuAVnL3kRDzmSndo2uiid62XjkGbEKRLbSGK74egDr5EstmHa3X5qIQHwgPvTXHLkYZvTrOi-YkGnqu4OS7JcfXrCLHMIhxRD-66ta-1znYFBQ7qWa_YrMNNJhoA8SSz1o3ZOC24E5nIpKaFOHEf2T8vqomtuBpg57s4_BAK2hgXpW0zWDrVNnkG-bqajBu_VK2f-JGEMA2CN4ETcdAwt7gx7lZMPfgvz5JXKGo7KDnY2c6MpJQ3u2JQ8xK2yEJDPmqbchoSdVMnpRnuKkRRHKio9w_sttLR85jjM-RovRDkL9jaQxmxJVLYtmxb1Z1qsuHI7jSGQ_NMH75JfllgyFy4vJXPEhBYc42nAD96AnzveJVlJL36tUHraB0eBn-pgUuG3yUDMhaLBI6TQrv-u3E6dnzrAVpTaIvBqykcAr-X0GjJvO6QXH8KlhReMivsRGiYDatq4MfF7CWXASKmsq75T4lPR1O1yO1ZYWt3t5a0nyYXoa97dzmMbcOJnxYd5o3wF0d5fWE0O_F78",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/waterings",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"waterings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Id",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDU2MjYwMDgsImV4cCI6MTY0NTY4NjAwOCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoibWFudUBwcm90b25tYWlsLmNvbSJ9.cFuxetukQ3VwE0PKGz3NSnfkgbeF4GhAeoPm58xPGZK_AFACWH0opIIbY-vxTTFGyGpZqYk1mn0qFsQgumM2AbYQplOvvfSwDVdgJx9CeNXVslcvgKbhs57ICLde6_taH97VAKVB7LhbAB3MPfEHxhtMfL3TMwABdVkCVwMlJibpFZMketeZN2WHSxxhnRUKlgWziDx7XpL_OzIJLFBOKxq07rXyeZGhh2K1ckwJxFkzC0Aln6MhQODFks_1n3Qr3jl43Y4J-bFv1SDUZpcTRCfxrlu72bq4_RrEkn-UjNYDTTJ41qsIqmbbFdSfeqjFntUIMs4vLPLqs1Du-VqFkBqWc_meMEzuyi1ZqmIEMBSLyIApn8KVr3aNH3oM45MyWMcIUkrpgIXjwf60SffHRDGf_Q8T8gedIgRDaT7WiXLk_z3fID8LGUbnvmK94gX5YfoH0ecsuL8tqC2arnyaBrftA8A5dsjcNTSG2aIZXE3QLEwjbhXQ7ijW0vX6QpWZZPyWGU_xi6ikOxBQZP6UZIzLrFORSNlftYBtyCZO3htGmSHQpnDOOboDBFEBH5Ne44hbZDLtudYhkcq_eRfNx-V49a4VM2muaM01IMsiv5lCVwGJlTa1OxTS78qki38Zy20wYbnB3ne5gOu-4UEj4uAO_hCnHETVl5w_-CmkCzE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDUzNTY4NTMsImV4cCI6MTY0NTM2MDQ1Mywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibWFudSJ9.vckg0i_-KInoAr_Mf1-ljnWKrAqbaAHHfAlsX-GzxzFFcfAKW728cVDF92JV3syo0mLZUPyPNpdPe82AKmU6ZIO5JsjCqIbufhaT2qgmQg2IowfwrEGGMerGw1b1gHzF59v9yrcWx9TQ4DDMLGlsXz-ybvjONIRHoxj_D9yrEikvqU0itUfzLIvLXOwVoYqJbxuhVjum_3JK4pSkEkElxDTI_SVkQnWAE3-W0rHbfBYEYNUzalU_oCgFttgZiXN0ebcDJHii7nxSgIeRzACcgwZE5yeSk-5ETK4WHhWMkD0GVzMkY3IeCXygh2hJt4DqNexz4jboxP8h4ZYpaQgsEP6Gh0iVbbi_WcCKnLvvAH6gh4EM2f5l80Aa9OI47oLC55WM5n_kK5YhPFQugPuhWgz8mInfckFRi7Zv3Xr2g1t9LmgsoJv_pT0z_qqcUIWi9fWvUA9vnVLZfGWc_U_GnvZ6mdaFx8GGZwgkYWH-ICuMgDjo_Rrjsi_TpjNv53BzbkuvcDDkc0sGlzD5Gcgr9HOOAty6zo0ur5NjFdhVvpvUEkspaFXCtqLYhck-vSW-nHc2hfn5VGzAYCYsBAHsaaNL3I-F8xY9pKHizy0xUbaA6RflNIBAt3GplwwkKOjSIzHvOvVkaTc2dyKsY1eK00yeQ_2GJXV1qwGNPdQgtP0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/users/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Garden Id",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/gardens/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"gardens",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lawnmower Id",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lawnmowers/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lawnmowers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lightning Id",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lightnings/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lightnings",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pool Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/pools/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pools",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Portal Id",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/portals/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"portals",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Watering Id",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/waterings/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"waterings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authentication_token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"manu@protonmail.com\",\r\n    \"password\":\"Darka!33kzo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/login_check",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTI2MzA1MjgsImV4cCI6MTY1MjY5MDUyOCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoibWFudUBwcm90b25tYWlsLmNvbSJ9.yd--n4auapyMZ_q0GUzYqHtz8AUOjj1C8icsoyhnGOwUMzdQwYFFu8sRiWYpxgfXhVEk7ANPhgnDa98HXy45ION7Hp1hWIlTFVuNTns86he77FRyV_KghauskFtk8_DEDfqGPNTFjsmEmqxRzEs5e1ls-ex5sC12Pw205qxTZ4jpDeyCOusL7hJpZqXOaeoiElNuyQw-XYLu_FKr9loyuJJ2lyw9SBw0SgQT3hxC4XUDhGHi13Z4mEnapzQn_DU5IzlM4Q_Sz5r049LY51_a0-KYUhhu43fMz5YxRDgq2AkHY7TbEBdu6kst98lZNw_5twUVMznt8NT9YKSAJqBNP7pBoxzTBRtGsE4V4kBDooAn-7Y5w5Vd5_LJfbkajhUUJ1ckZHE6KNjhcUU4Ou4GJxCmD_ImGQVSFQCTPkHnKuhax_tcQLYsqw-5cD-XdTdVTP83i8qCFc5Nt2PlMCcnpQRSjp2Hra-U_MImeGhk4eiV9M9UTks7wiGemHmvbZgnP_GI8AoO2vU-dXdIW2EOP6xC29xoa4acjSd5LxpKmp_b8zNGOWNvT5vsyTO9eCM11o0gzKacfnk2dEsm6RjaMtlY9t1f9XHzGu7P17I0Iu92u171r36XYdeigm0er1HudhuBBE7u8VINbVMatxSkFsrU6SzZVwnPCnu85tk4ZNI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"hello@gmail.com\",\r\n  \"roles\":[\"ROLE_USER\"],\r\n  \"lastName\":\"hello\",\r\n  \"firstName\":\"hello\",\r\n  \"password\": \"hello\",\r\n  \"pseudo\": \"hello\",\r\n  \"phoneNumber\": \"0735252621\",\r\n  \"createdAt\":\"2022-02-27 13:31:36\",\r\n  \"isVerified\":true,\r\n  \"plainPassword\":\"hello\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Garden",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Marseille\",\r\n  \"user\": \"api/users/4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/gardens",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"gardens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lawnmower",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tondeuse\",\r\n    \"batterySensor\": \"10%\",\r\n    \"status\": true,\r\n    \"garden\":\"/api/gardens/4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lawnmowers",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lawnmowers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lightning",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Abris Jardin\",\r\n\t\"status\": false,\r\n    \"garden\":\"/api/gardens/4\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lightnings",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lightnings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pool",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jet bis\",\r\n    \"status\": true,\r\n    \"garden\":\"/api/gardens/4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/pools",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Portal",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Portail\",\r\n    \"presenceSensor\": true,\r\n    \"status\": true,\r\n    \"garden\":\"/api/gardens/4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/portals",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"portals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Watering",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"zz\",\r\n    \"flowSensor\": \"1.6L/H\",\r\n    \"pressureSensor\": \"1.4bars\",\r\n    \"status\": true,\r\n    \"garden\":\"/api/gardens/4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/waterings",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"waterings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"hello\",\r\n  \"email\": \"sofiane@sofiane.com\",\r\n  \"userName\": \"Sofiane\",\r\n  \"phoneNumber\": \"06 52 21 45\",\r\n  \"createdAt\": \"2022-02-17T10:32:10.635Z\",\r\n  \"updatedAt\": \"2022-02-17T10:32:10.635Z\",\r\n  \"garden\": [\r\n    \"api/gardens/2\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Garden",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Lille\",\r\n  \"user\": \"api/users/2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/gardens",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"gardens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lawnmower",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tondeuse\",\r\n    \"batterySensor\": \"80%\",\r\n    \"status\": true,\r\n    \"garden\":\"/api/gardens/3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lawnmowers",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lawnmowers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lightning",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Abris Bois\",\r\n\t\"status\": true,\r\n    \"garden\":\"/api/gardens/2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lightnings",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lightnings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pool",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jet 1\",\r\n    \"status\": false,\r\n    \"garden\":\"/api/gardens/1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/pools",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Portal",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Portail\",\r\n    \"presenceSensor\": true,\r\n    \"status\": false,\r\n    \"garden\":\"/api/gardens/2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/portals",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"portals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Watering",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Potiches (Saint-Savin/Manu)\",\r\n    \"flowSensor\": \"1739L/H\",\r\n    \"pressureSensor\": \"6.45bars\",\r\n    \"status\": false,\r\n    \"garden\":\"/api/gardens/1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/waterings",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"waterings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"hello\",\r\n  \"email\": \"sofiane@sofiane.com\",\r\n  \"userName\": \"Sofiane\",\r\n  \"phoneNumber\": \"06 52 21 45\",\r\n  \"createdAt\": \"2022-02-17T10:32:10.635Z\",\r\n  \"updatedAt\": \"2022-02-17T10:32:10.635Z\",\r\n  \"garden\": [\r\n    \"api/gardens/2\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/users/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Garden",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Lille\",\r\n  \"user\": \"api/users/2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/gardens/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"gardens",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lawnmower",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lawnmowers/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lawnmowers",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lightning",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/lightnings/6",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lightnings",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pool",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/pools/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pools",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Portal",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/portals/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"portals",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Watering",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/waterings/6",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"waterings",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
